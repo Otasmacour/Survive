@@ -1,0 +1,4 @@
+﻿Make Mini map of the rooms, it ofcourse needs to have initialization functions, to make scheme of whole game map, built by many small maps.
+Regarding minimap, it could be like: for player will be visible just adjacent rooms, not the whole map.
+Add a character, that will give the player the option of gambling.
+Add character, or any other content, that will be in some foreign language, player could get some item (magic), that will allow them understand

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36BA4B7E-779F-4161-AB5C-D9A7D8BD83AC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Survive</RootNamespace>
+    <AssemblyName>Survive</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Model\DataIOManagerComponents\DataIOManager.cs" />
+    <Compile Include="Model\DataIOManagerComponents\JsonFunctions.cs" />
+    <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
+    <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\Movement.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\FunctionsForInitialization.cs" />
+    <Compile Include="Model\FunctionsForController\ReturningFunctionsForView\ReturningFunctionsForView.cs" />
+    <Compile Include="Model\Game\Characters\Characters.cs" />
+    <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />
+    <Compile Include="Model\Game\Game.cs" />
+    <Compile Include="Model\Game\Informations\Informations.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapOperations.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapsFunctions.cs" />
+    <Compile Include="Model\Game\Maps\Maps.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapsInitialization.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapsLinking.cs" />
+    <Compile Include="Model\Game\Maps\RoomMapCollection.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Structures\GameObjects\Corpse.cs" />
+    <Compile Include="Model\Structures\GameObjects\Door.cs" />
+    <Compile Include="Model\Structures\GameObjects\Floor.cs" />
+    <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
+    <Compile Include="Model\Structures\GameObjects\Roles\Player.cs" />
+    <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
+    <Compile Include="Model\Structures\GameObjects\TransitionPoint.cs" />
+    <Compile Include="Model\Structures\GameObjects\Wall.cs" />
+    <Compile Include="Model\Structures\Maps\Chapel.cs" />
+    <Compile Include="Model\Structures\Maps\VerticalCorridor.cs" />
+    <Compile Include="Model\Structures\Maps\Lobby.cs" />
+    <Compile Include="Model\Structures\Maps\MapInformations.cs" />
+    <Compile Include="Model\Structures\UnCategorized\Coordinates.cs" />
+    <Compile Include="Model\Structures\UnCategorized\Enums.cs" />
+    <Compile Include="Model\Structures\GameObjects\Character.cs" />
+    <Compile Include="Model\Structures\Maps\Map.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\View.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ideas.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
