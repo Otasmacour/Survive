@@ -18,25 +18,25 @@ namespace Survive
             txtFunctions = new TxtFunctions(mainFolderPath);
             jsonFunctions = new JsonFunctions(mainFolderPath, this, txtFunctions);
         }
-        public MovementDirection EnumMovementDirectionAssignment(char c)
+        public Direction EnumMovementDirectionAssignment(char c)
         {
-            MovementDirection movementDirection = new MovementDirection();
-            movementDirection = MovementDirection.Null;
+            Direction movementDirection = new Direction();
+            movementDirection = Direction.Null;
             if (c == 'w')
             {
-                movementDirection = MovementDirection.Up;
+                movementDirection = Direction.Up;
             }
             else if (c == 's')
             {
-                movementDirection = MovementDirection.Down;
+                movementDirection = Direction.Down;
             }
             else if (c == 'a')
             {
-                movementDirection = MovementDirection.Left;
-            }
+                movementDirection = Direction.Left;
+            }   
             else if (c == 'd')
             {
-                movementDirection = MovementDirection.Right;
+                movementDirection = Direction.Right;
             }
             return movementDirection;
         }

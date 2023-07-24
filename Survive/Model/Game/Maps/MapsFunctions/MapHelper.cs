@@ -78,7 +78,7 @@ namespace Survive
                 Coordinates coordinates = new Coordinates();
                 coordinates.y = coordinatesTupple.y;
                 coordinates.x = coordinatesTupple.x;
-                while (coordinatesHash.Contains(coordinatesTupple) || JustFloorThere(map, coordinates) == false || map.mapInformations.occupiedPlaces.Contains(coordinates))
+                while (coordinatesHash.Contains(coordinatesTupple) || JustFloorThere(map, coordinates) == false || map.mapInformations.mapLayout.occupiedPlaces.Contains(coordinates))
                 {
                     coordinatesTupple = (random.Next(1, mapHeight - 1), random.Next(1, mapWidth - 1));
                     coordinates.y = coordinatesTupple.y;

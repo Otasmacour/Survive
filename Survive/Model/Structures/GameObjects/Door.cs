@@ -8,7 +8,7 @@ namespace Survive
 {
     class Door : GameObject
     {
-        public Map map;
+        public Map destinationMap;
         public Coordinates transitionPointCoordinates;
         public Door()
         {

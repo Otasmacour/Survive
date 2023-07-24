@@ -15,22 +15,22 @@ namespace Survive
         }
         MapHelper mapHelper;
         MapOperations mapOperations;
-        public void MoveCharacter(Character character, MovementDirection movementDirection)
+        public void MoveCharacter(Character character, Direction movementDirection)
         {
             Map map = character.mapWhereIsLocated;
-            if (movementDirection == MovementDirection.Up)
+            if (movementDirection == Direction.Up)
             {
                 MoveUp(character, map);
             }
-            else if (movementDirection == MovementDirection.Left)
+            else if (movementDirection == Direction.Left)
             {
                 MoveLeft(character, map);
             }
-            else if (movementDirection == MovementDirection.Down)
+            else if (movementDirection == Direction.Down)
             {
                 MoveDown(character, map);
             }
-            else if (movementDirection == MovementDirection.Right)
+            else if (movementDirection == Direction.Right)
             {
                 MoveRight(character, map);
             }
@@ -63,9 +63,9 @@ namespace Survive
             else if(mapHelper.DoorThere(map, newCoordinates))
             {
                 Door door = mapHelper.ReturnDoorThere(map, newCoordinates);
-                if(door.map != null)
+                if(door.destinationMap != null)
                 {
-                    mapOperations.CharacterRelocation(character, map, door.map, character.coordinates, door.transitionPointCoordinates);
+                    mapOperations.CharacterRelocation(character, map, door.destinationMap, character.coordinates, door.transitionPointCoordinates);
                 }
             }
         }

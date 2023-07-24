@@ -8,14 +8,6 @@ namespace Survive
 {
     class MapInformations
     {
-        public Coordinates upperDoor;
-        public Coordinates bottomDoor;
-        public Coordinates leftDoor;
-        public Coordinates rightDoor;
-        public Coordinates upperTransition;
-        public Coordinates bottomTransition;
-        public Coordinates leftTransition;
-        public Coordinates rightTransition;
-        public List<Coordinates> occupiedPlaces = new List<Coordinates>();
+        public MapLayout mapLayout = new MapLayout();
     }
 }

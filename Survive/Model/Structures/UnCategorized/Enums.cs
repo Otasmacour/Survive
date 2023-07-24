@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    enum MovementDirection { Left, Right, Up, Down, Null }
+    enum Direction { Left, Right, Up, Down, Null }
 }

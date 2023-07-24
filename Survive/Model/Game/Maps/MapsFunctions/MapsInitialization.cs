@@ -52,33 +52,33 @@ namespace Survive
                     coordinates.x = width;
                     if (height == 0)
                     {
-                        mapInformations.upperDoor = coordinates;
+                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Up,coordinates);
                         transitionCoordinates.y = 1;
                         transitionCoordinates.x = width;
-                        mapInformations.upperTransition = transitionCoordinates;
+                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Up,transitionCoordinates);
                     }
                     else if (width == 0)
                     {
-                        mapInformations.leftDoor = coordinates;
+                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Left, coordinates);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = 1;
-                        mapInformations.leftTransition = transitionCoordinates;
+                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Left, transitionCoordinates);
                     }
                     else if (width == mapWidth - 1)
                     {
-                        mapInformations.rightDoor = coordinates;
+                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Right, coordinates);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = mapWidth - 2;
-                        mapInformations.rightTransition = transitionCoordinates;
+                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Right, transitionCoordinates);
                     }
                     else if (height == mapHeight - 1)
                     {
-                        mapInformations.bottomDoor = coordinates;
+                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Down, coordinates);
                         transitionCoordinates.y = height - 1;
                         transitionCoordinates.x = width;
-                        mapInformations.bottomTransition = transitionCoordinates;
+                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
                     }
-                    mapInformations.occupiedPlaces.Add(transitionCoordinates);
+                    mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
                 }
                 twoDArray[height, width] = objekty;
             }

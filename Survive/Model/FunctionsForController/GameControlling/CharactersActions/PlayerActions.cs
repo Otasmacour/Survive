@@ -25,7 +25,7 @@ namespace Survive
         static void PlayerMovement(Characters characters, Movement movement, DataIOManager dataIOManager)
         {
             char ch = Console.ReadKey().KeyChar;
-            MovementDirection movementDirection = dataIOManager.EnumMovementDirectionAssignment(ch);
+            Direction movementDirection = dataIOManager.EnumMovementDirectionAssignment(ch);
             movement.MoveCharacter(characters.player, movementDirection);
         }
     }
