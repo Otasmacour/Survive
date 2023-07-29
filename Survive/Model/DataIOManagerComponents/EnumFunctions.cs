@@ -8,16 +8,27 @@ namespace Survive
 {
     class EnumFunctions
     {
-        Dictionary<Direction, Direction> oppositeDirection = new Dictionary<Direction, Direction>();
+        
         public EnumFunctions() 
         {
-            // Initialization is here, bcs doing it in static method nonvisible from outside of this class, cannot be perform, as it cannot reach the Dictionary oppositeDirection
-            oppositeDirection.Add(Direction.Left, Direction.Right);
-            oppositeDirection.Add(Direction.Right, Direction.Left);
-            oppositeDirection.Add(Direction.Up, Direction.Down);
-            oppositeDirection.Add(Direction.Down, Direction.Up);
         }
-        public Direction OppositeDirection(Direction direction)
+        private Dictionary<Direction, Direction> OppositeDirection;
+        public Dictionary<Direction, Direction> oppositeDirection
+        {
+            get
+            {
+                if(OppositeDirection == null)
+                {
+                    OppositeDirection = new Dictionary<Direction, Direction>();
+                    OppositeDirection.Add(Direction.Left, Direction.Right);
+                    OppositeDirection.Add(Direction.Right, Direction.Left);
+                    OppositeDirection.Add(Direction.Up, Direction.Down);
+                    OppositeDirection.Add(Direction.Down, Direction.Up);
+                }
+                return OppositeDirection;
+            }
+        }
+        public Direction GetOppositeDirection(Direction direction)
         {
             return oppositeDirection[direction];
         }

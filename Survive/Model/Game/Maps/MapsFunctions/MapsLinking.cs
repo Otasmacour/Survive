@@ -18,16 +18,14 @@ namespace Survive
         {
             //draw a plan
             //Do it in general
-            //MapLink(roomMapCollection.chapel, roomMapCollection.lobby, Direction.Down, Direction.Up);
-            //MapLink(roomMapCollection.lobby, roomMapCollection.verticalCorridor, Direction.Down, Direction.Up);
             Map lobby = new Map(mapsInitialization, "Lobby");
             Map room1 = new Map(mapsInitialization, "Room");
             MapLink(lobby, room1, Direction.Right);
-
+            MapLink(lobby, room1, Direction.Left);
         }
         public void MapLink(Map sourceMap, Map destinationMap, Direction sourceDirection)
         {
-            PerformMapLink(sourceMap, destinationMap, sourceDirection, dataIOManager.enumFunctions.OppositeDirection(sourceDirection));
+            PerformMapLink(sourceMap, destinationMap, sourceDirection, dataIOManager.enumFunctions.GetOppositeDirection(sourceDirection));
         }
         static void PerformMapLink(Map sourceMap, Map destinationMap, Direction sourceDirection, Direction destinationDirection)
         {

@@ -13,10 +13,10 @@ namespace Survive
         }
         public void RemovingUnnecessaryDoors(RoomMapCollection roomMapCollection)
         {
-            foreach(Map map in roomMapCollection.list)
-            {
-                Console.WriteLine(map.GetType());
-            }
+            //foreach(Map map in roomMapCollection.list)
+            //{
+            //    Console.WriteLine(map.GetType());
+            //}
         }
     }
 }
