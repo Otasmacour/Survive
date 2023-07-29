@@ -19,7 +19,7 @@ namespace Survive
             this.roomMapCollection = roomMapCollection;
             mapsLinking = new MapsLinking(dataIOManager);
             this.mapsLinking.LinkingMaps(roomMapCollection, this);
-            this.mapCleaning.RemovingUnnecessaryDoors(roomMapCollection);
+            this.mapCleaning.RemovingOfUnusedDoors(roomMapCollection);
         }
         public (List<GameObject>[,] twoDArray, MapInformations mapInformations) CreatingTwoDArrayPlusInformationsOfIt(string txtFileName)
         {
