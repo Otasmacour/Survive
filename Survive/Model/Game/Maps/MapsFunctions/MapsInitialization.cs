@@ -11,12 +11,13 @@ namespace Survive
         string folderName = "Maps";
         DataIOManager dataIOManager;
         public RoomMapCollection roomMapCollection;
-        MapsLinking mapsLinking = new MapsLinking();
+        MapsLinking mapsLinking;
         MapCleaning mapCleaning = new MapCleaning();
         public MapsInitialization(DataIOManager dataIOManager, RoomMapCollection roomMapCollection)
         {
             this.dataIOManager = dataIOManager;
             this.roomMapCollection = roomMapCollection;
+            mapsLinking = new MapsLinking(dataIOManager);
             this.mapsLinking.LinkingMaps(roomMapCollection, this);
             this.mapCleaning.RemovingUnnecessaryDoors(roomMapCollection);
         }
