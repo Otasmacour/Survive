@@ -15,21 +15,22 @@ namespace Survive
             this.model = model;
             this.mapHelper = mapHelper;
         }
-        public (char[,], string) mapWherePlayerIsLocated()
+        public (char[,] map, string mapName) mapWherePlayerIsLocated()
         {
             Map map = model.game.characters.player.mapWhereIsLocated;
             char[,] charMap = new char[map.twoDArray.GetLength(0), map.twoDArray.GetLength(1)];
             List<GameObject>[,] twoDArrayt = map.twoDArray;
             int mapHeight = twoDArrayt.GetLength(0);
             int mapWidth = twoDArrayt.GetLength(1);
-            for (int i = 0; i < mapHeight * mapWidth; i++)
+            for (int y = 0; y < mapHeight; y++)
             {
-                int height = (i) / mapWidth;
-                int width = i - ((i / mapWidth) * mapWidth);
-                List<GameObject> objects = twoDArrayt[height, width];
-                GameObject mostPreferredObject = mapHelper.mostPreferredObjectInList(objects);
-                char c = mostPreferredObject.symbol;
-                charMap[height, width] = c;
+                for (int x = 0; x < mapWidth; x++)
+                {
+                    List<GameObject> objects = twoDArrayt[y, x];
+                    GameObject mostPreferredObject = mapHelper.mostPreferredObjectInList(objects);
+                    char c = mostPreferredObject.symbol;
+                    charMap[y, x] = c;
+                }
             }
             return (charMap,map.name);
         }

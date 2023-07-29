@@ -27,7 +27,6 @@ namespace Survive
             {
                 Console.Clear();
                 view.PrintMap(returningFunctionsForView.mapWherePlayerIsLocated());
-                Console.WriteLine(model.game.maps.roomMapCollection.list.Count.ToString());
                 gameControlling.playerActions.Action();
             }
         }

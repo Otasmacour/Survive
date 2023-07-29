@@ -8,18 +8,11 @@ namespace Survive
 {
     class View
     {
-        public void Display(char[,] charMap, string mapTitle, List<(char, string)> lines, List<string> list)
-        {
-            PrintCharactersOnMap(lines);
-            PrintMap((charMap, mapTitle));
-            PrintTestsStuff(list);
-        }
         public void PrintMap((char[,] charMap, string mapTitle) tupple)
         {
             char[,] charMap = tupple.charMap;
             int mapHeight = charMap.GetLength(0);
             int mapWidth = charMap.GetLength(1);
-            Console.WriteLine("");
             for (int i = 0; i < mapWidth; i++)
             {
                 if (i == 0)
@@ -32,17 +25,16 @@ namespace Survive
                     Console.WriteLine("");
                 }
             }
-            for (int i = 0; i < mapHeight * mapWidth; i++)
+            Console.WriteLine("");
+            for (int y = 0; y < mapHeight; y++)
             {
-                if (i % mapWidth == 0)
+                Console.Write(y);
+                for (int x = 0; x < mapWidth; x++)
                 {
-                    Console.WriteLine("");
-                    Console.Write(i / mapWidth);
+                    char c = charMap[y, x];
+                    Console.Write(c);
                 }
-                int height = (i) / mapWidth;
-                int width = i - ((i / mapWidth) * mapWidth);
-                char symbol = charMap[height, width];
-                Console.Write(symbol);
+                Console.WriteLine();
             }
             Console.WriteLine("\n"+tupple.mapTitle);
         }
