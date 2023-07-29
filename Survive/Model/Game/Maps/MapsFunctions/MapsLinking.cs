@@ -12,13 +12,10 @@ namespace Survive
         {
             //draw a plan
             //Do it in general
-            roomMapCollection.lobby = new Lobby(mapsInitialization);
-            roomMapCollection.verticalCorridor = new VerticalCorridor(mapsInitialization);
-            roomMapCollection.chapel = new Chapel(mapsInitialization);
             Random random = new Random();
             MapLink(roomMapCollection.chapel, roomMapCollection.lobby, Direction.Down, Direction.Up);
             MapLink(roomMapCollection.lobby, roomMapCollection.verticalCorridor, Direction.Down, Direction.Up);
-            Lobby lobby = new Lobby(mapsInitialization);
+            Map lobby = new Map(mapsInitialization, "Lobby");
             MapLink(lobby, roomMapCollection.verticalCorridor, Direction.Right, Direction.Left);
             
         }

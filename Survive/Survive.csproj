@@ -60,6 +60,7 @@
     <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />
     <Compile Include="Model\Game\Game.cs" />
     <Compile Include="Model\Game\Informations\Informations.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapCleaning.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapOperations.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapsFunctions.cs" />
@@ -76,10 +77,7 @@
     <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
     <Compile Include="Model\Structures\GameObjects\TransitionPoint.cs" />
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />
-    <Compile Include="Model\Structures\Maps\Chapel.cs" />
     <Compile Include="Model\Structures\Maps\MapLayout.cs" />
-    <Compile Include="Model\Structures\Maps\VerticalCorridor.cs" />
-    <Compile Include="Model\Structures\Maps\Lobby.cs" />
     <Compile Include="Model\Structures\Maps\MapInformations.cs" />
     <Compile Include="Model\Structures\UnCategorized\Coordinates.cs" />
     <Compile Include="Model\Structures\UnCategorized\Enums.cs" />

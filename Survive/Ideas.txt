@@ -2,3 +2,7 @@
 Regarding minimap, it could be like: for player will be visible just adjacent rooms, not the whole map.
 Add a character, that will give the player the option of gambling.
 Add character, or any other content, that will be in some foreign language, player could get some item (magic), that will allow them understand
+it will be possible to dig in the garden, if the player has a shovel
+
+game maker toolkit
+-stealth

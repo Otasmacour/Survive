@@ -22,7 +22,6 @@ namespace Survive
             List<GameObject>[,] twoDArrayt = map.twoDArray;
             int mapHeight = twoDArrayt.GetLength(0);
             int mapWidth = twoDArrayt.GetLength(1);
-            Console.WriteLine(map.name);
             for (int i = 0; i < mapHeight * mapWidth; i++)
             {
                 int height = (i) / mapWidth;

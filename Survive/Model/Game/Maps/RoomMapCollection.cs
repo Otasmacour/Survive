@@ -9,10 +9,10 @@ namespace Survive
     class RoomMapCollection
     {
         public List<Map> list = new List<Map>();
-        public Lobby lobby;
-        public VerticalCorridor verticalCorridor;
+        public Map lobby;
+        public Map verticalCorridor;
         //public HorizontalCorridor horizontalCorridor; // finish this
-        public Chapel chapel;
+        public Map chapel;
         public RoomMapCollection() 
         {
 

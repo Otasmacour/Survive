@@ -12,11 +12,13 @@ namespace Survive
         DataIOManager dataIOManager;
         public RoomMapCollection roomMapCollection;
         MapsLinking mapsLinking = new MapsLinking();
+        MapCleaning mapCleaning = new MapCleaning();
         public MapsInitialization(DataIOManager dataIOManager, RoomMapCollection roomMapCollection)
         {
             this.dataIOManager = dataIOManager;
             this.roomMapCollection = roomMapCollection;
             this.mapsLinking.LinkingMaps(roomMapCollection, this);
+            this.mapCleaning.RemovingUnnecessaryDoors(roomMapCollection);
         }
         public (List<GameObject>[,] twoDArray, MapInformations mapInformations) CreatingTwoDArrayPlusInformationsOfIt(string txtFileName)
         {

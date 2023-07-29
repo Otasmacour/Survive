@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class Controller
+    public class Controller
     {
         Model model { get; set; }
         GameControlling gameControlling { get; set; }

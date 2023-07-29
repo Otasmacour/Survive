@@ -12,11 +12,13 @@ namespace Survive
         public MapInformations mapInformations;
         public List<Character> charactersOnMap = new List<Character>();
         public string name;
-        public void MapConstruktor(List<GameObject>[,] twoDArray, MapInformations mapInformations, RoomMapCollection roomMapCollection) 
+        public Map(MapsInitialization mapsInitialization, string fileName)
         {
-            this.twoDArray = twoDArray;
-            this.mapInformations = mapInformations;
-            roomMapCollection.list.Add(this);
+            this.name = fileName;
+            var tuple = mapsInitialization.CreatingTwoDArrayPlusInformationsOfIt(fileName);
+            this.twoDArray = tuple.twoDArray;
+            this.mapInformations = tuple.mapInformations;
+            mapsInitialization.roomMapCollection.list.Add(this);
         }
     }
 }
