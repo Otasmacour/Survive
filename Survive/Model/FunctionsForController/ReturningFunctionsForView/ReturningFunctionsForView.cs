@@ -15,7 +15,7 @@ namespace Survive
             this.model = model;
             this.mapHelper = mapHelper;
         }
-        public (char[,] map, string mapName) mapWherePlayerIsLocated()
+        public (char[,] map, int floorNumber, string mapName) mapWherePlayerIsLocated()
         {
             Map map = model.game.characters.player.mapWhereIsLocated;
             char[,] charMap = new char[map.twoDArray.GetLength(0), map.twoDArray.GetLength(1)];
@@ -32,7 +32,7 @@ namespace Survive
                     charMap[y, x] = c;
                 }
             }
-            return (charMap,map.name);
+            return (charMap, map.mapInformations.floorNumber, map.name);
         }
         public List<(char, string)> CharactersOnMapWherePlayerIsLocated()
         {

@@ -8,7 +8,7 @@ namespace Survive
 {
     class View
     {
-        public void PrintMap((char[,] charMap, string mapTitle) tupple)
+        public void PrintMap((char[,] charMap,int floorNumber, string mapTitle) tupple)
         {
             char[,] charMap = tupple.charMap;
             int mapHeight = charMap.GetLength(0);
@@ -36,7 +36,7 @@ namespace Survive
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("\n"+tupple.mapTitle);
+            Console.WriteLine("\n"+"Floor "+tupple.floorNumber.ToString()+", "+tupple.mapTitle);
         }
         public void PrintCharactersOnMap(List<(char, string)> lines)
         {

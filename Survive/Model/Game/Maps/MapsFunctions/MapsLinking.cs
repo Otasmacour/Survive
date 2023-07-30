@@ -41,8 +41,36 @@ namespace Survive
             Map VS1 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
             Map VS2 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
             Map VS3 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
-
-
+            //Linking maps together
+            void LinkingSFloor()
+            {
+                MapLink(RMS1, RMS2, Direction.Right);
+                MapLink(VS1, RMS1, Direction.Down);
+                MapLink(RMS1, RMS3, Direction.Down);
+                MapLink(RMS3, VS3, Direction.Down);
+            }
+            void Linking0Floor()
+            {
+                MapLink(RM01, RM02, Direction.Right);
+                MapLink(RM02, RM03, Direction.Right);
+                MapLink(RM04, RM05, Direction.Right);
+                MapLink(RM01, VS1, Direction.Down);
+                MapLink(RM02, VS2, Direction.Down);
+                MapLink(RM03, RM04, Direction.Down);
+                MapLink(RM04, RM06, Direction.Down);
+            }
+            void Linking1Floor()
+            {
+                MapLink(RMF1, RMF3, Direction.Right);
+                MapLink(RMF4, RMF5, Direction.Right);
+                MapLink(VS3, RMF1, Direction.Down);
+                MapLink(RMF1, RMF2, Direction.Down);
+                MapLink(RMF4, RMF3, Direction.Down);
+                MapLink(VS2, RMF4, Direction.Down);
+            }
+            LinkingSFloor();
+            Linking0Floor();
+            Linking1Floor();
         }
         public void MapLink(Map sourceMap, Map destinationMap, Direction sourceDirection)
         {

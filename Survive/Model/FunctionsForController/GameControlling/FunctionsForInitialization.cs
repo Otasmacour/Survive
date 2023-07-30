@@ -24,7 +24,7 @@ namespace Survive
             Coordinates coordinates = new Coordinates();
             coordinates.y = 3;
             coordinates.x = 3;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.list[0], coordinates);
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[0][1], coordinates);
         }
     }
 }

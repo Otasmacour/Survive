@@ -18,11 +18,11 @@ namespace Survive
             var tuple = mapsInitialization.CreatingTwoDArrayPlusInformationsOfIt(fileName);
             this.twoDArray = tuple.twoDArray;
             this.mapInformations = tuple.mapInformations;
+            this.mapInformations.floorNumber = floorNumber;
             mapsInitialization.roomMapCollection.list.Add(this);
             if(mapsInitialization.roomMapCollection.roomsByFloor.ContainsKey(floorNumber))
             {
                 mapsInitialization.roomMapCollection.roomsByFloor[floorNumber].Add(this);
-                Console.WriteLine(mapName);
             }
             else
             {

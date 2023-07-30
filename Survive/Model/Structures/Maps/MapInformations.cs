@@ -9,5 +9,6 @@ namespace Survive
     class MapInformations
     {
         public MapLayout mapLayout = new MapLayout();
+        public int floorNumber;
     }
 }
