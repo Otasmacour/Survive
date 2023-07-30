@@ -1,9 +1,5 @@
 xxxxdxxxx
 x.......x
-x.......x
 d.......x
-x.......x
 x.......d
-x.......x
-x.......x
 xxxdxxxxx

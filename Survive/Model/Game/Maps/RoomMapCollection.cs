@@ -9,10 +9,7 @@ namespace Survive
     class RoomMapCollection
     {
         public List<Map> list = new List<Map>();
-        public Map lobby;
-        public Map verticalCorridor;
-        //public HorizontalCorridor horizontalCorridor; // finish this
-        public Map chapel;
+        public Dictionary<int,List<Map>> roomsByFloor = new Dictionary<int, List<Map>>();
         public RoomMapCollection() 
         {
 

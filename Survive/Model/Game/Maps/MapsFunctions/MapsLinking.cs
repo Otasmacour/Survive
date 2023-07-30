@@ -16,12 +16,33 @@ namespace Survive
         }
         public void LinkingMaps(RoomMapCollection roomMapCollection, MapsInitialization mapsInitialization)
         {
-            //draw a plan
-            //Do it in general
-            Map lobby = new Map(mapsInitialization, "Lobby");
-            Map room1 = new Map(mapsInitialization, "Room");
-            MapLink(lobby, room1, Direction.Right);
-            MapLink(lobby, room1, Direction.Left);
+            int floorNumber;
+            //Rooms -1 Floor
+            floorNumber = -1;
+            Map RMS1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1");
+            Map RMS2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2");
+            Map RMS3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3");
+            //Rooms 0  Floor
+            floorNumber = 0;
+            Map RM01 = new Map(mapsInitialization, "Room", floorNumber, "Room 1");
+            Map RM02 = new Map(mapsInitialization, "Room", floorNumber, "Room 2");
+            Map RM03 = new Map(mapsInitialization, "Room", floorNumber, "Room 3");
+            Map RM04 = new Map(mapsInitialization, "Room", floorNumber, "Room 4");
+            Map RM05 = new Map(mapsInitialization, "Room", floorNumber, "Room 5");
+            Map RM06 = new Map(mapsInitialization, "Room", floorNumber, "Room 6");
+            //Rooms 1  Floor
+            floorNumber = 1;
+            Map RMF1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1");
+            Map RMF2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2");
+            Map RMF3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3");
+            Map RMF4 = new Map(mapsInitialization, "Room", floorNumber, "Room 4");
+            Map RMF5 = new Map(mapsInitialization, "Room", floorNumber, "Room 5");
+            //Vertical Stairs
+            Map VS1 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
+            Map VS2 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
+            Map VS3 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs");
+
+
         }
         public void MapLink(Map sourceMap, Map destinationMap, Direction sourceDirection)
         {

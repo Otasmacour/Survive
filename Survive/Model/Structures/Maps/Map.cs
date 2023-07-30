@@ -12,13 +12,22 @@ namespace Survive
         public MapInformations mapInformations;
         public List<Character> charactersOnMap = new List<Character>();
         public string name;
-        public Map(MapsInitialization mapsInitialization, string fileName)
+        public Map(MapsInitialization mapsInitialization, string fileName, int floorNumber, string mapName) //the mapName will be remove, after all rooms will have their names, it just temporary, bcs without names like "R1" (room 1), the mapLinking functions would be confusing 
         {
-            this.name = fileName;
+            this.name = mapName;
             var tuple = mapsInitialization.CreatingTwoDArrayPlusInformationsOfIt(fileName);
             this.twoDArray = tuple.twoDArray;
             this.mapInformations = tuple.mapInformations;
             mapsInitialization.roomMapCollection.list.Add(this);
+            if(mapsInitialization.roomMapCollection.roomsByFloor.ContainsKey(floorNumber))
+            {
+                mapsInitialization.roomMapCollection.roomsByFloor[floorNumber].Add(this);
+                Console.WriteLine(mapName);
+            }
+            else
+            {
+                mapsInitialization.roomMapCollection.roomsByFloor.Add(floorNumber,new List<Map> { this });
+            }
         }
     }
 }
