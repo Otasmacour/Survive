@@ -12,7 +12,6 @@ namespace Survive
         public string rank;
         public Map mapWhereIsLocated;
         public Coordinates coordinates;
-        public string favouriteFood;
         public bool living = true;
         public void RoleConstructor(Character character)
         {

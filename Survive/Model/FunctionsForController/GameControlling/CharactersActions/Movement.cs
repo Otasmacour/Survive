@@ -51,6 +51,19 @@ namespace Survive
         {
             PerformChacterMove(character, map, 1, 0, Direction.Down);
         }
+        void StairsNameChangeAccordingToDirection(Map roomFromWhere, Door door,  Direction sourceDirection)
+        {
+            Map stairs = door.destinationMap;
+            Map roomToWhere = stairs.mapInformations.mapLayout.doors[sourceDirection].destinationMap; //If error is here, then the stairs are not connected to the other one room.
+            if (roomFromWhere.mapInformations.floorNumber > roomToWhere.mapInformations.floorNumber)
+            {
+                stairs.name = "Stairs Down";
+            }
+            else if (roomFromWhere.mapInformations.floorNumber < roomToWhere.mapInformations.floorNumber)
+            {
+                stairs.name = "Stairs up";
+            }
+        }
         void PerformChacterMove(Character character, Map map, int yOffset, int xOffset, Direction sourceDirection)
         {
             Coordinates newCoordinates = new Coordinates();
@@ -68,17 +81,7 @@ namespace Survive
                     mapOperations.CharacterRelocation(character, map, door.destinationMap, character.coordinates, door.transitionPointCoordinates);
                     if(door.destinationMap.mapInformations.mapType == MapType.Stairs) 
                     {
-                        Map stairs = door.destinationMap;
-                        Map roomFromWhere = map;
-                        Map roomToWhere = stairs.mapInformations.mapLayout.doors[sourceDirection].destinationMap; //If error is here, then the stairs are not connected to the other one room.
-                        if(roomFromWhere.mapInformations.floorNumber > roomToWhere.mapInformations.floorNumber)
-                        {
-                            stairs.name = "Stairs Down";
-                        }
-                        else if(roomFromWhere.mapInformations.floorNumber < roomToWhere.mapInformations.floorNumber)
-                        {
-                            stairs.name = "Stairs up";
-                        }
+                        StairsNameChangeAccordingToDirection(map, door, sourceDirection);
                     }
                 }
             }

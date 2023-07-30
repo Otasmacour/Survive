@@ -12,14 +12,14 @@ namespace Survive
         DataIOManager dataIOManager;
         public RoomMapCollection roomMapCollection;
         MapsLinking mapsLinking;
-        MapCleaning mapCleaning = new MapCleaning();
+        MapsCleaning mapsCleaning = new MapsCleaning();
         public MapsInitialization(DataIOManager dataIOManager, RoomMapCollection roomMapCollection)
         {
             this.dataIOManager = dataIOManager;
             this.roomMapCollection = roomMapCollection;
             mapsLinking = new MapsLinking(dataIOManager);
             this.mapsLinking.LinkingMaps(roomMapCollection, this);
-            this.mapCleaning.RemovingOfUnusedDoors(roomMapCollection);
+            this.mapsCleaning.RemovingOfUnusedDoors(roomMapCollection);
         }
         public (List<GameObject>[,] twoDArray, MapInformations mapInformations) CreatingTwoDArrayPlusInformationsOfIt(string txtFileName)
         {
@@ -33,22 +33,22 @@ namespace Survive
                 int height = (i) / mapWidth;
                 int width = i - ((i / mapWidth) * mapWidth);
                 char c = lines[height][width];
-                List<GameObject> objekty = new List<GameObject>();
-                GameObject objekt;
+                List<GameObject> objects = new List<GameObject>();
+                GameObject element;
                 if (c == '.')
                 {
-                    objekt = new Floor();
-                    objekty.Add(objekt);
+                    element = new Floor();
+                    objects.Add(element);
                 }
                 else if (c == 'x')
                 {
-                    objekt = new Wall();
-                    objekty.Add(objekt);
+                    element = new Wall();
+                    objects.Add(element);
                 }
                 else if (c == 'd')
                 {
-                    objekt = new Door();
-                    objekty.Add(objekt);
+                    element = new Door();
+                    objects.Add(element);
                     Coordinates coordinates = new Coordinates();
                     Coordinates transitionCoordinates = new Coordinates();
                     coordinates.y = height;
@@ -56,7 +56,7 @@ namespace Survive
                     if (height == 0)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Up,coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Up, (Door)objekt);
+                        mapInformations.mapLayout.doors.Add(Direction.Up, (Door)element);
                         transitionCoordinates.y = 1;
                         transitionCoordinates.x = width;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Up,transitionCoordinates);
@@ -64,7 +64,7 @@ namespace Survive
                     else if (width == 0)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Left, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Left, (Door)objekt);
+                        mapInformations.mapLayout.doors.Add(Direction.Left, (Door)element);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = 1;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Left, transitionCoordinates);
@@ -72,7 +72,7 @@ namespace Survive
                     else if (width == mapWidth - 1)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Right, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Right, (Door)objekt);
+                        mapInformations.mapLayout.doors.Add(Direction.Right, (Door)element);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = mapWidth - 2;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Right, transitionCoordinates);
@@ -80,14 +80,14 @@ namespace Survive
                     else if (height == mapHeight - 1)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Down, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Down, (Door)objekt);
+                        mapInformations.mapLayout.doors.Add(Direction.Down, (Door)element);
                         transitionCoordinates.y = height - 1;
                         transitionCoordinates.x = width;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
                     }
                     mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
                 }
-                twoDArray[height, width] = objekty;
+                twoDArray[height, width] = objects;
             }
             return (twoDArray,mapInformations);
         }

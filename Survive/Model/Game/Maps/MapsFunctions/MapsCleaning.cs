@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class MapCleaning
+    class MapsCleaning
     {
-        public MapCleaning() 
+        public MapsCleaning() 
         {
         }
         static void CheckDoorUsingAndPerformRemovingNotUsedOnes(List<GameObject> list)
@@ -34,7 +34,7 @@ namespace Survive
                 CheckDoorUsingAndPerformRemovingNotUsedOnes(list);
                 list = map.twoDArray[map.mapInformations.mapLayout.doorCoordinates[Direction.Right].y, map.mapInformations.mapLayout.doorCoordinates[Direction.Right].x];
                 CheckDoorUsingAndPerformRemovingNotUsedOnes(list);
-                //From the Dictionary
+                //From the Dictionary by Direction
                 List<(Direction,Door)> doorsToRemove = new List<(Direction,Door)>();
                 foreach (var item in map.mapInformations.mapLayout.doors)
                 {

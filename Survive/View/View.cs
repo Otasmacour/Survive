@@ -50,22 +50,6 @@ namespace Survive
             }
             Console.WriteLine("\n"+floorNumber+map.name);
         }
-        public void PrintCharactersOnMap(List<(char, string)> lines)
-        {
-            foreach (var line in lines)
-            {
-                Console.WriteLine(line.Item1 + " - " + line.Item2);
-            }
-        }
-        static void PrintTestsStuff(List<String> list)
-        {
-            Console.WriteLine();
-            foreach (string s in list)
-            {
-                Console.WriteLine(s);
-            }
-            list.Clear();
-        }
     }
 }
 

@@ -1,0 +1,4 @@
+What can be used, but if it won´t, then it will probably be removed when the project is completed:
+ -Method "SearchAdjacentCharacter" in MapHelper
+ -If statement"if(door.destinationMap != null)" in method "PerformCharacterMove"
+ -Lots of things(methods) in DataIOManager
