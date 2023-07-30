@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +9,16 @@ namespace Survive
 {
     class View
     {
-        public void PrintMap((char[,] charMap,int floorNumber, string mapTitle) tupple)
+        MapHelper mapHelper;
+        public View(MapHelper mapHelper)
         {
-            char[,] charMap = tupple.charMap;
-            int mapHeight = charMap.GetLength(0);
-            int mapWidth = charMap.GetLength(1);
+            this.mapHelper = mapHelper;
+        }
+        public void PrintMap(Map map)
+        {
+            List<GameObject>[,] twoDArrayt = map.twoDArray;
+            int mapHeight = twoDArrayt.GetLength(0);
+            int mapWidth = twoDArrayt.GetLength(1);
             for (int i = 0; i < mapWidth; i++)
             {
                 if (i == 0)
@@ -31,12 +37,18 @@ namespace Survive
                 Console.Write(y);
                 for (int x = 0; x < mapWidth; x++)
                 {
-                    char c = charMap[y, x];
-                    Console.Write(c);
+                    List<GameObject> objects = twoDArrayt[y, x];
+                    GameObject mostPreferredObject = mapHelper.mostPreferredObjectInList(objects);
+                    Console.Write(mostPreferredObject.symbol);
                 }
-                Console.WriteLine();
+                Console.WriteLine("");
             }
-            Console.WriteLine("\n"+"Floor "+tupple.floorNumber.ToString()+", "+tupple.mapTitle);
+            string floorNumber = string.Empty;
+            if(map.mapInformations.mapType != MapType.Stairs)
+            {
+                floorNumber = "Floor "+map.mapInformations.floorNumber.ToString()+", ";
+            }
+            Console.WriteLine("\n"+floorNumber+map.name);
         }
         public void PrintCharactersOnMap(List<(char, string)> lines)
         {

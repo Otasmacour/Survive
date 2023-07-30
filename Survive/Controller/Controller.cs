@@ -11,14 +11,12 @@ namespace Survive
     {
         Model model { get; set; }
         GameControlling gameControlling { get; set; }
-        ReturningFunctionsForView returningFunctionsForView { get; set; }
         View view { get; set; }
         public Controller() 
         {
             model = new Model();
             gameControlling = model.functionsForController.gameControlling;
-            this.returningFunctionsForView = model.functionsForController.returningFunctionsForView;
-            view = new View();
+            view = new View(model.game.maps.mapsFunctions.mapHelper);
         }
         public void Play()
         {
@@ -26,7 +24,7 @@ namespace Survive
             while(model.game.info.run)
             {
                 Console.Clear();
-                view.PrintMap(returningFunctionsForView.mapWherePlayerIsLocated());
+                view.PrintMap(model.game.characters.player.mapWhereIsLocated);
                 gameControlling.playerActions.Action();
             }
         }
