@@ -56,6 +56,7 @@ namespace Survive
                     if (height == 0)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Up,coordinates);
+                        mapInformations.mapLayout.doors.Add(Direction.Up, (Door)objekt);
                         transitionCoordinates.y = 1;
                         transitionCoordinates.x = width;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Up,transitionCoordinates);
@@ -63,6 +64,7 @@ namespace Survive
                     else if (width == 0)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Left, coordinates);
+                        mapInformations.mapLayout.doors.Add(Direction.Left, (Door)objekt);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = 1;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Left, transitionCoordinates);
@@ -70,6 +72,7 @@ namespace Survive
                     else if (width == mapWidth - 1)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Right, coordinates);
+                        mapInformations.mapLayout.doors.Add(Direction.Right, (Door)objekt);
                         transitionCoordinates.y = height;
                         transitionCoordinates.x = mapWidth - 2;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Right, transitionCoordinates);
@@ -77,6 +80,7 @@ namespace Survive
                     else if (height == mapHeight - 1)
                     {
                         mapInformations.mapLayout.doorCoordinates.Add(Direction.Down, coordinates);
+                        mapInformations.mapLayout.doors.Add(Direction.Down, (Door)objekt);
                         transitionCoordinates.y = height - 1;
                         transitionCoordinates.x = width;
                         mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
@@ -89,4 +93,3 @@ namespace Survive
         }
     }
 }
-

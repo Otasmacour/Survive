@@ -80,6 +80,7 @@
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />
     <Compile Include="Model\Structures\Maps\MapLayout.cs" />
     <Compile Include="Model\Structures\Maps\MapInformations.cs" />
+    <Compile Include="Model\Structures\Maps\Stairs.cs" />
     <Compile Include="Model\Structures\UnCategorized\Coordinates.cs" />
     <Compile Include="Model\Structures\UnCategorized\Enums.cs" />
     <Compile Include="Model\Structures\GameObjects\Character.cs" />

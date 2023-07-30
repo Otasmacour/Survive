@@ -37,21 +37,21 @@ namespace Survive
         }
         void MoveUp(Character character, Map map)
         {
-            PerformChacterMove(character, map, -1, 0);
+            PerformChacterMove(character, map, -1, 0, Direction.Up);
         }
         void MoveLeft(Character character, Map map)
         {
-            PerformChacterMove(character, map, 0, -1);
+            PerformChacterMove(character, map, 0, -1, Direction.Left);
         }
         void MoveRight(Character character, Map map)
         {
-            PerformChacterMove(character, map, 0, 1);
+            PerformChacterMove(character, map, 0, 1, Direction.Right);
         }
         void MoveDown(Character character, Map map)
         {
-            PerformChacterMove(character, map, 1, 0);
+            PerformChacterMove(character, map, 1, 0, Direction.Down);
         }
-        void PerformChacterMove(Character character, Map map, int yOffset, int xOffset)
+        void PerformChacterMove(Character character, Map map, int yOffset, int xOffset, Direction sourceDirection)
         {
             Coordinates newCoordinates = new Coordinates();
             newCoordinates.y = character.coordinates.y + yOffset;
@@ -63,9 +63,23 @@ namespace Survive
             else if(mapHelper.DoorThere(map, newCoordinates))
             {
                 Door door = mapHelper.ReturnDoorThere(map, newCoordinates);
-                if(door.destinationMap != null)
+                if(door.destinationMap != null) //I wrote this when there could be door, that leads nowhere. I will probably remove this, when code is done.
                 {
                     mapOperations.CharacterRelocation(character, map, door.destinationMap, character.coordinates, door.transitionPointCoordinates);
+                    if(door.destinationMap.mapInformations.mapType == MapType.Stairs) 
+                    {
+                        Map stairs = door.destinationMap;
+                        Map roomFromWhere = map;
+                        Map roomToWhere = stairs.mapInformations.mapLayout.doors[sourceDirection].destinationMap; //If error is here, then the stairs are not connected to the other one room.
+                        if(roomFromWhere.mapInformations.floorNumber > roomToWhere.mapInformations.floorNumber)
+                        {
+                            stairs.name = "Stairs Down";
+                        }
+                        else if(roomFromWhere.mapInformations.floorNumber < roomToWhere.mapInformations.floorNumber)
+                        {
+                            stairs.name = "Stairs up";
+                        }
+                    }
                 }
             }
         }

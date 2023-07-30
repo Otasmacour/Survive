@@ -10,5 +10,6 @@ namespace Survive
     {
         public MapLayout mapLayout = new MapLayout();
         public int floorNumber;
+        public MapType mapType;
     }
 }

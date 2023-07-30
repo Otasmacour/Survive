@@ -24,6 +24,7 @@ namespace Survive
         {
             foreach(Map map in roomMapCollection.list)
             {
+                //Physically from the TwoDArray of map
                 List<GameObject> list;
                 list = map.twoDArray[map.mapInformations.mapLayout.doorCoordinates[Direction.Up].y, map.mapInformations.mapLayout.doorCoordinates[Direction.Up].x];
                 CheckDoorUsingAndPerformRemovingNotUsedOnes (list);
@@ -33,6 +34,19 @@ namespace Survive
                 CheckDoorUsingAndPerformRemovingNotUsedOnes(list);
                 list = map.twoDArray[map.mapInformations.mapLayout.doorCoordinates[Direction.Right].y, map.mapInformations.mapLayout.doorCoordinates[Direction.Right].x];
                 CheckDoorUsingAndPerformRemovingNotUsedOnes(list);
+                //From the Dictionary
+                List<(Direction,Door)> doorsToRemove = new List<(Direction,Door)>();
+                foreach (var item in map.mapInformations.mapLayout.doors)
+                {
+                    if(item.Value.destinationMap == null)
+                    {
+                        doorsToRemove.Add((item.Key,item.Value));
+                    }
+                }
+                foreach(var (key, value) in doorsToRemove) 
+                {
+                    map.mapInformations.mapLayout.doors.Remove(key);
+                }
             }
         }
     }
