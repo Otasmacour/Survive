@@ -8,29 +8,22 @@ namespace Survive
 {
     class EnumFunctions
     {
-        
+        public Dictionary<Direction, Direction> oppositeDirections = new Dictionary<Direction, Direction>();
         public EnumFunctions() 
         {
+            FillingOppositeDirectionDictionary(oppositeDirections);
         }
         private Dictionary<Direction, Direction> OppositeDirection;
-        public Dictionary<Direction, Direction> oppositeDirection
+        static void FillingOppositeDirectionDictionary(Dictionary<Direction,Direction> oppositeDirections)
         {
-            get
-            {
-                if(OppositeDirection == null)
-                {
-                    OppositeDirection = new Dictionary<Direction, Direction>();
-                    OppositeDirection.Add(Direction.Left, Direction.Right);
-                    OppositeDirection.Add(Direction.Right, Direction.Left);
-                    OppositeDirection.Add(Direction.Up, Direction.Down);
-                    OppositeDirection.Add(Direction.Down, Direction.Up);
-                }
-                return OppositeDirection;
-            }
+            oppositeDirections.Add(Direction.Left, Direction.Right);
+            oppositeDirections.Add(Direction.Right, Direction.Left);
+            oppositeDirections.Add(Direction.Up, Direction.Down);
+            oppositeDirections.Add(Direction.Down, Direction.Up);
         }
         public Direction GetOppositeDirection(Direction direction)
         {
-            return oppositeDirection[direction];
+            return oppositeDirections[direction];
         }
         public Direction EnumMovementDirectionAssignment(char c)
         {
