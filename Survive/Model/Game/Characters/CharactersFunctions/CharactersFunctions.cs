@@ -20,6 +20,7 @@ namespace Survive
             character.name = "Tyler";
             character.symbol = 'T';
             characters.player = new Player(character);
+            characters.monster = new Monster();
         }
     }
 }

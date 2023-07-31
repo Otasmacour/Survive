@@ -36,7 +36,6 @@ namespace Survive
         {
             CharacterForJsonCreate character = new CharacterForJsonCreate();
             character.name = character1.name;
-            character.rank = character1.rank;
             string json = JsonConvert.SerializeObject(character, Formatting.Indented);
             string folderPath = mainFolderPath + "JsonCharacters" + @"\";
             string filePath = $"{folderPath}{txtFunctions.SuitableName(character1)}.json";

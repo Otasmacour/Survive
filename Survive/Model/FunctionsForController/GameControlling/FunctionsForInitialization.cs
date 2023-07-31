@@ -18,13 +18,21 @@ namespace Survive
         public void Initialization()
         {
             PlacePlayerOnMap(maps, characters);
+            PlaceMonsterOnMap(maps, characters);
         }
         static void PlacePlayerOnMap(Maps maps, Characters characters)
         {
-            Coordinates coordinates = new Coordinates();
-            coordinates.y = 3;
-            coordinates.x = 3;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[0][1], coordinates);
+            Coordinates playerCoordinates = new Coordinates();
+            playerCoordinates.y = 3;
+            playerCoordinates.x = 3;
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[0][1], playerCoordinates);
+        }
+        static void PlaceMonsterOnMap(Maps maps, Characters characters)
+        {
+            Coordinates monsterCoordinates = new Coordinates();
+            monsterCoordinates.y = 3;
+            monsterCoordinates.x = 3;
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.monster, maps.roomMapCollection.roomsByFloor[1][1], monsterCoordinates);
         }
     }
 }

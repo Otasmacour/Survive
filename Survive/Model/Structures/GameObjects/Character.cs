@@ -9,7 +9,6 @@ namespace Survive
     class Character : GameObject
     {
         public string name;
-        public string rank;
         public Map mapWhereIsLocated;
         public Coordinates coordinates;
         public bool living = true;
@@ -17,7 +16,6 @@ namespace Survive
         {
             this.symbol = character.symbol; //This is about Character as a gameobject
             this.name = character.name;
-            this.rank = character.rank;
         }
     }
 }

@@ -21,13 +21,15 @@ namespace Survive
             mapFromWhere.twoDArray[previousCoordinates.y, previousCoordinates.x].Remove(character);
             mapToWhere.twoDArray[newCoordinates.y, newCoordinates.x].Add(character);
             character.mapWhereIsLocated = mapToWhere;
+            mapFromWhere.mapInformations.charactersOnMap.Remove(character);
+            mapToWhere.mapInformations.charactersOnMap.Add(character);
             character.coordinates = newCoordinates;
         }
         public void PlaceCharacterOnMap(Character character, Map map, Coordinates coordinates)
         {
             map.twoDArray[coordinates.y, coordinates.x].Add(character);
             character.mapWhereIsLocated = map;
-            character.mapWhereIsLocated.charactersOnMap.Add(character);
+            character.mapWhereIsLocated.mapInformations.charactersOnMap.Add(character);
             character.coordinates = coordinates;
         }
     }

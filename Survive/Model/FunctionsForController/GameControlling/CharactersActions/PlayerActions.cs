@@ -8,7 +8,6 @@ namespace Survive
 {
     class PlayerActions
     {
-        Model model;
         Characters characters;
         Movement movement;
         DataIOManager dataIOManager;

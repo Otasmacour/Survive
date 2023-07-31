@@ -25,6 +25,7 @@ namespace Survive
             {
                 Console.Clear();
                 view.PrintMap(model.game.characters.player.mapWhereIsLocated);
+                gameControlling.monsterActions.Action();
                 gameControlling.playerActions.Action();
             }
         }
