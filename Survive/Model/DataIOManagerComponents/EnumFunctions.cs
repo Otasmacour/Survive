@@ -47,5 +47,24 @@ namespace Survive
             }
             return movementDirection;
         }
+        public Direction GetDirectionByAdjacentCoordinates(Coordinates sourceCoordinates, Coordinates destinationCoordinates)
+        {
+            if(sourceCoordinates.x > destinationCoordinates.x)
+            {
+                return Direction.Left;
+            }
+            else if(sourceCoordinates.x < destinationCoordinates.x)
+            {
+                return Direction.Right;
+            }
+            else if(sourceCoordinates.y > destinationCoordinates.y)
+            {
+                return Direction.Up;
+            }
+            else
+            {
+                return Direction.Down;
+            }
+        }
     }
 }

@@ -8,8 +8,8 @@ namespace Survive
 {
     class MonsterInformations
     {
-        public bool headingSomewhere;
+        public bool onWay;
         public Map Destination;
-        public Stack<Map> MapsOnWay;
+        public Queue<Map> path;
     }
 }
