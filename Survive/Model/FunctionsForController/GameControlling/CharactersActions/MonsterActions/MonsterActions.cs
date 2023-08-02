@@ -28,29 +28,33 @@ namespace Survive
         }
         public void Action()
         {
-            if(monsterInformations.onWay)
+            
+            if (monsterInformations.onWay)
             {
-                ReGeneratingPath(monsterInformations, monster.mapWhereIsLocated);
+                GeneratingPath(monster, monsterInformations, mapHelper);
                 Direction directionToGo = WhichDirectionToGo(monsterInformations.path, monster, mapHelper, dataIOManager);
-                if(directionToGo != Direction.Null)
+                if (directionToGo != Direction.Null)
                 {
-                    MonsterMovement(monster, movement, directionToGo);
+                    MonsterMovement(monster, movement, directionToGo);              
                 }
                 else
                 {
-                    monsterInformations.onWay = false; monsterInformations.path = null;
+                    if (monsterInformations.path.Count == 1)
+                    {
+                        monsterInformations.onWay = false; monsterInformations.Destination = null;
+                    } 
                 }
             }
         }
-        static void ReGeneratingPath(MonsterInformations monsterInformations, Map mapWhereMonsterIsLocated)
+        static void GeneratingPath(Monster monster, MonsterInformations monsterInformations, MapHelper mapHelper)
         {
-            monsterInformations.path = PathBetweenMaps(mapWhereMonsterIsLocated, monsterInformations.Destination);
+            monsterInformations.path = PathBetweenMaps(monster, monsterInformations.Destination, mapHelper).Item2;
         }
         public void whereTheMonsterShouldGoForAWalk(Map map)
         {
             monsterInformations.Destination = map;
             monsterInformations.onWay = true;
-            monsterInformations.path = PathBetweenMaps(monster.mapWhereIsLocated, map);
+            GeneratingPath(monster, monsterInformations, mapHelper);
         }
         static void MonsterMovement(Monster monster, Movement movement, Direction directionToGo)
         {
@@ -58,7 +62,8 @@ namespace Survive
         }
         static Direction WhichDirectionToGo(Queue<Map> path, Monster monster, MapHelper mapHelper, DataIOManager dataIOManager)
         {
-            if(monster.mapWhereIsLocated != path.First())
+            
+            if (monster.mapWhereIsLocated != path.First())
             {
                 //Goes to the next map
                 return DirectionToGo(monster.mapWhereIsLocated, path.First(), monster, mapHelper, dataIOManager);
@@ -76,7 +81,7 @@ namespace Survive
                     //Goes to the next map
                     return DirectionToGo(monster.mapWhereIsLocated, path.First(), monster, mapHelper, dataIOManager);
                 }
-            }
+            }   
         }
         static Direction DirectionToGo(Map currentMap, Map nextMap, Monster monster, MapHelper mapHelper, DataIOManager dataIOManager)
         {
@@ -90,18 +95,39 @@ namespace Survive
                     doorDirection = item.Key;
                 }
             }
-            Dictionary<(int, int), int> depths = TwoDArrayBFS(currentMap.twoDArray, monster.coordinates, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], mapHelper);
-            Queue<Coordinates> path = PathInTwoDArray(depths, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates, mapHelper);
-            Direction direction = dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(monster.coordinates, path.First());
-            return direction;
+            Dictionary<(int, int), int> depths = TwoDArrayBFS(currentMap.twoDArray, monster.coordinates, mapHelper);
+            if (ISNextMapAccessible(nextMap, monster, mapHelper))
+            {
+                Queue<Coordinates> path = PathInTwoDArray(depths, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates, mapHelper);
+                Direction direction = dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(monster.coordinates, path.First());
+                return direction;
+            }
+            return Direction.Null;
+        }
+        static bool ISNextMapAccessible(Map nextMap, Monster monster, MapHelper mapHelper)
+        {
+            bool result = false;
+            foreach(Door door in DoorsThatCanBeReached(monster.mapWhereIsLocated, monster.coordinates, mapHelper))
+            {
+                if(door.destinationMap == nextMap)
+                {
+                    result = true;
+                }
+            }
+            return result;
         }
         static Queue<Coordinates> PathInTwoDArray(Dictionary<(int, int), int> depths, Coordinates destination, Coordinates start, MapHelper mapHelper)
         {
+            Console.WriteLine("here");
             Queue<Coordinates> path = new Queue<Coordinates>();
             Coordinates currentCoordinates =mapHelper.TuppleToCoordinates(mapHelper.CoordinatesToTupple(destination));
             path.Enqueue(currentCoordinates);
+            Console.WriteLine("there");
+            Console.WriteLine("destination: ["+destination.y.ToString()+"] [" +destination.x.ToString()+ "]");
+            Console.WriteLine(depths[mapHelper.CoordinatesToTupple(destination)]);
             while (mapHelper.CoordinatesToTupple(currentCoordinates) != mapHelper.CoordinatesToTupple(start))
             {
+                //Console.WriteLine("in loop");
                 foreach (Coordinates adjacentCoordinates in mapHelper.AdjacentCoordinates(currentCoordinates).Values)
                 {
                     if(depths.ContainsKey(mapHelper.CoordinatesToTupple(adjacentCoordinates))) //adjacent Coordinates could be in place of wall, or something that obviously cannot be giwen depth and so cannot be placed in that Dictionary
@@ -119,10 +145,11 @@ namespace Survive
                     }
                 }
             }
+            
             Queue<Coordinates> reversed = new Queue<Coordinates>(path.Reverse());
             return reversed;
         }
-        static Dictionary<(int ,int),int> TwoDArrayBFS(List<GameObject>[,] twoDArray, Coordinates start, Coordinates destination, MapHelper mapHelper)
+        static Dictionary<(int ,int),int> TwoDArrayBFS(List<GameObject>[,] twoDArray, Coordinates start, MapHelper mapHelper)
         {
             Dictionary<(int,int), int> depths = new Dictionary<(int,int), int>();
             Queue<(int y, int x)> queue = new Queue<(int, int)>();
@@ -158,41 +185,76 @@ namespace Survive
             }
             return depths;
         }
-        static Queue<Map> PathBetweenMaps(Map mapWhereIsLocated, Map DestinationMap)
+        static (bool wayFound, Queue<Map>) PathBetweenMaps(Monster monster, Map DestinationMap, MapHelper mapHelper)
         {
-            Dictionary<Map,int> depths = MapBFS(mapWhereIsLocated, DestinationMap);
+            
+            (bool wayFound, Dictionary<Map,int> depths) = MapBFS(monster, DestinationMap, mapHelper);
+            if(wayFound == false)
+            {
+                return (wayFound, new Queue<Map>());
+            }
             Queue<Map> path = new Queue<Map>();
             Map currentMap = DestinationMap;
             path.Enqueue(currentMap);
-            while(currentMap != mapWhereIsLocated)
+            while(currentMap != monster.mapWhereIsLocated)
             {
                 foreach(Door door in currentMap.mapInformations.mapLayout.doors.Values)
                 {
                     Map adjacentMap = door.destinationMap;
                     
-                    if (depths[adjacentMap] < depths[currentMap] && adjacentMap != mapWhereIsLocated)
+                    if (depths[adjacentMap] < depths[currentMap] && adjacentMap != monster.mapWhereIsLocated)
                     {
                         currentMap = adjacentMap;
                         path.Enqueue(adjacentMap);
                     }
-                    else if(adjacentMap == mapWhereIsLocated)
+                    else if(adjacentMap == monster.mapWhereIsLocated)
                     {
                         currentMap = adjacentMap;
                     }
                 }
             }
             Queue<Map> reversed = new Queue<Map>(path.Reverse());
-            return reversed;
+            return (wayFound, reversed);
         }
-        static Dictionary<Map, int> MapBFS(Map Start, Map Destination) //Breadth First Search
+        static List<Door> DoorsThatCanBeReached(Map map, Coordinates sourceCoordinates, MapHelper mapHelper)
         {
+            Dictionary<(int, int), int> depths = TwoDArrayBFS(map.twoDArray, sourceCoordinates, mapHelper);
+            List <Door> doors = new List <Door>();
+
+            string result = string.Empty;
+            foreach (var item in map.mapInformations.mapLayout.doorCoordinates)
+            {
+                if(depths.ContainsKey(mapHelper.CoordinatesToTupple(item.Value)))
+                {
+                    result = " OK";
+                    doors.Add(map.mapInformations.mapLayout.doors[item.Key]);
+                }
+                else
+                {
+                    result = " NOT";
+                }
+                //Console.WriteLine();
+                //Console.Write(mapHelper.CoordinatesToTupple(item.Value));
+                Console.Write(result);
+            }
+            return doors;
+        }
+        static (bool wayFound, Dictionary<Map, int> depths) MapBFS(Monster monster, Map Destination, MapHelper mapHelper) //Breadth First Search
+        {
+            bool wayFound = false;
             Dictionary<Map, int> depths = new Dictionary<Map, int>();
             Queue<Map> queue = new Queue<Map>();
             HashSet<Map> visited = new HashSet<Map>();
-            depths.Add(Start, 0);
-            queue.Enqueue(Start);
-            visited.Add(Start);           
-            while(queue.Count > 0)
+            //depths.Add(monster.mapWhereIsLocated, 0);
+            //queue.Enqueue(monster.mapWhereIsLocated);
+            //visited.Add(monster.mapWhereIsLocated);
+            foreach(Door door in DoorsThatCanBeReached(monster.mapWhereIsLocated, monster.coordinates, mapHelper))
+            {
+                depths.Add(door.destinationMap, 0);
+                queue.Enqueue(door.destinationMap);
+                visited.Add(door.destinationMap);
+            }
+            while (queue.Count > 0)
             {
                 Map map = queue.Dequeue();
                 foreach(Door door in map.mapInformations.mapLayout.doors.Values)
@@ -214,7 +276,11 @@ namespace Survive
                     }
                 }
             }
-            return depths;
+            if (depths.ContainsKey(Destination))
+            {
+                wayFound = true;
+            }
+            return (wayFound, depths);
         }
     }
 }

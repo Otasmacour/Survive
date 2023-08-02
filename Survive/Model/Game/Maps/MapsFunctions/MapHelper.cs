@@ -10,8 +10,10 @@ namespace Survive
     {
         public bool JustFloorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
+            //Console.WriteLine(coordinates.y.ToString()+" "+coordinates.x.ToString());
+            //Console.WriteLine(twoDArray.GetLength(0).ToString()+" "+twoDArray.GetLength(1).ToString());
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
-            if (list.Count == 1)
+            if (list.Count == 1) 
             {
                 if (list[0] is Floor)
                 {
