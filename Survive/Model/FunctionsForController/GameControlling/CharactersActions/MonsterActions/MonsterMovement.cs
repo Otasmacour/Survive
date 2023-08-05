@@ -17,7 +17,7 @@ namespace Survive
         {
             this.monster = monster;
             this.mapHelper = mapHelper;
-            this.monsterWalking = new MonsterWalking(movement, monster, mapHelper, this);
+            this.monsterWalking = new MonsterWalking(movement, monster, mapHelper);
             this.dataIOManager = dataIOManager;
         }
         public void Movement()

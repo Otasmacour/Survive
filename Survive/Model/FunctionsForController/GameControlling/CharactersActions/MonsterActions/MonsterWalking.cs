@@ -11,13 +11,11 @@ namespace Survive
         Movement movement;
         Monster monster;
         MapHelper mapHelper;
-        MonsterMovement monsterMovement;
-        public MonsterWalking(Movement movement, Monster monster, MapHelper mapHelper, MonsterMovement monsterMovement)
+        public MonsterWalking(Movement movement, Monster monster, MapHelper mapHelper)
         {
             this.movement = movement;
             this.monster = monster;
             this.mapHelper = mapHelper;
-            this.monsterMovement = monsterMovement;
         }
         public void whereTheMonsterShouldGoForAWalk(Map map)
         {
