@@ -27,6 +27,5 @@ namespace Survive
                 monsterWalking.Walking(mapHelper, dataIOManager);
             }
         }  
-        
     }
 }

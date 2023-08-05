@@ -69,13 +69,13 @@ namespace Survive
             Coordinates newCoordinates = new Coordinates();
             newCoordinates.y = character.coordinates.y + yOffset;
             newCoordinates.x = character.coordinates.x + xOffset;
-            if (mapHelper.JustFloorThere(map.twoDArray, newCoordinates))
+            if (mapHelper.boolFunctions.JustFloorThere(map.twoDArray, newCoordinates))
             {
                 mapOperations.CharacterRelocation(character, map, map, character.coordinates, newCoordinates);
             }
-            else if(mapHelper.DoorThere(map.twoDArray, newCoordinates))
+            else if(mapHelper.boolFunctions.DoorThere(map.twoDArray, newCoordinates))
             {
-                Door door = mapHelper.ReturnDoorThere(map, newCoordinates);
+                Door door = mapHelper.returnFunctions.DoorThere(map, newCoordinates);
                 if(door.destinationMap != null) //I wrote this when there could be door, that leads nowhere. I will probably remove this, when code is done.
                 {
                     mapOperations.CharacterRelocation(character, map, door.destinationMap, character.coordinates, door.transitionPointCoordinates);

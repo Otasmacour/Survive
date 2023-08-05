@@ -81,10 +81,10 @@ namespace Survive
                     doorDirection = item.Key;
                 }
             }
-            Dictionary<(int, int), int> depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(currentMap.twoDArray, monster.coordinates, mapHelper);
+            Dictionary<(int, int), int> depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(currentMap.twoDArray, monster.coordinates);
             if (ISNextMapAccessible(nextMap, monster, mapHelper))
             {
-                Queue<Coordinates> path = mapHelper.twoDArrayFunctions.PathInTwoDArray(depths, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates, mapHelper);
+                Queue<Coordinates> path = mapHelper.twoDArrayFunctions.PathInTwoDArray(depths, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates);
                 Direction direction = dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(monster.coordinates, path.First());
                 return direction;
             }
@@ -108,11 +108,11 @@ namespace Survive
         }
         static List<Door> DoorsThatCanBeReached(Map map, Coordinates sourceCoordinates, MapHelper mapHelper, Monster monster)
         {
-            Dictionary<(int, int), int> depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(map.twoDArray, sourceCoordinates, mapHelper);
+            Dictionary<(int, int), int> depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(map.twoDArray, sourceCoordinates);
             List<Door> doors = new List<Door>();
             foreach (var item in map.mapInformations.mapLayout.doorCoordinates)
             {
-                if (depths.ContainsKey(mapHelper.CoordinatesToTupple(item.Value)))
+                if (depths.ContainsKey(mapHelper.parsing.CoordinatesToTupple(item.Value)))
                 {
                     //the door can be reached
                     doors.Add(map.mapInformations.mapLayout.doors[item.Key]);

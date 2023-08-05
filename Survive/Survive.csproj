@@ -64,6 +64,9 @@
     <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />
     <Compile Include="Model\Game\Game.cs" />
     <Compile Include="Model\Game\Informations\Informations.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper\BoolFunctions.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper\Parsing.cs" />
+    <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper\ReturnFunctions.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper\TwoDArrayFunctions.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapsCleaning.cs" />
     <Compile Include="Model\Game\Maps\MapsFunctions\MapHelper\MapHelper.cs" />
