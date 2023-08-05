@@ -21,7 +21,7 @@ namespace Survive
         public void Play()
         {
             gameControlling.functionsForInitialization.Initialization();
-            gameControlling.monsterActions.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
+            gameControlling.monsterActions.monsterMovement.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
             while(model.game.info.run)
             {
                 Console.Clear();
