@@ -53,7 +53,7 @@
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
-    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterInformations.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovementInformations.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\Movement.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />

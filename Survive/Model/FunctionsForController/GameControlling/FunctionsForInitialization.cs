@@ -23,16 +23,16 @@ namespace Survive
         static void PlacePlayerOnMap(Maps maps, Characters characters)
         {
             Coordinates playerCoordinates = new Coordinates();
-            playerCoordinates.y = 3;
-            playerCoordinates.x = 5;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][0], playerCoordinates);
+            playerCoordinates.y = 1; 
+            playerCoordinates.x = 4;
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][2], playerCoordinates);
         }
         static void PlaceMonsterOnMap(Maps maps, Characters characters)
         {
             Coordinates monsterCoordinates = new Coordinates();
             monsterCoordinates.y = 3;
             monsterCoordinates.x = 3;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.monster, maps.roomMapCollection.roomsByFloor[1][1], monsterCoordinates);
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.monster, maps.roomMapCollection.roomsByFloor[1][0], monsterCoordinates);
         }
     }
 }
