@@ -2,3 +2,5 @@ What can be used, but if it won´t, then it will probably be removed when the pro
  -Method "SearchAdjacentCharacter" in MapHelper
  -If statement"if(door.destinationMap != null)" in method "PerformCharacterMove"
  -Lots of things(methods) in DataIOManager
+For presentation
+ -I have to make a diagram of monster movement
