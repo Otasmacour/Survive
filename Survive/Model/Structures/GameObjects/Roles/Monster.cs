@@ -13,6 +13,6 @@ namespace Survive
             this.symbol = 'M';
             this.name = "Monster";
         }
-        public MonsterMovementInformations monsterMovementInformations = new MonsterMovementInformations();
+        public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
     }
 }

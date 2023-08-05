@@ -25,14 +25,11 @@ namespace Survive
             this.roomMapCollection = roomMapCollection;
             this.mapHelper = mapHelper;
             this.monster = characters.monster;
-            this.monsterMovement = new MonsterMovement(monster, mapHelper);
+            this.monsterMovement = new MonsterMovement(monster, mapHelper, movement, dataIOManager);
         }
         public void Action()
         {
-            if (monster.monsterMovementInformations.onWay)
-            {
-                monsterMovement.Movement(monster, mapHelper, dataIOManager, movement);
-            }
+            monsterMovement.Movement();
         }        
     }
 }

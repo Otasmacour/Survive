@@ -8,6 +8,7 @@ namespace Survive
 {
     class MapHelper
     {
+        public TwoDArrayFunctions twoDArrayFunctions = new TwoDArrayFunctions();
         public bool JustFloorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             //Console.WriteLine(coordinates.y.ToString()+" "+coordinates.x.ToString());
