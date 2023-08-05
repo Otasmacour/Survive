@@ -1,0 +1,4 @@
+Creating inventory, adding items, working with items on the map, preparing general item spawning function
+Then, that player can drop some item
+Create mechanism of sounds, so monster can go for a walk to investigate.
+And after that, create second part of MonsterMovement - Chasing

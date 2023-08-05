@@ -102,6 +102,7 @@
   <ItemGroup>
     <Content Include="Ideas.txt" />
     <Content Include="Important.txt" />
+    <Content Include="ToDoList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

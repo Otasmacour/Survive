@@ -131,7 +131,6 @@ namespace Survive
             HashSet<Map> visited = new HashSet<Map>();
             foreach (Door door in DoorsThatCanBeReached(monster.mapWhereIsLocated, monster.coordinates, mapHelper, monster))//adding adjacent maps (of destination map), that can be reached
             {
-                Console.WriteLine(door);
                 depths.Add(door.destinationMap, 0);
                 queue.Enqueue(door.destinationMap);
                 visited.Add(door.destinationMap);
