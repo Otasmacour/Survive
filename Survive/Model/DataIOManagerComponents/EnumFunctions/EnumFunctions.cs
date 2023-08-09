@@ -10,6 +10,7 @@ namespace Survive
     {
         EnumsMappingManager enumsMappingManager;
         public Dictionary<Direction, Direction> oppositeDirection = new Dictionary<Direction, Direction>();
+        public Dictionary<char, Direction> directionByChar = new Dictionary<char, Direction>();
         public EnumFunctions() 
         {
             enumsMappingManager = new EnumsMappingManager(this);
@@ -20,25 +21,7 @@ namespace Survive
         }
         public Direction EnumMovementDirectionAssignment(char c)
         {
-            Direction movementDirection = new Direction();
-            movementDirection = Direction.Null;
-            if (c == 'w')
-            {
-                movementDirection = Direction.Up;
-            }
-            else if (c == 's')
-            {
-                movementDirection = Direction.Down;
-            }
-            else if (c == 'a')
-            {
-                movementDirection = Direction.Left;
-            }
-            else if (c == 'd')
-            {
-                movementDirection = Direction.Right;
-            }
-            return movementDirection;
+            return directionByChar[c];
         }
         public Direction GetDirectionByAdjacentCoordinates(Coordinates sourceCoordinates, Coordinates destinationCoordinates)
         {
