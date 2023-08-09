@@ -19,9 +19,17 @@ namespace Survive
         {
             return oppositeDirection[direction];
         }
-        public Direction EnumMovementDirectionAssignment(char c)
+        public Direction GetDirectionByChar(char c)
         {
             return directionByChar[c];
+        }
+        public UserIntents GetUserIntents(char c)
+        {
+            if(directionByChar.ContainsKey(c))
+            {
+                return UserIntents.Move;
+            }
+            return UserIntents.Null;
         }
         public Direction GetDirectionByAdjacentCoordinates(Coordinates sourceCoordinates, Coordinates destinationCoordinates)
         {
@@ -42,5 +50,6 @@ namespace Survive
                 return Direction.Down;
             }
         }
+        
     }
 }

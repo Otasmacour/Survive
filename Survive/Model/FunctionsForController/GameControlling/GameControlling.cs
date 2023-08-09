@@ -16,7 +16,7 @@ namespace Survive
         {
             this.functionsForInitialization = new FunctionsForInitialization(maps, characters);
             this.movement = new Movement(maps.mapsFunctions.mapHelper, maps.mapsFunctions.mapOperations);
-            this.playerActions = new PlayerActions(characters,this.movement,dataIOManager);
+            this.playerActions = new PlayerActions(characters,this.movement,dataIOManager, characters.player);
             this.monsterActions = new MonsterActions(characters,this.movement,dataIOManager, maps.roomMapCollection, maps.mapsFunctions.mapHelper);
         }
     }

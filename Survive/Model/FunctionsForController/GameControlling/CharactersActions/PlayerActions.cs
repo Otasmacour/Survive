@@ -11,21 +11,28 @@ namespace Survive
         Characters characters;
         Movement movement;
         DataIOManager dataIOManager;
-        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager)
+        Player player;
+        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player)
         {
             this.characters = characters;
             this.movement = movement;
             this.dataIOManager = dataIOManager;
+            this.player = player;
         }
         public void Action()
         {
-            PlayerMovement(characters, movement, dataIOManager);
+            char c = Console.ReadKey().KeyChar;
+            UserIntents userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
+            switch(userIntents)
+            {
+                case UserIntents.Move:
+                    PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c));
+                    return;
+            }
         }
-        static void PlayerMovement(Characters characters, Movement movement, DataIOManager dataIOManager)
+        static void PlayerMovement(Player player, Movement movement, Direction movementDirection)
         {
-            char ch = Console.ReadKey().KeyChar;
-            Direction movementDirection = dataIOManager.enumFunctions.GetDirectionByChar(ch);
-            movement.MoveCharacter(characters.player, movementDirection);
+            movement.MoveCharacter(player, movementDirection);
         }
     }
 }

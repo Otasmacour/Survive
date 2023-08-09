@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace Survive
 {
     enum Direction { Left, Right, Up, Down, Null}
+    enum UserIntents { Drop, PickUp, Use, Move, Null }
     enum MapType { Stairs, Null}
 }
