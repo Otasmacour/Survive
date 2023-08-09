@@ -48,7 +48,8 @@
   <ItemGroup>
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="Model\DataIOManagerComponents\DataIOManager.cs" />
-    <Compile Include="Model\DataIOManagerComponents\EnumFunctions.cs" />
+    <Compile Include="Model\DataIOManagerComponents\EnumFunctions\EnumFunctions.cs" />
+    <Compile Include="Model\DataIOManagerComponents\EnumFunctions\EnumsMappingManager.cs" />
     <Compile Include="Model\DataIOManagerComponents\JsonFunctions.cs" />
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
