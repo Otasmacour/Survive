@@ -26,13 +26,33 @@ namespace Survive
             switch(userIntents)
             {
                 case UserIntents.Move:
-                    PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c));
-                    return;
+                    PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); return;
+                case UserIntents.Drop:
+                    DropItem(); return;
+                case UserIntents.PickUp:
+                    PickUpItem(); return;
+                case UserIntents.Use:
+                    UseItem(); return;
             }
         }
         static void PlayerMovement(Player player, Movement movement, Direction movementDirection)
         {
             movement.MoveCharacter(player, movementDirection);
+        }
+        static void DropItem()
+        {
+            Console.WriteLine("Dropping items coming soon, btw ReadKey is waiting for a reply");
+            Console.ReadKey();
+        }
+        static void PickUpItem()
+        {
+            Console.WriteLine("Picking up items coming soon, btw ReadKey is waiting for a reply");
+            Console.ReadKey();
+        }
+        static void UseItem()
+        {
+            Console.WriteLine("Using items coming soon, btw ReadKey is waiting for a reply");
+            Console.ReadKey();
         }
     }
 }

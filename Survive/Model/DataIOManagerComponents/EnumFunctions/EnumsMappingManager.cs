@@ -12,6 +12,7 @@ namespace Survive
         {
             FillingOppositeDirection(enumFunctions.oppositeDirection);
             FillingDirectionByChar(enumFunctions.directionByChar);
+            FillingItemManipulationIntentByChar(enumFunctions.itemManipulationIntentByChar);
         }
         static void FillingOppositeDirection(Dictionary<Direction, Direction> oppositeDirections)
         {
@@ -31,6 +32,14 @@ namespace Survive
             directionByChar.Add('d', Direction.Right);
             directionByChar.Add('D', Direction.Right);
         }
-
+        static void FillingItemManipulationIntentByChar(Dictionary<char, UserIntents> ItemManipulationIntentByChar)
+        {
+            ItemManipulationIntentByChar.Add('p', UserIntents.PickUp);
+            ItemManipulationIntentByChar.Add('P', UserIntents.PickUp);
+            ItemManipulationIntentByChar.Add('u', UserIntents.Use);
+            ItemManipulationIntentByChar.Add('U', UserIntents.Use);
+            ItemManipulationIntentByChar.Add('h', UserIntents.Drop);
+            ItemManipulationIntentByChar.Add('H', UserIntents.Drop);
+        }
     }
 }
