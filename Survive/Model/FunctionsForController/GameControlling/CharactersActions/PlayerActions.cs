@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,16 @@ namespace Survive
     {
         Characters characters;
         Movement movement;
+        ItemManipulation itemManipulation;
         DataIOManager dataIOManager;
         Player player;
-        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player)
+        public PlayerActions(Characters characters, Movement movement, ItemManipulation itemManipulation, DataIOManager dataIOManager, Player player)
         {
             this.characters = characters;
             this.movement = movement;
             this.dataIOManager = dataIOManager;
             this.player = player;
+            this.itemManipulation = itemManipulation;
         }
         public void Action()
         {
@@ -28,31 +31,34 @@ namespace Survive
                 case UserIntents.Move:
                     PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); return;
                 case UserIntents.Drop:
-                    DropItem(); return;
+                    PlayerDropItem(player, itemManipulation); return;
                 case UserIntents.PickUp:
-                    PickUpItem(); return;
+                    PlayerPickUpItem(player, itemManipulation); return;
                 case UserIntents.Use:
-                    UseItem(); return;
+                    PlayerUseItem(player, itemManipulation); return;
             }
         }
         static void PlayerMovement(Player player, Movement movement, Direction movementDirection)
         {
             movement.MoveCharacter(player, movementDirection);
         }
-        static void DropItem()
+        static void PlayerDropItem(Player player, ItemManipulation itemManipulation)
         {
-            Console.WriteLine("Dropping items coming soon, btw ReadKey is waiting for a reply");
-            Console.ReadKey();
+            if(player.item != null)
+            {
+                itemManipulation.DropItem(player, player.item);
+            }
         }
-        static void PickUpItem()
+        static void PlayerPickUpItem(Player player, ItemManipulation itemManipulation)
         {
-            Console.WriteLine("Picking up items coming soon, btw ReadKey is waiting for a reply");
-            Console.ReadKey();
+            itemManipulation.PickUpItem(player);
         }
-        static void UseItem()
+        static void PlayerUseItem(Player player, ItemManipulation itemManipulation)
         {
-            Console.WriteLine("Using items coming soon, btw ReadKey is waiting for a reply");
-            Console.ReadKey();
+            if(player.item != null)
+            {
+                itemManipulation.UseItem(player, player.item);
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Survive
 {
     class Player : Character
     {
+        public Item item;
         public Player(Character character)
         {
             RoleConstructor(character);

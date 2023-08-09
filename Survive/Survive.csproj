@@ -53,6 +53,7 @@
     <Compile Include="Model\DataIOManagerComponents\JsonFunctions.cs" />
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\ItemManipulation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterWalkingInformations.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Model\Structures\GameObjects\Door.cs" />
     <Compile Include="Model\Structures\GameObjects\Floor.cs" />
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
+    <Compile Include="Model\Structures\GameObjects\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Roles\Monster.cs" />
     <Compile Include="Model\Structures\GameObjects\Roles\Player.cs" />
     <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
