@@ -25,7 +25,7 @@ namespace Survive
             this.roomMapCollection = roomMapCollection;
             this.mapHelper = mapHelper;
             this.monster = characters.monster;
-            this.monsterMovement = new MonsterMovement(monster, mapHelper, movement, dataIOManager);
+            this.monsterMovement = new MonsterMovement(monster, mapHelper, movement, dataIOManager, characters.player);
         }
         public void Action()
         {
