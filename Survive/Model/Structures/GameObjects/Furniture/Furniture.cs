@@ -8,6 +8,6 @@ namespace Survive
 {
     abstract class Furniture : GameObject
     {
-        
+        public bool canHideThere;
     }
 }

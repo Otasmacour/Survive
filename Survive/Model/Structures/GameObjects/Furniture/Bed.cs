@@ -11,6 +11,7 @@ namespace Survive
         public Bed()
         {
             this.symbol = 'b';
+            this.canHideThere = true;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class Character : GameObject
+    abstract class Character : GameObject
     {
         public string name;
         public Map mapWhereIsLocated;
@@ -17,5 +17,6 @@ namespace Survive
             this.symbol = character.symbol; //This is about Character as a gameobject
             this.name = character.name;
         }
+        public abstract bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates);
     }
 }

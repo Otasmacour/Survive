@@ -33,7 +33,7 @@ namespace Survive
                     return (Character)obj;
                 }
             }
-            return new Character(); //this can obviously never happen
+            return new NullCharacter(); //this can obviously never happen
         }
         public List<Coordinates> RandomAvailableCoordinatesonMap(Map map, int numberOfRequestedCoordinates)
         {

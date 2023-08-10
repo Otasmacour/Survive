@@ -20,70 +20,59 @@ namespace Survive
             Map map = character.mapWhereIsLocated;
             if (movementDirection == Direction.Up)
             {
-                MoveUp(character, map);
+                MoveUp(character);
             }
             else if (movementDirection == Direction.Left)
             {
-                MoveLeft(character, map);
+                MoveLeft(character);
             }
             else if (movementDirection == Direction.Down)
             {
-                MoveDown(character, map);
+                MoveDown(character);
             }
             else if (movementDirection == Direction.Right)
             {
-                MoveRight(character, map);
+                MoveRight(character);
             }
         }
-        void MoveUp(Character character, Map map)
+        void MoveUp(Character character)
         {
-            PerformChacterMove(character, map, -1, 0, Direction.Up);
+            PerformChacterMove(character, -1, 0, Direction.Up);
         }
-        void MoveLeft(Character character, Map map)
+        void MoveLeft(Character character)
         {
-            PerformChacterMove(character, map, 0, -1, Direction.Left);
+            PerformChacterMove(character, 0, -1, Direction.Left);
         }
-        void MoveRight(Character character, Map map)
+        void MoveRight(Character character)
         {
-            PerformChacterMove(character, map, 0, 1, Direction.Right);
+            PerformChacterMove(character, 0, 1, Direction.Right);
         }
-        void MoveDown(Character character, Map map)
+        void MoveDown(Character character)
         {
-            PerformChacterMove(character, map, 1, 0, Direction.Down);
+            PerformChacterMove(character, 1, 0, Direction.Down);
         }
-        void StairsNameChangeAccordingToDirection(Map roomFromWhere, Door door,  Direction sourceDirection)
+        void PerformChacterMove(Character character, int yOffset, int xOffset, Direction sourceDirection)
         {
-            Map stairs = door.destinationMap;
-            Map roomToWhere = stairs.mapInformations.mapLayout.doors[sourceDirection].destinationMap; //If error is here, then the stairs are not connected to the other one room.
-            if (roomFromWhere.mapInformations.floorNumber > roomToWhere.mapInformations.floorNumber)
-            {
-                stairs.name = "Stairs Down";
-            }
-            else if (roomFromWhere.mapInformations.floorNumber < roomToWhere.mapInformations.floorNumber)
-            {
-                stairs.name = "Stairs up";
-            }
-        }
-        void PerformChacterMove(Character character, Map map, int yOffset, int xOffset, Direction sourceDirection)
-        {
+            Map mapFromWhere = character.mapWhereIsLocated;
+            Map mapToWhere = mapFromWhere;
             Coordinates newCoordinates = new Coordinates();
             newCoordinates.y = character.coordinates.y + yOffset;
             newCoordinates.x = character.coordinates.x + xOffset;
-            if (mapHelper.boolFunctions.JustFloorThere(map.twoDArray, newCoordinates))
+            if (character is Player)
             {
-                mapOperations.CharacterRelocation(character, map, map, character.coordinates, newCoordinates);
+                Player player = (Player)character;
+                player.VisibilityUpdate(character.mapWhereIsLocated, character.coordinates, newCoordinates, mapHelper);
             }
-            else if(mapHelper.boolFunctions.DoorThere(map.twoDArray, newCoordinates))
+            if (mapHelper.boolFunctions.DoorThere(mapFromWhere.twoDArray, newCoordinates))
             {
-                Door door = mapHelper.returnFunctions.DoorThere(map, newCoordinates);
-                if(door.destinationMap != null) //I wrote this when there could be door, that leads nowhere. I will probably remove this, when code is done.
-                {
-                    mapOperations.CharacterRelocation(character, map, door.destinationMap, character.coordinates, door.transitionPointCoordinates);
-                    if(door.destinationMap.mapInformations.mapType == MapType.Stairs) 
-                    {
-                        StairsNameChangeAccordingToDirection(map, door, sourceDirection);
-                    }
-                }
+                Door door = mapHelper.returnFunctions.DoorThere(mapFromWhere, newCoordinates);
+                door.CheckForPossibleStairsAndChangeTheNameInCase(mapFromWhere, door, sourceDirection);
+                newCoordinates = door.transitionPointCoordinates;
+                mapToWhere = door.destinationMap;
+            }
+            if (character.CanGoThere(mapToWhere.twoDArray, newCoordinates))//Each character may have it differently
+            {
+                mapOperations.CharacterRelocation(character, mapFromWhere, mapToWhere, character.coordinates, newCoordinates);
             }
         }
     }

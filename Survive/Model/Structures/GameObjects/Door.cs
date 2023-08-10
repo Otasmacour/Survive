@@ -14,5 +14,25 @@ namespace Survive
         {
             this.symbol = 'd';
         }
+        public void CheckForPossibleStairsAndChangeTheNameInCase(Map roomFromWhere, Door door, Direction sourceDirection)
+        {
+            if(this.destinationMap.mapInformations.mapType == MapType.Stairs)
+            {
+                StairsNameChangeAccordingToOrientatio(roomFromWhere, door, sourceDirection);
+            }
+        }
+        static void StairsNameChangeAccordingToOrientatio(Map roomFromWhere, Door door, Direction sourceDirection)
+        {
+            Map stairs = door.destinationMap;
+            Map roomToWhere = stairs.mapInformations.mapLayout.doors[sourceDirection].destinationMap; //If error is here, then the stairs are not connected to the other one room.
+            if (roomFromWhere.mapInformations.floorNumber > roomToWhere.mapInformations.floorNumber)
+            {
+                stairs.name = "Stairs Down";
+            }
+            else if (roomFromWhere.mapInformations.floorNumber < roomToWhere.mapInformations.floorNumber)
+            {
+                stairs.name = "Stairs up";
+            }
+        }
     }
 }

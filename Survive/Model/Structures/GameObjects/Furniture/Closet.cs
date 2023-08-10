@@ -11,6 +11,7 @@ namespace Survive
         public Closet()
         {
             this.symbol = 'c';
+            this.canHideThere = true;
         }
     }
 }

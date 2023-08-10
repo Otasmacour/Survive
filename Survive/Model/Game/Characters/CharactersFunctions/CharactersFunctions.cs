@@ -16,7 +16,7 @@ namespace Survive
         }
         public void CharactersInitializations()
         {
-            Character character = new Character();
+            NullCharacter character = new NullCharacter();
             character.name = "Tyler";
             character.symbol = 'T';
             characters.player = new Player(character);

@@ -90,6 +90,7 @@
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Roles\Monster.cs" />
+    <Compile Include="Model\Structures\GameObjects\Roles\NullCharacter.cs" />
     <Compile Include="Model\Structures\GameObjects\Roles\Player.cs" />
     <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />

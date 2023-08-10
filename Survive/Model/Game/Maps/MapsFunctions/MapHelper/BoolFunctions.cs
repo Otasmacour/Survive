@@ -15,6 +15,22 @@ namespace Survive
             this.monster = monster;
             this.player = player;
         }
+        public bool HideoutThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            foreach (GameObject obj in list)
+            {
+                if (obj is Furniture)
+                {
+                    Furniture furniture = (Furniture)obj;
+                    if(furniture.canHideThere)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         public bool MonsterSeesThePlayer()
         {
             if (monster.mapWhereIsLocated == player.mapWhereIsLocated && player.visible)
@@ -23,6 +39,18 @@ namespace Survive
             }
             return false;
         }
+        public bool PlayerCanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates) //At this moment, this method seems unnecessary, but in future there will be gameobjects, that monster cannot step on
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            foreach (GameObject obj in list)
+            {
+                if (obj is Wall)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public bool MonsterCanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
@@ -30,7 +58,15 @@ namespace Survive
             {
                 if (obj is Wall)
                 {
-                    return true;
+                    return false;
+                }
+                if (obj is Furniture)
+                {
+                    Furniture furniture = (Furniture)obj;
+                    if (furniture.canHideThere == false)
+                    {
+                        return false;
+                    }
                 }
             }
             return true;
