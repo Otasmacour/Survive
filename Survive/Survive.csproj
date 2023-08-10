@@ -82,6 +82,9 @@
     <Compile Include="Model\Structures\GameObjects\Corpse.cs" />
     <Compile Include="Model\Structures\GameObjects\Door.cs" />
     <Compile Include="Model\Structures\GameObjects\Floor.cs" />
+    <Compile Include="Model\Structures\GameObjects\Furniture\Bed.cs" />
+    <Compile Include="Model\Structures\GameObjects\Furniture\Closet.cs" />
+    <Compile Include="Model\Structures\GameObjects\Furniture\Furniture.cs" />
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Roles\Monster.cs" />
