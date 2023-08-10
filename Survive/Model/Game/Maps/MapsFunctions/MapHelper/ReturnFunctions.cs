@@ -134,25 +134,37 @@ namespace Survive
             }
             return AdjacentCharacters;
         }
-        public Dictionary<Direction, Coordinates> AdjacentCoordinates(Coordinates coordinates)
+        public Dictionary<Direction, Coordinates> AdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             Dictionary<Direction, Coordinates> adjacentCoordinates = new Dictionary<Direction, Coordinates>();
-            Coordinates left = new Coordinates();
-            left.y = coordinates.y;
-            left.x = coordinates.x - 1;
-            adjacentCoordinates.Add(Direction.Left, left);
-            Coordinates right = new Coordinates();
-            right.y = coordinates.y;
-            right.x = coordinates.x + 1;
-            adjacentCoordinates.Add(Direction.Right, right);
-            Coordinates up = new Coordinates();
-            up.y = coordinates.y - 1;
-            up.x = coordinates.x;
-            adjacentCoordinates.Add(Direction.Up, up);
-            Coordinates down = new Coordinates();
-            down.y = coordinates.y + 1;
-            down.x = coordinates.x;
-            adjacentCoordinates.Add(Direction.Down, down);
+            if(coordinates.x > 0)
+            {
+                Coordinates left = new Coordinates();
+                left.y = coordinates.y;
+                left.x = coordinates.x - 1;
+                adjacentCoordinates.Add(Direction.Left, left);
+            }
+            if(coordinates.x < twoDArray.GetLength(1) - 2)
+            {
+                Coordinates right = new Coordinates();
+                right.y = coordinates.y;
+                right.x = coordinates.x + 1;
+                adjacentCoordinates.Add(Direction.Right, right);
+            }
+            if(coordinates.y > 0)
+            {
+                Coordinates up = new Coordinates();
+                up.y = coordinates.y - 1;
+                up.x = coordinates.x;
+                adjacentCoordinates.Add(Direction.Up, up);
+            }
+            if(coordinates.y < twoDArray.GetLength(0) - 2)
+            {
+                Coordinates down = new Coordinates();
+                down.y = coordinates.y + 1;
+                down.x = coordinates.x;
+                adjacentCoordinates.Add(Direction.Down, down);
+            }
             return adjacentCoordinates;
         }
     }

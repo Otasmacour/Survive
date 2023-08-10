@@ -8,5 +8,11 @@ namespace Survive
 {
     class MonsterChasingInformations
     {
+        public bool chasing;
+        public Coordinates specificLocation;
+        public void EndingOfChasing()
+        {
+            this.chasing = false;
+        }
     }
 }

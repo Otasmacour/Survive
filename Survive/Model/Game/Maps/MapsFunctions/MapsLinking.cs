@@ -19,7 +19,7 @@ namespace Survive
             int floorNumber;
             //Rooms -1 Floor
             floorNumber = -1;
-            Map RMS1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
+            Map RMS1 = new Map(mapsInitialization, "RMS1", floorNumber, "Room 1", MapType.Null);
             Map RMS2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
             Map RMS3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
             //Rooms 0  Floor

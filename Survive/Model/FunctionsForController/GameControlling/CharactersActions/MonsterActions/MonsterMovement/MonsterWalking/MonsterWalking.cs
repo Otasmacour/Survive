@@ -79,12 +79,9 @@ namespace Survive
                     doorDirection = item.Key;
                 }
             }
-            Dictionary<(int, int), int> depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(currentMap.twoDArray, monster.coordinates);
             if (ISNextMapAccessible(nextMap, monster, mapHelper))
             {
-                Queue<Coordinates> path = mapHelper.twoDArrayFunctions.PathInTwoDArray(depths, currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates);
-                Direction direction = dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(monster.coordinates, path.First());
-                return direction;
+                return mapHelper.twoDArrayFunctions.GetDirectionWhileWalkingOnTwoDArray(currentMap.mapInformations.mapLayout.doorCoordinates[doorDirection], monster.coordinates, currentMap.twoDArray);
             }
             return Direction.Null;
         }

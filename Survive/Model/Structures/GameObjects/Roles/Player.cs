@@ -9,6 +9,7 @@ namespace Survive
     class Player : Character
     {
         public Item item;
+        public bool visible = true;
         public Player(Character character)
         {
             RoleConstructor(character);

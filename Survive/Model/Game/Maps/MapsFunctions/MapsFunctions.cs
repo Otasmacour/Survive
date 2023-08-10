@@ -13,7 +13,7 @@ namespace Survive
         MapsInitialization mapsInitialization;
         public MapsFunctions(Characters characters, DataIOManager dataIOManager, RoomMapCollection roomMapCollection)
         {
-            this.mapHelper = new MapHelper();
+            this.mapHelper = new MapHelper(characters, dataIOManager);
             this.mapOperations = new MapOperations(mapHelper, characters);
             this.mapsInitialization = new MapsInitialization(dataIOManager,roomMapCollection);
         }

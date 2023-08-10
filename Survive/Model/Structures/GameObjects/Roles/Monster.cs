@@ -14,5 +14,6 @@ namespace Survive
             this.name = "Monster";
         }
         public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
+        public MonsterChasingInformations monsterChasingInformations = new MonsterChasingInformations();
     }
 }

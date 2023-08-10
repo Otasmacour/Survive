@@ -25,7 +25,7 @@ namespace Survive
             Coordinates playerCoordinates = new Coordinates();
             playerCoordinates.y = 1; 
             playerCoordinates.x = 4;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][2], playerCoordinates);
+            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][0], playerCoordinates);
         }
         static void PlaceMonsterOnMap(Maps maps, Characters characters)
         {

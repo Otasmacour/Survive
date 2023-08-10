@@ -13,26 +13,39 @@ namespace Survive
         Monster monster;
         MapHelper mapHelper;
         public MonsterWalking monsterWalking;
+        public MonsterChasing monsterChasing;
         DataIOManager dataIOManager;
         public MonsterMovement(Monster monster, MapHelper mapHelper, Movement movement, DataIOManager dataIOManager, Player player)
         {
             this.monster = monster;
             this.mapHelper = mapHelper;
             this.monsterWalking = new MonsterWalking(movement, monster, mapHelper);
+            this.monsterChasing = new MonsterChasing(movement, monster, mapHelper, player);
             this.dataIOManager = dataIOManager;
             this.player = player;
         }
         public void Movement()
         {
-            if(monster.mapWhereIsLocated == player.mapWhereIsLocated)
+            Update(monster, mapHelper);
+            if(monster.monsterChasingInformations.chasing)
             {
-                Console.WriteLine("They are in the same room!!");
-                Console.ReadKey();
+                monsterChasing.ChasingUpdate();
+                monsterChasing.Chase();
             }
-            if(monster.monsterWalkingInformations.onWay) //the monster is heading somewhere
+            else if(monster.monsterWalkingInformations.onWay) //the monster is heading somewhere
             {
                 monsterWalking.Walking(mapHelper, dataIOManager);
             }
-        }  
+        }
+        static void Update(Monster monster, MapHelper mapHelper)
+        {
+            if(monster.monsterChasingInformations.chasing == false)
+            {
+                if (mapHelper.boolFunctions.MonsterSeesThePlayer())
+                {
+                    monster.monsterChasingInformations.chasing = true;
+                }
+            }
+        }
     }
 }
