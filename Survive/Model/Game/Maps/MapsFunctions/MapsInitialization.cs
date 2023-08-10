@@ -33,61 +33,66 @@ namespace Survive
                 int height = (i) / mapWidth;
                 int width = i - ((i / mapWidth) * mapWidth);
                 char c = lines[height][width];
-                List<GameObject> objects = new List<GameObject>();
-                GameObject element;
-                if (c == '.')
+                GameObject element = new Wall();
+                switch (c)
                 {
-                    element = new Floor();
-                    objects.Add(element);
+                    case '.':
+                        element = new Floor();
+                        break;
+                    case 'x':
+                        element = new Wall();
+                        break;
+                    case 'b':
+                        element = new Bed();
+                        break;
+                    case 'c':
+                        element = new Closet();
+                        break;
+                    case 'd':
+                        element = new Door();
+                        Coordinates coordinates = new Coordinates();
+                        Coordinates transitionCoordinates = new Coordinates();
+                        coordinates.y = height;
+                        coordinates.x = width;
+                        if (height == 0)
+                        {
+                            mapInformations.mapLayout.doorCoordinates.Add(Direction.Up, coordinates);
+                            mapInformations.mapLayout.doors.Add(Direction.Up, (Door)element);
+                            transitionCoordinates.y = 1;
+                            transitionCoordinates.x = width;
+                            mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Up, transitionCoordinates);
+                        }
+                        else if (width == 0)
+                        {
+                            mapInformations.mapLayout.doorCoordinates.Add(Direction.Left, coordinates);
+                            mapInformations.mapLayout.doors.Add(Direction.Left, (Door)element);
+                            transitionCoordinates.y = height;
+                            transitionCoordinates.x = 1;
+                            mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Left, transitionCoordinates);
+                        }
+                        else if (width == mapWidth - 1)
+                        {
+                            mapInformations.mapLayout.doorCoordinates.Add(Direction.Right, coordinates);
+                            mapInformations.mapLayout.doors.Add(Direction.Right, (Door)element);
+                            transitionCoordinates.y = height;
+                            transitionCoordinates.x = mapWidth - 2;
+                            mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Right, transitionCoordinates);
+                        }
+                        else if (height == mapHeight - 1)
+                        {
+                            mapInformations.mapLayout.doorCoordinates.Add(Direction.Down, coordinates);
+                            mapInformations.mapLayout.doors.Add(Direction.Down, (Door)element);
+                            transitionCoordinates.y = height - 1;
+                            transitionCoordinates.x = width;
+                            mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
+                        }
+                        mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
+                        break;
+                    default:
+                        // If the game designer is capable, this won't happen
+                        break;
                 }
-                else if (c == 'x')
-                {
-                    element = new Wall();
-                    objects.Add(element);
-                }
-                else if (c == 'd')
-                {
-                    element = new Door();
-                    objects.Add(element);
-                    Coordinates coordinates = new Coordinates();
-                    Coordinates transitionCoordinates = new Coordinates();
-                    coordinates.y = height;
-                    coordinates.x = width;
-                    if (height == 0)
-                    {
-                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Up,coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Up, (Door)element);
-                        transitionCoordinates.y = 1;
-                        transitionCoordinates.x = width;
-                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Up,transitionCoordinates);
-                    }
-                    else if (width == 0)
-                    {
-                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Left, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Left, (Door)element);
-                        transitionCoordinates.y = height;
-                        transitionCoordinates.x = 1;
-                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Left, transitionCoordinates);
-                    }
-                    else if (width == mapWidth - 1)
-                    {
-                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Right, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Right, (Door)element);
-                        transitionCoordinates.y = height;
-                        transitionCoordinates.x = mapWidth - 2;
-                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Right, transitionCoordinates);
-                    }
-                    else if (height == mapHeight - 1)
-                    {
-                        mapInformations.mapLayout.doorCoordinates.Add(Direction.Down, coordinates);
-                        mapInformations.mapLayout.doors.Add(Direction.Down, (Door)element);
-                        transitionCoordinates.y = height - 1;
-                        transitionCoordinates.x = width;
-                        mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
-                    }
-                    mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
-                }
-                twoDArray[height, width] = objects;
+                twoDArray[height, width] = new List<GameObject>{element};
             }
             return (twoDArray,mapInformations);
         }

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Survive.Model.Structures.GameObjects.Furniture
+namespace Survive
 {
-    internal class Closet
+    class Closet : Furniture
     {
+        public Closet()
+        {
+            this.symbol = 'c';
+        }
     }
 }

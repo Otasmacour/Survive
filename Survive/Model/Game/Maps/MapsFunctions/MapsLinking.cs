@@ -34,7 +34,7 @@ namespace Survive
             floorNumber = 1;
             Map RMF1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
             Map RMF2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
-            Map RMF3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
+            Map RMF3 = new Map(mapsInitialization, "RMF3", floorNumber, "Room 3", MapType.Null);
             Map RMF4 = new Map(mapsInitialization, "Room", floorNumber, "Room 4", MapType.Null);
             Map RMF5 = new Map(mapsInitialization, "Room", floorNumber, "Room 5", MapType.Null);
             //Vertical Stairs
