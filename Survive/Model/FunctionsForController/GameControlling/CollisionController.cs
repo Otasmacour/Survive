@@ -23,23 +23,18 @@ namespace Survive
 
         public void MonsterAndPlayerCollision()
         {
-            //Console.WriteLine("Monster's coordinates: "+ mapHelper.parsing.CoordinatesToTupple(monster.coordinates));
-            //Console.WriteLine("Monster's adjacent coordinates:");
-            //foreach(var adjacentCoordinates in mapHelper.returnFunctions.AdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8))
-            //{
-            //    Console.WriteLine(adjacentCoordinates.Key.ToString() + " " + mapHelper.parsing.CoordinatesToTupple(adjacentCoordinates.Value));
-            //}
+            if(monster.mapWhereIsLocated != player.mapWhereIsLocated || player.visible == false)
+            {
+                //They are not on the same map
+                //Or the player is not visible, could be hidden in a hideout
+                return;
+            }
             var adjacentCoordinatesOfMonster = mapHelper.returnFunctions.AdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8);
             foreach(Coordinates adjacentCoordinates in adjacentCoordinatesOfMonster.Values)
             {
                 if(mapHelper.parsing.CoordinatesToTupple(adjacentCoordinates) == mapHelper.parsing.CoordinatesToTupple(player.coordinates)) // The player is within range of the monster
                 {
-                    if(player.visible) //The player could be hidden in a hideout
-                    {
-                        player.Die();
-                    }
-                    //Console.WriteLine(mapHelper.parsing.CoordinatesToTupple(adjacentCoordinates));
-                    Console.WriteLine("He would die");
+                    player.Die();
                 }
             }
         }

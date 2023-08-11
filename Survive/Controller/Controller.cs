@@ -14,15 +14,14 @@ namespace Survive
         View view { get; set; }
         public Controller() 
         {
-            model = new Model();
-            gameControlling = model.functionsForController.gameControlling;
-            view = new View(model.game.maps.mapsFunctions.mapHelper);
+            GameReset();
         }
         public void Play()
         {
             bool run = true;
             while (run)
             {
+                GameReset();
                 bool result = Escape();
                 if (result) { Console.WriteLine("You escaped"); }
                 else { Console.WriteLine("Game over"); }
@@ -58,6 +57,12 @@ namespace Survive
         {
             Console.Clear();
             view.PrintMap(model.game.characters.player.mapWhereIsLocated);
+        }
+        void GameReset()
+        {
+            model = new Model();
+            gameControlling = model.functionsForController.gameControlling;
+            view = new View(model.game.maps.mapsFunctions.mapHelper);
         }
     }
 }
