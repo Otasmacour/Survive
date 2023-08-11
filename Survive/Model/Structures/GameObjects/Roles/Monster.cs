@@ -31,5 +31,11 @@ namespace Survive
             }
             return true;
         }
+        public override void Die()
+        {
+            die();
+            info.win = true;
+            info.run = false;
+        }
     }
 }

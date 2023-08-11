@@ -13,7 +13,7 @@ namespace Survive
         public Maps maps { get; set; }
         public Game(DataIOManager dataIOManager) 
         {
-            this.characters = new Characters();
+            this.characters = new Characters(info);
             this.maps = new Maps(this.characters, dataIOManager);
         }
     }

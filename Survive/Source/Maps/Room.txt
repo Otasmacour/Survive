@@ -1,5 +1,7 @@
-xxxdxxx
-x.....x
-d.....d
-x.....x
-xxxdxxx
+xxxxxxdxxxxxx
+x...........x
+x...........x
+d...........d
+x...........x
+x...........x
+xxxxxxdxxxxxx

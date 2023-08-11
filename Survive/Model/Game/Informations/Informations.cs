@@ -9,5 +9,6 @@ namespace Survive
     class Informations
     {
         public bool run = true;
+        public bool win = false;
     }
 }

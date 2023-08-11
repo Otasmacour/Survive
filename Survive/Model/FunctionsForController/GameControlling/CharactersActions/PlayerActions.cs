@@ -24,6 +24,10 @@ namespace Survive
         }
         public void Action()
         {
+            if(player.living == false)
+            {
+                return;
+            }
             char c = Console.ReadKey().KeyChar;
             UserIntents userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
             switch(userIntents)

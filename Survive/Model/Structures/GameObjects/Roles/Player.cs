@@ -11,9 +11,9 @@ namespace Survive
     {
         public Item item;
         public bool visible = true;
-        public Player(Character character)
+        public Player(Character character, Informations info)
         {
-            RoleConstructor(character);
+            RoleConstructor(character, info);
         }
         public void VisibilityUpdate(Map map, Coordinates coordinates, Coordinates newCoordinates, MapHelper mapHelper)
         {
@@ -48,6 +48,12 @@ namespace Survive
                 }
             }
             return true;
+        }
+        public override void Die()
+        {
+            die();
+            info.win = false;
+            info.run = false;
         }
     }
 }

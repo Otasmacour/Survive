@@ -10,16 +10,18 @@ namespace Survive
     class CharactersFunctions
     {
         Characters characters;
-        public CharactersFunctions(Characters characters)
+        Informations info;
+        public CharactersFunctions(Characters characters, Informations info)
         {
             this.characters = characters;
+            this.info = info;
         }
         public void CharactersInitializations()
         {
             NullCharacter character = new NullCharacter();
             character.name = "Tyler";
             character.symbol = 'T';
-            characters.player = new Player(character);
+            characters.player = new Player(character, info);
             characters.monster = new Monster();
         }
     }

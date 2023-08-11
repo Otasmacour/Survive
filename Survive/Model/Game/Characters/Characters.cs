@@ -12,9 +12,9 @@ namespace Survive
         public Monster monster;
         public List<Character> characters;
         public CharactersFunctions charactersFunctions;
-        public Characters()
+        public Characters(Informations info)
         {
-            charactersFunctions = new CharactersFunctions(this);
+            charactersFunctions = new CharactersFunctions(this, info);
             charactersFunctions.CharactersInitializations(); //this is not complete, return and complete that when other characters than player will be needed
         }
     }

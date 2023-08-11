@@ -13,12 +13,14 @@ namespace Survive
         public ItemManipulation itemManipulation { get; set; } = new ItemManipulation();
         public PlayerActions playerActions { get; set; }
         public MonsterActions monsterActions { get; set; }
+        public CollisionController collisionController { get; set; }
         public GameControlling(Maps maps, Characters characters, DataIOManager dataIOManager)
         {
             this.functionsForInitialization = new FunctionsForInitialization(maps, characters);
             this.movement = new Movement(maps.mapsFunctions.mapHelper, maps.mapsFunctions.mapOperations);
             this.playerActions = new PlayerActions(characters, this.movement, this.itemManipulation, dataIOManager, characters.player);
             this.monsterActions = new MonsterActions(characters,this.movement,dataIOManager, maps.roomMapCollection, maps.mapsFunctions.mapHelper);
+            this.collisionController = new CollisionController(characters, maps.mapsFunctions.mapHelper);
         }
     }
 }

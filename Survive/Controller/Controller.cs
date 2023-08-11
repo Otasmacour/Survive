@@ -20,19 +20,44 @@ namespace Survive
         }
         public void Play()
         {
+            bool run = true;
+            while (run)
+            {
+                bool result = Escape();
+                if (result) { Console.WriteLine("You escaped"); }
+                else { Console.WriteLine("Game over"); }
+                Console.WriteLine("Do you want to play again? [Y/n]");
+                bool answered = false;
+                while(answered != true) 
+                {
+                    char answer = Console.ReadKey().KeyChar;
+                    if(answer == 'y' || answer == 'Y') { answered = true;}
+                    else if (answer == 'n' || answer == 'N') { answered = true; run = false;}
+                }  
+            }
+        }
+        bool Escape()
+        {
             gameControlling.functionsForInitialization.Initialization();
             gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
             while(model.game.info.run)
             {
-                Console.Clear();
-                view.PrintMap(model.game.characters.player.mapWhereIsLocated);
+                ResetScreen();
                 gameControlling.monsterActions.Action();
-                foreach(var item in model.game.maps.mapsFunctions.mapHelper.returnFunctions.AdjacentCoordinates(model.game.characters.player.mapWhereIsLocated.twoDArray, model.game.characters.player.coordinates, 8))
-                {
-                    Console.WriteLine(item.Key.ToString()+" "+model.game.maps.mapsFunctions.mapHelper.parsing.CoordinatesToTupple(item.Value));
-                }
+                ResetScreen();
+                gameControlling.collisionController.MonsterAndPlayerCollision();
                 gameControlling.playerActions.Action();
             }
+            if(model.game.info.win)
+            {
+                return true;
+            }
+            return false;
+        }
+        void ResetScreen()
+        {
+            Console.Clear();
+            view.PrintMap(model.game.characters.player.mapWhereIsLocated);
         }
     }
 }
