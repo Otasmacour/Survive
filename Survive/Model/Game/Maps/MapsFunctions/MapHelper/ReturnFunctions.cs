@@ -134,18 +134,21 @@ namespace Survive
             }
             return AdjacentCharacters;
         }
-        public Dictionary<Direction, Coordinates> AdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        public Dictionary<Direction, Coordinates> AdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates, int fourOrEight)
         {
             Dictionary<Direction, Coordinates> adjacentCoordinates = new Dictionary<Direction, Coordinates>();
-            if(coordinates.x > 0)
+            bool Left = false; bool Right = false; bool Up = false; bool Down = false;
+            if (coordinates.x > 0)
             {
+                Left = true;
                 Coordinates left = new Coordinates();
                 left.y = coordinates.y;
                 left.x = coordinates.x - 1;
                 adjacentCoordinates.Add(Direction.Left, left);
             }
-            if(coordinates.x < twoDArray.GetLength(1) - 2)
+            if(coordinates.x <= twoDArray.GetLength(1) - 2)
             {
+                Right = true;
                 Coordinates right = new Coordinates();
                 right.y = coordinates.y;
                 right.x = coordinates.x + 1;
@@ -153,18 +156,51 @@ namespace Survive
             }
             if(coordinates.y > 0)
             {
+                Up = true;
                 Coordinates up = new Coordinates();
                 up.y = coordinates.y - 1;
                 up.x = coordinates.x;
                 adjacentCoordinates.Add(Direction.Up, up);
             }
-            if(coordinates.y < twoDArray.GetLength(0) - 2)
+            if(coordinates.y <= twoDArray.GetLength(0) - 2)
             {
+                Down = true;
                 Coordinates down = new Coordinates();
                 down.y = coordinates.y + 1;
                 down.x = coordinates.x;
                 adjacentCoordinates.Add(Direction.Down, down);
             }
+            if(fourOrEight == 8)
+            {         
+                if (Left && Up)
+                {
+                    Coordinates topLeft = new Coordinates();
+                    topLeft.y = coordinates.y - 1;
+                    topLeft.x = coordinates.x - 1;
+                    adjacentCoordinates.Add(Direction.TopLeft, topLeft);
+                }
+                if (Right && Up)
+                {
+                    Coordinates topRight = new Coordinates();
+                    topRight.y = coordinates.y - 1;
+                    topRight.x = coordinates.x + 1;
+                    adjacentCoordinates.Add(Direction.TopRight, topRight);
+                }
+                if (Left && Down)
+                {
+                    Coordinates bottomLeft = new Coordinates();
+                    bottomLeft.y = coordinates.y + 1;
+                    bottomLeft.x = coordinates.x - 1;
+                    adjacentCoordinates.Add(Direction.BottomLeft, bottomLeft);
+                }
+                if (Right && Down)
+                {
+                    Coordinates bottomRight = new Coordinates();
+                    bottomRight.y = coordinates.y + 1;
+                    bottomRight.x = coordinates.x + 1;
+                    adjacentCoordinates.Add(Direction.BottomRight, bottomRight);
+                }
+            }    
             return adjacentCoordinates;
         }
     }

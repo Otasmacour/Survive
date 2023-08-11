@@ -27,6 +27,10 @@ namespace Survive
                 Console.Clear();
                 view.PrintMap(model.game.characters.player.mapWhereIsLocated);
                 gameControlling.monsterActions.Action();
+                foreach(var item in model.game.maps.mapsFunctions.mapHelper.returnFunctions.AdjacentCoordinates(model.game.characters.player.mapWhereIsLocated.twoDArray, model.game.characters.player.coordinates, 8))
+                {
+                    Console.WriteLine(item.Key.ToString()+" "+model.game.maps.mapsFunctions.mapHelper.parsing.CoordinatesToTupple(item.Value));
+                }
                 gameControlling.playerActions.Action();
             }
         }

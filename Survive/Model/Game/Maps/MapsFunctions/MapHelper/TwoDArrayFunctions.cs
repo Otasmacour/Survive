@@ -31,7 +31,7 @@ namespace Survive
             while (queue.Count > 0)
             {
                 Coordinates coordinates = parsing.TuppleToCoordinates(queue.Dequeue());
-                foreach (Coordinates adjacentCoordinates in returnFunctions.AdjacentCoordinates(twoDArray, coordinates).Values)
+                foreach (Coordinates adjacentCoordinates in returnFunctions.AdjacentCoordinates(twoDArray, coordinates, 4).Values)
                 {
                     if (visited.Contains(parsing.CoordinatesToTupple(adjacentCoordinates)) == false && boolFunctions.MonsterCanGoThere(twoDArray, adjacentCoordinates))
                     {
@@ -63,7 +63,7 @@ namespace Survive
             path.Enqueue(currentCoordinates);
             while (parsing.CoordinatesToTupple(currentCoordinates) != parsing.CoordinatesToTupple(start))
             {
-                foreach (Coordinates adjacentCoordinates in returnFunctions.AdjacentCoordinates(twoDArray, currentCoordinates).Values)
+                foreach (Coordinates adjacentCoordinates in returnFunctions.AdjacentCoordinates(twoDArray, currentCoordinates, 4).Values)
                 {
                     if (depths.ContainsKey(parsing.CoordinatesToTupple(adjacentCoordinates))) //adjacent Coordinates could be in place of wall, or something that obviously cannot be giwen depth and so cannot be placed in that Dictionary
                     {
