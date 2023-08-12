@@ -9,9 +9,11 @@ namespace Survive
     class ReturnFunctions
     {
         BoolFunctions boolFunctions;
-        public ReturnFunctions(BoolFunctions boolFunctions) 
+        Parsing parsing;
+        public ReturnFunctions(BoolFunctions boolFunctions, Parsing parsing) 
         {
             this.boolFunctions = boolFunctions;
+            this.parsing = parsing;
         }
         public Door DoorThere(Map map, Coordinates coordinates)
         {
@@ -186,6 +188,18 @@ namespace Survive
                 }
             }    
             return adjacentCoordinates;
+        }
+        public bool AreTheCoordinatesAdjacent(List<GameObject>[,] twoDArray, Coordinates sourceCoordinates,  Coordinates destinationCoordinates)
+        {
+            var adjacentCoordinates = AdjacentCoordinates(twoDArray, sourceCoordinates, 4);
+            foreach(var item in adjacentCoordinates)
+            {
+                if(parsing.CoordinatesToTupple(item.Value) == parsing.CoordinatesToTupple(destinationCoordinates))
+                {
+                    return true;
+                }
+            }
+            return false; //this will happen, if the destinationCoordinates are not among the adjacent of sourceCoordinates
         }
     }
 }
