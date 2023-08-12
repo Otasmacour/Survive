@@ -11,15 +11,17 @@ namespace Survive
     {
         public Item item;
         public bool visible = true;
+        public MapHelper mapHelper;
+        public Monster monster;
         public Player(Character character, Informations info)
         {
             RoleConstructor(character, info);
         }
-        public void VisibilityUpdate(Map map, Coordinates coordinates, Coordinates newCoordinates, MapHelper mapHelper)
+        public void VisibilityUpdate(Map map, Coordinates newCoordinates, MapHelper mapHelper)
         {
-            if(CanGoThere(map.twoDArray, newCoordinates)) //I the cause, when this wasn't here, player could walk to wall and lose his invisibility
+            if(CanGoThere(map.twoDArray, newCoordinates)) //When this wasn't here, player could walk to wall and lose his invisibility
             {
-                if (mapHelper.boolFunctions.HideoutThere(map.twoDArray, newCoordinates))
+                if (mapHelper.boolFunctions.HideoutThere(map.twoDArray, newCoordinates) && mapWhereIsLocated!= monster.mapWhereIsLocated)
                 {
                     this.visible = false;
                 }
@@ -34,7 +36,11 @@ namespace Survive
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
             foreach (GameObject obj in list)
             {
-                if(obj is Wall)
+                if (obj is Door && mapHelper.boolFunctions.MonsterSeesThePlayer())// In this case, the player goes through the door, but the monster is in the same room, so it starts chasing the player into the room where the door leads
+                {
+                    monster.monsterChasingInformations.whereThePlayerHasGone = coordinates;
+                }
+                if (obj is Wall)
                 {
                     return false;
                 }

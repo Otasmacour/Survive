@@ -15,6 +15,7 @@ namespace Survive
         {
             this.characters = new Characters(info);
             this.maps = new Maps(this.characters, dataIOManager);
+            this.characters.charactersFunctions.Constructor(this.maps.mapsFunctions.mapHelper);
         }
     }
 }

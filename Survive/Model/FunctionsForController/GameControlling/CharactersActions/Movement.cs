@@ -61,7 +61,7 @@ namespace Survive
             if (character is Player)
             {
                 Player player = (Player)character;
-                player.VisibilityUpdate(character.mapWhereIsLocated, character.coordinates, newCoordinates, mapHelper);
+                player.VisibilityUpdate(character.mapWhereIsLocated, newCoordinates, mapHelper);
             }
             if (mapHelper.boolFunctions.DoorThere(mapFromWhere.twoDArray, newCoordinates))
             {

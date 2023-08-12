@@ -1,5 +1,5 @@
 xxxdxxx
-xc....x
-d.....d
 x.....x
+d.....d
+x.c...x
 xxxdxxx

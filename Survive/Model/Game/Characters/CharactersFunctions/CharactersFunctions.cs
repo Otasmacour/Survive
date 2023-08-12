@@ -24,5 +24,10 @@ namespace Survive
             characters.player = new Player(character, info);
             characters.monster = new Monster();
         }
+        public void Constructor(MapHelper mapHelper)
+        {
+            characters.player.monster = characters.monster;
+            characters.player.mapHelper = mapHelper;
+        }
     }
 }

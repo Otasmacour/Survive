@@ -26,21 +26,24 @@ namespace Survive
         {
             if(monsterChasingInformations.playerPosition != null)
             {
-                Console.WriteLine("It is about to Chase player");
+                //Console.WriteLine("It is about to Chase player");
+                //Thread.Sleep(1000);
                 ChasePlayerInTwoDArray(mapHelper, movement, monster, player);
                 monsterChasingInformations.playerPosition = null;
             }
-            else if(monsterChasingInformations.whereThePlayerHasGone != null)
+            else if (monsterChasingInformations.whereThePlayerHasGone != null)
             {
-                //if the monster is next to the coordinates, where player has gone
+                //Console.Write("Where the player has gone: ");
+                //Console.WriteLine(mapHelper.parsing.CoordinatesToTupple(monsterChasingInformations.whereThePlayerHasGone));
+                //Thread.Sleep(1000);
+                bool lastTime = false;
+                if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterChasingInformations.whereThePlayerHasGone))
                 {
-                    //move monster there
-                    //set monsterChasingInformations.whereThePlayerHasGone to null
+                    lastTime = true;
                 }
-                //else
-                {
-                    //the monster continues to walk in that direction
-                }
+                Direction directionToGo = mapHelper.twoDArrayFunctions.GetDirectionWhileWalkingOnTwoDArray(monsterChasingInformations.whereThePlayerHasGone, monster.coordinates, monster.mapWhereIsLocated.twoDArray);
+                movement.MoveCharacter(monster, directionToGo);
+                if (lastTime) { monsterChasingInformations.whereThePlayerHasGone = null; }
             }
             else
             {
@@ -57,9 +60,7 @@ namespace Survive
             if (mapHelper.boolFunctions.MonsterSeesThePlayer())
             {
                 monsterChasingInformations.playerPosition = player.coordinates;
-                Console.WriteLine("Monster sees player");
             }
-            //here will be other statements for causes where the monster can't see the player but knows which door he left or which closet he entered etc.
         }
     }
 }
