@@ -1,4 +1,3 @@
 Create mechanism of sounds, so monster can go for a walk to investigate.
-Complete the rest of statements in ChasingUpdate
 Creating inventory, adding items, working with items on the map, preparing general item spawning function
 complete the methods for treatment of items
