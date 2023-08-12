@@ -24,11 +24,23 @@ namespace Survive
         }
         public void Chase()
         {
-            if(monsterChasingInformations.specificLocation != null)
+            if(monsterChasingInformations.playerPosition != null)
             {
                 Console.WriteLine("It is about to Chase player");
                 ChasePlayerInTwoDArray(mapHelper, movement, monster, player);
-                monsterChasingInformations.specificLocation = null;
+                monsterChasingInformations.playerPosition = null;
+            }
+            else if(monsterChasingInformations.whereThePlayerHasGone != null)
+            {
+                //if the monster is next to the coordinates, where player has gone
+                {
+                    //move monster there
+                    //set monsterChasingInformations.whereThePlayerHasGone to null
+                }
+                //else
+                {
+                    //the monster continues to walk in that direction
+                }
             }
             else
             {
@@ -44,7 +56,7 @@ namespace Survive
         {
             if (mapHelper.boolFunctions.MonsterSeesThePlayer())
             {
-                monsterChasingInformations.specificLocation = player.coordinates;
+                monsterChasingInformations.playerPosition = player.coordinates;
                 Console.WriteLine("Monster sees player");
             }
             //here will be other statements for causes where the monster can't see the player but knows which door he left or which closet he entered etc.

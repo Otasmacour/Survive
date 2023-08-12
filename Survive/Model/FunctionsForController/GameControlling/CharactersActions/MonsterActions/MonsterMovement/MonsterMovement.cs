@@ -24,7 +24,7 @@ namespace Survive
             this.dataIOManager = dataIOManager;
             this.player = player;
         }
-        public void Movement()
+        public void Movement() 
         {
             Update(monster, mapHelper);
             if(monster.monsterChasingInformations.chasing)

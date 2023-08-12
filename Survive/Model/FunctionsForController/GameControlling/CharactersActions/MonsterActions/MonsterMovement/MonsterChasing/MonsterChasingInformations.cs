@@ -9,7 +9,8 @@ namespace Survive
     class MonsterChasingInformations
     {
         public bool chasing;
-        public Coordinates specificLocation;
+        public Coordinates playerPosition;
+        public Coordinates whereThePlayerHasGone;
         public void EndingOfChasing()
         {
             this.chasing = false;
