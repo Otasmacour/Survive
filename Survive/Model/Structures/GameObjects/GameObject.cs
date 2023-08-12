@@ -9,5 +9,6 @@ namespace Survive
     abstract class GameObject
     {
         public char symbol;
+        public abstract int GetPriorityNumber();
     }
 }

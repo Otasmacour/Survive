@@ -12,5 +12,9 @@ namespace Survive
         {
             this.symbol = 'x';
         }
+        public override int GetPriorityNumber()
+        {
+            return 95;
+        }
     }
 }

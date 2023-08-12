@@ -37,5 +37,9 @@ namespace Survive
             info.win = true;
             info.run = false;
         }
+        public override int GetPriorityNumber()
+        {
+            return 30;
+        }
     }
 }

@@ -61,31 +61,15 @@ namespace Survive
         }
         public GameObject mostPreferredObjectInList(List<GameObject> objects)
         {
-            // 1 - corpse/character
-            // 2 - floor/wall
             GameObject mostPreferredObject = objects[0];
-            int priorityNumber = 10;
+            int priorityNumber = mostPreferredObject.GetPriorityNumber();
             foreach (GameObject obj in objects)
             {
-                if (obj is Corpse && priorityNumber > 1)
+                int priority = obj.GetPriorityNumber();
+                if (priorityNumber > priority)
                 {
                     mostPreferredObject = obj;
-                    priorityNumber = 1;
-                }
-                else if (obj is Character && priorityNumber > 1)
-                {
-                    mostPreferredObject = obj;
-                    priorityNumber = 1;
-                }
-                else if (obj is Floor && priorityNumber > 2)
-                {
-                    mostPreferredObject = obj;
-                    priorityNumber = 2;
-                }
-                else if (obj is Wall && priorityNumber > 2)
-                {
-                    mostPreferredObject = obj;
-                    priorityNumber = 2;
+                    priorityNumber = priority;
                 }
             }
             return mostPreferredObject;

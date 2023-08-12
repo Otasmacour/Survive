@@ -13,5 +13,9 @@ namespace Survive
             this.symbol = 'b';
             this.canHideThere = true;
         }
+        public override int GetPriorityNumber()
+        {
+             return 20;
+        }
     }
 }

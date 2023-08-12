@@ -34,5 +34,9 @@ namespace Survive
                 stairs.name = "Stairs up";
             }
         }
+        public override int GetPriorityNumber()
+        {
+            return 90;
+        }
     }
 }

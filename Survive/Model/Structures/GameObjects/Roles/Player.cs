@@ -55,5 +55,9 @@ namespace Survive
             info.win = false;
             info.run = false;
         }
+        public override int GetPriorityNumber()
+        {
+            return 31;
+        }
     }
 }

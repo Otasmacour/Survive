@@ -16,5 +16,9 @@ namespace Survive
         {
             throw new NotImplementedException();
         }
+        public override int GetPriorityNumber()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
