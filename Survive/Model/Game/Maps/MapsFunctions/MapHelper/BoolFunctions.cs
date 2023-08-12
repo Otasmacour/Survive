@@ -10,10 +10,14 @@ namespace Survive
     {
         Monster monster;
         Player player;
-        public BoolFunctions(Monster monster, Player player)
+        Parsing parsing { get; set; }
+        ReturnFunctions returnFunctions;
+        public BoolFunctions(Monster monster, Player player, Parsing parsing, ReturnFunctions returnFunctions)
         {
             this.monster = monster;
             this.player = player;
+            this.parsing = parsing;
+            this.returnFunctions = returnFunctions;
         }
         public bool HideoutThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
@@ -114,6 +118,18 @@ namespace Survive
                 }
             }
             return false;
+        }
+        public bool AreTheCoordinatesAdjacent(List<GameObject>[,] twoDArray, Coordinates sourceCoordinates, Coordinates destinationCoordinates)
+        {
+            var adjacentCoordinates = returnFunctions.AdjacentCoordinates(twoDArray, sourceCoordinates, 4);
+            foreach (var item in adjacentCoordinates)
+            {
+                if (parsing.CoordinatesToTupple(item.Value) == parsing.CoordinatesToTupple(destinationCoordinates))
+                {
+                    return true;
+                }
+            }
+            return false; //this will happen, if the destinationCoordinates are not among the adjacent of sourceCoordinates
         }
     }
 }

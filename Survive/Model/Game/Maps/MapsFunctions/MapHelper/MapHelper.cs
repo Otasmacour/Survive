@@ -14,7 +14,7 @@ namespace Survive
         public ReturnFunctions returnFunctions;
         public MapHelper(Characters characters, DataIOManager dataIOManager)
         {
-            this.boolFunctions = new BoolFunctions(characters.monster, characters.player);
+            this.boolFunctions = new BoolFunctions(characters.monster, characters.player, parsing, returnFunctions);
             this.returnFunctions = new ReturnFunctions(boolFunctions);
             this.twoDArrayFunctions = new TwoDArrayFunctions(this.parsing, this.returnFunctions, this.boolFunctions, dataIOManager);
         }
