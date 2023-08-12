@@ -17,7 +17,7 @@ namespace Survive
             this.monster = monster;
             this.player = player;
             this.parsing = parsing;
-            this.returnFunctions = returnFunctions;
+            this.returnFunctions = new ReturnFunctions(this);
         }
         public bool HideoutThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
@@ -31,6 +31,18 @@ namespace Survive
                     {
                         return true;
                     }
+                }
+            }
+            return false;
+        }
+        public bool IsPlayerWithinRangeOfMonster()
+        {
+            var adjacentCoordinatesOfMonster = returnFunctions.AdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8);
+            foreach (Coordinates adjacentCoordinates in adjacentCoordinatesOfMonster.Values)
+            {
+                if (parsing.CoordinatesToTupple(adjacentCoordinates) == parsing.CoordinatesToTupple(player.coordinates)) // The player is within range of the monster
+                {
+                    return true;
                 }
             }
             return false;

@@ -29,6 +29,7 @@ namespace Survive
             Update(monster, mapHelper);
             if(monster.monsterChasingInformations.chasing)
             {
+                if (PlayerCoulBeKilled()) { return; }
                 monsterChasing.ChasingUpdate();
                 monsterChasing.Chase();
             }
@@ -46,6 +47,11 @@ namespace Survive
                     monster.monsterChasingInformations.chasing = true;
                 }
             }
+        }
+        bool PlayerCoulBeKilled()
+        {
+            if(mapHelper.boolFunctions.IsPlayerWithinRangeOfMonster() && player.visible) { return true; }
+            else { return false; }
         }
     }
 }

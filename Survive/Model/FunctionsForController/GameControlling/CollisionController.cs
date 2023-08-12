@@ -29,13 +29,9 @@ namespace Survive
                 //Or the player is not visible, could be hidden in a hideout
                 return;
             }
-            var adjacentCoordinatesOfMonster = mapHelper.returnFunctions.AdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8);
-            foreach(Coordinates adjacentCoordinates in adjacentCoordinatesOfMonster.Values)
+            if(mapHelper.boolFunctions.IsPlayerWithinRangeOfMonster())
             {
-                if(mapHelper.parsing.CoordinatesToTupple(adjacentCoordinates) == mapHelper.parsing.CoordinatesToTupple(player.coordinates)) // The player is within range of the monster
-                {
-                    player.Die();
-                }
+                player.Die();
             }
         }
     }
