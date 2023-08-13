@@ -12,7 +12,7 @@ namespace Survive
         {
             throw new NotImplementedException();
         }
-        public override void PickUp()
+        public override void PickUp(Character character)
         {
             throw new NotImplementedException();
         }

@@ -108,7 +108,7 @@ namespace Survive
             }
             return false;
         }
-        static bool ItemThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        public bool ItemThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
             foreach (GameObject obj in list)
