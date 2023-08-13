@@ -108,6 +108,18 @@ namespace Survive
             }
             return false;
         }
+        static bool ItemThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            foreach (GameObject obj in list)
+            {
+                if (obj is Item)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public bool DoorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];

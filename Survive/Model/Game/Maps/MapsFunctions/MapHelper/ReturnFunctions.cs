@@ -13,6 +13,17 @@ namespace Survive
         {
             this.boolFunctions = boolFunctions;
         }
+        public Item GetItemThere(Map map, Coordinates coordinates)
+        {
+            foreach (GameObject obj in map.twoDArray[coordinates.y, coordinates.x])
+            {
+                if (obj is Item)
+                {
+                    return (Item)obj;
+                }
+            }
+            return new NullItem(); //this can obviously never happen
+        }
         public Door DoorThere(Map map, Coordinates coordinates)
         {
             foreach (GameObject obj in map.twoDArray[coordinates.y, coordinates.x])
