@@ -9,13 +9,13 @@ namespace Survive
 {
     class Player : Character
     {
-        public Item item;
         public bool visible = true;
         public MapHelper mapHelper;
-        public Monster monster;
-        public Player(Character character, Informations info)
+        Monster monster;
+        public Player(Character character, Informations info, Monster monster)
         {
             RoleConstructor(character, info);
+            this.monster = monster;
         }
         public void VisibilityUpdate(Map map, Coordinates newCoordinates, MapHelper mapHelper)
         {

@@ -18,15 +18,14 @@ namespace Survive
         }
         public void CharactersInitializations()
         {
+            characters.monster = new Monster();
             NullCharacter character = new NullCharacter();
             character.name = "Tyler";
             character.symbol = 'T';
-            characters.player = new Player(character, info);
-            characters.monster = new Monster();
+            characters.player = new Player(character, info, characters.monster); 
         }
         public void Constructor(MapHelper mapHelper)
         {
-            characters.player.monster = characters.monster;
             characters.player.mapHelper = mapHelper;
         }
     }

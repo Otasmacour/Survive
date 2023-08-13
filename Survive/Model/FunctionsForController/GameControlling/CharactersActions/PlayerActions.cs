@@ -48,10 +48,10 @@ namespace Survive
         }
         static void PlayerDropItem(Player player, ItemManipulation itemManipulation)
         {
-            if(player.item != null)
-            {
-                itemManipulation.DropItem(player, player.item);
-            }
+            //if(player.item != null)
+            //{
+            //    itemManipulation.DropItem(player, player.item);
+            //}
         }
         static void PlayerPickUpItem(Player player, ItemManipulation itemManipulation)
         {
@@ -59,10 +59,10 @@ namespace Survive
         }
         static void PlayerUseItem(Player player, ItemManipulation itemManipulation)
         {
-            if(player.item != null)
-            {
-                itemManipulation.UseItem(player, player.item);
-            }
+            //if(player.item != null)
+            //{
+            //    itemManipulation.UseItem(player, player.item);
+            //}
         }
     }
 }
