@@ -187,5 +187,29 @@ namespace Survive
             }    
             return adjacentCoordinates;
         }
+        public int GetDistanceOfTwoMaps(Map sourceMap, Map destinationMap)
+        {
+            Dictionary<Map, int> depths = new Dictionary<Map, int>();
+            Queue<Map> queue = new Queue<Map>();
+            HashSet<Map> visited = new HashSet<Map>();
+            depths.Add(sourceMap, 0); queue.Enqueue(sourceMap); visited.Add(sourceMap);
+            while (queue.Count > 0)
+            {
+                Map map = queue.Dequeue();
+                foreach(var item in map.mapInformations.mapLayout.doors.Values)
+                {
+                    Map adjacentMap = item.destinationMap;
+                    if(visited.Contains(adjacentMap))
+                    {
+                        if (depths[map] + 1 < depths[adjacentMap]) { depths[adjacentMap] = depths[map] + 1; queue.Enqueue(adjacentMap); } 
+                    }
+                    else
+                    {
+                        depths.Add(adjacentMap, depths[map] + 1); queue.Enqueue(adjacentMap); visited.Add(adjacentMap);
+                    }
+                }
+            }
+            return depths[destinationMap];
+        }
     }
 }

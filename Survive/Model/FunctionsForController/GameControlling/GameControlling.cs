@@ -22,7 +22,7 @@ namespace Survive
             this.playerActions = new PlayerActions(characters, this.movement, this.itemManipulation, dataIOManager, characters.player);
             this.monsterActions = new MonsterActions(characters,this.movement,dataIOManager, maps.roomMapCollection, maps.mapsFunctions.mapHelper);
             this.collisionController = new CollisionController(characters, maps.mapsFunctions.mapHelper);
-            this.gameInformations = new GameInformations(maps.mapsFunctions.mapHelper);
+            this.gameInformations = new GameInformations(maps.mapsFunctions.mapHelper, characters);
         }
     }
 }
