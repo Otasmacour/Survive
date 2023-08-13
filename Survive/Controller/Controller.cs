@@ -37,7 +37,7 @@ namespace Survive
         }
         bool Escape()
         {
-            gameControlling.functionsForInitialization.Initialization();
+            gameControlling.mapPlacer.Place();
             gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
             while(model.game.info.run)
             {

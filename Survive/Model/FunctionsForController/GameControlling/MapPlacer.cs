@@ -10,33 +10,41 @@ namespace Survive
     {
         Maps maps;
         Characters characters;
+        MapOperations mapOperations;
+        ReturnFunctions returnFunctions;
+        RoomMapCollection roomMapCollection;
         public MapPlacer(Maps maps, Characters characters)
         {
             this.maps = maps;
             this.characters = characters;
+            this.mapOperations = maps.mapsFunctions.mapOperations;
+            this.returnFunctions = maps.mapsFunctions.mapHelper.returnFunctions;
+            this.roomMapCollection = maps.roomMapCollection;
         }
-        public void Initialization()
+        public void Place()
         {
             PlacePlayerOnMap(maps, characters);
             PlaceMonsterOnMap(maps, characters);
+            PlaceItemsOnMaps(maps);
         }
-        static void PlacePlayerOnMap(Maps maps, Characters characters)
+        void PlacePlayerOnMap(Maps maps, Characters characters)
         {
             Coordinates playerCoordinates = new Coordinates();
             playerCoordinates.y = 1;
             playerCoordinates.x = 7;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][0], playerCoordinates);
+            mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[1][0], playerCoordinates);
         }
-        static void PlaceMonsterOnMap(Maps maps, Characters characters)
+        void PlaceMonsterOnMap(Maps maps, Characters characters)
         {
             Coordinates monsterCoordinates = new Coordinates();
             monsterCoordinates.y = 3;
             monsterCoordinates.x = 3;
-            maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.monster, maps.roomMapCollection.roomsByFloor[1][0], monsterCoordinates);
+            mapOperations.PlaceCharacterOnMap(characters.monster, roomMapCollection.roomsByFloor[1][0], monsterCoordinates);
         }
-        static void PlaceItemsOnMaps(Maps maps)
+        void PlaceItemsOnMaps(Maps maps)
         {
-
+            Coordinates plateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
+            mapOperations.PlaceItemOnMap(new Plate(), roomMapCollection.roomsByFloor[1][0], plateCoordinates);
         }
     }
 }
