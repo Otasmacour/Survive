@@ -10,9 +10,9 @@ namespace Survive
     {
         public Bed()
         {
-            this.symbol = 'b';
             this.canHideThere = true;
         }
+        public override char symbol => 'b';
         public override int GetPriorityNumber()
         {
              return 20;

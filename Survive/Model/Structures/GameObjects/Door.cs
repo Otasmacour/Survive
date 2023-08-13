@@ -10,10 +10,6 @@ namespace Survive
     {
         public Map destinationMap;
         public Coordinates transitionPointCoordinates;
-        public Door()
-        {
-            this.symbol = 'd';
-        }
         public void CheckForPossibleStairsAndChangeTheNameInCase(Map roomFromWhere, Door door, Direction sourceDirection)
         {
             if(this.destinationMap.mapInformations.mapType == MapType.Stairs)
@@ -34,6 +30,7 @@ namespace Survive
                 stairs.name = "Stairs up";
             }
         }
+        public override char symbol => 'd';
         public override int GetPriorityNumber()
         {
             return 90;

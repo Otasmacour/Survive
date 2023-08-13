@@ -10,9 +10,9 @@ namespace Survive
     {
         public Closet()
         {
-            this.symbol = 'c';
             this.canHideThere = true;
         }
+        public override char symbol => 'c';
         public override int GetPriorityNumber()
         {
             return 20;

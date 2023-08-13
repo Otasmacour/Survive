@@ -8,6 +8,8 @@ namespace Survive
 {
     class NullItem : Item
     {
+        public override int noiseScale => throw new NotImplementedException();
+        public override char symbol => throw new NotImplementedException();
         public override int GetPriorityNumber()
         {
             throw new NotImplementedException();

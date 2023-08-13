@@ -8,10 +8,7 @@ namespace Survive
 {
     class Corpse : SuspiciousObject
     {
-        public Corpse()
-        {
-            this.symbol = '?';
-        }
+        public override char symbol => 'c';
         public override int GetPriorityNumber()
         {
             return 32;

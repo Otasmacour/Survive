@@ -8,10 +8,7 @@ namespace Survive
 {
     class Floor : GameObject
     {
-        public Floor()
-        {
-            this.symbol = '.';
-        }
+        public override char symbol => '.';
         public override int GetPriorityNumber()
         {
             return 100;

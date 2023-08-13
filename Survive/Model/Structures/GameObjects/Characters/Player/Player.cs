@@ -13,10 +13,11 @@ namespace Survive
         public bool visible = true;
         public MapHelper mapHelper;
         Monster monster;
-        public Player(Character character, Informations info, Monster monster)
+        public Player(Informations info, Monster monster)
         {
-            RoleConstructor(character, info);
+            this.info = info;
             this.monster = monster;
+            name = "Tyler";
         }
         public void VisibilityUpdate(Map map, Coordinates newCoordinates, MapHelper mapHelper)
         {
@@ -62,6 +63,7 @@ namespace Survive
             info.win = false;
             info.run = false;
         }
+        public override char symbol => 'T';
         public override int GetPriorityNumber()
         {
             return 31;

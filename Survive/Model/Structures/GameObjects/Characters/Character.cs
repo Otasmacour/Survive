@@ -13,12 +13,6 @@ namespace Survive
         public Map mapWhereIsLocated;
         public Coordinates coordinates;
         public bool living = true;
-        public void RoleConstructor(Character character, Informations info)
-        {
-            this.symbol = character.symbol; //This is about Character as a gameobject
-            this.name = character.name;
-            this.info = info;
-        }
         public abstract bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates);
         public abstract void Die();
         public void die()

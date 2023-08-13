@@ -8,11 +8,10 @@ namespace Survive
 {
     class Monster : Character
     {
-        public Monster()
+        public Monster(Informations info) 
         {
-            this.symbol = 'M';
-            this.name = "Monster";
-        }
+            this.info = info;
+        }  
         public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
         public MonsterChasingInformations monsterChasingInformations = new MonsterChasingInformations();
         public override bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
@@ -37,6 +36,7 @@ namespace Survive
             info.win = true;
             info.run = false;
         }
+        public override char symbol => 'M';
         public override int GetPriorityNumber()
         {
             return 30;

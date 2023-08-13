@@ -8,6 +8,7 @@ namespace Survive
 {
     abstract class Item : GameObject
     {
+        public abstract int noiseScale { get; }
         public abstract void PickUp(Character character);
         public abstract void Drop();
         public abstract void Use();
