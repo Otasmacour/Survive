@@ -65,6 +65,7 @@
     <Compile Include="Model\FunctionsForController\GameControlling\CollisionController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\FunctionsForInitialization.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\GameInformations.cs" />
     <Compile Include="Model\Game\Characters\Characters.cs" />
     <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />
     <Compile Include="Model\Game\Game.cs" />

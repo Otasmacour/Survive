@@ -14,9 +14,10 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void Display(Map map)
+        public void Display(Map map, int monsterDistance)
         {
             PrintMap(map);
+            PrintMonsterDistance(monsterDistance);
         }
         void PrintMap(Map map)
         {
@@ -53,6 +54,13 @@ namespace Survive
                 floorNumber = "Floor "+map.mapInformations.floorNumber.ToString()+", ";
             }
             Console.WriteLine("\n"+floorNumber+map.name);
+        }
+        void PrintMonsterDistance(int distance)
+        {
+            string roomOrrooms = String.Empty;
+            if (distance > 1) { roomOrrooms = "rooms"; }
+            else { roomOrrooms = "room"; }
+            Console.WriteLine("The monster is " + distance.ToString() + " "+roomOrrooms+" away");
         }
     }
 }
