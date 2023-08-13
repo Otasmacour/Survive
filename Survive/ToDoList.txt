@@ -1,7 +1,5 @@
-Creating inventory, adding items, working with items on the map, preparing general item spawning function
-complete the methods for treatment of items
+Preparing general item spawning function
 devise some algorithms, where and how monster can go, when is not chasing (or when player flee, it makes sence walking throught near rooms then)
 when a player escapes from a monster and the monster hasn't seen him go anywhere, the monster can go to random doors or search hiding places
-view the distance of monster
-add tunnels(maps, where monster cant go)
-When there will be some item player can drop, use that method so monster can go for a walk to investigate what caused that noise)
+add tunnels(maps, where monster cant go) think about what will happen, if player drops item in such tunnel and monster is close enough to hear it
+Create an item that allows the player to carry multiple items, such as a bag or something similar, and create a mechanism to switch between the items the player has.
