@@ -18,8 +18,8 @@ namespace Survive
         {
             this.mapPlacer = new MapPlacer(maps, characters);
             this.movement = new Movement(maps.mapsFunctions.mapHelper, maps.mapsFunctions.mapOperations);
-            this.playerActions = new PlayerActions(characters, this.movement, dataIOManager, characters.player, maps.mapsFunctions.mapHelper);
             this.monsterActions = new MonsterActions(characters,this.movement,dataIOManager, maps.roomMapCollection, maps.mapsFunctions.mapHelper);
+            this.playerActions = new PlayerActions(characters, this.movement, dataIOManager, characters.player, maps.mapsFunctions.mapHelper, monsterActions);
             this.collisionController = new CollisionController(characters, maps.mapsFunctions.mapHelper);
             this.gameInformations = new GameInformations(maps.mapsFunctions.mapHelper, characters);
         }

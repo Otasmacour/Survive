@@ -12,16 +12,31 @@ namespace Survive
         Player player;
         Inventory inventory;
         MapHelper mapHelper;
-        public PlayerItemManipulation(Player player, MapHelper mapHelper)
+        Monster monster;
+        MonsterActions monsterActions;
+        public PlayerItemManipulation(Player player, MapHelper mapHelper, Monster monster, MonsterActions monsterActions)
         {
             this.player = player;
             this.inventory = player.inventory;
             this.mapHelper = mapHelper;
+            this.monster = monster;
+            this.monsterActions = monsterActions;
         }
         public void DropItem(Player player)
         {
             if (inventory.currentlyHeldItem != null && mapHelper.boolFunctions.JustFloorAndCharacterThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
             {
+                Console.WriteLine("Level of that noise was: " + inventory.currentlyHeldItem.noiseLevel.ToString());
+                Thread.Sleep(1000);
+                if(inventory.currentlyHeldItem.noiseLevel >= mapHelper.returnFunctions.GetDistanceOfTwoMaps(player.mapWhereIsLocated, monster.mapWhereIsLocated))//That noise level is high enough for monster to hear it
+                {
+                    if(mapHelper.boolFunctions.MonsterSeesThePlayer() == false) //If monster can see player, it won't pay attention to dropped items
+                    {
+                        monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(player.mapWhereIsLocated);
+                        Console.WriteLine("The monster heard that");
+                        Thread.Sleep(1000);
+                    }
+                }
                 inventory.currentlyHeldItem.Drop(player);
             }
             else

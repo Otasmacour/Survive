@@ -10,17 +10,19 @@ namespace Survive
     class PlayerActions
     {
         Characters characters;
+        Monster monster;
         Movement movement;
         DataIOManager dataIOManager;
         Player player;
         PlayerItemManipulation playerItemManipulation;
-        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player, MapHelper mapHelper)
+        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player, MapHelper mapHelper, MonsterActions monsterActions)
         {
             this.characters = characters;
+            this.monster = characters.monster;
             this.movement = movement;
             this.dataIOManager = dataIOManager;
             this.player = player;
-            this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper);
+            this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper, monster, monsterActions);
         }
         public void Action()
         {
