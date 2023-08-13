@@ -64,7 +64,7 @@
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions\PlayerItemManipulation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CollisionController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />
-    <Compile Include="Model\FunctionsForController\GameControlling\FunctionsForInitialization.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\MapPlacer.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameInformations.cs" />
     <Compile Include="Model\Game\Characters\Characters.cs" />
     <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />
@@ -91,6 +91,7 @@
     <Compile Include="Model\Structures\GameObjects\Furniture\Closet.cs" />
     <Compile Include="Model\Structures\GameObjects\Furniture\Furniture.cs" />
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Monster.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\NullCharacter.cs" />

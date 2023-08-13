@@ -18,11 +18,11 @@ namespace Survive
         {
             throw new NotImplementedException();
         }
-        public override void Drop()
+        public override void Drop(Character character)
         {
             throw new NotImplementedException();
         }
-        public override void Use()
+        public override void Use(Character character)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,6 @@ namespace Survive
 {
     class Player : Character
     {
-        public Inventory inventory = new Inventory(1);
         public bool visible = true;
         public MapHelper mapHelper;
         Monster monster;
@@ -18,6 +17,7 @@ namespace Survive
             this.info = info;
             this.monster = monster;
             name = "Tyler";
+            inventory = new Inventory(1);
         }
         public void VisibilityUpdate(Map map, Coordinates newCoordinates, MapHelper mapHelper)
         {

@@ -8,6 +8,7 @@ namespace Survive
 {
     abstract class Character : GameObject
     {
+        public Inventory inventory;
         public Informations info;
         public string name;
         public Map mapWhereIsLocated;

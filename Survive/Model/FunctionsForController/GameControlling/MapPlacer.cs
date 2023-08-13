@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class FunctionsForInitialization
+    class MapPlacer
     {
         Maps maps;
         Characters characters;
-        public FunctionsForInitialization(Maps maps, Characters characters)
+        public MapPlacer(Maps maps, Characters characters)
         {
             this.maps = maps;
             this.characters = characters;
@@ -23,7 +23,7 @@ namespace Survive
         static void PlacePlayerOnMap(Maps maps, Characters characters)
         {
             Coordinates playerCoordinates = new Coordinates();
-            playerCoordinates.y = 1; 
+            playerCoordinates.y = 1;
             playerCoordinates.x = 7;
             maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.player, maps.roomMapCollection.roomsByFloor[1][0], playerCoordinates);
         }
@@ -33,6 +33,10 @@ namespace Survive
             monsterCoordinates.y = 3;
             monsterCoordinates.x = 3;
             maps.mapsFunctions.mapOperations.PlaceCharacterOnMap(characters.monster, maps.roomMapCollection.roomsByFloor[1][0], monsterCoordinates);
+        }
+        static void PlaceItemsOnMaps(Maps maps)
+        {
+
         }
     }
 }

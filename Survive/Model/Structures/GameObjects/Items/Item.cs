@@ -10,7 +10,7 @@ namespace Survive
     {
         public abstract int noiseScale { get; }
         public abstract void PickUp(Character character);
-        public abstract void Drop();
-        public abstract void Use();
+        public abstract void Drop(Character character);
+        public abstract void Use(Character character);
     }
 }

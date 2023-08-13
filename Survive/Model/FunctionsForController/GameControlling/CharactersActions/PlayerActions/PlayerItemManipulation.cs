@@ -22,7 +22,7 @@ namespace Survive
         {
             if (inventory.currentlyHeldItem != null && mapHelper.boolFunctions.JustFloorThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
             {
-                inventory.currentlyHeldItem.Drop();
+                inventory.currentlyHeldItem.Drop(player);
             }
             else
             {
@@ -46,7 +46,7 @@ namespace Survive
         {
             if(player.inventory.currentlyHeldItem != null)
             {
-                player.inventory.currentlyHeldItem.Use();
+                player.inventory.currentlyHeldItem.Use(player);
             }
             else
             {
