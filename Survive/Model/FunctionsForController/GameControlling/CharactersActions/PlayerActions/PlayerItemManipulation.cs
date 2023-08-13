@@ -20,7 +20,7 @@ namespace Survive
         }
         public void DropItem(Player player)
         {
-            if (inventory.currentlyHeldItem != null && mapHelper.boolFunctions.JustFloorThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
+            if (inventory.currentlyHeldItem != null && mapHelper.boolFunctions.JustFloorAndCharacterThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
             {
                 inventory.currentlyHeldItem.Drop(player);
             }

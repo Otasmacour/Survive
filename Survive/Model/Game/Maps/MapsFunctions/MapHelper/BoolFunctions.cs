@@ -96,6 +96,15 @@ namespace Survive
             }
             return false;
         }
+        public bool JustFloorAndCharacterThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            if (list.Count == 2 && FloorThere(twoDArray, coordinates) && CharacterThere(list))
+            {
+                return true;
+            }
+            return false;
+        }
         static bool FloorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
