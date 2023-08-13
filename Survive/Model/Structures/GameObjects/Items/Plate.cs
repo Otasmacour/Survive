@@ -11,10 +11,11 @@ namespace Survive
         public override int noiseScale => 3;
         public override void PickUp(Character character)
         {
-            character.inventory.currentlyHeldItem = this;
+            pickUp(character);
         }
         public override void Drop(Character character)
         {
+            drop(character);
             //Dropped Plate becomes BrokenPlate, not implemented yet
         }
         public override void Use(Character character)
