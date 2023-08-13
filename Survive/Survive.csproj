@@ -53,7 +53,6 @@
     <Compile Include="Model\DataIOManagerComponents\JsonFunctions.cs" />
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
-    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\ItemManipulation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasing.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasingInformations.cs" />
@@ -61,7 +60,8 @@
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterWalking\MonsterWalkingInformations.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterWalking\MonsterWalking.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\Movement.cs" />
-    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions\PlayerActions.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions\PlayerItemManipulation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CollisionController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\FunctionsForInitialization.cs" />

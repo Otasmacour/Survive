@@ -9,6 +9,7 @@ namespace Survive
 {
     class Player : Character
     {
+        public Inventory inventory = new Inventory(1);
         public bool visible = true;
         public MapHelper mapHelper;
         Monster monster;

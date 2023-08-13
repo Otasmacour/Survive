@@ -11,16 +11,16 @@ namespace Survive
     {
         Characters characters;
         Movement movement;
-        ItemManipulation itemManipulation;
         DataIOManager dataIOManager;
         Player player;
-        public PlayerActions(Characters characters, Movement movement, ItemManipulation itemManipulation, DataIOManager dataIOManager, Player player)
+        PlayerItemManipulation playerItemManipulation;
+        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player)
         {
             this.characters = characters;
             this.movement = movement;
             this.dataIOManager = dataIOManager;
             this.player = player;
-            this.itemManipulation = itemManipulation;
+            this.playerItemManipulation = new PlayerItemManipulation(player);
         }
         public void Action()
         {
@@ -35,34 +35,16 @@ namespace Survive
                 case UserIntents.Move:
                     PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); return;
                 case UserIntents.Drop:
-                    PlayerDropItem(player, itemManipulation); return;
+                    playerItemManipulation.DropItem(player); return;
                 case UserIntents.PickUp:
-                    PlayerPickUpItem(player, itemManipulation); return;
+                    playerItemManipulation.PickUpItem(player); return;
                 case UserIntents.Use:
-                    PlayerUseItem(player, itemManipulation); return;
+                    playerItemManipulation.UseItem(player); return;
             }
         }
         static void PlayerMovement(Player player, Movement movement, Direction movementDirection)
         {
             movement.MoveCharacter(player, movementDirection);
-        }
-        static void PlayerDropItem(Player player, ItemManipulation itemManipulation)
-        {
-            //if(player.item != null)
-            //{
-            //    itemManipulation.DropItem(player, player.item);
-            //}
-        }
-        static void PlayerPickUpItem(Player player, ItemManipulation itemManipulation)
-        {
-            itemManipulation.PickUpItem(player);
-        }
-        static void PlayerUseItem(Player player, ItemManipulation itemManipulation)
-        {
-            //if(player.item != null)
-            //{
-            //    itemManipulation.UseItem(player, player.item);
-            //}
         }
     }
 }

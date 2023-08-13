@@ -8,5 +8,8 @@ namespace Survive
 {
     abstract class Item : GameObject
     {
+        public abstract void PickUp();
+        public abstract void Drop();
+        public abstract void Use();
     }
 }
