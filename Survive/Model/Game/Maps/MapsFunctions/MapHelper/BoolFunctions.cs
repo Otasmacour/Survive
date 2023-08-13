@@ -37,7 +37,7 @@ namespace Survive
         }
         public bool IsPlayerWithinRangeOfMonster()
         {
-            var adjacentCoordinatesOfMonster = returnFunctions.AdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8);
+            var adjacentCoordinatesOfMonster = returnFunctions.GetAdjacentCoordinates(monster.mapWhereIsLocated.twoDArray, monster.coordinates, 8);
             foreach (Coordinates adjacentCoordinates in adjacentCoordinatesOfMonster.Values)
             {
                 if (parsing.CoordinatesToTupple(adjacentCoordinates) == parsing.CoordinatesToTupple(player.coordinates)) // The player is within range of the monster
@@ -145,7 +145,7 @@ namespace Survive
         }
         public bool AreTheCoordinatesAdjacent(List<GameObject>[,] twoDArray, Coordinates sourceCoordinates, Coordinates destinationCoordinates)
         {
-            var adjacentCoordinates = returnFunctions.AdjacentCoordinates(twoDArray, sourceCoordinates, 4);
+            var adjacentCoordinates = returnFunctions.GetAdjacentCoordinates(twoDArray, sourceCoordinates, 4);
             foreach (var item in adjacentCoordinates)
             {
                 if (parsing.CoordinatesToTupple(item.Value) == parsing.CoordinatesToTupple(destinationCoordinates))

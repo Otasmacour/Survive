@@ -65,7 +65,7 @@ namespace Survive
             }
             if (mapHelper.boolFunctions.DoorThere(mapFromWhere.twoDArray, newCoordinates))
             {
-                Door door = mapHelper.returnFunctions.DoorThere(mapFromWhere, newCoordinates);
+                Door door = mapHelper.returnFunctions.GetDoorThere(mapFromWhere, newCoordinates);
                 door.CheckForPossibleStairsAndChangeTheNameInCase(mapFromWhere, door, sourceDirection);
                 newCoordinates = door.transitionPointCoordinates;
                 mapToWhere = door.destinationMap;

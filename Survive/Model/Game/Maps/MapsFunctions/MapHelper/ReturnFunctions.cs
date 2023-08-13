@@ -24,7 +24,7 @@ namespace Survive
             }
             return new NullItem(); //this can obviously never happen
         }
-        public Door DoorThere(Map map, Coordinates coordinates)
+        public Door GetDoorThere(Map map, Coordinates coordinates)
         {
             foreach (GameObject obj in map.twoDArray[coordinates.y, coordinates.x])
             {
@@ -35,7 +35,7 @@ namespace Survive
             }
             return new Door(); //this can obviously never happen
         }
-        public Character CharacterThere(List<GameObject> list)
+        public Character GetCharacterThere(List<GameObject> list)
         {
             foreach (GameObject obj in list)
             {
@@ -46,7 +46,7 @@ namespace Survive
             }
             return new NullCharacter(); //this can obviously never happen
         }
-        public List<Coordinates> RandomAvailableCoordinatesonMap(Map map, int numberOfRequestedCoordinates)
+        public List<Coordinates> GetRandomAvailableCoordinatesonMap(Map map, int numberOfRequestedCoordinates)
         {
             List<Coordinates> list = new List<Coordinates>();
             HashSet<(int, int)> coordinatesHash = new HashSet<(int, int)>();
@@ -70,7 +70,7 @@ namespace Survive
             }
             return list;
         }
-        public GameObject mostPreferredObjectInList(List<GameObject> objects)
+        public GameObject GetMostPreferredObjectInList(List<GameObject> objects)
         {
             GameObject mostPreferredObject = objects[0];
             int priorityNumber = mostPreferredObject.GetPriorityNumber();
@@ -97,7 +97,7 @@ namespace Survive
                 //Console.WriteLine("up: " + mostPreferredObjectInList(up));
                 if (boolFunctions.CharacterThere(up))
                 {
-                    AdjacentCharacters.Add(CharacterThere(up));
+                    AdjacentCharacters.Add(GetCharacterThere(up));
                 }
             }
             if (y + 1 < twoDArray.GetLength(0))
@@ -106,7 +106,7 @@ namespace Survive
                 // Console.WriteLine("down: " + mostPreferredObjectInList(down));
                 if (boolFunctions.CharacterThere(down))
                 {
-                    AdjacentCharacters.Add(CharacterThere(down));
+                    AdjacentCharacters.Add(GetCharacterThere(down));
                 }
             }
             if (x - 1 >= 0)
@@ -115,7 +115,7 @@ namespace Survive
                 // Console.WriteLine("left: " + mostPreferredObjectInList(left));
                 if (boolFunctions.CharacterThere(left))
                 {
-                    AdjacentCharacters.Add(CharacterThere(left));
+                    AdjacentCharacters.Add(GetCharacterThere(left));
                 }
             }
             if (x + 1 < twoDArray.GetLength(1))
@@ -124,12 +124,12 @@ namespace Survive
                 // Console.WriteLine("right: " + mostPreferredObjectInList(right));
                 if (boolFunctions.CharacterThere(right))
                 {
-                    AdjacentCharacters.Add(CharacterThere(right));
+                    AdjacentCharacters.Add(GetCharacterThere(right));
                 }
             }
             return AdjacentCharacters;
         }
-        public Dictionary<Direction, Coordinates> AdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates, int fourOrEight)
+        public Dictionary<Direction, Coordinates> GetAdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates, int fourOrEight)
         {
             Dictionary<Direction, Coordinates> adjacentCoordinates = new Dictionary<Direction, Coordinates>();
             bool Left = false; bool Right = false; bool Up = false; bool Down = false;

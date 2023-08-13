@@ -43,7 +43,7 @@ namespace Survive
                 for (int x = 0; x < mapWidth; x++)
                 {
                     List<GameObject> objects = twoDArrayt[y, x];
-                    GameObject mostPreferredObject = mapHelper.returnFunctions.mostPreferredObjectInList(objects);
+                    GameObject mostPreferredObject = mapHelper.returnFunctions.GetMostPreferredObjectInList(objects);
                     Console.Write(mostPreferredObject.symbol);
                 }
                 Console.WriteLine("");
