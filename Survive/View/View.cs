@@ -14,7 +14,11 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void PrintMap(Map map)
+        public void Display(Map map)
+        {
+            PrintMap(map);
+        }
+        void PrintMap(Map map)
         {
             List<GameObject>[,] twoDArrayt = map.twoDArray;
             int mapHeight = twoDArrayt.GetLength(0);

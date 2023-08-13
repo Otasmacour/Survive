@@ -13,5 +13,6 @@ namespace Survive
         {
             this.gameControlling = new GameControlling(model.game.maps, characters, dataIOManager);
         }
+
     }
 }

@@ -56,7 +56,7 @@ namespace Survive
         void ResetScreen()
         {
             Console.Clear();
-            view.PrintMap(model.game.characters.player.mapWhereIsLocated);
+            view.Display(model.game.characters.player.mapWhereIsLocated);
         }
         void GameReset()
         {
