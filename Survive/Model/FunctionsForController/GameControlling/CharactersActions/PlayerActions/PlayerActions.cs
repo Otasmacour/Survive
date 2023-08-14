@@ -31,17 +31,19 @@ namespace Survive
                 return;
             }
             char c = Console.ReadKey().KeyChar;
-            UserIntents userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
+            UserIntent userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
             switch(userIntents)
             {
-                case UserIntents.Move:
+                case UserIntent.Move:
                     PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); return;
-                case UserIntents.Drop:
+                case UserIntent.Drop:
                     playerItemManipulation.DropItem(player); return;
-                case UserIntents.PickUp:
+                case UserIntent.PickUp:
                     playerItemManipulation.PickUpItem(player); return;
-                case UserIntents.Use:
+                case UserIntent.Use:
                     playerItemManipulation.UseItem(player); return;
+                case UserIntent.SwitchItem:
+                    playerItemManipulation.SwitchItem(player); return;
             }
         }
         static void PlayerMovement(Player player, Movement movement, Direction movementDirection)

@@ -11,7 +11,7 @@ namespace Survive
         EnumsMappingManager enumsMappingManager;
         public Dictionary<Direction, Direction> oppositeDirection = new Dictionary<Direction, Direction>();
         public Dictionary<char, Direction> directionByChar = new Dictionary<char, Direction>();
-        public Dictionary<char, UserIntents> itemManipulationIntentByChar = new Dictionary<char, UserIntents>();
+        public Dictionary<char, UserIntent> itemManipulationIntentByChar = new Dictionary<char, UserIntent>();
         public EnumFunctions() 
         {
             enumsMappingManager = new EnumsMappingManager(this);
@@ -24,17 +24,17 @@ namespace Survive
         {
             return directionByChar[c];
         }
-        public UserIntents GetUserIntents(char c)
+        public UserIntent GetUserIntents(char c)
         {
             if(directionByChar.ContainsKey(c))
             {
-                return UserIntents.Move;
+                return UserIntent.Move;
             }
             if(itemManipulationIntentByChar.ContainsKey(c))
             {
                 return itemManipulationIntentByChar[c];
             }
-            return UserIntents.Null;
+            return UserIntent.Null;
         }
         public Direction GetDirectionByAdjacentCoordinates(Coordinates sourceCoordinates, Coordinates destinationCoordinates)
         {

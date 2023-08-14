@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Survive
 {
@@ -68,6 +69,20 @@ namespace Survive
             {
                 Console.WriteLine("You don't hold any item to USE");
                 Thread.Sleep(1000);
+            }
+        }
+        public void SwitchItem(Player player)
+        {
+            if(player.inventory.items.Count >= 2)
+            {
+                if(player.inventory.items.IndexOf(player.inventory.currentlyHeldItem) == player.inventory.items.Count - 1) //Then the currentlyHeldItem is the last item of that list.
+                {
+                    player.inventory.currentlyHeldItem = player.inventory.items[0]; //There is no other item after the currentlyHeldItem item in that list, so the new currentlyHeldItem item is set from the beginning.
+                }
+                else //CurrentlyHeldItem is not the last item of that list, so the next item after current currentlyHeldItem in that list, can be set as new currentlyHeldItem.
+                {
+                    player.inventory.currentlyHeldItem = player.inventory.items[player.inventory.items.IndexOf(player.inventory.currentlyHeldItem) + 1];
+                }
             }
         }
     }

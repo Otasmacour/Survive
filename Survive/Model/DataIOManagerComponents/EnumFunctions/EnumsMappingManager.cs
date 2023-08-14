@@ -32,14 +32,15 @@ namespace Survive
             directionByChar.Add('d', Direction.Right);
             directionByChar.Add('D', Direction.Right);
         }
-        static void FillingItemManipulationIntentByChar(Dictionary<char, UserIntents> ItemManipulationIntentByChar)
+        static void FillingItemManipulationIntentByChar(Dictionary<char, UserIntent> ItemManipulationIntentByChar)
         {
-            ItemManipulationIntentByChar.Add('p', UserIntents.PickUp);
-            ItemManipulationIntentByChar.Add('P', UserIntents.PickUp);
-            ItemManipulationIntentByChar.Add('u', UserIntents.Use);
-            ItemManipulationIntentByChar.Add('U', UserIntents.Use);
-            ItemManipulationIntentByChar.Add('h', UserIntents.Drop);
-            ItemManipulationIntentByChar.Add('H', UserIntents.Drop);
+            ItemManipulationIntentByChar.Add('p', UserIntent.PickUp);
+            ItemManipulationIntentByChar.Add('P', UserIntent.PickUp);
+            ItemManipulationIntentByChar.Add('u', UserIntent.Use);
+            ItemManipulationIntentByChar.Add('U', UserIntent.Use);
+            ItemManipulationIntentByChar.Add('h', UserIntent.Drop);
+            ItemManipulationIntentByChar.Add('H', UserIntent.Drop);
+            ItemManipulationIntentByChar.Add(' ', UserIntent.SwitchItem);
         }
     }
 }
