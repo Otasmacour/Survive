@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survive.Survive;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,9 @@ namespace Survive
         {
             Coordinates plateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
             mapOperations.PlaceItemOnMap(new Plate(), roomMapCollection.roomsByFloor[1][0], plateCoordinates);
+            Coordinates brokenPlateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
+            mapOperations.PlaceItemOnMap(new BrokenPlate(), roomMapCollection.roomsByFloor[1][0], brokenPlateCoordinates);
+
         }
     }
 }

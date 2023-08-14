@@ -91,6 +91,7 @@
     <Compile Include="Model\Structures\GameObjects\Furniture\Closet.cs" />
     <Compile Include="Model\Structures\GameObjects\Furniture\Furniture.cs" />
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\BrokenPlate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Monster.cs" />

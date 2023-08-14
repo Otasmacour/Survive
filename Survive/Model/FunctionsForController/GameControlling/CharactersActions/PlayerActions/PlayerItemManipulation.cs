@@ -51,8 +51,8 @@ namespace Survive
             {
                 Item item = mapHelper.returnFunctions.GetItemThere(player.mapWhereIsLocated, player.coordinates);
                 item.PickUp(player);
-                Console.WriteLine("you have enough space in your inventory and there is an item to pick up");
-                Thread.Sleep(1000);
+                //Console.WriteLine("you have enough space in your inventory and there is an item to pick up");
+                //Thread.Sleep(1000);
                 
             }
             else { Console.WriteLine("you have no enough space in your inventory or there is not any item to PICK UP"); Thread.Sleep(1000); }
