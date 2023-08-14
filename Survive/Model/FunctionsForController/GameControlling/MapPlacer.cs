@@ -21,8 +21,9 @@ namespace Survive
             this.mapOperations = maps.mapsFunctions.mapOperations;
             this.returnFunctions = maps.mapsFunctions.mapHelper.returnFunctions;
             this.roomMapCollection = maps.roomMapCollection;
+            Place();
         }
-        public void Place()
+        void Place()
         {
             PlacePlayerOnMap(maps, characters);
             PlaceMonsterOnMap(maps, characters);
@@ -50,6 +51,10 @@ namespace Survive
             mapOperations.PlaceItemOnMap(new BrokenPlate(), roomMapCollection.roomsByFloor[1][0], brokenPlateCoordinates);
             Coordinates backPackCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
             mapOperations.PlaceItemOnMap(new BackPack(), roomMapCollection.roomsByFloor[1][0], backPackCoordinates);
+            Coordinates hammerCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
+            mapOperations.PlaceItemOnMap(new Hammer(), roomMapCollection.roomsByFloor[1][0], hammerCoordinates);
+            Coordinates shovelCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
+            mapOperations.PlaceItemOnMap(new Shovel(), roomMapCollection.roomsByFloor[1][0], shovelCoordinates);
         }
     }
 }

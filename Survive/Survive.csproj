@@ -93,12 +93,14 @@
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Backpack.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\BrokenPlate.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Hammer.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Monster.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\NullCharacter.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Player\Player.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\NullItem.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Shovel.cs" />
     <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />
     <Compile Include="Model\Structures\Maps\MapLayout.cs" />

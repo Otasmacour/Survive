@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class BackPack : Item
+    class Hammer : Item
     {
-        public override string itemName => "Back";
-        public override bool takesUpSpaceInTheInventory => false;
-        public override int noiseLevel => 3;
+        public override string itemName => "Hammer";
+        public override bool takesUpSpaceInTheInventory => true;
+        public override int noiseLevel => 1;
         public override void PickUp(Character character)
         {
             pickUp(character);
-            character.inventory.inventorySize += 3;
-
         }
         public override void Drop(Character character)
         {
@@ -25,7 +23,7 @@ namespace Survive
         {
 
         }
-        public override char symbol => 'B';
+        public override char symbol => 'h';
         public override int GetPriorityNumber()
         {
             return 80;

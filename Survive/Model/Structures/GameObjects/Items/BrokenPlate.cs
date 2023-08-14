@@ -25,7 +25,7 @@ namespace Survive
             {
 
             }
-            public override char symbol => 'B';
+            public override char symbol => 'b';
             public override int GetPriorityNumber()
             {
                 return 80;

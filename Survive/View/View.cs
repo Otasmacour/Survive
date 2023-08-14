@@ -67,11 +67,15 @@ namespace Survive
         {
             if(playersInventory.currentlyHeldItem != null) { Console.WriteLine("Now you are holding: " + playersInventory.currentlyHeldItem.itemName); }
             Console.WriteLine("In inventory:");
-            foreach (Item item in playersInventory.items)
-            {
-                if(item != playersInventory.currentlyHeldItem) { Console.WriteLine(" - "+item.itemName); } 
-            }
+            //Preparing indexes of items in the inventory for printing, according to how they should stand in a row, to make it intuitive for the player 
+            List<int> IndexesOfItemsToPrint = new List<int>();
+            int numberOfItemsThatAreAfterTheCurrentlyHeldItem = playersInventory.items.Count - 1 - playersInventory.items.IndexOf(playersInventory.currentlyHeldItem);
+            int numberOfItemsThatAreBeforeTheCurrentlyHeldItem = playersInventory.items.Count - numberOfItemsThatAreAfterTheCurrentlyHeldItem - 1;
+            for (int i = 1; i < numberOfItemsThatAreAfterTheCurrentlyHeldItem+1; i++) IndexesOfItemsToPrint.Add(playersInventory.items.IndexOf(playersInventory.currentlyHeldItem) + i);
+            for (int i = 0; i < numberOfItemsThatAreBeforeTheCurrentlyHeldItem; i++) IndexesOfItemsToPrint.Add(i);
+            //The explanation is above
+            foreach (int index in IndexesOfItemsToPrint) Console.WriteLine(" - " + playersInventory.items[index].itemName);//prints items in inventory except currentlyHeldItem
+            for (int i = 0; i < playersInventory.inventorySize - 1 - IndexesOfItemsToPrint.Count; i++) { Console.WriteLine(" - "); }//shows the empty space in inventory
         }
     }
 }
-
