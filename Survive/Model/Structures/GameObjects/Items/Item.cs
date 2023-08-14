@@ -8,21 +8,24 @@ namespace Survive
 {
     abstract class Item : GameObject
     {
+        public abstract string itemName { get; }
         public abstract int noiseLevel { get; }
         public abstract void PickUp(Character character);
         public abstract void Drop(Character character);
         public abstract void Use(Character character);
         public void pickUp(Character character)
         {
-            character.inventory.currentlyHeldItem = this;
+            character.inventory.items.Add(this);
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Remove(this);
             character.mapWhereIsLocated.mapInformations.itemsOnMap.Remove(this);
+            character.inventory.InventoryUpdate();
         }
         public void drop(Character character)
         {
-            character.inventory.currentlyHeldItem = null;
+            character.inventory.items.Remove(this);
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(this);
             character.mapWhereIsLocated.mapInformations.itemsOnMap.Add(this);
+            character.inventory.InventoryUpdate();
         }
     }
 }

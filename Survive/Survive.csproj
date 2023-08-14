@@ -83,7 +83,7 @@
     <Compile Include="Model\Game\Maps\MapsFunctions\MapsLinking.cs" />
     <Compile Include="Model\Game\Maps\RoomMapCollection.cs" />
     <Compile Include="Model\Model.cs" />
-    <Compile Include="Model\Structures\GameObjects\Characters\Player\Inventory.cs" />
+    <Compile Include="Model\Structures\GameObjects\Characters\Inventory.cs" />
     <Compile Include="Model\Structures\GameObjects\Corpse.cs" />
     <Compile Include="Model\Structures\GameObjects\Door.cs" />
     <Compile Include="Model\Structures\GameObjects\Floor.cs" />

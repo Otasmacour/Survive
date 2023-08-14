@@ -8,6 +8,7 @@ namespace Survive
 {
     class Plate : Item
     {
+        public override string itemName => "Plate";
         public override int noiseLevel => 3;
         public override void PickUp(Character character)
         {

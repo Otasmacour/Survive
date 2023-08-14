@@ -14,10 +14,11 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void Display(Map map, int monsterDistance)
+        public void Display(Map map, int monsterDistance, Inventory playersInventory)
         {
             PrintMap(map);
             PrintMonsterDistance(monsterDistance);
+            PrintPlayersInventory(playersInventory);
         }
         void PrintMap(Map map)
         {
@@ -61,6 +62,14 @@ namespace Survive
             if (distance > 1) { roomOrrooms = "rooms"; }
             else { roomOrrooms = "room"; }
             Console.WriteLine("The monster is " + distance.ToString() + " "+roomOrrooms+" away");
+        }
+        void PrintPlayersInventory(Inventory playersInventory)
+        {
+            Console.WriteLine("Inventory:");
+            foreach (Item item in playersInventory.items)
+            {
+                Console.WriteLine(item.itemName);
+            }
         }
     }
 }

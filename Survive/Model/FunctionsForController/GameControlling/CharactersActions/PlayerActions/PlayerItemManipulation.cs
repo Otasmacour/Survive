@@ -47,7 +47,7 @@ namespace Survive
         }
         public void PickUpItem(Player player)
         {
-            if(inventory.list.Count < inventory.inventorySize && mapHelper.boolFunctions.ItemThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
+            if(inventory.items.Count < inventory.inventorySize && mapHelper.boolFunctions.ItemThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
             {
                 Item item = mapHelper.returnFunctions.GetItemThere(player.mapWhereIsLocated, player.coordinates);
                 item.PickUp(player);
