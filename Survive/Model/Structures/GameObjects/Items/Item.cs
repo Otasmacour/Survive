@@ -16,7 +16,7 @@ namespace Survive
         public abstract void Use(Character character);
         public void pickUp(Character character)
         {
-            character.inventory.items.Add(this);
+            if (this.takesUpSpaceInTheInventory) { character.inventory.items.Add(this); }
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Remove(this);
             character.mapWhereIsLocated.mapInformations.itemsOnMap.Remove(this);
             character.inventory.InventoryUpdate();
@@ -24,6 +24,7 @@ namespace Survive
         public void drop(Character character)
         {
             character.inventory.items.Remove(this);
+            character.inventory.currentlyHeldItem = null;
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(this);
             character.mapWhereIsLocated.mapInformations.itemsOnMap.Add(this);
             character.inventory.InventoryUpdate();

@@ -48,7 +48,8 @@ namespace Survive
             mapOperations.PlaceItemOnMap(new Plate(), roomMapCollection.roomsByFloor[1][0], plateCoordinates);
             Coordinates brokenPlateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
             mapOperations.PlaceItemOnMap(new BrokenPlate(), roomMapCollection.roomsByFloor[1][0], brokenPlateCoordinates);
-
+            Coordinates backPackCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
+            mapOperations.PlaceItemOnMap(new BackPack(), roomMapCollection.roomsByFloor[1][0], backPackCoordinates);
         }
     }
 }
