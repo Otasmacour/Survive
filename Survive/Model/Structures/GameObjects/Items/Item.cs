@@ -9,6 +9,7 @@ namespace Survive
     abstract class Item : GameObject
     {
         public abstract string itemName { get; }
+        public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
         public abstract void PickUp(Character character);
         public abstract void Drop(Character character);

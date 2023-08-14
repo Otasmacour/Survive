@@ -9,6 +9,7 @@ namespace Survive
     class Plate : Item
     {
         public override string itemName => "Plate";
+        public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 3;
         public override void PickUp(Character character)
         {

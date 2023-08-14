@@ -47,9 +47,10 @@ namespace Survive
         }
         public void PickUpItem(Player player)
         {
-            if(inventory.items.Count < inventory.inventorySize && mapHelper.boolFunctions.ItemThere(player.mapWhereIsLocated.twoDArray, player.coordinates))
+            if(mapHelper.boolFunctions.ItemThere(player.mapWhereIsLocated.twoDArray, player.coordinates) == false) { return; }
+            Item item = mapHelper.returnFunctions.GetItemThere(player.mapWhereIsLocated, player.coordinates);
+            if (inventory.items.Count < inventory.inventorySize || item.takesUpSpaceInTheInventory == false)
             {
-                Item item = mapHelper.returnFunctions.GetItemThere(player.mapWhereIsLocated, player.coordinates);
                 item.PickUp(player);
                 //Console.WriteLine("you have enough space in your inventory and there is an item to pick up");
                 //Thread.Sleep(1000);

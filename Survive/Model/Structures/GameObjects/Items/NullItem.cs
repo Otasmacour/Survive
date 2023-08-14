@@ -9,6 +9,7 @@ namespace Survive
     class NullItem : Item
     {
         public override string itemName => throw new NotImplementedException();
+        public override bool takesUpSpaceInTheInventory => throw new NotImplementedException();
         public override int noiseLevel => throw new NotImplementedException();
         public override char symbol => throw new NotImplementedException();
         public override int GetPriorityNumber()

@@ -11,6 +11,7 @@ namespace Survive
         class BrokenPlate : Item
         {
             public override string itemName => "Broken plate";
+            public override bool takesUpSpaceInTheInventory => true;
             public override int noiseLevel => 3;
             public override void PickUp(Character character)
             {
