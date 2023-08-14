@@ -65,10 +65,11 @@ namespace Survive
         }
         void PrintPlayersInventory(Inventory playersInventory)
         {
-            Console.WriteLine("Inventory:");
+            if(playersInventory.currentlyHeldItem != null) { Console.WriteLine("Now you are holding: " + playersInventory.currentlyHeldItem.itemName); }
+            Console.WriteLine("In inventory:");
             foreach (Item item in playersInventory.items)
             {
-                Console.WriteLine(item.itemName);
+                if(item != playersInventory.currentlyHeldItem) { Console.WriteLine(" - "+item.itemName); } 
             }
         }
     }
