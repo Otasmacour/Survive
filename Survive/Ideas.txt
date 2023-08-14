@@ -3,7 +3,7 @@ Add character, or any other content, that will be in some foreign language, play
 it will be possible to dig in the garden, if the player has a shovel
 Some mechanism, that indicates, how close is monster (it could be sound of heart beat)
 The monster could move some objects around the map that it finds.
-different npcs that the player will be able to access (one could tell player, where monster is located)
+different npcs that the player will be able to access (one could tell player, where monster is going)
 
 game maker toolkit
 -stealth
