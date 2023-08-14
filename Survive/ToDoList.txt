@@ -3,4 +3,3 @@ devise some algorithms, where and how monster can go, when is not chasing (or wh
 when a player escapes from a monster and the monster hasn't seen him go anywhere, the monster can go to random doors or search hiding places
 add tunnels(maps, where monster cant go) think about what will happen, if player drops item in such tunnel and monster is close enough to hear it
 Create a function for display items in the adjacent fields
-Create an another Item and test the SwitchItem method with three items in inventory
