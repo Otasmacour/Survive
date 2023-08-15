@@ -8,7 +8,7 @@ namespace Survive
 {
     class BackPack : Item
     {
-        public override string itemName => "Back";
+        public override string itemName => "Backpack";
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => 3;
         public override void PickUp(Character character)

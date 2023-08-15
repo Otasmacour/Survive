@@ -22,7 +22,7 @@ namespace Survive
         public List<Item> GetItemsAroundPlayer()
         {
             List<Item> items = new List<Item>();
-            var adjacentCoordinates = mapHelper.returnFunctions.GetAdjacentCoordinates(characters.player.mapWhereIsLocated.twoDArray, characters.player.coordinates, 4);
+            var adjacentCoordinates = mapHelper.returnFunctions.GetAdjacentCoordinates(characters.player.mapWhereIsLocated.twoDArray, characters.player.coordinates, 8);
             foreach ( var item in adjacentCoordinates )
             {
                 if(mapHelper.boolFunctions.ItemThere(characters.player.mapWhereIsLocated.twoDArray, item.Value))
