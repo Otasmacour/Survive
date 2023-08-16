@@ -56,7 +56,9 @@
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasing.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasingInformations.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterSearching\MonsterSearching.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterMovement.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterSearching\MonsterSearchingInformation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterWalking\MonsterWalkingInformations.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterWalking\MonsterWalking.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\Movement.cs" />

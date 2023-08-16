@@ -14,6 +14,7 @@ namespace Survive
         }  
         public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
         public MonsterChasingInformations monsterChasingInformations = new MonsterChasingInformations();
+        public MonsterSearchingInformation monsterSearchingInformation = new MonsterSearchingInformation();
         public override bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];

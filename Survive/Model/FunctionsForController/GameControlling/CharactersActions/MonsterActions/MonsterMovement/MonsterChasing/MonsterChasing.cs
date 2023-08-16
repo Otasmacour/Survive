@@ -12,19 +12,22 @@ namespace Survive
         Movement movement;
         Monster monster;
         MonsterChasingInformations monsterChasingInformations;
+        MonsterSearchingInformation monsterSearchingInformation;
         Player player;
         MapHelper mapHelper;
+        Random random = new Random();
         public MonsterChasing(Movement movement, Monster monster, MapHelper mapHelper, Player player)
         {
             this.movement = movement;
             this.monster = monster;
             this.monsterChasingInformations = monster.monsterChasingInformations;
-            this.mapHelper = mapHelper;
+            this.monsterSearchingInformation = monster.monsterSearchingInformation;
             this.player = player;
+            this.mapHelper = mapHelper;   
         }
         public void Chase()
         {
-            if(monsterChasingInformations.playerPosition != null)
+            if (monsterChasingInformations.playerPosition != null)
             {
                 //Console.WriteLine("It is about to Chase player");
                 //Thread.Sleep(1000);
@@ -47,8 +50,23 @@ namespace Survive
             }
             else
             {
+                monsterSearchingInformation.searching = true;
                 monsterChasingInformations.EndingOfChasing();
             }
+        }
+        bool StartSearching()
+        {
+            if (monster.mapWhereIsLocated.mapInformations.mapLayout.doors.Count == 1 || true) //the true is just temporary YesOrNo(5) should be there
+            {
+                return true;
+            }
+            return false;
+        }
+        bool YesOrNo(int Probability)
+        {
+            int number = random.Next(1, Probability);
+            if (number != 1) { return true; }
+            else { return false; }
         }
         static void ChasePlayerInTwoDArray(MapHelper mapHelper, Movement movement, Monster monster, Player player)
         {

@@ -14,6 +14,8 @@ namespace Survive
         public void EndingOfChasing()
         {
             this.chasing = false;
+            this.playerPosition = null;
+            this.whereThePlayerHasGone = null;
         }
     }
 }

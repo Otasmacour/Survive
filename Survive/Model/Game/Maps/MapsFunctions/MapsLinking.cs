@@ -35,8 +35,8 @@ namespace Survive
             Map RMF1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
             Map RMF2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
             Map RMF3 = new Map(mapsInitialization, "RMF3", floorNumber, "Room 3", MapType.Null);
-            Map RMF4 = new Map(mapsInitialization, "Room", floorNumber, "Room 4", MapType.Null);
-            Map RMF5 = new Map(mapsInitialization, "Room", floorNumber, "Room 5", MapType.Null);
+            Map RMF4 = new Map(mapsInitialization, "RMF4", floorNumber, "Room 4", MapType.Null);
+            Map RMF5 = new Map(mapsInitialization, "RMF5", floorNumber, "Room 5", MapType.Null);
             //Vertical Stairs
             Map VS1 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs", MapType.Stairs);
             Map VS2 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs", MapType.Stairs);
@@ -84,6 +84,8 @@ namespace Survive
             Door destinationDoor = (Door)destinationMap.twoDArray[destinationMap.mapInformations.mapLayout.doorCoordinates[destinationDirection].y, destinationMap.mapInformations.mapLayout.doorCoordinates[destinationDirection].x][0];
             destinationDoor.destinationMap = sourceMap;
             destinationDoor.transitionPointCoordinates = sourceMap.mapInformations.mapLayout.transitionsCoordinates[sourceDirection];
+            sourceMap.mapInformations.adjacentMaps.Add(destinationMap);
+            destinationMap.mapInformations.adjacentMaps.Add(sourceMap);
         }
     }
 }
