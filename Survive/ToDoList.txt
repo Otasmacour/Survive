@@ -1,5 +1,4 @@
 Preparing general item spawning function
-devise some algorithms, where and how monster can go, when is not chasing (or when player flee, it makes sence walking throught near rooms then)
-when a player escapes from a monster and the monster hasn't seen him go anywhere, the monster can go to random doors or search hiding places
 add tunnels(maps, where monster cant go) think about what will happen, if player drops item in such tunnel and monster is close enough to hear it
-Create a function for display items in the adjacent fields
+Complete the SearchTheRoom method
+Find out what the bug is when the monster goes through multiple rooms
