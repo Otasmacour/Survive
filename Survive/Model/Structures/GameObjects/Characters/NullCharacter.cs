@@ -13,7 +13,7 @@ namespace Survive
         {
             return false;
         }
-        public override void Die()
+        public override void Die(string theWayHowCharacterDied)
         {
             throw new NotImplementedException();
         }

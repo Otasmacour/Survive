@@ -31,7 +31,7 @@ namespace Survive
             }
             return true;
         }
-        public override void Die()
+        public override void Die(string theWayHowMonsterDied)
         {
             die();
             info.win = true;

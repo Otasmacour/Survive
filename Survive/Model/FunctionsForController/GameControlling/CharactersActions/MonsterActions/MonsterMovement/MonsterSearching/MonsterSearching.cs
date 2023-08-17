@@ -15,6 +15,7 @@ namespace Survive
         MonsterSearchingInformation monsterSearchingInformation;
         Player player;
         MapHelper mapHelper;
+        Random random = new Random();
         public MonsterSearching(Movement movement, Monster monster, MapHelper mapHelper, Player player)
         {
             this.movement = movement;
@@ -39,20 +40,62 @@ namespace Survive
                 //Here should also be some chance, that if the room contains a hideout, the monster will search it
                 if (monster.mapWhereIsLocated.mapInformations.mapLayout.doors.Count == 1)
                 {
+                    if (monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates.Count == 0) { monsterSearchingInformation.EndingOfSearching(); return; } //The player could hide in such a way that the monster doesn't know about it (not in a hiding place in the form of furniture), in which case the search would be over.
                     monsterSearchingInformation.searchingRoom = true;
+                    monsterSearchingInformation.furnitureToSearch = new Queue<Coordinates>(monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates);
                     SearchTheRoom();
                 }
                 else
                 {
-                    monsterSearchingInformation.searchingRooms = true;
-                    SearchRooms();
+
+                    if (FiftyFifTychance(random)) { monsterSearchingInformation.searchingRooms = true; SearchRooms(); }
+                    else { monsterSearchingInformation.searchingRoom = true; monsterSearchingInformation.firstRoomThenRooms = true; monsterSearchingInformation.furnitureToSearch = new Queue<Coordinates>(monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates); SearchTheRoom(); }
                 }
             }
+
         }
         void SearchTheRoom()
         {
-            Console.WriteLine("Searching the room, but not implemented yet");
-            Thread.Sleep(2000);
+            if (monsterSearchingInformation.CurrentFurnitureToSearch == null)
+            {
+                if (monsterSearchingInformation.furnitureToSearch.Count == 0)  //The player could somehow leave the room without the monster noticing and triggering the chase mode.
+                {
+                    if (monsterSearchingInformation.firstRoomThenRooms)
+                    {
+                        monsterSearchingInformation.EndOfSearchingRoomStartToSearchingRooms(); return;
+                    }
+                    else { monsterSearchingInformation.EndingOfSearching(); return; }
+                }
+                else
+                {
+                    monsterSearchingInformation.CurrentFurnitureToSearch = monsterSearchingInformation.furnitureToSearch.Dequeue();
+                }
+            }
+            PerformSearchingRoom();
+        }
+        void PerformSearchingRoom()
+        {
+            bool lastTime = false;
+            if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterSearchingInformation.CurrentFurnitureToSearch))
+            {
+                lastTime = true;
+            }
+            Direction directionToGo = mapHelper.twoDArrayFunctions.GetDirectionWhileWalkingOnTwoDArray(monsterSearchingInformation.CurrentFurnitureToSearch, monster.coordinates, monster.mapWhereIsLocated.twoDArray);
+            if (lastTime)
+            {
+
+                LookForPlayer();
+                monsterSearchingInformation.CurrentFurnitureToSearch = null;
+
+            }
+            else { movement.MoveCharacter(monster, directionToGo); }
+        }
+        void LookForPlayer()
+        {
+            if (player.mapWhereIsLocated == monster.mapWhereIsLocated && mapHelper.parsing.CoordinatesToTupple(monsterSearchingInformation.CurrentFurnitureToSearch) == mapHelper.parsing.CoordinatesToTupple(player.coordinates))
+            {
+                player.Die("the monster found you in the hideout");
+            }
         }
         void SearchRooms()
         {
@@ -66,7 +109,7 @@ namespace Survive
             {
                 WhereToSearchAssigment();
             }
-            PerformSearchingRoomsMove();
+            PerformSearchingRooms();
         }
         void WhereToSearchAssigment()
         {
@@ -74,7 +117,7 @@ namespace Survive
             monsterSearchingInformation.whereToSearch = DecideWhereToSearch();
             monsterSearchingInformation.visitedRooms.Contains(mapHelper.returnFunctions.GetDoorThere(monster.mapWhereIsLocated, monsterSearchingInformation.whereToSearch).destinationMap);
         }
-        void PerformSearchingRoomsMove()
+        void PerformSearchingRooms()
         {
             bool lastTime = false;
             if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterSearchingInformation.whereToSearch))
@@ -98,7 +141,7 @@ namespace Survive
                 List<Coordinates> doorsCoordinates = new List<Coordinates>(monster.mapWhereIsLocated.mapInformations.mapLayout.doorCoordinates.Values);
                 //Removing the nearest door (the one room the monster just came from)
                 Coordinates nearestDoor = doorsCoordinates[0];
-                foreach(Coordinates coordinates in doorsCoordinates)
+                foreach (Coordinates coordinates in doorsCoordinates)
                 {
                     if (depths[mapHelper.parsing.CoordinatesToTupple(coordinates)] < depths[mapHelper.parsing.CoordinatesToTupple(nearestDoor)])
                     {
@@ -112,7 +155,7 @@ namespace Survive
                 foreach (Coordinates coordinates in doorsCoordinates)
                 {
                     Door door = mapHelper.returnFunctions.GetDoorThere(monster.mapWhereIsLocated, coordinates);
-                    if(monsterSearchingInformation.visitedRooms.Contains(door.destinationMap) == false)
+                    if (monsterSearchingInformation.visitedRooms.Contains(door.destinationMap) == false)
                     {
                         bestOption = coordinates;
                     }
@@ -122,5 +165,12 @@ namespace Survive
             }
             return result;
         }
+        static bool FiftyFifTychance(Random random)
+        {
+            int number = random.Next(0, 2);
+            if (number == 0) { return false; }
+            return true;
+        }
+
     }
 }

@@ -8,20 +8,36 @@ namespace Survive
 {
     class MonsterSearchingInformation
     {
-        public int count;
         public bool searching;
+        public bool firstRoomThenRooms;
+        //Searching rooms
         public bool searchingRooms;
-        public bool searchingRoom;
+        public int count;
         public Coordinates whereToSearch;
         public HashSet<Map> visitedRooms = new HashSet<Map>();
+        //Searching room
+        public bool searchingRoom;
+        public Queue<Coordinates> furnitureToSearch = new Queue<Coordinates>();
+        public Coordinates CurrentFurnitureToSearch;
+
         public void EndingOfSearching()
         {
-            this.count = 0;
             this.searching = false;
+            this.firstRoomThenRooms = false;
             this.searchingRooms = false;
-            this.searchingRoom = false;
+            this.count = 0;
             this.whereToSearch = null;
             this.visitedRooms.Clear();
+            this.searchingRoom = false;
+            this.furnitureToSearch.Clear();
+            this.CurrentFurnitureToSearch = null;
+        }
+        public void EndOfSearchingRoomStartToSearchingRooms()
+        {
+            this.searchingRoom = false;
+            this.furnitureToSearch.Clear();
+            this.CurrentFurnitureToSearch = null;
+            this.searchingRooms = true;
         }
     }
 }

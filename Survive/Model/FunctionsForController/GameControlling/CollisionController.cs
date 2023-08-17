@@ -31,7 +31,7 @@ namespace Survive
             }
             if(mapHelper.boolFunctions.IsPlayerWithinRangeOfMonster())
             {
-                player.Die();
+                player.Die("this is not a speed race, you'd better play stealth");
             }
         }
     }

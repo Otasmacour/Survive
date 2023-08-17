@@ -12,5 +12,6 @@ namespace Survive
         public Dictionary<Direction, Door> doors = new Dictionary<Direction, Door>();
         public Dictionary<Direction, Coordinates> transitionsCoordinates = new Dictionary<Direction, Coordinates>();
         public List<Coordinates> occupiedPlaces = new List<Coordinates>();
+        public List<Coordinates> furnitureCoordinates =new List<Coordinates>();
     }
 }

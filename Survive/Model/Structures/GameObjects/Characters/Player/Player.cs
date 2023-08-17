@@ -57,10 +57,11 @@ namespace Survive
             }
             return true;
         }
-        public override void Die()
+        public override void Die(string theWayHowPlayerDied)
         {
             die();
             info.win = false;
+            info.theWayThePlayerDied = theWayHowPlayerDied;
             info.run = false;
         }
         public override char symbol => 'T';

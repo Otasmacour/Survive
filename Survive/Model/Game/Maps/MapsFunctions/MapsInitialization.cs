@@ -34,6 +34,7 @@ namespace Survive
                 int width = i - ((i / mapWidth) * mapWidth);
                 char c = lines[height][width];
                 GameObject element = new Wall();
+                Coordinates coordinates = new Coordinates(); Coordinates transitionCoordinates = new Coordinates(); coordinates.y = height; coordinates.x = width;
                 switch (c)
                 {
                     case '.':
@@ -44,16 +45,15 @@ namespace Survive
                         break;
                     case 'b':
                         element = new Bed();
+                        mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
                         break;
                     case 'c':
                         element = new Closet();
+                        mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
                         break;
                     case 'd':
                         element = new Door();
-                        Coordinates coordinates = new Coordinates();
-                        Coordinates transitionCoordinates = new Coordinates();
-                        coordinates.y = height;
-                        coordinates.x = width;
+                        
                         if (height == 0)
                         {
                             mapInformations.mapLayout.doorCoordinates.Add(Direction.Up, coordinates);

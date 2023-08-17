@@ -24,7 +24,7 @@ namespace Survive
                 GameReset();
                 bool result = Escape();
                 if (result) { Console.WriteLine("You escaped"); }
-                else { Console.WriteLine("Game over"); }
+                else { Console.WriteLine("Game over, "+model.game.info.theWayThePlayerDied); }
                 Console.WriteLine("Do you want to play again? [Y/n]");
                 bool answered = false;
                 while(answered != true) 

@@ -15,7 +15,7 @@ namespace Survive
         public Coordinates coordinates;
         public bool living = true;
         public abstract bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates);
-        public abstract void Die();
+        public abstract void Die(string theWayHowCharacterDied);
         public void die()
         {
             living = false;

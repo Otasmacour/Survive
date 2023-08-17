@@ -9,6 +9,7 @@ namespace Survive
     class Informations
     {
         public bool run = true;
+        public string theWayThePlayerDied;
         public bool win = false;
     }
 }
