@@ -157,13 +157,12 @@ namespace Survive
                     Door door = mapHelper.returnFunctions.GetDoorThere(monster.mapWhereIsLocated, coordinates);
                     if (monsterSearchingInformation.visitedRooms.Contains(door.destinationMap) == false)
                     {
-                        bestOption = coordinates;
+                        return coordinates;
                     }
-
                 }
-                result = bestOption;
+                //if it got this far, there is no unvisited map, then it may be random.
+                return doorsCoordinates[random.Next(doorsCoordinates.Count)];
             }
-            return result;
         }
         static bool FiftyFifTychance(Random random)
         {

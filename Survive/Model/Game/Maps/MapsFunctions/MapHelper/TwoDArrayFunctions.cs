@@ -58,6 +58,11 @@ namespace Survive
         }
         public Queue<Coordinates> PathInTwoDArray(Dictionary<(int, int), int> depths, List<GameObject>[,] twoDArray, Coordinates destination, Coordinates start)
         {
+            if(depths.ContainsKey(parsing.CoordinatesToTupple(destination)) == false)//It is here for a case. When the monster searches a room, it needs to find its way to the furniture in that room, but thanks to the MonsterCanGoThere feature (which also needs to be there, if it wasn't, the monster would endlessly walk headlong into the furniture), the furniture never gets depth, so it needs to check if the destination is in depth, if not, it needs to add itself in like this.
+            {
+                depths.Add(parsing.CoordinatesToTupple(destination), 1000);
+
+            }
             Queue<Coordinates> path = new Queue<Coordinates>();
             Coordinates currentCoordinates = parsing.TuppleToCoordinates(parsing.CoordinatesToTupple(destination));
             path.Enqueue(currentCoordinates);
@@ -67,7 +72,6 @@ namespace Survive
                 {
                     if (depths.ContainsKey(parsing.CoordinatesToTupple(adjacentCoordinates))) //adjacent Coordinates could be in place of wall, or something that obviously cannot be giwen depth and so cannot be placed in that Dictionary
                     {
-
                         if (depths[parsing.CoordinatesToTupple(adjacentCoordinates)] < depths[parsing.CoordinatesToTupple(currentCoordinates)] && parsing.CoordinatesToTupple(adjacentCoordinates) != parsing.CoordinatesToTupple(start))
                         {
                             currentCoordinates = adjacentCoordinates;

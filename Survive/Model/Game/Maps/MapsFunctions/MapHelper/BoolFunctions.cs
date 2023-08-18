@@ -78,11 +78,7 @@ namespace Survive
                 }
                 if (obj is Furniture)
                 {
-                    Furniture furniture = (Furniture)obj;
-                    if (furniture.canHideThere == false)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             return true;
