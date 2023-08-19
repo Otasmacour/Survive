@@ -13,6 +13,15 @@ namespace Survive
             public override string itemName => "Broken plate";
             public override bool takesUpSpaceInTheInventory => true;
             public override int noiseLevel => 3;
+            public override string soundFileName => "Broken plate";
+            public BrokenPlate(GameInformations gameInformations) : base(gameInformations)
+            {
+                this.gameInformations = gameInformations;
+            }
+            public override Sound GetSound()
+            {
+                return new Sound(soundFileName, noiseLevel);
+            }
             public override void PickUp(Character character)
             {
                 pickUp(character);
@@ -22,7 +31,7 @@ namespace Survive
                 drop(character);
             }
             public override void Use(Character character)
-            {
+            {     
 
             }
             public override char symbol => 'b';

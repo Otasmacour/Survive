@@ -11,6 +11,12 @@ namespace Survive
         public override string itemName => throw new NotImplementedException();
         public override bool takesUpSpaceInTheInventory => throw new NotImplementedException();
         public override int noiseLevel => throw new NotImplementedException();
+        public override string soundFileName => throw new NotImplementedException();
+        public NullItem(GameInformations gameInformations) : base(gameInformations) { }
+        public override Sound GetSound()
+        {
+            throw new NotImplementedException();
+        }
         public override char symbol => throw new NotImplementedException();
         public override int GetPriorityNumber()
         {

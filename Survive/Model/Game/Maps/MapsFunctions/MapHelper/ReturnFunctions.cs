@@ -22,7 +22,7 @@ namespace Survive
                     return (Item)obj;
                 }
             }
-            return new NullItem(); //this can obviously never happen
+            throw new NotImplementedException();
         }
         public Door GetDoorThere(Map map, Coordinates coordinates)
         {

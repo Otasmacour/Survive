@@ -42,6 +42,7 @@ namespace Survive
             {
                 ResetScreen();
                 gameControlling.monsterActions.Action();
+                gameControlling.gameInformations.SoundsUpdate();
                 ResetScreen();
                 gameControlling.collisionController.MonsterAndPlayerCollision();
                 gameControlling.playerActions.Action();

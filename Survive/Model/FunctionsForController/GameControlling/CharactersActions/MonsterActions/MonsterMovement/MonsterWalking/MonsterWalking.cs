@@ -11,32 +11,34 @@ namespace Survive
         Movement movement;
         Monster monster;
         MapHelper mapHelper;
+        MonsterWalkingInformations monsterWalkingInformations;
         public MonsterWalking(Movement movement, Monster monster, MapHelper mapHelper)
         {
             this.movement = movement;
             this.monster = monster;
             this.mapHelper = mapHelper;
+            this.monsterWalkingInformations = monster.monsterWalkingInformations;
         }
         public void whereTheMonsterShouldGoForAWalk(Map map)
         {
-            monster.monsterWalkingInformations.onWay = true;
-            monster.monsterWalkingInformations.Destination = map;
-            monster.monsterWalkingInformations.unreachableDoors = new HashSet<Door>();
+            monsterWalkingInformations.onWay = true;
+            monsterWalkingInformations.Destination = map;
+            monsterWalkingInformations.unreachableDoors.Clear();
             GeneratingPath(monster, mapHelper);
         }
         public void Walking(MapHelper mapHelper, DataIOManager dataIOManager)
         {
-            Direction directionToGo = WhichDirectionToGo(monster.monsterWalkingInformations.path, monster, mapHelper, dataIOManager);
+            Direction directionToGo = WhichDirectionToGo(monsterWalkingInformations.path, monster, mapHelper, dataIOManager);
             if (directionToGo != Direction.Null)
             {
                 movement.MoveCharacter(monster, directionToGo);
             }
             else
             {
-                if (monster.monsterWalkingInformations.path.Count == 1)
+                if (monsterWalkingInformations.path.Count == 1)
                 {
                     //it arrived
-                    monster.monsterWalkingInformations.UponArrival();
+                    monsterWalkingInformations.UponArrival();
                 }
                 else
                 {

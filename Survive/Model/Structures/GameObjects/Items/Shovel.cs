@@ -11,6 +11,15 @@ namespace Survive
         public override string itemName => "Shovel";
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 1;
+        public override string soundFileName => "Shovel";
+        public Shovel(GameInformations gameInformations) : base(gameInformations)
+        {
+            this.gameInformations = gameInformations;
+        }
+        public override Sound GetSound()
+        {
+            return new Sound(soundFileName, noiseLevel);
+        }
         public override void PickUp(Character character)
         {
             pickUp(character);

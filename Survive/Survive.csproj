@@ -54,6 +54,7 @@
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterHearing.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasing.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterChasing\MonsterChasingInformations.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterMovement\MonsterSearching\MonsterSearching.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Model\Structures\UnCategorized\Enums.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Character.cs" />
     <Compile Include="Model\Structures\Maps\Map.cs" />
+    <Compile Include="Model\Structures\UnCategorized\Sound.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\View.cs" />

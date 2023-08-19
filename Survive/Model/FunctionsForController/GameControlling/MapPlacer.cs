@@ -9,13 +9,15 @@ namespace Survive
 {
     class MapPlacer
     {
+        GameInformations gameInformations;
         Maps maps;
         Characters characters;
         MapOperations mapOperations;
         ReturnFunctions returnFunctions;
         RoomMapCollection roomMapCollection;
-        public MapPlacer(Maps maps, Characters characters)
+        public MapPlacer(Maps maps, Characters characters, GameInformations gameInformations)
         {
+            this.gameInformations = gameInformations;
             this.maps = maps;
             this.characters = characters;
             this.mapOperations = maps.mapsFunctions.mapOperations;
@@ -46,15 +48,15 @@ namespace Survive
         void PlaceItemsOnMaps(Maps maps)
         {
             Coordinates plateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
-            mapOperations.PlaceItemOnMap(new Plate(), roomMapCollection.roomsByFloor[1][0], plateCoordinates);
+            mapOperations.PlaceItemOnMap(new Plate(gameInformations), roomMapCollection.roomsByFloor[1][0], plateCoordinates);
             Coordinates brokenPlateCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
-            mapOperations.PlaceItemOnMap(new BrokenPlate(), roomMapCollection.roomsByFloor[1][0], brokenPlateCoordinates);
+            mapOperations.PlaceItemOnMap(new BrokenPlate(gameInformations), roomMapCollection.roomsByFloor[1][0], brokenPlateCoordinates);
             Coordinates backPackCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
-            mapOperations.PlaceItemOnMap(new BackPack(), roomMapCollection.roomsByFloor[1][0], backPackCoordinates);
+            mapOperations.PlaceItemOnMap(new BackPack(gameInformations), roomMapCollection.roomsByFloor[1][0], backPackCoordinates);
             Coordinates hammerCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
-            mapOperations.PlaceItemOnMap(new Hammer(), roomMapCollection.roomsByFloor[1][0], hammerCoordinates);
+            mapOperations.PlaceItemOnMap(new Hammer(gameInformations), roomMapCollection.roomsByFloor[1][0], hammerCoordinates);
             Coordinates shovelCoordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[1][0], 1)[0];
-            mapOperations.PlaceItemOnMap(new Shovel(), roomMapCollection.roomsByFloor[1][0], shovelCoordinates);
+            mapOperations.PlaceItemOnMap(new Shovel(gameInformations), roomMapCollection.roomsByFloor[1][0], shovelCoordinates);
         }
     }
 }

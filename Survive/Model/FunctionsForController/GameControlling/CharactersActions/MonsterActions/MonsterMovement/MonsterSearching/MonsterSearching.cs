@@ -99,7 +99,7 @@ namespace Survive
         }
         void SearchRooms()
         {
-            if (monsterSearchingInformation.count > 10)
+            if (monsterSearchingInformation.count > 5)
             {
                 //The monster got tired of it
                 monsterSearchingInformation.EndingOfSearching();

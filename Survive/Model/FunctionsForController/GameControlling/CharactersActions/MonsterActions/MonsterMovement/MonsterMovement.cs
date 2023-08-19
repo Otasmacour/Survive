@@ -52,6 +52,7 @@ namespace Survive
                 {
                     monster.monsterChasingInformations.chasing = true;
                     monster.monsterSearchingInformation.EndingOfSearching();
+                    monster.monsterWalkingInformations.UponArrival();
                 }
             }
         }

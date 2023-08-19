@@ -8,9 +8,13 @@ namespace Survive
 {
     abstract class Item : GameObject
     {
+        public GameInformations gameInformations;
         public abstract string itemName { get; }
         public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
+        public abstract string soundFileName { get; }
+        public Item(GameInformations gameInformations) { }
+        public abstract Sound GetSound();
         public abstract void PickUp(Character character);
         public abstract void Drop(Character character);
         public abstract void Use(Character character);
@@ -28,6 +32,7 @@ namespace Survive
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(this);
             character.mapWhereIsLocated.mapInformations.itemsOnMap.Add(this);
             character.inventory.InventoryUpdate();
+            this.gameInformations.sounds.Add(GetSound(), character.mapWhereIsLocated);
         }
     }
 }
