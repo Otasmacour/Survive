@@ -1,2 +1,3 @@
 Preparing general item spawning function
+Complete the DecideWhereToGo method
 add tunnels(maps, where monster cant go) think about what will happen, if player drops item in such tunnel and monster is close enough to hear it

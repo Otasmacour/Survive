@@ -130,7 +130,6 @@ namespace Survive
         }
         Coordinates DecideWhereToSearch()
         {
-            Coordinates result = new Coordinates();
             if (monster.mapWhereIsLocated.mapInformations.mapLayout.doorCoordinates.Count == 1)
             {
                 return monster.mapWhereIsLocated.mapInformations.mapLayout.doorCoordinates.First().Value;

@@ -15,7 +15,6 @@ namespace Survive
         MonsterSearchingInformation monsterSearchingInformation;
         Player player;
         MapHelper mapHelper;
-        Random random = new Random();
         public MonsterChasing(Movement movement, Monster monster, MapHelper mapHelper, Player player)
         {
             this.movement = movement;
@@ -53,20 +52,6 @@ namespace Survive
                 monsterSearchingInformation.searching = true;
                 monsterChasingInformations.EndingOfChasing();
             }
-        }
-        bool StartSearching()
-        {
-            if (monster.mapWhereIsLocated.mapInformations.mapLayout.doors.Count == 1 || true) //the true is just temporary YesOrNo(5) should be there
-            {
-                return true;
-            }
-            return false;
-        }
-        bool YesOrNo(int Probability)
-        {
-            int number = random.Next(1, Probability);
-            if (number != 1) { return true; }
-            else { return false; }
         }
         static void ChasePlayerInTwoDArray(MapHelper mapHelper, Movement movement, Monster monster, Player player)
         {

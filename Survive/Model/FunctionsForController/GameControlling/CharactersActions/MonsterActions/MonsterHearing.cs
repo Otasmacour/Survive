@@ -52,9 +52,7 @@ namespace Survive
             {
                 monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(nearestAudibleMap);
                 monster.monsterSearchingInformation.EndingOfSearching();
-                Console.WriteLine("Monster is going there - " + nearestAudibleMap.name);
             }
-            Thread.Sleep(2000);
         }
     }
 }

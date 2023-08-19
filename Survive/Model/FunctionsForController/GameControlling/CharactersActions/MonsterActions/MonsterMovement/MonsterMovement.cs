@@ -43,6 +43,10 @@ namespace Survive
             {
                 monsterWalking.Walking(mapHelper, dataIOManager);
             }
+            else
+            {
+                DecideWhereToGo();
+            }
         }
         static void Update(Monster monster, MapHelper mapHelper)
         {
@@ -60,6 +64,11 @@ namespace Survive
         {
             if(mapHelper.boolFunctions.IsPlayerWithinRangeOfMonster() && player.visible) { return true; }
             else { return false; }
+        }
+        void DecideWhereToGo()
+        {
+            Console.WriteLine("Monster is deciding, where to go");
+            Console.ReadKey();
         }
     }
 }
