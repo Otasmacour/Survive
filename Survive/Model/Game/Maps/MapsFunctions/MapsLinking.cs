@@ -16,18 +16,20 @@ namespace Survive
         }
         public void LinkingMaps(RoomMapCollection roomMapCollection, MapsInitialization mapsInitialization)
         {
+            //Tunnels
+            Tunnel TU1 = new Tunnel(mapsInitialization, "HorizontalSecretTunnel", 10, "Secret Tunnel", MapType.Null);
             int floorNumber;
             //Rooms -1 Floor
             floorNumber = -1;
             Map RMS1 = new Map(mapsInitialization, "RMS1", floorNumber, "Room 1", MapType.Null);
-            Map RMS2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
+            Map RMS2 = new Map(mapsInitialization, "RMS2", floorNumber, "Room 2", MapType.Null);
             Map RMS3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
             //Rooms 0  Floor
             floorNumber = 0;
             Map RM01 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
             Map RM02 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
             Map RM03 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
-            Map RM04 = new Map(mapsInitialization, "Room", floorNumber, "Room 4", MapType.Null);
+            Map RM04 = new Map(mapsInitialization, "RM04", floorNumber, "Room 4", MapType.Null);
             Map RM05 = new Map(mapsInitialization, "Room", floorNumber, "Room 5", MapType.Null);
             Map RM06 = new Map(mapsInitialization, "Room", floorNumber, "Room 6", MapType.Null);
             //Rooms 1  Floor
@@ -42,6 +44,10 @@ namespace Survive
             Map VS2 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs", MapType.Stairs);
             Map VS3 = new Map(mapsInitialization, "VerticalStairs", 10, "Stairs", MapType.Stairs);
             //Linking maps together
+            void TunnelsLinking()
+            {
+                TunnelLink(TU1, RMS2, RM04);
+            }
             void LinkingSFloor()
             {
                 MapLink(RMS1, RMS2, Direction.Right);
@@ -68,9 +74,22 @@ namespace Survive
                 MapLink(RMF4, RMF3, Direction.Down);
                 MapLink(VS2, RMF4, Direction.Down);
             }
+            TunnelsLinking();
             LinkingSFloor();
             Linking0Floor();
             Linking1Floor();
+        }
+        public void TunnelLink(Map tunnel, Map map1, Map map2)
+        {
+            map1.mapInformations.mapLayout.secretDoors[0].destinationMap = tunnel;
+            map1.mapInformations.mapLayout.secretDoors[0].transitionPointCoordinates = tunnel.mapInformations.mapLayout.secretTransitionsCoordinates[tunnel.mapInformations.mapLayout.secretDoors[0]];
+            map2.mapInformations.mapLayout.secretDoors[0].destinationMap = tunnel;
+            map2.mapInformations.mapLayout.secretDoors[0].transitionPointCoordinates = tunnel.mapInformations.mapLayout.secretTransitionsCoordinates[tunnel.mapInformations.mapLayout.secretDoors[1]];
+            tunnel.mapInformations.mapLayout.secretDoors[0].destinationMap = map1;
+            tunnel.mapInformations.mapLayout.secretDoors[0].transitionPointCoordinates = map1.mapInformations.mapLayout.secretTransitionsCoordinates[map1.mapInformations.mapLayout.secretDoors[0]];
+            tunnel.mapInformations.mapLayout.secretDoors[1].destinationMap = map2;
+            tunnel.mapInformations.mapLayout.secretDoors[1].transitionPointCoordinates = map2.mapInformations.mapLayout.secretTransitionsCoordinates[map2.mapInformations.mapLayout.secretDoors[0]];
+
         }
         public void MapLink(Map sourceMap, Map destinationMap, Direction sourceDirection)
         {

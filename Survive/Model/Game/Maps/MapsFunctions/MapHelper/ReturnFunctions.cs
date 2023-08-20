@@ -35,6 +35,17 @@ namespace Survive
             }
             return new Door(); //this can obviously never happen
         }
+        public SecretDoor GetSecretDoorThere(Map map, Coordinates coordinates)
+        {
+            foreach (GameObject obj in map.twoDArray[coordinates.y, coordinates.x])
+            {
+                if (obj is SecretDoor)
+                {
+                    return (SecretDoor)obj;
+                }
+            }
+            return new SecretDoor(); //this can obviously never happen
+        }
         public Character GetCharacterThere(List<GameObject> list)
         {
             foreach (GameObject obj in list)
@@ -220,7 +231,8 @@ namespace Survive
                     }
                 }
             }
-            return depths[destinationMap];
+            if (depths.ContainsKey(destinationMap)){ return depths[destinationMap]; }
+            return 1000;
         }
     }
 }

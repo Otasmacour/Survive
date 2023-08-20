@@ -137,6 +137,18 @@ namespace Survive
             }
             return false;
         }
+        public bool SecretDoorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            if (list.Count == 1)
+            {
+                if (list[0] is SecretDoor)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public bool CharacterThere(List<GameObject> list)
         {
             foreach (GameObject obj in list)

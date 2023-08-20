@@ -70,6 +70,12 @@ namespace Survive
                 newCoordinates = door.transitionPointCoordinates;
                 mapToWhere = door.destinationMap;
             }
+            else if(mapHelper.boolFunctions.SecretDoorThere(mapFromWhere.twoDArray, newCoordinates))
+            {
+                SecretDoor secretDoor = mapHelper.returnFunctions.GetSecretDoorThere(mapToWhere, newCoordinates);
+                newCoordinates = secretDoor.transitionPointCoordinates;
+                mapToWhere = secretDoor.destinationMap;
+            }
             if (character.CanGoThere(mapToWhere.twoDArray, newCoordinates))//Each character may have it differently
             {
                 mapOperations.CharacterRelocation(character, mapFromWhere, mapToWhere, character.coordinates, newCoordinates);

@@ -51,6 +51,15 @@ namespace Survive
                         element = new Closet();
                         mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
                         break;
+                    case 's':
+                        element = new SecretDoor();
+                        SecretDoor secretDoor = (SecretDoor)element;
+                        Coordinates transitionPointCoordinates = new Coordinates();
+                        transitionPointCoordinates.y = 1;
+                        transitionPointCoordinates.x = 1;
+                        mapInformations.mapLayout.secretDoors.Add(secretDoor);
+                        mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionPointCoordinates);
+                        break;
                     case 'd':
                         element = new Door();
                         
