@@ -9,6 +9,7 @@ namespace Survive
     class MapLayout
     {
         public List<SecretDoor> secretDoors = new List<SecretDoor>();
+        public Dictionary<SecretDoor, Coordinates> secretDoorsCoordinates = new Dictionary<SecretDoor, Coordinates>();
         public Dictionary<SecretDoor, Coordinates> secretTransitionsCoordinates = new Dictionary<SecretDoor, Coordinates>();
         public Dictionary<Direction, Coordinates> doorCoordinates = new Dictionary<Direction, Coordinates>();
         public Dictionary<Direction, Door> doors = new Dictionary<Direction, Door>();

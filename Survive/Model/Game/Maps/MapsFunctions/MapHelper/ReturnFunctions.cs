@@ -230,6 +230,18 @@ namespace Survive
                         depths.Add(adjacentMap, depths[map] + 1); queue.Enqueue(adjacentMap); visited.Add(adjacentMap);
                     }
                 }
+                foreach (SecretDoor secretDoor in map.mapInformations.mapLayout.secretDoors)
+                {
+                    Map adjacentMap =secretDoor.destinationMap;
+                    if (visited.Contains(adjacentMap))
+                    {
+                        if (depths[map] + 1 < depths[adjacentMap]) { depths[adjacentMap] = depths[map] + 1; queue.Enqueue(adjacentMap); }
+                    }
+                    else
+                    {
+                        depths.Add(adjacentMap, depths[map] + 1); queue.Enqueue(adjacentMap); visited.Add(adjacentMap);
+                    }
+                }
             }
             if (depths.ContainsKey(destinationMap)){ return depths[destinationMap]; }
             return 1000;

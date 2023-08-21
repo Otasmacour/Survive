@@ -75,6 +75,7 @@ namespace Survive
                             transitionCoordinates.x = width;
                         }
                         mapInformations.mapLayout.secretDoors.Add(secretDoor);
+                        mapInformations.mapLayout.secretDoorsCoordinates.Add(secretDoor, coordinates);
                         mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionCoordinates);
                         break;
                     case 'd':

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,7 +51,26 @@ namespace Survive
             }
             if(nearestAudibleMap != null)
             {
-                monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(nearestAudibleMap);
+                if(nearestAudibleMap is Tunnel)
+                {
+                    //In tunnel, one of the door are closest to Player and then the destinationMap, where the door leads is closer to Player, this method finds the closer adjacent map and call whereTheMonsterShouldGoForAWalk with that map as an arqument
+                    var depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(nearestAudibleMap.twoDArray, player.coordinates);
+                    (SecretDoor doorLeadingToNearestAdjacentMap, int depth) bestOption = (nearestAudibleMap.mapInformations.mapLayout.secretDoors[0], 1000000);
+                    foreach(SecretDoor secretDoor in nearestAudibleMap.mapInformations.mapLayout.secretDoors)
+                    {
+                        int doorDepth = depths[mapHelper.parsing.CoordinatesToTupple(nearestAudibleMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor])];
+                        if(doorDepth < bestOption.depth)
+                        {
+                            bestOption.doorLeadingToNearestAdjacentMap = secretDoor;
+                            bestOption.depth = doorDepth;
+                        }
+                    }
+                    monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(bestOption.doorLeadingToNearestAdjacentMap.destinationMap);            
+                }
+                else
+                {
+                    monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(nearestAudibleMap);
+                }
                 monster.monsterSearchingInformation.EndingOfSearching();
             }
         }
