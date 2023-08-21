@@ -54,15 +54,31 @@ namespace Survive
                     case 's':
                         element = new SecretDoor();
                         SecretDoor secretDoor = (SecretDoor)element;
-                        Coordinates transitionPointCoordinates = new Coordinates();
-                        transitionPointCoordinates.y = 1;
-                        transitionPointCoordinates.x = 1;
+                        if(height == 0)
+                        {
+                            transitionCoordinates.y = 1;
+                            transitionCoordinates.x = width;
+                        }
+                        else if (width == 0)
+                        {
+                            transitionCoordinates.y = height;
+                            transitionCoordinates.x = 1;
+                        }
+                        else if (width == mapWidth - 1)
+                        {
+                            transitionCoordinates.y = height;
+                            transitionCoordinates.x = mapWidth - 2;
+                        }
+                        else if (height == mapHeight - 1)
+                        {
+                            transitionCoordinates.y = height - 1;
+                            transitionCoordinates.x = width;
+                        }
                         mapInformations.mapLayout.secretDoors.Add(secretDoor);
-                        mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionPointCoordinates);
+                        mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionCoordinates);
                         break;
                     case 'd':
                         element = new Door();
-                        
                         if (height == 0)
                         {
                             mapInformations.mapLayout.doorCoordinates.Add(Direction.Up, coordinates);
