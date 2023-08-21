@@ -10,6 +10,7 @@ namespace Survive
     {
         Monster monster;
         public HashSet<Map> unVisitedMaps = new HashSet<Map>();
+        public HashSet<Map> searchedMaps = new HashSet<Map>();
         public List<Map> path = new List<Map>();
         public MonsterMovementInformations(Monster monster)
         {
@@ -34,6 +35,7 @@ namespace Survive
                 //}
                 //Console.ReadLine();
                 AddRangeToHashSet(unVisitedMaps, roomMapCollection.list);
+                searchedMaps.Clear();
             }
             else
             {

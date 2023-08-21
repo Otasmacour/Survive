@@ -12,6 +12,7 @@ namespace Survive
         Monster monster;
         MapHelper mapHelper;
         MonsterWalkingInformations monsterWalkingInformations;
+        Random random = new Random();
         public MonsterWalking(Movement movement, Monster monster, MapHelper mapHelper)
         {
             this.movement = movement;
@@ -28,6 +29,13 @@ namespace Survive
         }
         public void Walking(MapHelper mapHelper, DataIOManager dataIOManager)
         {
+            if(ChanceToSearchRoom() && monster.monsterMovementInformations.searchedMaps.Contains(monster.mapWhereIsLocated) == false)
+            {
+                monster.monsterSearchingInformation.searching = true;
+                monster.monsterSearchingInformation.searchingRoom = true;
+                monster.monsterSearchingInformation.furnitureToSearch = new Queue<Coordinates>(monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates);
+                monster.monsterMovementInformations.searchedMaps.Add(monster.mapWhereIsLocated);
+            }
             Direction directionToGo = WhichDirectionToGo(monsterWalkingInformations.path, monster, mapHelper, dataIOManager);
             if (directionToGo != Direction.Null)
             {
@@ -196,6 +204,15 @@ namespace Survive
             }
             Queue<Map> reversed = new Queue<Map>(path.Reverse());
             return (wayFound, reversed);
+        }
+        bool ChanceToSearchRoom()
+        {
+            int number = random.Next(100);
+            if (number < 80)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

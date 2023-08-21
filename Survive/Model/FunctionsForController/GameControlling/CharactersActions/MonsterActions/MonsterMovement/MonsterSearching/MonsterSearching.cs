@@ -56,6 +56,7 @@ namespace Survive
         }
         void SearchTheRoom()
         {
+            Console.WriteLine("Searching room");
             if (monsterSearchingInformation.CurrentFurnitureToSearch == null)
             {
                 if (monsterSearchingInformation.furnitureToSearch.Count == 0)  //The player could somehow leave the room without the monster noticing and triggering the chase mode.
@@ -68,23 +69,34 @@ namespace Survive
                 }
                 else
                 {
+                    Console.WriteLine("still furnitures to search");
                     monsterSearchingInformation.CurrentFurnitureToSearch = monsterSearchingInformation.furnitureToSearch.Dequeue();
                 }
             }
             PerformSearchingRoom();
+            Console.ReadLine();
         }
         void PerformSearchingRoom()
         {
+            Console.WriteLine("Performing");
             bool lastTime = false;
             if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterSearchingInformation.CurrentFurnitureToSearch))
             {
                 lastTime = true;
             }
+            Console.WriteLine("here");
             Direction directionToGo = mapHelper.twoDArrayFunctions.GetDirectionWhileWalkingOnTwoDArray(monsterSearchingInformation.CurrentFurnitureToSearch, monster.coordinates, monster.mapWhereIsLocated.twoDArray);
+            if(directionToGo == Direction.Null)
+            {
+                monsterSearchingInformation.EndingOfSearching();
+                return;
+            }
+            Console.WriteLine("there");
             if (lastTime)
             {
 
                 LookForPlayer();
+                Console.WriteLine("last time");
                 monsterSearchingInformation.CurrentFurnitureToSearch = null;
 
             }

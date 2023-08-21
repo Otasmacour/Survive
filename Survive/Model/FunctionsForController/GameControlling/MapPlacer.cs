@@ -36,13 +36,13 @@ namespace Survive
         {
             Coordinates playerCoordinates = new Coordinates();
             playerCoordinates.y = 1;
-            playerCoordinates.x = 7;
+            playerCoordinates.x = 6;
             mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[1][0], playerCoordinates);
         }
         void PlaceMonsterOnMap(Maps maps, Characters characters)
         {
             Coordinates monsterCoordinates = new Coordinates();
-            monsterCoordinates.y = 3;
+            monsterCoordinates.y = 6;
             monsterCoordinates.x = 3;
             mapOperations.PlaceCharacterOnMap(characters.monster, roomMapCollection.roomsByFloor[1][0], monsterCoordinates);
         }

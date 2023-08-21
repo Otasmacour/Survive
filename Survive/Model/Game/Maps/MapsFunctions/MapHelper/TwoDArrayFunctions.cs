@@ -56,7 +56,7 @@ namespace Survive
             }
             return depths;
         }
-        public Queue<Coordinates> PathInTwoDArray(Dictionary<(int, int), int> depths, List<GameObject>[,] twoDArray, Coordinates destination, Coordinates start)
+        public (Queue<Coordinates> path, bool pathExist) PathInTwoDArray(Dictionary<(int, int), int> depths, List<GameObject>[,] twoDArray, Coordinates destination, Coordinates start)
         {
             if(depths.ContainsKey(parsing.CoordinatesToTupple(destination)) == false)//It is here for a case. When the monster searches a room, it needs to find its way to the furniture in that room, but thanks to the MonsterCanGoThere feature (which also needs to be there, if it wasn't, the monster would endlessly walk headlong into the furniture), the furniture never gets depth, so it needs to check if the destination is in depth, if not, it needs to add itself in like this.
             {
@@ -66,8 +66,16 @@ namespace Survive
             Queue<Coordinates> path = new Queue<Coordinates>();
             Coordinates currentCoordinates = parsing.TuppleToCoordinates(parsing.CoordinatesToTupple(destination));
             path.Enqueue(currentCoordinates);
+            int number = 0;
             while (parsing.CoordinatesToTupple(currentCoordinates) != parsing.CoordinatesToTupple(start))
             {
+                number ++;
+                if(number > 100)
+                {
+                    return (path, false);
+                }
+                Console.WriteLine("currentCoordinates: "+ parsing.CoordinatesToTupple(currentCoordinates));
+                Console.WriteLine("start: "+ parsing.CoordinatesToTupple(start));
                 foreach (Coordinates adjacentCoordinates in returnFunctions.GetAdjacentCoordinates(twoDArray, currentCoordinates, 4).Values)
                 {
                     if (depths.ContainsKey(parsing.CoordinatesToTupple(adjacentCoordinates))) //adjacent Coordinates could be in place of wall, or something that obviously cannot be giwen depth and so cannot be placed in that Dictionary
@@ -85,14 +93,23 @@ namespace Survive
                 }
             }
             Queue<Coordinates> reversed = new Queue<Coordinates>(path.Reverse());
-            return reversed;
+            return (reversed, true);
         }
         public Direction GetDirectionWhileWalkingOnTwoDArray(Coordinates destination, Coordinates start, List<GameObject>[,] twoDArray)
         {
             Dictionary<(int, int), int> depths = TwoDArrayBFS(twoDArray, start);
-            Queue<Coordinates> path = PathInTwoDArray(depths, twoDArray, destination, start);
-            Direction direction = dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(start, path.First());
-            return direction;
+            Console.WriteLine("Here1");
+            var tuple = PathInTwoDArray(depths, twoDArray, destination, start);
+            Queue<Coordinates> path = tuple.path;
+            Console.WriteLine("There1");
+            if(tuple.pathExist)
+            {
+                return dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(start, path.First());
+            }
+            else
+            {
+                return Direction.Null;
+            }
         }
     }
 }
