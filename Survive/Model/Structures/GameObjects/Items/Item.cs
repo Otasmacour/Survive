@@ -12,6 +12,7 @@ namespace Survive
         public abstract string itemName { get; }
         public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
+        public abstract int floorNumberWhereItemSpawns { get; }
         public abstract string soundFileName { get; }
         public Item(GameInformations gameInformations) { }
         public abstract Sound GetSound();

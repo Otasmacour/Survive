@@ -11,6 +11,7 @@ namespace Survive
         public override string itemName => "Hammer";
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 1;
+        public override int floorNumberWhereItemSpawns => -1;
         public override string soundFileName => "Hammer";
         public Hammer(GameInformations gameInformations) : base(gameInformations)
         {

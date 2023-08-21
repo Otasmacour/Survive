@@ -11,6 +11,7 @@ namespace Survive
         public override string itemName => "Backpack";
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => 3;
+        public override int floorNumberWhereItemSpawns => 1;
         public override string soundFileName => "Backpack";
         public BackPack(GameInformations gameInformations) : base(gameInformations)
         {

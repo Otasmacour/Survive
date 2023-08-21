@@ -13,6 +13,7 @@ namespace Survive
             public override string itemName => "Broken plate";
             public override bool takesUpSpaceInTheInventory => true;
             public override int noiseLevel => 3;
+            public override int floorNumberWhereItemSpawns => 1;
             public override string soundFileName => "Broken plate";
             public BrokenPlate(GameInformations gameInformations) : base(gameInformations)
             {

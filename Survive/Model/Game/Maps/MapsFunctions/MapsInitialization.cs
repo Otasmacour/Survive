@@ -77,6 +77,7 @@ namespace Survive
                         mapInformations.mapLayout.secretDoors.Add(secretDoor);
                         mapInformations.mapLayout.secretDoorsCoordinates.Add(secretDoor, coordinates);
                         mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionCoordinates);
+                        mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
                         break;
                     case 'd':
                         element = new Door();
