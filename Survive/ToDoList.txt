@@ -1,2 +1,1 @@
-Preparing general item spawning function
-Complete the DecideWhereToGo method
+Clean up the code in Searching (the mess with infinity loop...)
