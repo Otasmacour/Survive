@@ -1,5 +1,2 @@
 Preparing general item spawning function
 Complete the DecideWhereToGo method
-Tunnels:
-- think about what will happen, if player drops item in such tunnel and monster is close enough to hear it
-- Make the transitionPointCoordinates setting for SecretDoors properly, in CreatingTwoDArrayPlusInformationsOfIt
