@@ -8,13 +8,15 @@ namespace Survive
 {
     class Monster : Character
     {
-        public Monster(Informations info) 
-        {
-            this.info = info;
-        }  
+        public MonsterMovementInformations monsterMovementInformations;
         public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
         public MonsterChasingInformations monsterChasingInformations = new MonsterChasingInformations();
         public MonsterSearchingInformation monsterSearchingInformation = new MonsterSearchingInformation();
+        public Monster(Informations info)
+        {
+            this.info = info;
+            this.monsterMovementInformations = new MonsterMovementInformations(this);
+        }
         public override bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];

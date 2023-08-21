@@ -16,7 +16,8 @@ namespace Survive
         public MonsterChasing monsterChasing;
         public MonsterSearching monsterSearching;
         DataIOManager dataIOManager;
-        public MonsterMovement(Monster monster, MapHelper mapHelper, Movement movement, DataIOManager dataIOManager, Player player)
+        RoomMapCollection roomMapCollection;
+        public MonsterMovement(Monster monster, MapHelper mapHelper, Movement movement, DataIOManager dataIOManager, Player player, RoomMapCollection roomMapCollection)
         {
             this.monster = monster;
             this.mapHelper = mapHelper;
@@ -25,10 +26,11 @@ namespace Survive
             this.monsterChasing = new MonsterChasing(movement, monster, mapHelper, player);
             this.dataIOManager = dataIOManager;
             this.player = player;
+            this.roomMapCollection = roomMapCollection;
         }
         public void Movement() 
         {
-            Update(monster, mapHelper);
+            Update(monster, mapHelper, roomMapCollection);
             if(monster.monsterChasingInformations.chasing)
             {
                 if (PlayerCoulBeKilled()) { return; }
@@ -45,30 +47,27 @@ namespace Survive
             }
             else
             {
-                DecideWhereToGo();
+                monsterWalking.whereTheMonsterShouldGoForAWalk(monster.monsterMovementInformations.DecideWhereToGoForAWalk());
             }
         }
-        static void Update(Monster monster, MapHelper mapHelper)
+        static void Update(Monster monster, MapHelper mapHelper, RoomMapCollection roomMapCollection)
         {
             if(monster.monsterChasingInformations.chasing == false)
             {
-                if (mapHelper.boolFunctions.MonsterSeesThePlayer())
+                if (mapHelper.boolFunctions.MonsterSeesThePlayer())//If monster spots player, it starts to chase him
                 {
                     monster.monsterChasingInformations.chasing = true;
                     monster.monsterSearchingInformation.EndingOfSearching();
                     monster.monsterWalkingInformations.UponArrival();
                 }
             }
+            monster.monsterMovementInformations.Update(roomMapCollection);//Updating unvisited maps, then the DecideWhereToGoForAWalk method can select the map where the monster did not pass.
         }
         bool PlayerCoulBeKilled()
         {
             if(mapHelper.boolFunctions.IsPlayerWithinRangeOfMonster() && player.visible) { return true; }
             else { return false; }
         }
-        void DecideWhereToGo()
-        {
-            Console.WriteLine("Monster is deciding, where to go");
-            Console.ReadKey();
-        }
+        
     }
 }
