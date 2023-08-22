@@ -59,7 +59,6 @@ namespace Survive
         }
         public override void Die(string theWayHowPlayerDied)
         {
-            die();
             info.win = false;
             info.theWayThePlayerDied = theWayHowPlayerDied;
             info.run = false;

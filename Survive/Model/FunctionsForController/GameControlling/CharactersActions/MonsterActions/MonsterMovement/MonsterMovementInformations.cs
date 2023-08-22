@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +13,21 @@ namespace Survive
         public HashSet<Map> unVisitedMaps = new HashSet<Map>();
         public HashSet<Map> searchedMaps = new HashSet<Map>();
         public List<Map> path = new List<Map>();
+        Stopwatch timer = new Stopwatch();
         public MonsterMovementInformations(Monster monster)
         {
             this.monster = monster;
+            timer.Start();
         }
         public void Update(RoomMapCollection roomMapCollection)
         {
-            //path.Add(monster.mapWhereIsLocated);
             if (unVisitedMaps.Count == 0)
             {
-                //path.Clear();
-                //Console.WriteLine("All room visited, path:");
-                //Map currentMap = monster.monsterMovementInformations.path[0];
-                //Console.WriteLine("Floor " + currentMap.mapInformations.floorNumber.ToString() + " " + currentMap.name);
-                //foreach (Map map in monster.monsterMovementInformations.path)
-                //{
-                //    if (currentMap != map)
-                //    {
-                //        Console.WriteLine("Floor " + map.mapInformations.floorNumber.ToString() + " " + map.name);
-                //        currentMap = map;
-                //    }
-                //}
-                //Console.ReadLine();
                 AddRangeToHashSet(unVisitedMaps, roomMapCollection.list);
                 searchedMaps.Clear();
+                Console.WriteLine(timer.ElapsedMilliseconds);
+                timer.Restart();
+                Console.ReadLine();
             }
             else
             {
@@ -54,28 +46,7 @@ namespace Survive
         }
         public Map DecideWhereToGoForAWalk()
         {
-            //Console.WriteLine("Monster is deciding, where to go");
-            //Console.WriteLine("where it could go:");
-            //foreach (Map map in monster.monsterMovementInformations.unVisitedMaps)
-            //{
-            //    Console.WriteLine("Floor " + map.mapInformations.floorNumber.ToString() + " " + map.name);
-            //}
-            //Console.WriteLine();
-            //Console.WriteLine("Path:");
-            //Map currentMap = monster.monsterMovementInformations.path[0];
-            //Console.WriteLine("Floor " + currentMap.mapInformations.floorNumber.ToString() + " " + currentMap.name);
-            //foreach (Map map in monster.monsterMovementInformations.path)
-            //{
-            //    if (currentMap != map)
-            //    {
-            //        Console.WriteLine("Floor " + map.mapInformations.floorNumber.ToString() + " " + map.name);
-            //        currentMap = map;
-            //    }
-            //}
             Map mapToGo = unVisitedMaps.First();
-            //Console.WriteLine();
-            //Console.WriteLine("IT could go to " + "Floor " + mapToGo.mapInformations.floorNumber.ToString() + " " + mapToGo.name);
-            //Console.ReadLine();
             return mapToGo;
         }
     }

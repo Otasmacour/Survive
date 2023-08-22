@@ -24,13 +24,8 @@ namespace Survive
             this.player = player;
             this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper, monster, monsterActions);
         }
-        public void Action()
+        public void Action(char c)
         {
-            if(player.living == false)
-            {
-                return;
-            }
-            char c = Console.ReadKey().KeyChar;
             UserIntent userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
             switch(userIntents)
             {

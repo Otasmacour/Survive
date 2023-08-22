@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -37,26 +38,65 @@ namespace Survive
         }
         bool Escape()
         {
-            gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
+            //gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
+            Stopwatch playerActionStopwatch = new Stopwatch();
+            Task gameUpdateTask = Task.Run(async () => await GameUpdating(view, model));//For the screen updating once a 50 millisecond
+            Task monsterActionTask = Task.Run(async () => await MonsterAction(model));//For the monster moving once a second
             while (model.game.info.run)
             {
-                ResetScreen();
-                gameControlling.monsterActions.Action();
+                PlayerAction(playerActionStopwatch);//When the player takes an action, the monster moves too, this negates the player's normally high speed, so he cannot espace easily
                 gameControlling.gameInformations.SoundsUpdate();
-                ResetScreen();
-                gameControlling.collisionController.MonsterAndPlayerCollision();
-                gameControlling.playerActions.Action();
+                
             }
-            if(model.game.info.win)
+            if (model.game.info.win)
             {
                 return true;
             }
             return false;
         }
-        void ResetScreen()
+        static async Task MonsterAction(Model model)
         {
-            Console.Clear();
-            view.Display(model.game.characters.player.mapWhereIsLocated, gameControlling.gameInformations.GetMonsterDistance(),model.game.characters.player.inventory, gameControlling.gameInformations.GetItemsWithinPlayersReach());
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            stopwatch.Start();
+            while (model.game.info.run)
+            {
+
+                if (stopwatch.ElapsedMilliseconds >= 1)
+                {
+                    model.functionsForController.gameControlling.monsterActions.Action();
+                    stopwatch.Restart();
+                }
+            }
+        }
+        static async Task GameUpdating(View view, Model model)
+        {
+            Stopwatch displayStopwatch = Stopwatch.StartNew();
+            displayStopwatch.Start();
+            while (model.game.info.run)
+            {
+                
+                if (displayStopwatch.ElapsedMilliseconds >= 50)
+                {
+                    model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();
+                    view.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformations.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformations.GetItemsWithinPlayersReach());
+                    displayStopwatch.Restart();
+                }
+            }
+        }
+        void PlayerAction(Stopwatch stopwatch)
+        {
+            stopwatch.Reset();
+            stopwatch.Start();
+            char c = '\0';
+            while (stopwatch.ElapsedMilliseconds < 50)
+            {
+                if (Console.KeyAvailable)
+                {
+                    c = Console.ReadKey(intercept: true).KeyChar;
+                    gameControlling.playerActions.Action(c);
+                    gameControlling.monsterActions.Action(); 
+                }
+            }
         }
         void GameReset()
         {

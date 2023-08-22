@@ -16,6 +16,7 @@ namespace Survive
         }
         public void Display(Map map, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach)
         {
+            Console.Clear();
             PrintMap(map, itemsWithinPlayersReach);
             PrintMonsterDistance(monsterDistance);
             PrintPlayersInventory(playersInventory);
