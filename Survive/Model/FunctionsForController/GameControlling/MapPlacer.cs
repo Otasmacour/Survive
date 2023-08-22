@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,8 +50,20 @@ namespace Survive
         void PlaceItemsOnMaps(Maps maps)
         {
             List<Item> items = new List<Item>();
-            items.Add(new Plate(gameInformations)); items.Add(new BrokenPlate(gameInformations)); items.Add(new BackPack(gameInformations)); items.Add(new Hammer(gameInformations)); items.Add(new Shovel(gameInformations));
-            foreach(Item item in items )
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            foreach (Type type in assembly.GetTypes())
+            {
+                if (typeof(Item).IsAssignableFrom(type) && !type.IsAbstract)
+                {
+                    ConstructorInfo constructor = type.GetConstructor(new[] { typeof(GameInformations) });
+                    if (constructor != null)
+                    {
+                        Item item = (Item)constructor.Invoke(new object[] {gameInformations});
+                        items.Add(item);
+                    }
+                }
+            }
+            foreach (Item item in items)
             {
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
