@@ -1,3 +1,2 @@
 Make the sound system
-Set the time stuff at PlayerAction
-Clean up the code in Searching (the mess with infinity loop...)
+Set the initialization of items in MapPlacer using reflection
