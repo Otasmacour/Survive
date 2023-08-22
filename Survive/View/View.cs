@@ -14,20 +14,20 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void Display(Map map, int monsterDistance, Inventory playersInventory, List<Item> itemsInTheAdjacentFieldsOfPlayer)
+        public void Display(Map map, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach)
         {
-            PrintMap(map, itemsInTheAdjacentFieldsOfPlayer);
+            PrintMap(map, itemsWithinPlayersReach);
             PrintMonsterDistance(monsterDistance);
             PrintPlayersInventory(playersInventory);
         }
-        static void PrintItemsInTheAdjacentFieldsOfPlayer(List<Item> itemsInTheAdjacentFieldsOfPlayer)
+        static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach)
         {
-            foreach(Item item in itemsInTheAdjacentFieldsOfPlayer)
+            foreach(Item item in itemsWithinPlayersReach)
             {
                 Console.WriteLine(item.symbol.ToString() + " - " + item.itemName);
             }
         }
-        void PrintMap(Map map, List<Item> itemsInTheAdjacentFieldsOfPlayer)
+        void PrintMap(Map map, List<Item> itemsWithinPlayersReach)
         {
             List<GameObject>[,] twoDArrayt = map.twoDArray;
             int mapHeight = twoDArrayt.GetLength(0);
@@ -57,7 +57,7 @@ namespace Survive
                 Console.WriteLine("");
             }
             string floorNumber = string.Empty;
-            PrintItemsInTheAdjacentFieldsOfPlayer(itemsInTheAdjacentFieldsOfPlayer);
+            PrintItemsInPlayersReach(itemsWithinPlayersReach);
             if(map.mapInformations.mapType != MapType.Stairs)
             {
                 floorNumber = "Floor "+map.mapInformations.floorNumber.ToString()+", ";

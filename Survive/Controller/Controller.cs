@@ -56,7 +56,7 @@ namespace Survive
         void ResetScreen()
         {
             Console.Clear();
-            view.Display(model.game.characters.player.mapWhereIsLocated, gameControlling.gameInformations.GetMonsterDistance(),model.game.characters.player.inventory, gameControlling.gameInformations.GetItemsAroundPlayer());
+            view.Display(model.game.characters.player.mapWhereIsLocated, gameControlling.gameInformations.GetMonsterDistance(),model.game.characters.player.inventory, gameControlling.gameInformations.GetItemsWithinPlayersReach());
         }
         void GameReset()
         {
