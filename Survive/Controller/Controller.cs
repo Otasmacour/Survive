@@ -40,7 +40,7 @@ namespace Survive
         {
             //gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
             Stopwatch playerActionStopwatch = new Stopwatch();
-            Task gameUpdateTask = Task.Run(async () => await GameUpdating(view, model));//For the screen updating once a 50 millisecond
+            Task gameUpdateTask = Task.Run(async () => await GameUpdate(view, model));//For the screen updating once a 50 millisecond
             Task monsterActionTask = Task.Run(async () => await MonsterAction(model));//For the monster moving once a second
             while (model.game.info.run)
             {
@@ -68,7 +68,7 @@ namespace Survive
                 }
             }
         }
-        static async Task GameUpdating(View view, Model model)
+        static async Task GameUpdate(View view, Model model)
         {
             Stopwatch displayStopwatch = Stopwatch.StartNew();
             displayStopwatch.Start();
