@@ -61,7 +61,7 @@ namespace Survive
             while (model.game.info.run)
             {
 
-                if (stopwatch.ElapsedMilliseconds >= 1)
+                if (stopwatch.ElapsedMilliseconds >= 1000)
                 {
                     model.functionsForController.gameControlling.monsterActions.Action();
                     stopwatch.Restart();

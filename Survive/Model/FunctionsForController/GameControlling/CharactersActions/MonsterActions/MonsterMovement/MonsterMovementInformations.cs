@@ -13,11 +13,9 @@ namespace Survive
         public HashSet<Map> unVisitedMaps = new HashSet<Map>();
         public HashSet<Map> searchedMaps = new HashSet<Map>();
         public List<Map> path = new List<Map>();
-        Stopwatch timer = new Stopwatch();
         public MonsterMovementInformations(Monster monster)
         {
             this.monster = monster;
-            timer.Start();
         }
         public void Update(RoomMapCollection roomMapCollection)
         {
@@ -25,9 +23,6 @@ namespace Survive
             {
                 AddRangeToHashSet(unVisitedMaps, roomMapCollection.list);
                 searchedMaps.Clear();
-                Console.WriteLine(timer.ElapsedMilliseconds);
-                timer.Restart();
-                Console.ReadLine();
             }
             else
             {
