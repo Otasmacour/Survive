@@ -29,7 +29,7 @@ namespace Survive
         }
         public void Walking(MapHelper mapHelper, DataIOManager dataIOManager)
         {
-            if(ChanceToSearchRoom() && monster.monsterMovementInformations.searchedMaps.Contains(monster.mapWhereIsLocated) == false)
+            if(ChanceToSearchRoom() && monster.monsterMovementInformations.searchedMaps.Contains(monster.mapWhereIsLocated) == false)//The monster decided to search the room, that was passing through
             {
                 monster.monsterSearchingInformation.searching = true;
                 monster.monsterSearchingInformation.searchingRoom = true;
@@ -208,7 +208,7 @@ namespace Survive
         bool ChanceToSearchRoom()
         {
             int number = random.Next(100);
-            if (number < 80)
+            if (number < 5)
             {
                 return true;
             }

@@ -74,8 +74,6 @@ namespace Survive
                 {
                     return (path, false);
                 }
-                Console.WriteLine("currentCoordinates: "+ parsing.CoordinatesToTupple(currentCoordinates));
-                Console.WriteLine("start: "+ parsing.CoordinatesToTupple(start));
                 foreach (Coordinates adjacentCoordinates in returnFunctions.GetAdjacentCoordinates(twoDArray, currentCoordinates, 4).Values)
                 {
                     if (depths.ContainsKey(parsing.CoordinatesToTupple(adjacentCoordinates))) //adjacent Coordinates could be in place of wall, or something that obviously cannot be giwen depth and so cannot be placed in that Dictionary
@@ -98,10 +96,8 @@ namespace Survive
         public Direction GetDirectionWhileWalkingOnTwoDArray(Coordinates destination, Coordinates start, List<GameObject>[,] twoDArray)
         {
             Dictionary<(int, int), int> depths = TwoDArrayBFS(twoDArray, start);
-            Console.WriteLine("Here1");
             var tuple = PathInTwoDArray(depths, twoDArray, destination, start);
             Queue<Coordinates> path = tuple.path;
-            Console.WriteLine("There1");
             if(tuple.pathExist)
             {
                 return dataIOManager.enumFunctions.GetDirectionByAdjacentCoordinates(start, path.First());

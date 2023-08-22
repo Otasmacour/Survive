@@ -37,7 +37,6 @@ namespace Survive
             else
             {
                 //The monster was chasing the player and now can't see him
-                //Here should also be some chance, that if the room contains a hideout, the monster will search it
                 if (monster.mapWhereIsLocated.mapInformations.mapLayout.doors.Count == 1)
                 {
                     if (monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates.Count == 0) { monsterSearchingInformation.EndingOfSearching(); return; } //The player could hide in such a way that the monster doesn't know about it (not in a hiding place in the form of furniture), in which case the search would be over.
@@ -56,7 +55,6 @@ namespace Survive
         }
         void SearchTheRoom()
         {
-            Console.WriteLine("Searching room");
             if (monsterSearchingInformation.CurrentFurnitureToSearch == null)
             {
                 if (monsterSearchingInformation.furnitureToSearch.Count == 0)  //The player could somehow leave the room without the monster noticing and triggering the chase mode.
@@ -69,34 +67,28 @@ namespace Survive
                 }
                 else
                 {
-                    Console.WriteLine("still furnitures to search");
                     monsterSearchingInformation.CurrentFurnitureToSearch = monsterSearchingInformation.furnitureToSearch.Dequeue();
                 }
             }
             PerformSearchingRoom();
-            Console.ReadLine();
         }
         void PerformSearchingRoom()
         {
-            Console.WriteLine("Performing");
             bool lastTime = false;
             if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterSearchingInformation.CurrentFurnitureToSearch))
             {
                 lastTime = true;
             }
-            Console.WriteLine("here");
             Direction directionToGo = mapHelper.twoDArrayFunctions.GetDirectionWhileWalkingOnTwoDArray(monsterSearchingInformation.CurrentFurnitureToSearch, monster.coordinates, monster.mapWhereIsLocated.twoDArray);
             if(directionToGo == Direction.Null)
             {
                 monsterSearchingInformation.EndingOfSearching();
                 return;
             }
-            Console.WriteLine("there");
             if (lastTime)
             {
 
                 LookForPlayer();
-                Console.WriteLine("last time");
                 monsterSearchingInformation.CurrentFurnitureToSearch = null;
 
             }
