@@ -74,7 +74,7 @@ namespace Survive
             displayStopwatch.Start();
             while (model.game.info.run)
             {
-                
+                model.functionsForController.soundsController.PlaySounds(8);
                 if (displayStopwatch.ElapsedMilliseconds >= 50)
                 {
                     model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();
