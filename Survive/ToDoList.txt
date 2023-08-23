@@ -1,2 +1,2 @@
 Complete the methods of items and add some basic items, so it can be played
-Complete the sound system and figure out, what to do with WhereTheMonsterShouldGoForAWalk method
+Complete the heartbeat sound working properly
