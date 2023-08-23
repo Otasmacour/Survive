@@ -12,12 +12,14 @@ namespace Survive
     {
         
         GameInformations gameInformations;
+        SoundsController soundsController;
         MonsterMovement monsterMovement;
         MapHelper mapHelper;
         Monster monster;
         Player player;
-        public MonsterHearing(GameInformations gameInformations, MonsterMovement monsterMovement, MapHelper mapHelper, Monster monster, Player player)
+        public MonsterHearing(SoundsController soundsController, GameInformations gameInformations, MonsterMovement monsterMovement, MapHelper mapHelper, Monster monster, Player player)
         {
+            this.soundsController = soundsController;
             this.gameInformations = gameInformations;
             this.monsterMovement = monsterMovement;
             this.mapHelper = mapHelper;
@@ -26,25 +28,27 @@ namespace Survive
         }
         public void Hear()
         {
-            Dictionary<Sound, Map> sounds = new Dictionary<Sound, Map>(gameInformations.sounds);
+            List<(Map map, Sound sound)> sounds = new List<(Map map, Sound sound)>(soundsController.unHeardByAMonster);
+            foreach(var item in sounds) { soundsController.unHeardByAMonster.Remove(item); }
             if (monster.monsterChasingInformations.chasing || sounds.Count == 0) //If monster can see player, it won't pay attention to dropped items
             {
                 return;
             }
             Map nearestAudibleMap = null;
-            foreach(var sound in sounds)
+            Console.Clear();
+            foreach(var item in sounds)
             {
-                if(mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, sound.Value) <= sound.Key.noiceLevel) //That noise level is high enough for monster to hear it
+                if (mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) <= item.sound.noiceLevel) //That noise level is high enough for monster to hear it
                 {
                     if(nearestAudibleMap == null)
                     {
-                        nearestAudibleMap = sound.Value;
+                        nearestAudibleMap = item.map;
                     }
                     else
                     {
-                        if(mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, sound.Value) < mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, nearestAudibleMap))
+                        if(mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) < mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, nearestAudibleMap))
                         {
-                            nearestAudibleMap = sound.Value;
+                            nearestAudibleMap = item.map;
                         }
                     }
                 }
@@ -54,18 +58,19 @@ namespace Survive
                 if(nearestAudibleMap is Tunnel)
                 {
                     //In tunnel, one of the door are closest to Player and then the destinationMap, where the door leads is closer to Player, this method finds the closer adjacent map and call whereTheMonsterShouldGoForAWalk with that map as an arqument
-                    var depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(nearestAudibleMap.twoDArray, player.coordinates);
-                    (SecretDoor doorLeadingToNearestAdjacentMap, int depth) bestOption = (nearestAudibleMap.mapInformations.mapLayout.secretDoors[0], 1000000);
-                    foreach(SecretDoor secretDoor in nearestAudibleMap.mapInformations.mapLayout.secretDoors)
-                    {
-                        int doorDepth = depths[mapHelper.parsing.CoordinatesToTupple(nearestAudibleMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor])];
-                        if(doorDepth < bestOption.depth)
-                        {
-                            bestOption.doorLeadingToNearestAdjacentMap = secretDoor;
-                            bestOption.depth = doorDepth;
-                        }
-                    }
-                    monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(bestOption.doorLeadingToNearestAdjacentMap.destinationMap);            
+                    //var depths = mapHelper.twoDArrayFunctions.TwoDArrayBFS(nearestAudibleMap.twoDArray, player.coordinates);
+                    //(SecretDoor doorLeadingToNearestAdjacentMap, int depth) bestOption = (nearestAudibleMap.mapInformations.mapLayout.secretDoors[0], 1000000);
+                    //foreach(SecretDoor secretDoor in nearestAudibleMap.mapInformations.mapLayout.secretDoors)
+                    //{
+                    //    int doorDepth = depths[mapHelper.parsing.CoordinatesToTupple(nearestAudibleMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor])];
+                    //    if(doorDepth < bestOption.depth)
+                    //    {
+                    //        bestOption.doorLeadingToNearestAdjacentMap = secretDoor;
+                    //        bestOption.depth = doorDepth;
+                    //    }
+                    //}
+                    //monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(bestOption.doorLeadingToNearestAdjacentMap.destinationMap);
+                    monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(nearestAudibleMap.mapInformations.mapLayout.secretDoors[0].destinationMap);
                 }
                 else
                 {

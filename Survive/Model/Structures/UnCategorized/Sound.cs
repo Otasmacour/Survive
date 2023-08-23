@@ -1,19 +1,22 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NAudio.Wave;
 
 namespace Survive
 {
     class Sound
     {
-        string fileName;
+        public AudioFileReader audioFileReader;
+        public WaveOutEvent outputDevice;
         public int noiceLevel;
-        public Sound(string soundFileName, int noiseLevel)
+        public Sound(string soundsFolderPath, string fileName)
         {
-            this.fileName = soundFileName;
-            this.noiceLevel = noiseLevel;
+            audioFileReader = new AudioFileReader(soundsFolderPath + fileName+".mp3");
+            outputDevice = new WaveOutEvent();
         }
     }
 }

@@ -10,15 +10,10 @@ namespace Survive
     {
         MapHelper mapHelper;
         Characters characters;
-        public Dictionary<Sound, Map> sounds = new Dictionary<Sound, Map>();
         public GameInformations(MapHelper mapHelper, Characters characters)
         {
             this.mapHelper = mapHelper;
             this.characters = characters;
-        }
-        public void SoundsUpdate()
-        {
-            sounds.Clear();
         }
         public int GetMonsterDistance()
         {

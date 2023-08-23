@@ -44,9 +44,7 @@ namespace Survive
             Task monsterActionTask = Task.Run(async () => await MonsterAction(model));//For the monster moving once a second
             while (model.game.info.run)
             {
-                PlayerAction(playerActionStopwatch);//When the player takes an action, the monster moves too, this negates the player's normally high speed, so he cannot espace easily
-                gameControlling.gameInformations.SoundsUpdate();
-                
+                PlayerAction(playerActionStopwatch);//When the player takes an action, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
             }
             if (model.game.info.win)
             {

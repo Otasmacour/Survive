@@ -12,14 +12,10 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => 3;
         public override int floorNumberWhereItemSpawns => 1;
-        public override string soundFileName => "Backpack";
-        public BackPack(GameInformations gameInformations) : base(gameInformations)
+        public override string dropSoundFileName => "Backpack";
+        public BackPack(SoundsController soundsController) : base(soundsController)
         {
-            this.gameInformations = gameInformations;
-        }
-        public override Sound GetSound()
-        {
-            return new Sound(soundFileName, noiseLevel);
+            this.soundsController = soundsController;
         }
         public override void PickUp(Character character)
         {

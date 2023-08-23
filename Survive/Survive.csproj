@@ -141,12 +141,11 @@
     <Compile Include="Model\Structures\Maps\MapLayout.cs" />
     <Compile Include="Model\Structures\Maps\MapInformations.cs" />
     <Compile Include="Model\Structures\Maps\Tunnel.cs" />
-    <Compile Include="Model\Structures\UnCategorized\Audio.cs" />
+    <Compile Include="Model\Structures\UnCategorized\Sound.cs" />
     <Compile Include="Model\Structures\UnCategorized\Coordinates.cs" />
     <Compile Include="Model\Structures\UnCategorized\Enums.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Character.cs" />
     <Compile Include="Model\Structures\Maps\Map.cs" />
-    <Compile Include="Model\Structures\UnCategorized\Sound.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\View.cs" />

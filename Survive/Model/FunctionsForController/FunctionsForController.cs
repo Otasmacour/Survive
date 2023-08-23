@@ -12,8 +12,8 @@ namespace Survive
         public SoundsController soundsController;
         public FunctionsForController(MapHelper mapHelper, Model model, Characters characters, DataIOManager dataIOManager)
         {
-            this.gameControlling = new GameControlling(model.game.maps, characters, dataIOManager);
             this.soundsController = new SoundsController(dataIOManager.mainFolderPath);
+            this.gameControlling = new GameControlling(model.game.maps, characters, dataIOManager, soundsController);    
         }
 
     }

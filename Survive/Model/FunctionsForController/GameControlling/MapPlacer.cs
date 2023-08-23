@@ -16,8 +16,9 @@ namespace Survive
         MapOperations mapOperations;
         ReturnFunctions returnFunctions;
         RoomMapCollection roomMapCollection;
+        SoundsController soundsController;
         Random random = new Random();
-        public MapPlacer(Maps maps, Characters characters, GameInformations gameInformations)
+        public MapPlacer(Maps maps, Characters characters, GameInformations gameInformations, SoundsController soundsController)
         {
             this.gameInformations = gameInformations;
             this.maps = maps;
@@ -25,6 +26,7 @@ namespace Survive
             this.mapOperations = maps.mapsFunctions.mapOperations;
             this.returnFunctions = maps.mapsFunctions.mapHelper.returnFunctions;
             this.roomMapCollection = maps.roomMapCollection;
+            this.soundsController = soundsController;
             Place();
         }
         void Place()
@@ -55,10 +57,10 @@ namespace Survive
             {
                 if (typeof(Item).IsAssignableFrom(type) && !type.IsAbstract)
                 {
-                    ConstructorInfo constructor = type.GetConstructor(new[] { typeof(GameInformations) });
+                    ConstructorInfo constructor = type.GetConstructor(new[] { typeof(SoundsController) });
                     if (constructor != null)
                     {
-                        Item item = (Item)constructor.Invoke(new object[] {gameInformations});
+                        Item item = (Item)constructor.Invoke(new object[] {soundsController});
                         items.Add(item);
                     }
                 }
