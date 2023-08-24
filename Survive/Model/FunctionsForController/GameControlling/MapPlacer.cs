@@ -39,7 +39,7 @@ namespace Survive
         {
             Coordinates playerCoordinates = new Coordinates();
             playerCoordinates.y = 1;
-            playerCoordinates.x = 1;
+            playerCoordinates.x = 20;
             mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[10][0], playerCoordinates);
         }
         void PlaceMonsterOnMap(Maps maps, Characters characters)

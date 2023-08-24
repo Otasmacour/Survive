@@ -20,8 +20,8 @@ namespace Survive
             Console.WriteLine("Player's map");
             PrintMap(playersMap, itemsWithinPlayersReach);
             PrintMonsterDistance(monsterDistance);
-            //PrintMap(monstersMap, new List<Item>());
-            //Console.WriteLine("Monsters map");
+            PrintMap(monstersMap, new List<Item>());
+            Console.WriteLine("Monsters map");
             PrintPlayersInventory(playersInventory);
         }
         static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach)

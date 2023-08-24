@@ -40,10 +40,12 @@ namespace Survive
         {
             //gameControlling.monsterActions.monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(model.game.maps.roomMapCollection.roomsByFloor[0][0]);
             Stopwatch playerActionStopwatch = new Stopwatch();
-            Task gameUpdateTask = Task.Run(async () => await GameUpdate(view, model));//For the screen updating once a 50 millisecond
+            //Task gameUpdateTask = Task.Run(async () => await GameUpdate(view, model));//For the screen updating once a 50 millisecond
             Task monsterActionTask = Task.Run(async () => await MonsterAction(model));//For the monster moving once a second
             while (model.game.info.run)
             {
+                view.Display(model.game.characters.player.mapWhereIsLocated, model.game.characters.monster.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformations.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformations.GetItemsWithinPlayersReach());
+                model.game.maps.mapsFunctions.mapHelper.twoDArrayFunctions.DistanceOfMonster(model.game.characters.monster, model.game.characters.player);
                 PlayerAction(playerActionStopwatch);//When the player takes an action, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
             }
             if (model.game.info.win)

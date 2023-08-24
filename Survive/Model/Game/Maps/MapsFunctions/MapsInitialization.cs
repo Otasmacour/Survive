@@ -58,22 +58,27 @@ namespace Survive
                         {
                             transitionCoordinates.y = 1;
                             transitionCoordinates.x = width;
+                            mapInformations.mapLayout.secretDoorsByDirection.Add(Direction.Up, secretDoor);
                         }
                         else if (width == 0)
                         {
                             transitionCoordinates.y = height;
                             transitionCoordinates.x = 1;
+                            mapInformations.mapLayout.secretDoorsByDirection.Add(Direction.Left, secretDoor);
                         }
                         else if (width == mapWidth - 1)
                         {
                             transitionCoordinates.y = height;
                             transitionCoordinates.x = mapWidth - 2;
+                            mapInformations.mapLayout.secretDoorsByDirection.Add(Direction.Right, secretDoor);
                         }
                         else if (height == mapHeight - 1)
                         {
                             transitionCoordinates.y = height - 1;
                             transitionCoordinates.x = width;
+                            mapInformations.mapLayout.secretDoorsByDirection.Add(Direction.Down, secretDoor);
                         }
+                        mapInformations.mapLayout.totalDoor.Add(secretDoor);
                         mapInformations.mapLayout.secretDoors.Add(secretDoor);
                         mapInformations.mapLayout.secretDoorsCoordinates.Add(secretDoor, coordinates);
                         mapInformations.mapLayout.secretTransitionsCoordinates.Add(secretDoor, transitionCoordinates);
@@ -114,6 +119,8 @@ namespace Survive
                             mapInformations.mapLayout.transitionsCoordinates.Add(Direction.Down, transitionCoordinates);
                         }
                         mapInformations.mapLayout.occupiedPlaces.Add(transitionCoordinates);
+                        mapInformations.mapLayout.totalDoor.Add((Door)element);
+                        mapInformations.mapLayout.doorCoordinatesByDoor.Add((Door)element, coordinates);
                         break;
                     default:
                         // If the game designer is capable, this won't happen

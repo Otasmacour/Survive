@@ -12,14 +12,18 @@ namespace Survive
 {
     class SoundsController
     {
+        MapHelper mapHelper;
+        Characters characters;
         public string soundsFolderPath;
         Sound heartBeat;
         long heartBeatDuration;
         Stopwatch stopwatchHeartBeat = new Stopwatch();
         public Queue<(Map map, Sound sound)> soundsToPLay = new Queue<(Map map, Sound sound)>();
         public HashSet<(Map map, Sound sound)> unHeardByAMonster = new HashSet<(Map map, Sound sound)>();
-        public SoundsController(string mainFolderPath) 
+        public SoundsController(string mainFolderPath, MapHelper mapHelper, Characters characters) 
         {
+            this.mapHelper = mapHelper;
+            this.characters = characters;
             this.soundsFolderPath = mainFolderPath+@"Sounds\";
             HeartBeatInitialization();
         }
@@ -58,6 +62,8 @@ namespace Survive
             volumeEffect.Volume = 4.0f - distanceOfMonster*0.7f;
             heartBeat.outputDevice.Init(volumeEffect);
             heartBeat.outputDevice.Play();
+            //mapHelper.twoDArrayFunctions.DistanceOfMonster(characters.monster, characters.player);
+            Console.ReadLine();
         }
     }
 }

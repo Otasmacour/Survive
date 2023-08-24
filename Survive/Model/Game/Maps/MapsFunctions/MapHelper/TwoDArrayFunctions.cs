@@ -107,5 +107,238 @@ namespace Survive
                 return Direction.Null;
             }
         }
+        public Dictionary<(int, int), int> TwoDArrayBFSForDistance(List<GameObject>[,] twoDArray, Coordinates start)
+        {
+            Dictionary<(int, int), int> depths = new Dictionary<(int, int), int>();
+            Queue<(int y, int x)> queue = new Queue<(int, int)>();
+            HashSet<(int, int)> visited = new HashSet<(int, int)>();
+            depths.Add(parsing.CoordinatesToTupple(start), 0);
+            queue.Enqueue(parsing.CoordinatesToTupple(start));
+            visited.Add(parsing.CoordinatesToTupple(start));
+            while (queue.Count > 0)
+            {
+                Coordinates coordinates = parsing.TuppleToCoordinates(queue.Dequeue());
+                foreach (Coordinates adjacentCoordinates in returnFunctions.GetAdjacentCoordinates(twoDArray, coordinates, 4).Values)
+                {
+                    if (visited.Contains(parsing.CoordinatesToTupple(adjacentCoordinates)) == false)
+                    {
+                        depths.Add(parsing.CoordinatesToTupple(adjacentCoordinates), depths[parsing.CoordinatesToTupple(coordinates)] + 1);
+                        queue.Enqueue(parsing.CoordinatesToTupple(adjacentCoordinates));
+                        visited.Add(parsing.CoordinatesToTupple(adjacentCoordinates));
+                    }
+                    else if (visited.Contains(parsing.CoordinatesToTupple(adjacentCoordinates)) == false && boolFunctions.DoorThere(twoDArray, adjacentCoordinates))
+                    {
+                        depths.Add(parsing.CoordinatesToTupple(adjacentCoordinates), depths[parsing.CoordinatesToTupple(coordinates)] + 1);
+                        visited.Add(parsing.CoordinatesToTupple(adjacentCoordinates));
+                    }
+                    else if (visited.Contains(parsing.CoordinatesToTupple(adjacentCoordinates)))
+                    {
+                        if (depths[parsing.CoordinatesToTupple(adjacentCoordinates)] > depths[parsing.CoordinatesToTupple(coordinates)] + 1)
+                        {
+                            depths[parsing.CoordinatesToTupple(adjacentCoordinates)] = depths[parsing.CoordinatesToTupple(coordinates)] + 1;
+                            queue.Enqueue(parsing.CoordinatesToTupple(adjacentCoordinates));
+                        }
+                    }
+                }
+            }
+            return depths;
+        }
+        int DistanceOfTwoGameObjects(List<GameObject>[,] twoDArray, Coordinates start, Coordinates destination)
+        {
+
+            var depths = TwoDArrayBFSForDistance(twoDArray, start);
+            int distance = depths[parsing.CoordinatesToTupple(destination)];
+            return distance;
+        }
+        List<(Coordinates coordinatesStart, Coordinates coordinatesDestination, Map map)> GetPassageList(Monster monster, Player player, List<Map> mapsPath)
+        {
+            List<(Coordinates coordinatesStart, Coordinates coordinatesDestination, Map map)> passageList = new List<(Coordinates doorStart, Coordinates doorDestination, Map map)>();
+            if(monster.mapWhereIsLocated == player.mapWhereIsLocated)
+            {
+                (Coordinates doorStart, Coordinates doorDestination, Map map) PlayerAndMonster = (monster.coordinates, player.coordinates, monster.mapWhereIsLocated);
+                passageList.Add(PlayerAndMonster);
+                return passageList;
+            }
+            //Passage through the first map
+            Map firstMap = mapsPath[0];
+            Coordinates coordinatesStart = monster.coordinates;
+            Coordinates coordinatesDestination = new Coordinates();
+            foreach (GameObject gmDoor in firstMap.mapInformations.mapLayout.totalDoor)
+            {
+                if (gmDoor is Door)
+                {
+                    Door door = (Door)gmDoor;
+                    if (door.destinationMap == mapsPath[1])
+                    {
+                        coordinatesDestination = firstMap.mapInformations.mapLayout.doorCoordinatesByDoor[door];
+                    }
+                }
+                else if (gmDoor is SecretDoor)
+                {
+                    SecretDoor secretDoor = (SecretDoor)gmDoor;
+                    if (secretDoor.destinationMap == mapsPath[1])
+                    {
+                        coordinatesDestination = firstMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor];
+                    }
+                }
+            }
+            (Coordinates doorStart, Coordinates doorDestination, Map map) firstPassage = (coordinatesStart, coordinatesDestination, firstMap);
+            passageList.Add(firstPassage);
+            //Passage through the last map
+            Map lastMap = mapsPath[mapsPath.Count - 1];
+            Coordinates coordinatesStart2 = monster.coordinates;
+            Coordinates coordinatesDestination2 = player.coordinates;
+            foreach (GameObject gmDoor in lastMap.mapInformations.mapLayout.totalDoor)
+            {
+                if (gmDoor is Door)
+                {
+                    Door door = (Door)gmDoor;
+                    if (door.destinationMap == mapsPath[mapsPath.Count - 2])
+                    {
+                        coordinatesStart2 = lastMap.mapInformations.mapLayout.doorCoordinatesByDoor[door];
+                    }
+                }
+                else if (gmDoor is SecretDoor)
+                {
+                    SecretDoor secretDoor = (SecretDoor)gmDoor;
+                    if (secretDoor.destinationMap == mapsPath[mapsPath.Count - 2])
+                    {
+                        coordinatesStart2 = lastMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor];
+                    }
+                }
+            }
+            (Coordinates doorStart, Coordinates doorDestination, Map map) lastPassage = (coordinatesStart2, coordinatesDestination2, lastMap);
+            passageList.Add(lastPassage);
+            if (mapsPath.Count < 2)
+            {
+                return passageList;
+            }
+            //Distances the rest of the path
+            for (int i = 1; i < mapsPath.Count - 1; i++)
+            {
+                Map beforeMap = mapsPath[i - 1];
+                Map nowMap = mapsPath[i];
+                Map nextMap = mapsPath[i + 1];
+                Coordinates coordinatesDoorStart = new Coordinates();
+                Coordinates coordinatesDoorDestination = new Coordinates();
+                foreach (GameObject gmDoor in nowMap.mapInformations.mapLayout.totalDoor)
+                {
+                    if (gmDoor is Door)
+                    {
+                        Door door = (Door)gmDoor;
+                        if (door.destinationMap == beforeMap)
+                        {
+                            coordinatesDoorStart = nowMap.mapInformations.mapLayout.doorCoordinatesByDoor[door];
+                        }
+                        else if (door.destinationMap == nextMap)
+                        {
+                            coordinatesDoorDestination = nowMap.mapInformations.mapLayout.doorCoordinatesByDoor[door];
+                        }
+                    }
+                    else if (gmDoor is SecretDoor)
+                    {
+                        SecretDoor secretDoor = (SecretDoor)gmDoor;
+                        if (secretDoor.destinationMap == beforeMap)
+                        {
+                            coordinatesDoorStart = nowMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor];
+                        }
+                        else if (secretDoor.destinationMap == nextMap)
+                        {
+                            coordinatesDoorDestination = nowMap.mapInformations.mapLayout.secretDoorsCoordinates[secretDoor];
+                        }
+
+                    }
+                }
+                (Coordinates doorStart, Coordinates doorDestination, Map map) passage = (coordinatesDoorStart, coordinatesDoorDestination, nowMap);
+                passageList.Add(passage);
+            }
+            return passageList;
+        }
+        public int DistanceOfMonster(Monster monster, Player player)
+        {
+            //Maps BFS
+            Map start = player.mapWhereIsLocated;
+            Map destination = monster.mapWhereIsLocated;
+            Dictionary<Map, int> depths = new Dictionary<Map, int>();
+            Queue<Map> queue = new Queue<Map>();
+            HashSet<Map> visited = new HashSet<Map>();
+            depths.Add(start, 0);
+            queue.Enqueue(start);
+            visited.Add(start);
+            while (queue.Count > 0)
+            {
+                Map map = queue.Dequeue();
+                foreach (Door door in map.mapInformations.mapLayout.doors.Values)
+                {
+                    Map adjacentMap = door.destinationMap;
+                    if (visited.Contains(adjacentMap) == false)
+                    {
+                        depths.Add(adjacentMap, depths[map] + 1);
+                        queue.Enqueue(adjacentMap);
+                        visited.Add(adjacentMap);
+                    }
+                    else
+                    {
+                        if (depths[adjacentMap] > depths[map] + 1)
+                        {
+                            depths[adjacentMap] = depths[map] + 1;
+                            queue.Enqueue(adjacentMap);
+                        }
+                    }
+                }
+                foreach (SecretDoor secretDoor in map.mapInformations.mapLayout.secretDoors)
+                {
+                    Map adjacentMap = secretDoor.destinationMap;
+                    if (visited.Contains(adjacentMap) == false)
+                    {
+                        depths.Add(adjacentMap, depths[map] + 1);
+                        queue.Enqueue(adjacentMap);
+                        visited.Add(adjacentMap);
+                    }
+                    else
+                    {
+                        if (depths[adjacentMap] > depths[map] + 1)
+                        {
+                            depths[adjacentMap] = depths[map] + 1;
+                            queue.Enqueue(adjacentMap);
+                        }
+                    }
+                }
+            }
+            //Searching for a path between maps
+            List<GameObject> doorsPath = new List<GameObject>();
+            List<Map> mapsPath = new List<Map>();
+            mapsPath.Add(monster.mapWhereIsLocated);
+            Map currentMap = destination;
+            while (currentMap != start)
+            {
+                foreach (Door door in currentMap.mapInformations.mapLayout.doors.Values)
+                {
+                    Map adjacentMap = door.destinationMap;
+                    if (depths[adjacentMap] < depths[currentMap])
+                    {
+                        currentMap = adjacentMap;
+                        mapsPath.Add(adjacentMap);
+                    }
+                }
+                foreach (SecretDoor secretDoor in currentMap.mapInformations.mapLayout.secretDoors)
+                {
+                    Map adjacentMap = secretDoor.destinationMap;
+                    if (depths[adjacentMap] < depths[currentMap])
+                    {
+                        currentMap = adjacentMap;
+                        mapsPath.Add(adjacentMap);
+                    }
+                }
+            }
+            List<(Coordinates coordinatesStart, Coordinates coordinatesDestination, Map map)> passageList = GetPassageList(monster, player, mapsPath);
+            int totalDistance = 0;
+            foreach (var passage in passageList)
+            {
+                totalDistance += DistanceOfTwoGameObjects(passage.map.twoDArray, passage.coordinatesStart, passage.coordinatesDestination);
+            }
+            Console.WriteLine("Total distance: " + totalDistance.ToString());
+            return depths[monster.mapWhereIsLocated];
+        }
     }
 }
