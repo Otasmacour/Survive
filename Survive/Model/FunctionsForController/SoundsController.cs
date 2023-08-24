@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,14 @@ namespace Survive
     {
         public string soundsFolderPath;
         Sound heartBeat;
+        long heartBeatDuration;
+        Stopwatch stopwatchHeartBeat = new Stopwatch();
         public Queue<(Map map, Sound sound)> soundsToPLay = new Queue<(Map map, Sound sound)>();
         public HashSet<(Map map, Sound sound)> unHeardByAMonster = new HashSet<(Map map, Sound sound)>();
         public SoundsController(string mainFolderPath) 
         {
             this.soundsFolderPath = mainFolderPath+@"Sounds\";
-            SoundsInitialization();
+            HeartBeatInitialization();
         }
         public void PlaySounds(int distanceOfMonster)
         {
@@ -30,20 +33,30 @@ namespace Survive
                 item.sound.outputDevice.Play();
             }
         }
-        void SoundsInitialization()
+        void HeartBeatInitialization()
         {
-            heartBeat = new Sound(soundsFolderPath, "HeartBeat");
-            SoundInitialization(heartBeat, 4);
-        }
-        void SoundInitialization(Sound audio, float volume)
-        {
-            audio.outputDevice.Init(audio.audioFileReader);
-            var volumeEffect = new VolumeSampleProvider(audio.audioFileReader.ToSampleProvider());
-            volumeEffect.Volume = volume;
-            audio.outputDevice.Init(volumeEffect);
+            stopwatchHeartBeat.Start();
+            heartBeat = new Sound(soundsFolderPath, "HeartBeat0");
+            heartBeat.outputDevice.Init(heartBeat.audioFileReader);
+            heartBeatDuration = (long)heartBeat.audioFileReader.TotalTime.TotalMilliseconds;
         }
         void HeartBeat(int distanceOfMonster)
         {
+            if (stopwatchHeartBeat.ElapsedMilliseconds < heartBeatDuration || distanceOfMonster > 3)
+            {
+                return;
+            }
+            PerformHeartBeat(distanceOfMonster);
+            heartBeatDuration = (long)heartBeat.audioFileReader.TotalTime.TotalMilliseconds;
+            stopwatchHeartBeat.Restart();
+        }
+        void PerformHeartBeat(int distanceOfMonster)
+        {
+            heartBeat = new Sound(soundsFolderPath, "HeartBeat"+distanceOfMonster.ToString());
+            //heartBeat = new Sound(soundsFolderPath, "HeartBeat0");
+            var volumeEffect = new VolumeSampleProvider(heartBeat.audioFileReader.ToSampleProvider());
+            volumeEffect.Volume = 4.0f - distanceOfMonster*0.7f;
+            heartBeat.outputDevice.Init(volumeEffect);
             heartBeat.outputDevice.Play();
         }
     }

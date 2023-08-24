@@ -14,11 +14,14 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void Display(Map map, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach)
+        public void Display(Map playersMap, Map monstersMap, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach)
         {
             Console.Clear();
-            PrintMap(map, itemsWithinPlayersReach);
+            Console.WriteLine("Player's map");
+            PrintMap(playersMap, itemsWithinPlayersReach);
             PrintMonsterDistance(monsterDistance);
+            //PrintMap(monstersMap, new List<Item>());
+            //Console.WriteLine("Monsters map");
             PrintPlayersInventory(playersInventory);
         }
         static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach)

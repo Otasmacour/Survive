@@ -72,11 +72,11 @@ namespace Survive
             displayStopwatch.Start();
             while (model.game.info.run)
             {
-                model.functionsForController.soundsController.PlaySounds(8);
+                model.functionsForController.soundsController.PlaySounds(model.functionsForController.gameControlling.gameInformations.GetMonsterDistance());
                 if (displayStopwatch.ElapsedMilliseconds >= 50)
                 {
                     model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();
-                    view.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformations.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformations.GetItemsWithinPlayersReach());
+                    view.Display(model.game.characters.player.mapWhereIsLocated, model.game.characters.monster.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformations.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformations.GetItemsWithinPlayersReach());
                     displayStopwatch.Restart();
                 }
             }
