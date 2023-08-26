@@ -12,7 +12,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 1;
         public override int floorNumberWhereItemSpawns => 1;
-        public override string dropSoundFileName => "Shovel";
+        public override string dropSoundFileName => "FallingTool";
         public Shovel(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;
@@ -31,7 +31,7 @@ namespace Survive
         }
         public override char GetSymbol(Map map)
         {
-            return 's';
+            return 'S';
         }
         public override int GetPriorityNumber()
         {

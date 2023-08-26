@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survive.Survive;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 3;
         public override int floorNumberWhereItemSpawns => 0;
-        public override string dropSoundFileName => "Plate";
+        public override string dropSoundFileName => "PlateDrop";
         public Plate(SoundsController soundsController) : base(soundsController) 
         {
             this.soundsController = soundsController;
@@ -23,7 +24,14 @@ namespace Survive
         }
         public override void Drop(Character character)
         {
-            drop(character);
+            character.inventory.items.Remove(this);
+            character.inventory.currentlyHeldItem = null;
+            character.inventory.InventoryUpdate();
+            BrokenPlate brokenPlate = new BrokenPlate(soundsController);
+            character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(brokenPlate);
+            character.mapWhereIsLocated.mapInformations.itemsOnMap.Add(brokenPlate);
+            this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(dropSoundFileName)));
+
             //Dropped Plate becomes BrokenPlate, not implemented yet
         }
         public override void Use(Character character)

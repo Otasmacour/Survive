@@ -31,7 +31,7 @@ namespace Survive
         }
         public override char GetSymbol(Map map)
         {
-            return 'h';
+            return 'H';
         }
         public override int GetPriorityNumber()
         {
