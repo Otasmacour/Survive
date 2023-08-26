@@ -19,18 +19,23 @@ namespace Survive
             name = "Tyler";
             inventory = new Inventory(1);
         }
-        public void VisibilityUpdate(Map map, Coordinates newCoordinates, MapHelper mapHelper)
+        public void VisibilityUpdate(Map mapToWhere, Map mapFromWhere, Coordinates newCoordinates, MapHelper mapHelper)
         {
-            if(CanGoThere(map.twoDArray, newCoordinates)) //When this wasn't here, player could walk to wall and lose his invisibility
+            if(CanGoThere(mapToWhere.twoDArray, newCoordinates)) //When this wasn't here, player could walk to wall and lose his invisibility
             {
-                if (mapHelper.boolFunctions.HideoutThere(map.twoDArray, newCoordinates) && mapWhereIsLocated!= monster.mapWhereIsLocated)
+                if (mapHelper.boolFunctions.HideoutThere(mapToWhere.twoDArray, newCoordinates))
                 {
-                    this.visible = false;
+                    if (mapWhereIsLocated != monster.mapWhereIsLocated)
+                    {
+                        this.visible = false;
+                    }
+                    else if(mapFromWhere != mapToWhere)
+                    {
+                        this.visible = false;
+                    }
+                    else { this.visible = true; }
                 }
-                else
-                {
-                    this.visible = true;
-                }
+                else { this.visible = true; }
             }
         }
         public override bool CanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)

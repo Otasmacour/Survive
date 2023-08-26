@@ -78,7 +78,7 @@ namespace Survive
             if (character is Player)
             {
                 Player player = (Player)character;
-                player.VisibilityUpdate(mapToWhere, newCoordinates, mapHelper);
+                player.VisibilityUpdate(mapToWhere, mapFromWhere, newCoordinates, mapHelper);
             }
         }
     }
