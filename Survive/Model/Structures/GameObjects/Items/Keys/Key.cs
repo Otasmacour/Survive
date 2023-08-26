@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class Shovel : Item
+    abstract class Key : Item
     {
-        public override string itemName => "Shovel";
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 1;
-        public override int floorNumberWhereItemSpawns => 1;
+        public override int noiseLevel => 2;
+        public override int floorNumberWhereItemSpawns => 0;
         public override string dropSoundFileName => "FallingTool";
-        public Shovel(SoundsController soundsController) : base(soundsController)
+        public Key(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;
         }
@@ -24,14 +23,6 @@ namespace Survive
         public override void Drop(Character character)
         {
             drop(character);
-        }
-        public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
-        {
-
-        }
-        public override char GetSymbol(Map map)
-        {
-            return 'S';
         }
         public override int GetPriorityNumber()
         {

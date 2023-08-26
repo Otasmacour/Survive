@@ -34,6 +34,8 @@ namespace Survive
             PlacePlayerOnMap(maps, characters);
             PlaceMonsterOnMap(maps, characters);
             PlaceItemsOnMaps(maps);
+            PlaceChests();
+            PlaceKeys();
         }
         void PlacePlayerOnMap(Maps maps, Characters characters)
         {
@@ -70,6 +72,32 @@ namespace Survive
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
                 mapOperations.PlaceItemOnMap(item, map, coordinates);
+            }
+        }
+        void PlaceChests()
+        {
+            List<Item> contents = new List<Item>();
+            contents.Add(new Plate(soundsController));
+            contents.Add(new Plate(soundsController));
+            List<Chest> chests = new List<Chest>();
+            WoodenChest woodenChest = new WoodenChest(soundsController, contents[0]); chests.Add(woodenChest);
+            IronChest ironChest = new IronChest(soundsController, contents[1]); chests.Add(ironChest);
+            foreach (Chest chest in chests)
+            {
+                Map map = roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns].Count)];
+                Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
+                mapOperations.PlaceItemOnMap(chest, map, coordinates);
+            }
+        }
+        void PlaceKeys()
+        {
+            List<Key> keys = new List<Key>();
+            WoodenKey woodenKey = new WoodenKey(soundsController); keys.Add(woodenKey);
+            foreach (Key key in keys)
+            {
+                Map map = roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns].Count)];
+                Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
+                mapOperations.PlaceItemOnMap(key, map, coordinates);
             }
         }
     }

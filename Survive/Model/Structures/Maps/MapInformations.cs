@@ -11,7 +11,6 @@ namespace Survive
         public MapLayout mapLayout = new MapLayout();
         public List<Character> charactersOnMap = new List<Character>();
         public List<Map> adjacentMaps = new List<Map>();
-        public List<Item> itemsOnMap = new List<Item>();
         public int floorNumber;
         public MapType mapType;
     }

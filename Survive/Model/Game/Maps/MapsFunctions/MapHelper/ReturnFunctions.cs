@@ -47,6 +47,17 @@ namespace Survive
             }
             throw new NotImplementedException(); //this can obviously never happen
         }
+        public Chest GetChestThere(Map map, Coordinates coordinates)
+        {
+            foreach (GameObject obj in map.twoDArray[coordinates.y, coordinates.x])
+            {
+                if (obj is Chest)
+                {
+                    return (Chest)obj;
+                }
+            }
+            throw new NotImplementedException(); //this can obviously never happen
+        }
         public Character GetCharacterThere(List<GameObject> list)
         {
             foreach (GameObject obj in list)

@@ -19,7 +19,7 @@ namespace Survive
         public Item(SoundsController soundsController) { }
         public abstract void PickUp(Character character);
         public abstract void Drop(Character character);
-        public abstract void Use(Character character);
+        public abstract void Use(Character character, MapHelper mapHelper, Alerts alerts);
         public Sound GetSound(string soundFileName)
         {
             Sound sound = new Sound(soundsController.soundsFolderPath, soundFileName);
@@ -33,7 +33,6 @@ namespace Survive
         {
             if (this.takesUpSpaceInTheInventory) { character.inventory.items.Add(this); }
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Remove(this);
-            character.mapWhereIsLocated.mapInformations.itemsOnMap.Remove(this);
             character.inventory.InventoryUpdate();
         }
         public void drop(Character character)
@@ -41,7 +40,6 @@ namespace Survive
             character.inventory.items.Remove(this);
             character.inventory.currentlyHeldItem = null;
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(this);
-            character.mapWhereIsLocated.mapInformations.itemsOnMap.Add(this);
             character.inventory.InventoryUpdate();
             this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(dropSoundFileName)));
         }

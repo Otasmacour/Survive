@@ -27,7 +27,7 @@ namespace Survive
             {
                 drop(character);
             }
-            public override void Use(Character character)
+            public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
             {     
 
             }

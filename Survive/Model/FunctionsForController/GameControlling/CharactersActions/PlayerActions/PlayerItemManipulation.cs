@@ -52,7 +52,7 @@ namespace Survive
         {
             if(player.inventory.currentlyHeldItem != null)
             {
-                player.inventory.currentlyHeldItem.Use(player);
+                player.inventory.currentlyHeldItem.Use(player, mapHelper, alerts);
             }
         }
         public void SwitchItem(Player player)

@@ -35,7 +35,6 @@ namespace Survive
         public void PlaceItemOnMap(Item item, Map map, Coordinates coordinates)
         {
             map.twoDArray[coordinates.y, coordinates.x].Add(item);
-            map.mapInformations.itemsOnMap.Add(item);
         }
     }
 }

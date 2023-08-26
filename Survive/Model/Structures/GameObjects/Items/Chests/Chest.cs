@@ -6,34 +6,35 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class BackPack : Item
+    abstract class Chest : Item
     {
-        public override string itemName => "Backpack";
+        public Item content;
+        public void Unlock(Map map, Coordinates coordinates)
+        {
+            map.twoDArray[coordinates.y,coordinates.x].Remove(this);
+            map.twoDArray[coordinates.y, coordinates.x].Add(content);
+        }
         public override bool takesUpSpaceInTheInventory => false;
-        public override int noiseLevel => 3;
-        public override int floorNumberWhereItemSpawns => 1;
+        public override int noiseLevel => throw new NotImplementedException();
+        public override int floorNumberWhereItemSpawns => 0;
         public override string dropSoundFileName => throw new NotImplementedException();
-        public BackPack(SoundsController soundsController) : base(soundsController)
+        public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {
             this.soundsController = soundsController;
+            this.content = new Plate(soundsController);
         }
         public override void PickUp(Character character)
         {
-            pickUp(character);
-            character.inventory.inventorySize += 3;
+            
         }
         public override void Drop(Character character)
         {
-            drop(character);
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            
+            throw new NotImplementedException();
         }
-        public override char GetSymbol(Map map)
-        {
-            return 'B';
-        }
+
         public override int GetPriorityNumber()
         {
             return 80;
