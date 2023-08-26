@@ -17,6 +17,7 @@ namespace Survive
         public string soundsFolderPath;
         Sound heartBeat;
         long heartBeatDuration;
+        int pauseBetweenHeartbeats = 1200;
         Stopwatch stopwatchHeartBeat = new Stopwatch();
         public Queue<(Map map, Sound sound)> soundsToPLay = new Queue<(Map map, Sound sound)>();
         public HashSet<(Map map, Sound sound)> unHeardByAMonster = new HashSet<(Map map, Sound sound)>();
@@ -27,9 +28,9 @@ namespace Survive
             this.soundsFolderPath = mainFolderPath+@"Sounds\";
             HeartBeatInitialization();
         }
-        public void PlaySounds(int distanceOfMonster)
+        public void PlaySounds()
         {
-            HeartBeat(distanceOfMonster);
+            HeartBeat();
             while(soundsToPLay.Count > 0)
             {
                 var item = soundsToPLay.Dequeue();
@@ -40,30 +41,28 @@ namespace Survive
         void HeartBeatInitialization()
         {
             stopwatchHeartBeat.Start();
-            heartBeat = new Sound(soundsFolderPath, "HeartBeat0");
+            heartBeat = new Sound(soundsFolderPath, "HeartBeat");
             heartBeat.outputDevice.Init(heartBeat.audioFileReader);
             heartBeatDuration = (long)heartBeat.audioFileReader.TotalTime.TotalMilliseconds;
         }
-        void HeartBeat(int distanceOfMonster)
+        void HeartBeat()
         {
-            if (stopwatchHeartBeat.ElapsedMilliseconds < heartBeatDuration || distanceOfMonster > 3)
+            if (stopwatchHeartBeat.ElapsedMilliseconds < heartBeatDuration + pauseBetweenHeartbeats || mapHelper.returnFunctions.GetDistanceOfTwoMaps(characters.monster.mapWhereIsLocated, characters.player.mapWhereIsLocated) > 3) 
             {
                 return;
             }
-            PerformHeartBeat(distanceOfMonster);
-            heartBeatDuration = (long)heartBeat.audioFileReader.TotalTime.TotalMilliseconds;
+            PerformHeartBeat();
             stopwatchHeartBeat.Restart();
         }
-        void PerformHeartBeat(int distanceOfMonster)
+        void PerformHeartBeat()
         {
-            heartBeat = new Sound(soundsFolderPath, "HeartBeat"+distanceOfMonster.ToString());
-            //heartBeat = new Sound(soundsFolderPath, "HeartBeat0");
+            int distanceByFields = mapHelper.twoDArrayFunctions.DistanceOfMonster(characters.monster, characters.player);
+            heartBeat = new Sound(soundsFolderPath, "HeartBeat");
             var volumeEffect = new VolumeSampleProvider(heartBeat.audioFileReader.ToSampleProvider());
-            volumeEffect.Volume = 4.0f - distanceOfMonster*0.7f;
+            volumeEffect.Volume = 4.0f - 0.1f*distanceByFields;
             heartBeat.outputDevice.Init(volumeEffect);
             heartBeat.outputDevice.Play();
-            //mapHelper.twoDArrayFunctions.DistanceOfMonster(characters.monster, characters.player);
-            Console.ReadLine();
+            pauseBetweenHeartbeats = 30 * distanceByFields;
         }
     }
 }

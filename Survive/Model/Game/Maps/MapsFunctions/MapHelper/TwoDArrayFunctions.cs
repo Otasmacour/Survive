@@ -337,8 +337,7 @@ namespace Survive
             {
                 totalDistance += DistanceOfTwoGameObjects(passage.map.twoDArray, passage.coordinatesStart, passage.coordinatesDestination);
             }
-            Console.WriteLine("Total distance: " + totalDistance.ToString());
-            return depths[monster.mapWhereIsLocated];
+            return totalDistance;
         }
     }
 }
