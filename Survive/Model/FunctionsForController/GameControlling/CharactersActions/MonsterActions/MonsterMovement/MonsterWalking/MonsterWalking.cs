@@ -20,8 +20,9 @@ namespace Survive
             this.mapHelper = mapHelper;
             this.monsterWalkingInformations = monster.monsterWalkingInformations;
         }
-        public void whereTheMonsterShouldGoForAWalk(Map map)
+        public void whereTheMonsterShouldGoForAWalk(Map map, bool followingTheNoise)
         {
+            monsterWalkingInformations.followingTheNoise = followingTheNoise;
             monsterWalkingInformations.onWay = true;
             monsterWalkingInformations.Destination = map;
             monsterWalkingInformations.unreachableDoors.Clear();

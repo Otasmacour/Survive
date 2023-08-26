@@ -8,6 +8,7 @@ namespace Survive
 {
     class MonsterWalkingInformations
     {
+        public bool followingTheNoise;
         public bool onWay;
         public Map Destination;
         public Queue<Map> path;

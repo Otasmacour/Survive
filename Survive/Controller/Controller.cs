@@ -57,7 +57,7 @@ namespace Survive
         void MonsterAction(Stopwatch monsterActionStopwatch)
         {
             int pauseBetweenMonsterAction = 1000;
-            if (model.game.characters.monster.monsterChasingInformations.chasing || model.game.characters.monster.monsterSearchingInformation.searching) { pauseBetweenMonsterAction = 500; }
+            if (model.game.characters.monster.monsterChasingInformations.chasing || model.game.characters.monster.monsterSearchingInformation.searching || model.game.characters.monster.monsterWalkingInformations.followingTheNoise) { pauseBetweenMonsterAction = 500; }
             if(monsterActionStopwatch.IsRunning == false)
             {
                 monsterActionStopwatch.Start();

@@ -47,7 +47,7 @@ namespace Survive
             }
             else
             {
-                monsterWalking.whereTheMonsterShouldGoForAWalk(monster.monsterMovementInformations.DecideWhereToGoForAWalk());
+                monsterWalking.whereTheMonsterShouldGoForAWalk(monster.monsterMovementInformations.DecideWhereToGoForAWalk(), false);
             }
         }
         static void Update(Monster monster, MapHelper mapHelper, RoomMapCollection roomMapCollection)
