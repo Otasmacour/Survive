@@ -58,13 +58,6 @@ namespace Survive
             Coordinates newCoordinates = new Coordinates();
             newCoordinates.y = character.coordinates.y + yOffset;
             newCoordinates.x = character.coordinates.x + xOffset;
-            if (character is Player)
-            {
-                Player player = (Player)character;
-                player.VisibilityUpdate(character.mapWhereIsLocated, newCoordinates, mapHelper);
-                Console.WriteLine(player.visible);
-                //Console.ReadKey();
-            }
             if (mapHelper.boolFunctions.DoorThere(mapFromWhere.twoDArray, newCoordinates))
             {
                 Door door = mapHelper.returnFunctions.GetDoorThere(mapFromWhere, newCoordinates);
@@ -81,6 +74,11 @@ namespace Survive
             if (character.CanGoThere(mapToWhere.twoDArray, newCoordinates))//Each character may have it differently
             {
                 mapOperations.CharacterRelocation(character, mapFromWhere, mapToWhere, character.coordinates, newCoordinates);
+            }
+            if (character is Player)
+            {
+                Player player = (Player)character;
+                player.VisibilityUpdate(mapToWhere, newCoordinates, mapHelper);
             }
         }
     }
