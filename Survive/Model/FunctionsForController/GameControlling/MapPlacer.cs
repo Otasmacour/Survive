@@ -38,9 +38,9 @@ namespace Survive
         void PlacePlayerOnMap(Maps maps, Characters characters)
         {
             Coordinates playerCoordinates = new Coordinates();
-            playerCoordinates.y = 1;
-            playerCoordinates.x = 20;
-            mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[10][0], playerCoordinates);
+            playerCoordinates.y = 2;
+            playerCoordinates.x = 2;
+            mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[0][3], playerCoordinates);
         }
         void PlaceMonsterOnMap(Maps maps, Characters characters)
         {

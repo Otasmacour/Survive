@@ -24,11 +24,11 @@ namespace Survive
             //Console.WriteLine("Monsters map");
             PrintPlayersInventory(playersInventory);
         }
-        static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach)
+        static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach, Map map)
         {
             foreach(Item item in itemsWithinPlayersReach)
             {
-                Console.WriteLine(item.symbol.ToString() + " - " + item.itemName);
+                Console.WriteLine(item.GetSymbol(map).ToString() + " - " + item.itemName);
             }
         }
         void PrintMap(Map map, List<Item> itemsWithinPlayersReach)
@@ -56,12 +56,12 @@ namespace Survive
                 {
                     List<GameObject> objects = twoDArrayt[y, x];
                     GameObject mostPreferredObject = mapHelper.returnFunctions.GetMostPreferredObjectInList(objects);
-                    Console.Write(mostPreferredObject.symbol);
+                    Console.Write(mostPreferredObject.GetSymbol(map));
                 }
                 Console.WriteLine("");
             }
             string floorNumber = string.Empty;
-            PrintItemsInPlayersReach(itemsWithinPlayersReach);
+            PrintItemsInPlayersReach(itemsWithinPlayersReach, map);
             if(map.mapInformations.mapType != MapType.Stairs)
             {
                 floorNumber = "Floor "+map.mapInformations.floorNumber.ToString()+", ";

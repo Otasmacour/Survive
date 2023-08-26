@@ -30,7 +30,10 @@ namespace Survive
         {
             
         }
-        public override char symbol => 'B';
+        public override char GetSymbol(Map map)
+        {
+            return 'B';
+        }
         public override int GetPriorityNumber()
         {
             return 80;

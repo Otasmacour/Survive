@@ -63,7 +63,10 @@ namespace Survive
             info.theWayThePlayerDied = theWayHowPlayerDied;
             info.run = false;
         }
-        public override char symbol => 'T';
+        public override char GetSymbol(Map map)
+        {
+            return this.name[0];
+        }
         public override int GetPriorityNumber()
         {
             return 31;

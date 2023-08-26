@@ -8,7 +8,10 @@ namespace Survive
 {
     class Corpse : SuspiciousObject
     {
-        public override char symbol => 'c';
+        public override char GetSymbol(Map map)
+        {
+            return 'c';
+        }
         public override int GetPriorityNumber()
         {
             return 32;

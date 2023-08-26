@@ -30,7 +30,10 @@ namespace Survive
                 stairs.name = "Stairs up";
             }
         }
-        public override char symbol => 'd';
+        public override char GetSymbol(Map map)
+        {
+            return 'd';
+        }
         public override int GetPriorityNumber()
         {
             return 90;

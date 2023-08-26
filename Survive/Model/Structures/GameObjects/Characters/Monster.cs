@@ -39,7 +39,10 @@ namespace Survive
             info.win = true;
             info.run = false;
         }
-        public override char symbol => 'M';
+        public override char GetSymbol(Map map)
+        {
+            return 'M';
+        }
         public override int GetPriorityNumber()
         {
             return 30;

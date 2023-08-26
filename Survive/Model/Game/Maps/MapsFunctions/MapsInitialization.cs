@@ -8,13 +8,15 @@ namespace Survive
 {
     class MapsInitialization
     {
+        MapHelper mapHelper;
         string folderName = "Maps";
         DataIOManager dataIOManager;
-        public RoomMapCollection roomMapCollection;
+        public RoomMapCollection roomMapCollection;        
         MapsLinking mapsLinking;
         MapsCleaning mapsCleaning = new MapsCleaning();
-        public MapsInitialization(DataIOManager dataIOManager, RoomMapCollection roomMapCollection)
+        public MapsInitialization(DataIOManager dataIOManager, RoomMapCollection roomMapCollection, MapHelper mapHelper)
         {
+            this.mapHelper = mapHelper;
             this.dataIOManager = dataIOManager;
             this.roomMapCollection = roomMapCollection;
             mapsLinking = new MapsLinking(dataIOManager);
@@ -52,7 +54,7 @@ namespace Survive
                         mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
                         break;
                     case 's':
-                        element = new SecretDoor();
+                        element = new SecretDoor(mapHelper);
                         SecretDoor secretDoor = (SecretDoor)element;
                         if(height == 0)
                         {

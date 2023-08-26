@@ -8,7 +8,10 @@ namespace Survive
 {
     class Wall : GameObject
     {
-        public override char symbol => 'x';
+        public override char GetSymbol(Map map)
+        {
+            return 'x';
+        }
         public override int GetPriorityNumber()
         {
             return 95;

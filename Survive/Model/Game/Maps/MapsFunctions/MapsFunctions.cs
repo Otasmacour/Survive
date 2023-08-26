@@ -15,7 +15,7 @@ namespace Survive
         {
             this.mapHelper = new MapHelper(characters, dataIOManager);
             this.mapOperations = new MapOperations(mapHelper, characters);
-            this.mapsInitialization = new MapsInitialization(dataIOManager,roomMapCollection);
+            this.mapsInitialization = new MapsInitialization(dataIOManager,roomMapCollection, mapHelper);
         }
     }
 }

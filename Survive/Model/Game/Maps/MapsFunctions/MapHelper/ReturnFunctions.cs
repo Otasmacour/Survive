@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace Survive
                     return (SecretDoor)obj;
                 }
             }
-            return new SecretDoor(); //this can obviously never happen
+            throw new NotImplementedException(); //this can obviously never happen
         }
         public Character GetCharacterThere(List<GameObject> list)
         {

@@ -8,7 +8,7 @@ namespace Survive
 {
     abstract class GameObject
     {
-        public abstract char symbol { get; }
+        public abstract char GetSymbol(Map map);
         public abstract int GetPriorityNumber();
     }
 }
