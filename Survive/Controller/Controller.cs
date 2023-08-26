@@ -46,7 +46,7 @@ namespace Survive
                 MonsterAction(monsterActionStopwatch);
                 DisplayUpdate(displayStopwatch);
                 model.functionsForController.soundsController.PlaySounds();
-                PlayerAction(playerActionStopwatch);//When the player takes an action, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
+                PlayerAction(playerActionStopwatch);
             }
             if (model.game.info.win)
             {
@@ -56,11 +56,13 @@ namespace Survive
         }
         void MonsterAction(Stopwatch monsterActionStopwatch)
         {
+            int pauseBetweenMonsterAction = 1000;
+            if (model.game.characters.monster.monsterChasingInformations.chasing || model.game.characters.monster.monsterSearchingInformation.searching) { pauseBetweenMonsterAction = 500; }
             if(monsterActionStopwatch.IsRunning == false)
             {
                 monsterActionStopwatch.Start();
             }
-            if (monsterActionStopwatch.ElapsedMilliseconds >= 1000)
+            if (monsterActionStopwatch.ElapsedMilliseconds >= pauseBetweenMonsterAction)
             {
                 model.functionsForController.gameControlling.monsterActions.Action();
                 monsterActionStopwatch.Restart();
@@ -88,8 +90,11 @@ namespace Survive
                 if (Console.KeyAvailable)
                 {
                     c = Console.ReadKey(intercept: true).KeyChar;
-                    gameControlling.playerActions.Action(c);
-                    gameControlling.monsterActions.Action(); 
+                    UserIntent userIntent = gameControlling.playerActions.Action(c);
+                    if(userIntent == UserIntent.Move)//When the player moves, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
+                    {
+                        gameControlling.monsterActions.Action();
+                    }
                 }
             }
         }

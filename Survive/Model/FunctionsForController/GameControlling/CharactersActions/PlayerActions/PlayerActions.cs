@@ -24,22 +24,23 @@ namespace Survive
             this.player = player;
             this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper, monster, monsterActions);
         }
-        public void Action(char c)
+        public UserIntent Action(char c)
         {
-            UserIntent userIntents = dataIOManager.enumFunctions.GetUserIntents(c);
-            switch(userIntents)
+            UserIntent userIntent = dataIOManager.enumFunctions.GetUserIntents(c);
+            switch(userIntent)
             {
                 case UserIntent.Move:
-                    PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); return;
+                    PlayerMovement(player, movement, dataIOManager.enumFunctions.GetDirectionByChar(c)); break;
                 case UserIntent.Drop:
-                    playerItemManipulation.DropItem(player); return;
+                    playerItemManipulation.DropItem(player); break;
                 case UserIntent.PickUp:
-                    playerItemManipulation.PickUpItem(player); return;
+                    playerItemManipulation.PickUpItem(player); break;
                 case UserIntent.Use:
-                    playerItemManipulation.UseItem(player); return;
+                    playerItemManipulation.UseItem(player); break;
                 case UserIntent.SwitchItem:
-                    playerItemManipulation.SwitchItem(player); return;
+                    playerItemManipulation.SwitchItem(player); break;
             }
+            return userIntent;
         }
         static void PlayerMovement(Player player, Movement movement, Direction movementDirection)
         {
