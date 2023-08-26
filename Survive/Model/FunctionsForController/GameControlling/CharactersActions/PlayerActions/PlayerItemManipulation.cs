@@ -15,13 +15,16 @@ namespace Survive
         MapHelper mapHelper;
         Monster monster;
         MonsterActions monsterActions;
-        public PlayerItemManipulation(Player player, MapHelper mapHelper, Monster monster, MonsterActions monsterActions)
+        Alerts alerts;
+        public PlayerItemManipulation(Player player, MapHelper mapHelper, Monster monster, MonsterActions monsterActions, Alerts alerts)
         {
             this.player = player;
             this.inventory = player.inventory;
             this.mapHelper = mapHelper;
             this.monster = monster;
             this.monsterActions = monsterActions;
+            this.alerts = alerts;
+            this.alerts = alerts;
         }
         public void DropItem(Player player)
         {
@@ -31,8 +34,8 @@ namespace Survive
             }
             else
             {
-                Console.WriteLine("You have no item to DROP");
-                Thread.Sleep(1000);
+                if(inventory.currentlyHeldItem == null) { alerts.Add("You have no item to drop"); }
+                else { alerts.Add("You cannot drop item here"); }
             }
         }
         public void PickUpItem(Player player)
@@ -42,22 +45,14 @@ namespace Survive
             if (inventory.items.Count < inventory.inventorySize || item.takesUpSpaceInTheInventory == false)
             {
                 item.PickUp(player);
-                //Console.WriteLine("you have enough space in your inventory and there is an item to pick up");
-                //Thread.Sleep(1000);
-                
             }
-            else { Console.WriteLine("you have no enough space in your inventory or there is not any item to PICK UP"); Thread.Sleep(1000); }
+            else { alerts.Add("You have no enough space in your inventory"); }
         }
         public void UseItem(Player player)
         {
             if(player.inventory.currentlyHeldItem != null)
             {
                 player.inventory.currentlyHeldItem.Use(player);
-            }
-            else
-            {
-                Console.WriteLine("You don't hold any item to USE");
-                Thread.Sleep(1000);
             }
         }
         public void SwitchItem(Player player)

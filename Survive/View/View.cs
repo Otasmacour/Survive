@@ -14,7 +14,7 @@ namespace Survive
         {
             this.mapHelper = mapHelper;
         }
-        public void Display(Map playersMap, Map monstersMap, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach)
+        public void Display(Map playersMap, Map monstersMap, int monsterDistance, Inventory playersInventory, List<Item> itemsWithinPlayersReach, List<string> alerts)
         {
             Console.Clear();
             Console.WriteLine("Player's map");
@@ -23,6 +23,11 @@ namespace Survive
             //PrintMap(monstersMap, new List<Item>());
             //Console.WriteLine("Monsters map");
             PrintPlayersInventory(playersInventory);
+            PrintAlerts(alerts);
+        }
+        static void PrintAlerts(List<string> alerts)
+        {
+            foreach(string alert in alerts) Console.WriteLine(alert);
         }
         static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach, Map map)
         {

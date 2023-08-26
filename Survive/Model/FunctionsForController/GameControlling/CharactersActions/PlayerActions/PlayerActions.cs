@@ -15,14 +15,14 @@ namespace Survive
         DataIOManager dataIOManager;
         Player player;
         PlayerItemManipulation playerItemManipulation;
-        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player, MapHelper mapHelper, MonsterActions monsterActions)
+        public PlayerActions(Characters characters, Movement movement, DataIOManager dataIOManager, Player player, MapHelper mapHelper, MonsterActions monsterActions, Alerts alerts)
         {
             this.characters = characters;
             this.monster = characters.monster;
             this.movement = movement;
             this.dataIOManager = dataIOManager;
             this.player = player;
-            this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper, monster, monsterActions);
+            this.playerItemManipulation = new PlayerItemManipulation(player, mapHelper, monster, monsterActions, alerts);
         }
         public UserIntent Action(char c)
         {

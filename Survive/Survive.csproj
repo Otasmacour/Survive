@@ -98,8 +98,9 @@
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\PlayerActions\PlayerItemManipulation.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CollisionController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\GameControlling.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\GameInformations\Alerts.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\MapPlacer.cs" />
-    <Compile Include="Model\FunctionsForController\GameControlling\GameInformations.cs" />
+    <Compile Include="Model\FunctionsForController\GameControlling\GameInformations\GameInformations.cs" />
     <Compile Include="Model\FunctionsForController\SoundsController.cs" />
     <Compile Include="Model\Game\Characters\Characters.cs" />
     <Compile Include="Model\Game\Characters\CharactersFunctions\CharactersFunctions.cs" />

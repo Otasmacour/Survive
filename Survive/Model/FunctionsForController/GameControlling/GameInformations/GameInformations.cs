@@ -10,6 +10,7 @@ namespace Survive
     {
         MapHelper mapHelper;
         Characters characters;
+        public Alerts alerts = new Alerts();
         public GameInformations(MapHelper mapHelper, Characters characters)
         {
             this.mapHelper = mapHelper;
