@@ -13,7 +13,10 @@ namespace Survive
             this.soundsController = soundsController;
         }
         public override string typeOfAssociatedKey => "WoodenKey";
-        public override string itemName => "Wooden chest";
+        public override string getItemName()
+        {
+            return "Wooden chest";
+        }
         public override char GetSymbol(Map map)
         {
             return 'w';

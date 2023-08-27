@@ -10,10 +10,14 @@ namespace Survive
     {
         class BrokenPlate : Item
         {
-            public override string itemName => "Broken plate";
+            public override string getItemName()
+            {
+                return "Broken plate";
+            }
             public override bool takesUpSpaceInTheInventory => true;
             public override int noiseLevel => 3;
             public override int floorNumberWhereItemSpawns => 1;
+            public override string useSoundFileName => throw new NotImplementedException();
             public override string dropSoundFileName => "Broken plate";
             public BrokenPlate(SoundsController soundsController) : base(soundsController)
             {

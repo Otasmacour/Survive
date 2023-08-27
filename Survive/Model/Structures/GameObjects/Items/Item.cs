@@ -11,10 +11,11 @@ namespace Survive
     abstract class Item : GameObject
     {
         public SoundsController soundsController;
-        public abstract string itemName { get; }
+        public abstract string getItemName();
         public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
         public abstract int floorNumberWhereItemSpawns { get; }
+        public abstract string useSoundFileName { get; }
         public abstract string dropSoundFileName { get; }
         public Item(SoundsController soundsController) { }
         public abstract void PickUp(Character character);

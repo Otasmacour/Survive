@@ -18,6 +18,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => throw new NotImplementedException();
         public override int floorNumberWhereItemSpawns => 0;
+        public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => throw new NotImplementedException();
         public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {

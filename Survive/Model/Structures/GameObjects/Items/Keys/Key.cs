@@ -11,6 +11,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 2;
         public override int floorNumberWhereItemSpawns => 0;
+        public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => "FallingTool";
         public Key(SoundsController soundsController) : base(soundsController)
         {

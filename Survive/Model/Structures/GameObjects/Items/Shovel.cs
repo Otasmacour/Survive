@@ -8,10 +8,14 @@ namespace Survive
 {
     class Shovel : Item
     {
-        public override string itemName => "Shovel";
+        public override string getItemName()
+        {
+            return "Shovel";
+        }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 1;
         public override int floorNumberWhereItemSpawns => 1;
+        public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => "FallingTool";
         public Shovel(SoundsController soundsController) : base(soundsController)
         {

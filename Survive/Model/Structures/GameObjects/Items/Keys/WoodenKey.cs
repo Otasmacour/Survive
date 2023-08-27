@@ -8,7 +8,10 @@ namespace Survive
 {
     class WoodenKey : Key
     {
-        public override string itemName => "Wooden key";
+        public override string getItemName()
+        {
+            return "Wooden key";
+        }
         public WoodenKey(SoundsController soundController) : base(soundController) 
         {
 
