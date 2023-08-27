@@ -24,6 +24,19 @@ namespace Survive
         {
             drop(character);
         }
+        public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
+        {
+            if (mapHelper.boolFunctions.ChestThere(character.mapWhereIsLocated.twoDArray, character.coordinates) == false)
+            {
+                return;
+            }
+            Chest chest = mapHelper.returnFunctions.GetChestThere(character.mapWhereIsLocated, character.coordinates);
+            if(this.GetType().Name == chest.typeOfAssociatedKey)
+            {
+                chest.Unlock(this, character.mapWhereIsLocated, character.coordinates, alerts);
+            }
+            else { alerts.Add("Wrong key"); }
+        }
         public override int GetPriorityNumber()
         {
             return 80;

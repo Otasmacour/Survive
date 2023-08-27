@@ -9,11 +9,12 @@ namespace Survive
     abstract class Chest : Item
     {
         public Item content;
-        public void Unlock(Map map, Coordinates coordinates)
+        public void Unlock(Key key, Map map, Coordinates coordinates, Alerts alerts)
         {
-            map.twoDArray[coordinates.y,coordinates.x].Remove(this);
+            map.twoDArray[coordinates.y, coordinates.x].Remove(this);
             map.twoDArray[coordinates.y, coordinates.x].Add(content);
         }
+        public abstract string typeOfAssociatedKey {  get; }
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => throw new NotImplementedException();
         public override int floorNumberWhereItemSpawns => 0;
@@ -34,7 +35,6 @@ namespace Survive
         {
             throw new NotImplementedException();
         }
-
         public override int GetPriorityNumber()
         {
             return 80;

@@ -12,6 +12,7 @@ namespace Survive
         {
             this.soundsController = soundsController;
         }
+        public override string typeOfAssociatedKey => "IronKey";
         public override string itemName => "Iron chest";
         public override char GetSymbol(Map map)
         {
