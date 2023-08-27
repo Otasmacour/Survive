@@ -17,13 +17,12 @@ namespace Survive
         public abstract string typeOfAssociatedKey {  get; }
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => throw new NotImplementedException();
-        public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => throw new NotImplementedException();
         public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {
             this.soundsController = soundsController;
-            this.content = new Plate(soundsController);
+            this.content = content;
         }
         public override void PickUp(Character character)
         {

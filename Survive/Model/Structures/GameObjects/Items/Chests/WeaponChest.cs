@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class WoodenChest : Chest
+    class WeaponChest : Chest
     {
-        public WoodenChest(SoundsController soundsController, Item content) : base(soundsController, content)
+        public WeaponChest(SoundsController soundsController, Item content) : base(soundsController, content)
         {
             this.soundsController = soundsController;
         }
-        public override string typeOfAssociatedKey => "WoodenKey";
-        public override int floorNumberWhereItemSpawns => 1;
+        public override string typeOfAssociatedKey => "WeaponKey";
+        public override int floorNumberWhereItemSpawns => -1;
         public override string getItemName()
         {
-            return "Wooden chest";
+            return "Weapon chest";
         }
         public override char GetSymbol(Map map)
         {

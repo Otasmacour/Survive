@@ -35,7 +35,7 @@ namespace Survive
             PlaceMonsterOnMap(maps, characters);
             PlaceItemsOnMaps(maps);
             PlaceChests();
-            PlaceKeys();
+            //PlaceKeys();
         }
         void PlacePlayerOnMap(Maps maps, Characters characters)
         {
@@ -76,14 +76,17 @@ namespace Survive
         }
         void PlaceChests()
         {
-            List<Item> contents = new List<Item>();
-            contents.Add(new Plate(soundsController));
-            contents.Add(new Plate(soundsController));
+            Queue<Item> contents = new Queue<Item>();
+            contents.Enqueue(new Plate(soundsController));
+            contents.Enqueue(new Plate(soundsController));
+            contents.Enqueue(new Gun(soundsController));
             List<Chest> chests = new List<Chest>();
-            WoodenChest woodenChest = new WoodenChest(soundsController, contents[0]); chests.Add(woodenChest);
-            IronChest ironChest = new IronChest(soundsController, contents[1]); chests.Add(ironChest);
-            foreach (Chest chest in chests)
+            WoodenChest woodenChest = new WoodenChest(soundsController, contents.Dequeue()); chests.Add(woodenChest);
+            IronChest ironChest = new IronChest(soundsController, contents.Dequeue()); chests.Add(ironChest);
+            WeaponChest weaponChest = new WeaponChest(soundsController, contents.Dequeue()); chests.Add(weaponChest);
+            for(int i = 0; i < chests.Count; i++)
             {
+                Chest chest = chests[i];
                 Map map = roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns].Count)];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
                 mapOperations.PlaceItemOnMap(chest, map, coordinates);
@@ -93,6 +96,7 @@ namespace Survive
         {
             List<Key> keys = new List<Key>();
             WoodenKey woodenKey = new WoodenKey(soundsController); keys.Add(woodenKey);
+            WeaponKey weaponKey = new WeaponKey(soundsController); keys.Add(weaponKey);
             foreach (Key key in keys)
             {
                 Map map = roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns].Count)];

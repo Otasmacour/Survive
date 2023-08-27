@@ -13,6 +13,7 @@ namespace Survive
             this.soundsController = soundsController;
         }
         public override string typeOfAssociatedKey => "IronKey";
+        public override int floorNumberWhereItemSpawns => 0;
         public override string getItemName()
         {
             return "Iron chest";

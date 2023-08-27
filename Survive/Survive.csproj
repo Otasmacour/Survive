@@ -131,11 +131,13 @@
     <Compile Include="Model\Structures\GameObjects\Items\BrokenPlate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\Chest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\IronChest.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Chests\WeaponChest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\WoodenChest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Gun stuff\Bullets.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Gun stuff\Gun.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Hammer.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\Key.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Keys\WeaponKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WoodenKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />

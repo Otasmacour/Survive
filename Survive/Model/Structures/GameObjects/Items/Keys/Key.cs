@@ -32,7 +32,9 @@ namespace Survive
                 return;
             }
             Chest chest = mapHelper.returnFunctions.GetChestThere(character.mapWhereIsLocated, character.coordinates);
-            if(this.GetType().Name == chest.typeOfAssociatedKey)
+            Console.WriteLine("Here");
+            Console.ReadLine();
+            if (this.GetType().Name == chest.typeOfAssociatedKey)
             {
                 chest.Unlock(this, character.mapWhereIsLocated, character.coordinates, alerts);
             }
