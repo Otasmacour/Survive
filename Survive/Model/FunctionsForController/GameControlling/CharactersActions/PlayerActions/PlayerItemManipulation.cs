@@ -46,7 +46,10 @@ namespace Survive
             {
                 item.PickUp(player);
             }
-            else { alerts.Add("You have no enough space in your inventory"); }
+            else 
+            {
+                item.DropThenPickUp(player, player.inventory.currentlyHeldItem, item);
+            }
         }
         public void UseItem(Player player)
         {

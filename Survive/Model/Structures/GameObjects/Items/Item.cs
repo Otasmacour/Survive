@@ -43,5 +43,14 @@ namespace Survive
             character.inventory.InventoryUpdate();
             this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(dropSoundFileName)));
         }
+        public void DropThenPickUp(Character character, Item toDrop, Item toPickUp)
+        {
+            character.inventory.items.Remove(toDrop);
+            character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(toDrop);
+            toDrop.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(toDrop.dropSoundFileName)));
+            if (toPickUp.takesUpSpaceInTheInventory) { character.inventory.items.Add(toPickUp); }
+            character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Remove(toPickUp);
+            character.inventory.currentlyHeldItem = toPickUp;
+        }
     }
 }
