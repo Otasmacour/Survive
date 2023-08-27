@@ -33,16 +33,16 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            Bullet bullet = new Bullet(soundsController);
-            bool hasABullet = false;
-            foreach(Item item in character.inventory.items)
-            {
-                if(item is Bullet) { hasABullet = true; bullet = (Bullet)item; break; }
-            }
-            if(hasABullet == false) { alerts.Add("You can't shoot, you have no bullets"); return; }
+            Bullets bullet = character.inventory.items.OfType<Bullets>().FirstOrDefault();
+            if(bullet == null) { alerts.Add("You can't shoot, you have no bullets"); return; }
             bullet.Use(character, mapHelper, alerts);
             this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName)));
             character.inventory.InventoryUpdate();
+            Monster monster = character.mapWhereIsLocated.mapInformations.charactersOnMap.OfType<Monster>().FirstOrDefault();
+            if(monster != null)
+            {
+                monster.Die("Died because of the shooting");
+            }
         }
         public override char GetSymbol(Map map)
         {

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class Bullet : Item
+    class Bullets : Item
     {
         public int number;
         public override string getItemName()
         {
-            if(number > 0)
+            if (number > 0)
             {
-                return "Bullets: "+number.ToString();
+                return "Bullets: " + number.ToString();
             }
             else { return "Bullet"; }
         }
@@ -22,7 +22,7 @@ namespace Survive
         public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => "FallingTool";
-        public Bullet(SoundsController soundsController) : base(soundsController)
+        public Bullets(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;
             number = 3;
@@ -37,8 +37,13 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
+            if (character.inventory.currentlyHeldItem == this)
+            {
+                if (character.inventory.items.OfType<Gun>().FirstOrDefault() == null) { alerts.Add("You need a gun to shoot"); }
+                return;
+            }
             number -= 1;
-            if(number == 0)
+            if (number == 0)
             {
                 character.inventory.items.Remove(this);
             }
