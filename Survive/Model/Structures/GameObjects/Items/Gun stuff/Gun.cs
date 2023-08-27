@@ -9,10 +9,10 @@ namespace Survive
 {
     class Gun : Item
     {
-
+        public int numberOfBullets;
         public override string getItemName()
         {
-            return "Gun";
+            return "Gun ("+numberOfBullets.ToString()+")";
         }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 10;
@@ -34,14 +34,21 @@ namespace Survive
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
             Bullets bullet = character.inventory.items.OfType<Bullets>().FirstOrDefault();
-            if(bullet == null) { alerts.Add("You can't shoot, you have no bullets"); return; }
-            bullet.Use(character, mapHelper, alerts);
-            this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName)));
-            character.inventory.InventoryUpdate();
-            Monster monster = character.mapWhereIsLocated.mapInformations.charactersOnMap.OfType<Monster>().FirstOrDefault();
-            if(monster != null)
+            if (numberOfBullets < 1)
             {
-                monster.Die("Died because of the shooting");
+                if (character.inventory.items.OfType<Bullets>().FirstOrDefault() == null) { alerts.Add("You can't shoot, you have no bullets"); }
+                else { alerts.Add("First you need to load the gun"); }
+                return;
+            }
+            else
+            {
+                this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName)));
+                numberOfBullets--;
+                Monster monster = character.mapWhereIsLocated.mapInformations.charactersOnMap.OfType<Monster>().FirstOrDefault();
+                if (monster != null)
+                {
+                    monster.Die("Died because of the shooting");
+                }
             }
         }
         public override char GetSymbol(Map map)

@@ -9,6 +9,7 @@ namespace Survive
     class Bullets : Item
     {
         public int number;
+        string reloadingFileName = "ReloadingBullets";
         public override string getItemName()
         {
             if (number > 0)
@@ -37,16 +38,12 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            if (character.inventory.currentlyHeldItem == this)
-            {
-                if (character.inventory.items.OfType<Gun>().FirstOrDefault() == null) { alerts.Add("You need a gun to shoot"); }
-                return;
-            }
-            number -= 1;
-            if (number == 0)
-            {
-                character.inventory.items.Remove(this);
-            }
+            Gun gun = character.inventory.items.OfType<Gun>().FirstOrDefault();
+            if (gun == null) { alerts.Add("You need a gun to shoot"); return; }
+            gun.numberOfBullets += number;
+            soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(reloadingFileName)));
+            character.inventory.items.Remove(this);
+            character.inventory.currentlyHeldItem = null;
             character.inventory.InventoryUpdate();
         }
         public override char GetSymbol(Map map)

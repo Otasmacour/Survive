@@ -36,8 +36,6 @@ namespace Survive
         public override void Die(string theWayHowMonsterDied)
         {
             die();
-            info.win = true;
-            info.run = false;
         }
         public override char GetSymbol(Map map)
         {
