@@ -1,5 +1,3 @@
 Add some basic items, so it can be played
-Do the Unlock method in general
 Make the main door and it's mechanism
 Make some single use items
-Make the pick up then drop feature
