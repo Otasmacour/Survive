@@ -17,7 +17,7 @@ namespace Survive
             this.info = info;
             this.monster = monster;
             name = "Tyler";
-            inventory = new Inventory(2);
+            inventory = new Inventory(1);
         }
         public void VisibilityUpdate(Map mapToWhere, Map mapFromWhere, Coordinates newCoordinates, MapHelper mapHelper)
         {

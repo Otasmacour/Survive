@@ -23,6 +23,7 @@ namespace Survive
             floorNumber = -1;
             Map RMS1 = new Map(mapsInitialization, "RMS1", floorNumber, "Room 1", MapType.Null);
             Map RMS2 = new Map(mapsInitialization, "RMS2", floorNumber, "Room 2", MapType.Null);
+            roomMapCollection.monsterRespawnMap = RMS2; //A bit of spaghetti code
             Map RMS3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
             //Rooms 0  Floor
             floorNumber = 0;
