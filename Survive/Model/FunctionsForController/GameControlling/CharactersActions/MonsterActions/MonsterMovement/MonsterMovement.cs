@@ -17,12 +17,12 @@ namespace Survive
         public MonsterSearching monsterSearching;
         DataIOManager dataIOManager;
         RoomMapCollection roomMapCollection;
-        public MonsterMovement(Monster monster, MapHelper mapHelper, Movement movement, DataIOManager dataIOManager, Player player, RoomMapCollection roomMapCollection)
+        public MonsterMovement(Monster monster, MapHelper mapHelper, Movement movement, DataIOManager dataIOManager, Player player, RoomMapCollection roomMapCollection, Alerts alerts)
         {
             this.monster = monster;
             this.mapHelper = mapHelper;
             this.monsterWalking = new MonsterWalking(movement, monster, mapHelper);
-            this.monsterSearching = new MonsterSearching(movement, monster, mapHelper, player);
+            this.monsterSearching = new MonsterSearching(movement, monster, mapHelper, player, alerts);
             this.monsterChasing = new MonsterChasing(movement, monster, mapHelper, player);
             this.dataIOManager = dataIOManager;
             this.player = player;

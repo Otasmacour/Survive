@@ -30,7 +30,7 @@ namespace Survive
         }
         public void PlaySounds()
         {
-            HeartBeat();
+            if (characters.monster.living) { HeartBeat(); }
             while(soundsToPLay.Count > 0)
             {
                 var item = soundsToPLay.Dequeue();

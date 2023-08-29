@@ -16,13 +16,15 @@ namespace Survive
         Player player;
         MapHelper mapHelper;
         Random random = new Random();
-        public MonsterSearching(Movement movement, Monster monster, MapHelper mapHelper, Player player)
+        Alerts alerts;
+        public MonsterSearching(Movement movement, Monster monster, MapHelper mapHelper, Player player, Alerts alerts)
         {
             this.movement = movement;
             this.monster = monster;
             this.mapHelper = mapHelper;
             this.monsterSearchingInformation = monster.monsterSearchingInformation;
             this.player = player;
+            this.alerts = alerts;
         }
         public void Search()
         {
@@ -98,7 +100,7 @@ namespace Survive
         {
             if (player.mapWhereIsLocated == monster.mapWhereIsLocated && mapHelper.parsing.CoordinatesToTupple(monsterSearchingInformation.CurrentFurnitureToSearch) == mapHelper.parsing.CoordinatesToTupple(player.coordinates))
             {
-                player.Die("the monster found you in the hideout");
+                player.Die("the monster found you in the hideout", alerts);
             }
         }
         void SearchRooms()

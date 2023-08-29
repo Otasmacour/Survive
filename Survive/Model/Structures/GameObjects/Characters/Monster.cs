@@ -8,6 +8,7 @@ namespace Survive
 {
     class Monster : Character
     {
+        
         public MonsterMovementInformations monsterMovementInformations;
         public MonsterWalkingInformations monsterWalkingInformations = new MonsterWalkingInformations();
         public MonsterChasingInformations monsterChasingInformations = new MonsterChasingInformations();
@@ -33,9 +34,10 @@ namespace Survive
             }
             return true;
         }
-        public override void Die(string theWayHowMonsterDied)
+        public override void Die(string theWayHowMonsterDied, Alerts alerts)
         {
             die();
+            alerts.Add("Granny is now gone for about 2 minutes");
         }
         public override char GetSymbol(Map map)
         {

@@ -47,7 +47,7 @@ namespace Survive
                 Monster monster = character.mapWhereIsLocated.mapInformations.charactersOnMap.OfType<Monster>().FirstOrDefault();
                 if (monster != null)
                 {
-                    monster.Die("Died because of the shooting");
+                    monster.Die("Died because of the shooting", alerts);
                 }
             }
         }
