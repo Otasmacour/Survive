@@ -8,5 +8,5 @@ namespace Survive
 {
     enum Direction { Left, Right, Up, Down, TopLeft, TopRight, BottomLeft, BottomRight, Null }
     enum UserIntent { Move, Drop, PickUp, Use, SwitchItem, Null}
-    enum MapType { Stairs, Null }
+    enum MapType { Stairs, Null, Abnormal }
 }

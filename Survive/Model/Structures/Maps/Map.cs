@@ -19,7 +19,7 @@ namespace Survive
             this.mapInformations = tuple.mapInformations;
             this.mapInformations.floorNumber = floorNumber;
             this.mapInformations.mapType = mapType;
-            if(this is Tunnel == false) { mapsInitialization.roomMapCollection.list.Add(this); } 
+            if(mapType != MapType.Abnormal) { mapsInitialization.roomMapCollection.list.Add(this); } 
             if (mapsInitialization.roomMapCollection.roomsByFloor.ContainsKey(floorNumber))
             {
                 mapsInitialization.roomMapCollection.roomsByFloor[floorNumber].Add(this);

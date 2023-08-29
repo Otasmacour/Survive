@@ -17,7 +17,7 @@ namespace Survive
         public void LinkingMaps(RoomMapCollection roomMapCollection, MapsInitialization mapsInitialization)
         {
             //Tunnels
-            Tunnel TU1 = new Tunnel(mapsInitialization, "HorizontalSecretTunnel", 10, "Secret Tunnel", MapType.Null);
+            Tunnel TU1 = new Tunnel(mapsInitialization, "HorizontalSecretTunnel", 10, "Secret Tunnel", MapType.Abnormal);
             int floorNumber;
             //Rooms -1 Floor
             floorNumber = -1;
