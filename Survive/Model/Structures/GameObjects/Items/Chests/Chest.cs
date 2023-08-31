@@ -9,7 +9,7 @@ namespace Survive
     abstract class Chest : Item
     {
         public Item content;
-        public void Unlock(Key key, Map map, Coordinates coordinates, Alerts alerts)
+        public void Unlock(Map map, Coordinates coordinates, Alerts alerts)
         {
             soundsController.soundsToPLay.Enqueue((map, GetSound(useSoundFileName)));
             map.twoDArray[coordinates.y, coordinates.x].Remove(this);

@@ -29,12 +29,13 @@ namespace Survive
         {
             if (mapHelper.boolFunctions.ChestThere(character.mapWhereIsLocated.twoDArray, character.coordinates) == false)
             {
+                alerts.Add("You have to find something to unlock before you unlock anything");
                 return;
             }
             Chest chest = mapHelper.returnFunctions.GetChestThere(character.mapWhereIsLocated, character.coordinates);
             if (this.GetType().Name == chest.typeOfAssociatedKey)
             {
-                chest.Unlock(this, character.mapWhereIsLocated, character.coordinates, alerts);
+                chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts);
             }
             else { alerts.Add("Wrong key"); }
         }

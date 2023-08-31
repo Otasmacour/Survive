@@ -31,7 +31,12 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            
+            Chain chain = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<Chain>().FirstOrDefault();
+            if (chain != null)
+            {
+                chain.Unlock(character.mapWhereIsLocated, character.coordinates, alerts);
+            }
+            else { alerts.Add("There is nothing to hit"); }
         }
         public override char GetSymbol(Map map)
         {

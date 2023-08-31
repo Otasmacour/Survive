@@ -130,6 +130,7 @@
     <Compile Include="Model\Structures\GameObjects\Items\Backpack.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\BrokenPlate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\BuriedChest.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Chests\Chain.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\Chest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\IronChest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\WeaponChest.cs" />

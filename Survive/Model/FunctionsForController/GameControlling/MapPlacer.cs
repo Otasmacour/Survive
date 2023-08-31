@@ -88,7 +88,9 @@ namespace Survive
             WeaponChest weaponChest = new WeaponChest(soundsController, contents.Dequeue()); chests.Add(weaponChest);
             BuriedChest buriedChest = new BuriedChest(soundsController, new Bullets(soundsController));
             mapOperations.PlaceItemOnMap(buriedChest, roomMapCollection.roomsByFloor[0][4], returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[0][4], 1)[0]);
-            for(int i = 0; i < chests.Count; i++)
+            Chain chain = new Chain(soundsController, new Bullets(soundsController));
+            mapOperations.PlaceItemOnMap(chain, roomMapCollection.roomsByFloor[0][4], returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[0][4], 1)[0]);
+            for (int i = 0; i < chests.Count; i++)
             {
                 Chest chest = chests[i];
                 Map map = roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns].Count)];

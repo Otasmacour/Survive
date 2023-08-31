@@ -37,6 +37,7 @@ namespace Survive
             if(mapHelper.boolFunctions.ItemThere(characters.player.mapWhereIsLocated.twoDArray, characters.player.coordinates))
             {
                 Item itemThere = mapHelper.returnFunctions.GetItemThere(characters.player.mapWhereIsLocated, characters.player.coordinates);
+                
                 if (itemThere.visible) { items.Add(itemThere); }
             }
             return items;
