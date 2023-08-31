@@ -16,7 +16,7 @@ namespace Survive
         public override int noiseLevel => 3;
         public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => "UnlockingChest";
-        public override string dropSoundFileName => throw new NotImplementedException();
+        public override string dropSoundFileName => "KeyDrop";
         public MasterKey(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;

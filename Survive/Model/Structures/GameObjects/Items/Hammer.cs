@@ -17,7 +17,7 @@ namespace Survive
         public override int noiseLevel => 6;
         public override int floorNumberWhereItemSpawns => -1;
         public override string useSoundFileName => "ViolentlyOpeningChest";
-        public override string dropSoundFileName => "FallingTool";
+        public override string dropSoundFileName => "MetalItemDrop";
         public Hammer(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;

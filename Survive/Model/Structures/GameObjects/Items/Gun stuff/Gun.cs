@@ -19,7 +19,7 @@ namespace Survive
         public override int floorNumberWhereItemSpawns => 0;
         string noAmmoSoundFileName = "NoAmmo";
         public override string useSoundFileName => "firingGun";
-        public override string dropSoundFileName => "FallingTool";
+        public override string dropSoundFileName => "GunDrop";
         public Gun(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;

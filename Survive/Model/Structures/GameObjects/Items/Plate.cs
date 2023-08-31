@@ -33,14 +33,8 @@ namespace Survive
             character.inventory.InventoryUpdate();
             BrokenPlate brokenPlate = new BrokenPlate(soundsController);
             character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].Add(brokenPlate);
-            this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(dropSoundFileName)));
-
-            //Dropped Plate becomes BrokenPlate, not implemented yet
         }
-        public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
-        {
-            
-        }
+        public override void Use(Character character, MapHelper mapHelper, Alerts alerts) { }
         public override char GetSymbol(Map map)
         {
             return 'p';

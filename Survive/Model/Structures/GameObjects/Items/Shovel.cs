@@ -20,7 +20,7 @@ namespace Survive
         string shovelHittingChestSoundFileName = "ShovelHittingChest";
         List<string> diggingSounds = new List<string> { "DiggingWithShovel1", "DiggingWithShovel2", "DiggingWithShovel3", "DiggingWithShovel4", "DiggingWithShovel5" };
         public override string useSoundFileName => throw new NotImplementedException();
-        public override string dropSoundFileName => "FallingTool";
+        public override string dropSoundFileName => "MetalItemDrop";
         public Shovel(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;

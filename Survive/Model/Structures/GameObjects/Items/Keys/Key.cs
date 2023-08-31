@@ -12,7 +12,7 @@ namespace Survive
         public override int noiseLevel => 2;
         public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => throw new NotImplementedException();
-        public override string dropSoundFileName => "FallingTool";
+        public override string dropSoundFileName => "KeyDrop";
         public Key(SoundsController soundsController) : base(soundsController)
         {
             this.soundsController = soundsController;
