@@ -36,8 +36,6 @@ namespace Survive
             roomMapCollection.roomsByFloor[0][1].twoDArray[0, 6][0] = new MainDoor(soundsController);
             PlaceItemsOnMaps();
             PlaceChestsPlusitemsThatAppearInChests();
-            characters.player.inventory.items.Add(new Gun(soundsController));
-            characters.player.inventory.currentlyHeldItem = new Bullets(soundsController);
         }
         void PlacePlayerOnMap(Maps maps, Characters characters)
         {
@@ -55,7 +53,7 @@ namespace Survive
         }
         void PlaceItemsOnMaps()
         {
-            List<Item> items = new List<Item> { new Hammer(soundsController), new MysteriousKey(soundsController), new WeaponKey(soundsController), new WoodenKey(soundsController), new BackPack(soundsController), new Plate(soundsController) };
+            List<Item> items = new List<Item> { new Hammer(soundsController), new MysteriousKey(soundsController), new WeaponKey(soundsController), new IronKey(soundsController), new WoodenKey(soundsController), new BackPack(soundsController), new Plate(soundsController) };
             foreach (Item item in items)
             {
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
