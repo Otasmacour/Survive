@@ -32,13 +32,12 @@ namespace Survive
         void Place()
         {
             PlacePlayerOnMap(maps, characters);
-            PlaceMonsterOnMap(maps, characters);
-            //PlaceItemsOnMaps(maps);
+            PlaceMonsterOnMap();
             roomMapCollection.roomsByFloor[0][1].twoDArray[0, 6][0] = new MainDoor(soundsController);
+            PlaceItemsOnMaps();
             PlaceChestsPlusitemsThatAppearInChests();
             characters.player.inventory.items.Add(new Gun(soundsController));
             characters.player.inventory.currentlyHeldItem = new Bullets(soundsController);
-            //PlaceKeys();
         }
         void PlacePlayerOnMap(Maps maps, Characters characters)
         {
@@ -47,38 +46,22 @@ namespace Survive
             playerCoordinates.x = 2;
             mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[0][3], playerCoordinates);
         }
-        void PlaceMonsterOnMap(Maps maps, Characters characters)
+        void PlaceMonsterOnMap()
         {
             Coordinates monsterCoordinates = new Coordinates();
             monsterCoordinates.y = 4;
             monsterCoordinates.x = 3;
             mapOperations.PlaceCharacterOnMap(characters.monster, roomMapCollection.roomsByFloor[0][4], monsterCoordinates);
         }
-        void PlaceItemsOnMaps(Maps maps)
+        void PlaceItemsOnMaps()
         {
-            
-            List<Item> items = new List<Item>();
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            foreach (Type type in assembly.GetTypes())
-            {
-                if (typeof(Item).IsAssignableFrom(type) && !type.IsAbstract)
-                {
-                    ConstructorInfo constructor = type.GetConstructor(new[] { typeof(SoundsController) });
-                    if (constructor != null)
-                    {
-                        Item item = (Item)constructor.Invoke(new object[] {soundsController});
-                        items.Add(item);
-                    }
-                }
-            } 
+            List<Item> items = new List<Item> { new Hammer(soundsController), new MysteriousKey(soundsController), new WeaponKey(soundsController), new WoodenKey(soundsController), new BackPack(soundsController), new Plate(soundsController) };
             foreach (Item item in items)
             {
-                Console.WriteLine(item.getItemName());
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
                 mapOperations.PlaceItemOnMap(item, map, coordinates);
             }
-            Console.ReadLine();
         }
         void PlaceChestsPlusitemsThatAppearInChests()
         {
@@ -104,18 +87,6 @@ namespace Survive
                 Map map = roomMapCollection.roomsByFloor[chest.locationMap.floorNumber][chest.locationMap.roomNumber];
                 Coordinates coordinates = new Coordinates(); coordinates.y = chest.locationCoordinates.y; coordinates.x = chest.locationCoordinates.x;
                 mapOperations.PlaceItemOnMap(chest, map, coordinates);
-            }
-        }
-        void PlaceKeys()
-        {
-            List<Key> keys = new List<Key>();
-            WoodenKey woodenKey = new WoodenKey(soundsController); keys.Add(woodenKey);
-            WeaponKey weaponKey = new WeaponKey(soundsController); keys.Add(weaponKey);
-            foreach (Key key in keys)
-            {
-                Map map = roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[key.floorNumberWhereItemSpawns].Count)];
-                Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
-                mapOperations.PlaceItemOnMap(key, map, coordinates);
             }
         }
     }
