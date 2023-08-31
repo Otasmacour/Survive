@@ -13,9 +13,9 @@ namespace Survive
             return "Backpack";
         }
         public override bool takesUpSpaceInTheInventory => false;
-        public override int noiseLevel => 3;
+        public override int noiseLevel => 1;
         public override int floorNumberWhereItemSpawns => 1;
-        public override string useSoundFileName => throw new NotImplementedException();
+        public override string useSoundFileName => "PuttingOnBackpack";
         public override string dropSoundFileName => throw new NotImplementedException();
         public BackPack(SoundsController soundsController) : base(soundsController)
         {
@@ -24,7 +24,8 @@ namespace Survive
         public override void PickUp(Character character)
         {
             pickUp(character);
-            character.inventory.inventorySize += 3;
+            character.inventory.inventorySize += 2;
+            soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName)));
         }
         public override void Drop(Character character)
         {
