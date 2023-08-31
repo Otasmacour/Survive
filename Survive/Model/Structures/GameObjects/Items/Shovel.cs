@@ -31,7 +31,11 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-
+            BuriedChest buriedChest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<BuriedChest>().FirstOrDefault();
+            if(buriedChest != null)
+            {
+                buriedChest.visible = true;
+            }
         }
         public override char GetSymbol(Map map)
         {

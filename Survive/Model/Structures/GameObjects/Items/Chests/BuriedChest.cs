@@ -8,20 +8,20 @@ namespace Survive
 {
     class BuriedChest : Chest
     {
-        bool found;
         public BuriedChest(SoundsController soundsController, Item content) : base(soundsController, content)
         {
             this.soundsController = soundsController;
+            this.visible = false;
         }
         public override string typeOfAssociatedKey => "MysteriousKey";
-        public override int floorNumberWhereItemSpawns => 0;
+        public override int floorNumberWhereItemSpawns => -1;
         public override string getItemName()
         {
             return "Buried Chest";
         }
         public override char GetSymbol(Map map)
         {
-            if (found) { return 'B'; }
+            if (visible) { return 'B'; }
             else { return '.'; }
         }
     }

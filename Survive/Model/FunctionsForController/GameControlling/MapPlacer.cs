@@ -68,7 +68,7 @@ namespace Survive
                         items.Add(item);
                     }
                 }
-            }
+            } 
             foreach (Item item in items)
             {
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
@@ -86,6 +86,8 @@ namespace Survive
             WoodenChest woodenChest = new WoodenChest(soundsController, contents.Dequeue()); chests.Add(woodenChest);
             IronChest ironChest = new IronChest(soundsController, contents.Dequeue()); chests.Add(ironChest);
             WeaponChest weaponChest = new WeaponChest(soundsController, contents.Dequeue()); chests.Add(weaponChest);
+            BuriedChest buriedChest = new BuriedChest(soundsController, new Bullets(soundsController));
+            mapOperations.PlaceItemOnMap(buriedChest, roomMapCollection.roomsByFloor[0][4], returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[0][4], 1)[0]);
             for(int i = 0; i < chests.Count; i++)
             {
                 Chest chest = chests[i];

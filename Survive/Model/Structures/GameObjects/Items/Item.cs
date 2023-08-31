@@ -11,6 +11,7 @@ namespace Survive
     abstract class Item : GameObject
     {
         public SoundsController soundsController;
+        public bool visible = true; //Some items could be hidden and if this property "visible" was not present, the GetItemsWithinPlayersReach method would return all items regardless of whether they are visible or not.
         public abstract string getItemName();
         public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
