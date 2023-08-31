@@ -1,7 +1,6 @@
 ﻿Add a character, that will give the player the option of gambling.
 Add character, or any other content, that will be in some foreign language, player could get some item (magic), that will allow them understand
 it will be possible to dig in the garden, if the player has a shovel
-Some mechanism, that indicates, how close is monster (it could be sound of heart beat)
 The monster could move some objects around the map that it finds.
 different npcs that the player will be able to access (one could tell player, where monster is going)
 npc that would occasionally advise the monster where the player is. A chance to find out (a friendly npc could tell) and a chance to kill that one enemy npc.

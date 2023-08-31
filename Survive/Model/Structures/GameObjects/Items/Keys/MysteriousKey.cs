@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class WeaponKey : Key
+    class MysteriousKey : Key
     {
         public override string getItemName()
         {
-            return "Weapon Key";
+            return "Mysterious Key";
         }
-        public WeaponKey(SoundsController soundController) : base(soundController)
+        public MysteriousKey(SoundsController soundController) : base(soundController)
         {
 
         }
         public override char GetSymbol(Map map)
         {
-            return 'W';
+            return 'M';
         }
     }
 }

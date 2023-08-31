@@ -129,6 +129,7 @@
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Backpack.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\BrokenPlate.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Chests\BuriedChest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\Chest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\IronChest.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Chests\WeaponChest.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Model\Structures\GameObjects\Items\Gun stuff\Gun.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Hammer.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\Key.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Keys\MysteriousKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WeaponKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WoodenKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />

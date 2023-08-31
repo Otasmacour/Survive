@@ -36,7 +36,7 @@ namespace Survive
         public override void Die(string theWayHowMonsterDied, Alerts alerts)
         {
             die();
-            alerts.Add("Granny is now gone for about 1 minute");
+            alerts.Add("Monster is now gone for about 1 minute");
         }
         public override char GetSymbol(Map map)
         {

@@ -35,6 +35,8 @@ namespace Survive
             PlaceMonsterOnMap(maps, characters);
             PlaceItemsOnMaps(maps);
             PlaceChests();
+            characters.player.inventory.items.Add(new Gun(soundsController));
+            characters.player.inventory.currentlyHeldItem = new Bullets(soundsController);
             //PlaceKeys();
         }
         void PlacePlayerOnMap(Maps maps, Characters characters)
