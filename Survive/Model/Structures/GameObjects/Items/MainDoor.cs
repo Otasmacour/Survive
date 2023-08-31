@@ -12,13 +12,13 @@ namespace Survive
         {
             get
             {
-                if (plankLock || padlock || codeLock) { return false; }
-                else { return false; }
+                if (plankLock || padlock || codePadlock) { return false; }
+                else { return true; }
             }
         }
         public bool plankLock = true;
         public bool padlock = true;
-        public bool codeLock = true;
+        public bool codePadlock = true;
         public override string getItemName()
         {
             return "Main door";

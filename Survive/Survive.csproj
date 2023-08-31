@@ -143,6 +143,7 @@
     <Compile Include="Model\Structures\GameObjects\Items\Keys\MysteriousKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WeaponKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WoodenKey.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\PadlockCode.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Plate.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Monster.cs" />

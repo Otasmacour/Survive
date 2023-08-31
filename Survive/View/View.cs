@@ -41,7 +41,7 @@ namespace Survive
                     Console.WriteLine("m - main door");
                     if (mainDoor.plankLock) { Console.WriteLine("Plank lock"); }
                     if (mainDoor.padlock) { Console.WriteLine("Padlock"); }
-                    if (mainDoor.codeLock) { Console.WriteLine("CodeLock"); }
+                    if (mainDoor.codePadlock) { Console.WriteLine("Code padlock"); }
                     Console.WriteLine("-------");
                 }
                 itemsWithinPlayersReach.Remove(mainDoor);
