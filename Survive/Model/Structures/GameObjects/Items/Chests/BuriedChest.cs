@@ -14,7 +14,8 @@ namespace Survive
             this.visible = false;
         }
         public override string typeOfAssociatedKey => "MysteriousKey";
-        public override int floorNumberWhereItemSpawns => -1;
+        public override (int floorNumber, int roomNumber) locationMap => (0, 4);
+        public override (int y, int x) locationCoordinates => (5, 1);
         public override string getItemName()
         {
             return "Buried Chest";

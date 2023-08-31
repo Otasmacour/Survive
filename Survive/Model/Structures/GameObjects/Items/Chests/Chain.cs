@@ -13,8 +13,9 @@ namespace Survive
             this.soundsController = soundsController;
         }
         public override string typeOfAssociatedKey => "Hammer";
+        public override (int floorNumber, int roomNumber) locationMap => (1, 1);
+        public override (int y, int x) locationCoordinates => (5, 5);
         public override string useSoundFileName => "HammerHittingChain";
-        public override int floorNumberWhereItemSpawns => -1;
         public override string getItemName()
         {
             return content.getItemName()+ " chained to wall, maybe a hammer would help...";

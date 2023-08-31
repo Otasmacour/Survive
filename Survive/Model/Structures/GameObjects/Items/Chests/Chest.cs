@@ -19,9 +19,12 @@ namespace Survive
         public abstract string typeOfAssociatedKey {  get; }
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => 1;
+        public abstract (int floorNumber, int roomNumber) locationMap { get; }
+        public abstract (int y, int x) locationCoordinates { get; }
         public override string useSoundFileName => "UnlockingChest";
         string violentyOpeningChestSoundFileName => "ViolentlyOpeningChest";
         public override string dropSoundFileName => throw new NotImplementedException();
+        public override int floorNumberWhereItemSpawns => throw new NotImplementedException();
         public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {
             this.soundsController = soundsController;

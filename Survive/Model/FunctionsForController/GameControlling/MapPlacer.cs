@@ -33,8 +33,9 @@ namespace Survive
         {
             PlacePlayerOnMap(maps, characters);
             PlaceMonsterOnMap(maps, characters);
-            PlaceItemsOnMaps(maps);
-            PlaceChests();
+            //PlaceItemsOnMaps(maps);
+            roomMapCollection.roomsByFloor[0][1].twoDArray[0, 6][0] = new MainDoor(soundsController);
+            PlaceChestsPlusitemsThatAppearInChests();
             characters.player.inventory.items.Add(new Gun(soundsController));
             characters.player.inventory.currentlyHeldItem = new Bullets(soundsController);
             //PlaceKeys();
@@ -55,7 +56,7 @@ namespace Survive
         }
         void PlaceItemsOnMaps(Maps maps)
         {
-            roomMapCollection.roomsByFloor[0][1].twoDArray[0, 6][0] = new MainDoor(soundsController);
+            
             List<Item> items = new List<Item>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             foreach (Type type in assembly.GetTypes())
@@ -72,30 +73,36 @@ namespace Survive
             } 
             foreach (Item item in items)
             {
+                Console.WriteLine(item.getItemName());
                 Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
                 mapOperations.PlaceItemOnMap(item, map, coordinates);
             }
+            Console.ReadLine();
         }
-        void PlaceChests()
+        void PlaceChestsPlusitemsThatAppearInChests()
         {
-            Queue<Item> contents = new Queue<Item>();
-            contents.Enqueue(new Plate(soundsController));
-            contents.Enqueue(new Plate(soundsController));
-            contents.Enqueue(new Gun(soundsController));
+            List<Item> itemsThatAppearInChests = new List<Item> { new PadlockCode(soundsController), new MasterKey(soundsController), new Bullets(soundsController)};
+            int itemCount = itemsThatAppearInChests.Count;
+            while (itemCount > 1)
+            {
+                int index = random.Next(itemCount);
+                itemCount--;
+                Item temp = itemsThatAppearInChests[index];
+                itemsThatAppearInChests[index] = itemsThatAppearInChests[itemCount];
+                itemsThatAppearInChests[itemCount] = temp;
+            }
+            Queue<Item> contents = new Queue<Item>(itemsThatAppearInChests);
             List<Chest> chests = new List<Chest>();
+            Chain chain = new Chain(soundsController, new Shovel(soundsController)); chests.Add(chain);
+            WeaponChest weaponChest = new WeaponChest(soundsController, new Gun(soundsController)); chests.Add(weaponChest);
+            BuriedChest buriedChest = new BuriedChest(soundsController, contents.Dequeue()); chests.Add(buriedChest);
             WoodenChest woodenChest = new WoodenChest(soundsController, contents.Dequeue()); chests.Add(woodenChest);
             IronChest ironChest = new IronChest(soundsController, contents.Dequeue()); chests.Add(ironChest);
-            WeaponChest weaponChest = new WeaponChest(soundsController, contents.Dequeue()); chests.Add(weaponChest);
-            BuriedChest buriedChest = new BuriedChest(soundsController, new Bullets(soundsController));
-            mapOperations.PlaceItemOnMap(buriedChest, roomMapCollection.roomsByFloor[0][4], returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[0][4], 1)[0]);
-            Chain chain = new Chain(soundsController, new Bullets(soundsController));
-            mapOperations.PlaceItemOnMap(chain, roomMapCollection.roomsByFloor[0][4], returnFunctions.GetRandomAvailableCoordinatesonMap(roomMapCollection.roomsByFloor[0][4], 1)[0]);
-            for (int i = 0; i < chests.Count; i++)
+            foreach(Chest chest in chests)
             {
-                Chest chest = chests[i];
-                Map map = roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[chest.floorNumberWhereItemSpawns].Count)];
-                Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
+                Map map = roomMapCollection.roomsByFloor[chest.locationMap.floorNumber][chest.locationMap.roomNumber];
+                Coordinates coordinates = new Coordinates(); coordinates.y = chest.locationCoordinates.y; coordinates.x = chest.locationCoordinates.x;
                 mapOperations.PlaceItemOnMap(chest, map, coordinates);
             }
         }
