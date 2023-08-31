@@ -31,20 +31,24 @@ namespace Survive
         }
         static void PrintItemsInPlayersReach(List<Item> itemsWithinPlayersReach, Map map)
         {
-            foreach(Item item in itemsWithinPlayersReach)
+            MainDoor mainDoor = itemsWithinPlayersReach.OfType<MainDoor>().FirstOrDefault();
+            if(mainDoor != null)
             {
-                if(item is MainDoor)
+                if (mainDoor.possiblePassage) { Console.WriteLine("m - main door"); }
+                else
                 {
-                    MainDoor mainDoor = (MainDoor)item;
+                    Console.WriteLine("_______");
                     Console.WriteLine("m - main door");
-                    Console.WriteLine("Obstacles that need to be removed:");
-                    Console.WriteLine("-------");
-                    if(mainDoor.plankLock) { Console.WriteLine("Plank lock"); }
+                    if (mainDoor.plankLock) { Console.WriteLine("Plank lock"); }
                     if (mainDoor.padlock) { Console.WriteLine("Padlock"); }
                     if (mainDoor.codeLock) { Console.WriteLine("CodeLock"); }
                     Console.WriteLine("-------");
                 }
-                else { Console.WriteLine(item.GetSymbol(map).ToString() + " - " + item.getItemName()); }
+                itemsWithinPlayersReach.Remove(mainDoor);
+            }
+            foreach (Item item in itemsWithinPlayersReach)
+            {
+                Console.WriteLine(item.GetSymbol(map).ToString() + " - " + item.getItemName());
             }
         }
         void PrintMap(Map map, List<Item> itemsWithinPlayersReach)

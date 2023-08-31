@@ -139,6 +139,7 @@
     <Compile Include="Model\Structures\GameObjects\Items\Gun stuff\Gun.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Hammer.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\Key.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\Keys\MasterKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\MysteriousKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WeaponKey.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Keys\WoodenKey.cs" />
