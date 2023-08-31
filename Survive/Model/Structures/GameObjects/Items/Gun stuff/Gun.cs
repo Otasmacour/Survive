@@ -17,6 +17,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 10;
         public override int floorNumberWhereItemSpawns => 0;
+        string noAmmoSoundFileName = "NoAmmo";
         public override string useSoundFileName => "firingGun";
         public override string dropSoundFileName => "FallingTool";
         public Gun(SoundsController soundsController) : base(soundsController)
@@ -38,6 +39,7 @@ namespace Survive
             {
                 if (character.inventory.items.OfType<Bullets>().FirstOrDefault() == null) { alerts.Add("You can't shoot, you have no bullets"); }
                 else { alerts.Add("First you need to load the gun"); }
+                this.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(noAmmoSoundFileName)));
                 return;
             }
             else
