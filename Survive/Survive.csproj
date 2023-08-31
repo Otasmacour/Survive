@@ -148,6 +148,7 @@
     <Compile Include="Model\Structures\GameObjects\Characters\NullCharacter.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Player\Player.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Shovel.cs" />
+    <Compile Include="Model\Structures\GameObjects\Items\MainDoor.cs" />
     <Compile Include="Model\Structures\GameObjects\SecretDoor.cs" />
     <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />

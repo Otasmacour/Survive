@@ -14,9 +14,9 @@ namespace Survive
             return "Hammer";
         }
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 10;
+        public override int noiseLevel => 6;
         public override int floorNumberWhereItemSpawns => -1;
-        public override string useSoundFileName => throw new NotImplementedException();
+        public override string useSoundFileName => "ViolentlyOpeningChest";
         public override string dropSoundFileName => "FallingTool";
         public Hammer(SoundsController soundsController) : base(soundsController)
         {
@@ -32,12 +32,18 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
+            MainDoor mainDoor = mapHelper.returnFunctions.AdjacentItems(character.mapWhereIsLocated, character.coordinates).OfType<MainDoor>().FirstOrDefault();
             Chest chest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<Chest>().FirstOrDefault();
             if (chest != null)
             {
                 if(chest is Chain) { chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts, false); }
                 else if(chest is WoodenChest) { chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts, true); }
                 else { alerts.Add("You can't get into this with a hammer"); }
+            }
+            else if(mainDoor != null && mainDoor.plankLock)
+            {
+                mainDoor.plankLock = false;
+                soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName)));
             }
             else { alerts.Add("There is nothing to hit"); }
         }

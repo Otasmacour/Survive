@@ -152,6 +152,16 @@ namespace Survive
             }
             return AdjacentCharacters;
         }
+        public List<Item> AdjacentItems(Map map, Coordinates coordinates)
+        {
+            List<Item> items = new List<Item>();
+            var adjacentCoordinates = GetAdjacentCoordinates(map.twoDArray, coordinates, 8);
+            foreach(Coordinates coordinates1 in adjacentCoordinates.Values)
+            {
+                if (boolFunctions.ItemThere(map.twoDArray, coordinates1)) { items.Add(GetItemThere(map, coordinates1)); }
+            }
+            return items;
+        }
         public Dictionary<Direction, Coordinates> GetAdjacentCoordinates(List<GameObject>[,] twoDArray, Coordinates coordinates, int fourOrEight)
         {
             Dictionary<Direction, Coordinates> adjacentCoordinates = new Dictionary<Direction, Coordinates>();

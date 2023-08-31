@@ -125,6 +125,18 @@ namespace Survive
             }
             return false;
         }
+        public bool MainDoorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
+        {
+            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
+            foreach (GameObject obj in list)
+            {
+                if (obj is MainDoor)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         static bool FloorThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];

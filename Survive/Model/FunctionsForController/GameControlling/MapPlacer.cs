@@ -55,6 +55,7 @@ namespace Survive
         }
         void PlaceItemsOnMaps(Maps maps)
         {
+            roomMapCollection.roomsByFloor[0][1].twoDArray[0, 6][0] = new MainDoor(soundsController);
             List<Item> items = new List<Item>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             foreach (Type type in assembly.GetTypes())
