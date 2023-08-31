@@ -32,9 +32,14 @@ namespace Survive
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
             MainDoor mainDoor = mapHelper.returnFunctions.AdjacentItems(character.mapWhereIsLocated, character.coordinates).OfType<MainDoor>().FirstOrDefault();
-            if(mainDoor != null)
+            Chest chest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<Chest>().FirstOrDefault();
+            if (mainDoor != null)
             {
                 if (mainDoor.padlock) { mainDoor.padlock = false; soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName))); }
+            }
+            else if (chest != null)
+            {
+                alerts.Add("Master key is not ment to unlock a regular chest");
             }
         }
         public override char GetSymbol(Map map)

@@ -17,7 +17,7 @@ namespace Survive
         public override int floorNumberWhereItemSpawns => -1;
         public override string getItemName()
         {
-            return content.getItemName()+" chained to wall";
+            return content.getItemName()+ " chained to wall, maybe a hammer would help...";
         }
         public override char GetSymbol(Map map)
         {

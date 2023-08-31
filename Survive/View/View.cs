@@ -39,7 +39,7 @@ namespace Survive
                 {
                     Console.WriteLine("_______");
                     Console.WriteLine("m - main door");
-                    if (mainDoor.plankLock) { Console.WriteLine("Plank lock"); }
+                    if (mainDoor.plankLock) { Console.WriteLine("Plank lock, maybe a hammer would be helpful..."); }
                     if (mainDoor.padlock) { Console.WriteLine("Padlock"); }
                     if (mainDoor.codePadlock) { Console.WriteLine("Code padlock"); }
                     Console.WriteLine("-------");

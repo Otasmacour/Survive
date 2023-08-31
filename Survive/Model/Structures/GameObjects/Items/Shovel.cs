@@ -41,7 +41,8 @@ namespace Survive
                 buriedChest.visible = true;
                 soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(shovelHittingChestSoundFileName)));
             }
-            else { soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(diggingSounds[random.Next(diggingSounds.Count)]))); }
+            if(character.mapWhereIsLocated.mapInformations.mapType == MapType.Garden) { soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(diggingSounds[random.Next(diggingSounds.Count)]))); }
+            else { alerts.Add("Digging with a shovel outside the garden, like really ?");  }
         }
         public override char GetSymbol(Map map)
         {
