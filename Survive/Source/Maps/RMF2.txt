@@ -1,5 +1,7 @@
 xxxxdxxxx
 x.......x
+xc......x
 d.......d
+x.......x
 x.......x
 xxxxdxxxx

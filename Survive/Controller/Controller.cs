@@ -43,7 +43,7 @@ namespace Survive
             Stopwatch monsterActionStopwatch = new Stopwatch();
             while (model.game.info.run)
             {
-                MonsterAction(monsterActionStopwatch);
+                //MonsterAction(monsterActionStopwatch);
                 DisplayUpdate(displayStopwatch);
                 model.functionsForController.soundsController.PlaySounds();
                 PlayerAction(playerActionStopwatch);
@@ -93,7 +93,7 @@ namespace Survive
                     UserIntent userIntent = gameControlling.playerActions.Action(c);
                     if(userIntent == UserIntent.Move)//When the player moves, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
                     {
-                        gameControlling.monsterActions.Action();
+                        //gameControlling.monsterActions.Action();
                     }
                 }
             }

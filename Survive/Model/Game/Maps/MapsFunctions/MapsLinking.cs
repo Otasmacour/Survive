@@ -27,16 +27,16 @@ namespace Survive
             Map RMS3 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
             //Rooms 0  Floor
             floorNumber = 0;
-            Map RM01 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
-            Map RM02 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
+            Map RM01 = new Map(mapsInitialization, "RM01", floorNumber, "Room 1", MapType.Null);
+            Map RM02 = new Map(mapsInitialization, "RM02", floorNumber, "Room 2", MapType.Null);
             Map RM03 = new Map(mapsInitialization, "Room", floorNumber, "Room 3", MapType.Null);
             Map RM04 = new Map(mapsInitialization, "RM04", floorNumber, "Room 4", MapType.Null);
-            Map RM05 = new Map(mapsInitialization, "Room", floorNumber, "Garden", MapType.Garden);
+            Map RM05 = new Map(mapsInitialization, "RM05", floorNumber, "Garden", MapType.Garden);
             Map RM06 = new Map(mapsInitialization, "Room", floorNumber, "Room 6", MapType.Null);
             //Rooms 1  Floor
             floorNumber = 1;
             Map RMF1 = new Map(mapsInitialization, "Room", floorNumber, "Room 1", MapType.Null);
-            Map RMF2 = new Map(mapsInitialization, "Room", floorNumber, "Room 2", MapType.Null);
+            Map RMF2 = new Map(mapsInitialization, "RMF2", floorNumber, "Room 2", MapType.Null);
             Map RMF3 = new Map(mapsInitialization, "RMF3", floorNumber, "Room 3", MapType.Null);
             Map RMF4 = new Map(mapsInitialization, "RMF4", floorNumber, "Room 4", MapType.Null);
             Map RMF5 = new Map(mapsInitialization, "RMF5", floorNumber, "Room 5", MapType.Null);

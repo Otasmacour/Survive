@@ -14,7 +14,7 @@ namespace Survive
         }
         public override string typeOfAssociatedKey => "WoodenKey";
         public override (int floorNumber, int roomNumber) locationMap => (0, 0);
-        public override (int y, int x) locationCoordinates => (5, 10);
+        public override (int y, int x) locationCoordinates => (4, 1);
         public override string getItemName()
         {
             return "Wooden chest";

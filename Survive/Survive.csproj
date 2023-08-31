@@ -172,7 +172,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ideas.txt" />
     <Content Include="Important.txt" />
     <Content Include="ToDoList.txt" />
   </ItemGroup>
