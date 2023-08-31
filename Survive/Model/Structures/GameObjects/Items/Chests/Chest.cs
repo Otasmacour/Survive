@@ -9,9 +9,10 @@ namespace Survive
     abstract class Chest : Item
     {
         public Item content;
-        public void Unlock(Map map, Coordinates coordinates, Alerts alerts)
+        public void Unlock(Map map, Coordinates coordinates, Alerts alerts, bool violentlyOpening)
         {
-            soundsController.soundsToPLay.Enqueue((map, GetSound(useSoundFileName)));
+            if (violentlyOpening) { soundsController.soundsToPLay.Enqueue((map, GetSound(violentyOpeningChestSoundFileName))); }
+            else { soundsController.soundsToPLay.Enqueue((map, GetSound(useSoundFileName))); }
             map.twoDArray[coordinates.y, coordinates.x].Remove(this);
             map.twoDArray[coordinates.y, coordinates.x].Add(content);
         }
@@ -19,6 +20,7 @@ namespace Survive
         public override bool takesUpSpaceInTheInventory => false;
         public override int noiseLevel => 1;
         public override string useSoundFileName => "UnlockingChest";
+        string violentyOpeningChestSoundFileName => "ViolentlyOpeningChest";
         public override string dropSoundFileName => throw new NotImplementedException();
         public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {

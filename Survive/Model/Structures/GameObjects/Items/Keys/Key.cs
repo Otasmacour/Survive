@@ -35,7 +35,7 @@ namespace Survive
             Chest chest = mapHelper.returnFunctions.GetChestThere(character.mapWhereIsLocated, character.coordinates);
             if (this.GetType().Name == chest.typeOfAssociatedKey)
             {
-                chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts);
+                chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts, false);
             }
             else { alerts.Add("Wrong key"); }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,10 +32,12 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            Chain chain = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<Chain>().FirstOrDefault();
-            if (chain != null)
+            Chest chest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<Chest>().FirstOrDefault();
+            if (chest != null)
             {
-                chain.Unlock(character.mapWhereIsLocated, character.coordinates, alerts);
+                if(chest is Chain) { chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts, false); }
+                else if(chest is WoodenChest) { chest.Unlock(character.mapWhereIsLocated, character.coordinates, alerts, true); }
+                else { alerts.Add("You can't get into this with a hammer"); }
             }
             else { alerts.Add("There is nothing to hit"); }
         }
