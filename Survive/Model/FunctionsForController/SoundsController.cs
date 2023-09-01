@@ -27,6 +27,7 @@ namespace Survive
             this.characters = characters;
             this.soundsFolderPath = mainFolderPath+@"Sounds\";
             HeartBeatInitialization();
+            characters.player.soundsController = this;
         }
         public void PlaySounds()
         {

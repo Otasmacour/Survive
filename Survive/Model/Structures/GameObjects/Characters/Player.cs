@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NAudio.Wave.SampleProviders;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,7 @@ namespace Survive
 {
     class Player : Character
     {
+        public SoundsController soundsController;
         public bool visible = true;
         public MapHelper mapHelper;
         Monster monster;
@@ -62,11 +65,21 @@ namespace Survive
             }
             return true;
         }
+        public Sound GetSound(string soundFileName)
+        {
+            Sound sound = new Sound(soundsController.soundsFolderPath, soundFileName);
+            sound.outputDevice.Init(sound.audioFileReader);
+            var volumeEffect = new VolumeSampleProvider(sound.audioFileReader.ToSampleProvider());
+            sound.outputDevice.Init(volumeEffect);
+            sound.noiceLevel = 1;
+            return sound;
+        }
         public override void Die(string theWayHowPlayerDied, Alerts alerts)
         {
             info.win = false;
             info.theWayThePlayerDied = theWayHowPlayerDied;
             info.run = false;
+            soundsController.soundsToPLay.Enqueue((mapWhereIsLocated, GetSound("GameOVer")));
         }
         public override char GetSymbol(Map map)
         {
