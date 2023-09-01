@@ -9,7 +9,7 @@ namespace Survive
     abstract class Key : Item
     {
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 2;
+        public override int noiseLevel => 1;
         public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => "KeyDrop";

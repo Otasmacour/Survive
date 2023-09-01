@@ -14,7 +14,7 @@ namespace Survive
             return "Hammer";
         }
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 6;
+        public override int noiseLevel => 3;
         public override int floorNumberWhereItemSpawns => -1;
         public override string useSoundFileName => "ViolentlyOpeningChest";
         public override string dropSoundFileName => "MetalItemDrop";
