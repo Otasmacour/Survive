@@ -14,7 +14,6 @@ namespace Survive
         }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 2;
-        public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => "UnlockingChest";
         public override string dropSoundFileName => "KeyDrop";
         public MasterKey(SoundsController soundsController) : base(soundsController)

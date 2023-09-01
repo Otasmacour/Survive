@@ -16,7 +16,6 @@ namespace Survive
         }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 10;
-        public override int floorNumberWhereItemSpawns => 0;
         string noAmmoSoundFileName = "NoAmmo";
         public override string useSoundFileName => "firingGun";
         public override string dropSoundFileName => "GunDrop";

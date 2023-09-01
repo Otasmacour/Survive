@@ -15,7 +15,6 @@ namespace Survive
         }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 4;
-        public override int floorNumberWhereItemSpawns => 0;
         public override string useSoundFileName => throw new NotImplementedException();
         public override string dropSoundFileName => "PlateDrop";
         public Plate(SoundsController soundsController) : base(soundsController) 

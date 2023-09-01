@@ -15,10 +15,9 @@ namespace Survive
         public abstract string getItemName();
         public abstract bool takesUpSpaceInTheInventory { get; }
         public abstract int noiseLevel { get; }
-        public abstract int floorNumberWhereItemSpawns { get; }
         public abstract string useSoundFileName { get; }
         public abstract string dropSoundFileName { get; }
-        public Item(SoundsController soundsController) { }
+        public Item(SoundsController soundsController){ }
         public abstract void PickUp(Character character);
         public abstract void Drop(Character character);
         public abstract void Use(Character character, MapHelper mapHelper, Alerts alerts);

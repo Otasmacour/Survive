@@ -16,7 +16,6 @@ namespace Survive
         }
         public override bool takesUpSpaceInTheInventory => true;
         public override int noiseLevel => 1;
-        public override int floorNumberWhereItemSpawns => 1;
         string shovelHittingChestSoundFileName = "ShovelHittingChest";
         List<string> diggingSounds = new List<string> { "DiggingWithShovel1", "DiggingWithShovel2", "DiggingWithShovel3", "DiggingWithShovel4", "DiggingWithShovel5" };
         public override string useSoundFileName => throw new NotImplementedException();

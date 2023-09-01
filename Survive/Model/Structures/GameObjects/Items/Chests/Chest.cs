@@ -24,7 +24,6 @@ namespace Survive
         public override string useSoundFileName => "UnlockingChest";
         string violentyOpeningChestSoundFileName => "ViolentlyOpeningChest";
         public override string dropSoundFileName => throw new NotImplementedException();
-        public override int floorNumberWhereItemSpawns => throw new NotImplementedException();
         public Chest(SoundsController soundsController, Item content) : base(soundsController)
         {
             this.soundsController = soundsController;

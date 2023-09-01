@@ -56,7 +56,8 @@ namespace Survive
             List<Item> items = new List<Item> { new Hammer(soundsController), new MysteriousKey(soundsController), new WeaponKey(soundsController), new IronKey(soundsController), new WoodenKey(soundsController), new BackPack(soundsController), new Plate(soundsController) };
             foreach (Item item in items)
             {
-                Map map = roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns][random.Next(roomMapCollection.roomsByFloor[item.floorNumberWhereItemSpawns].Count)];
+                int floorNumber = random.Next(-1,2); int roomNumber = random.Next(roomMapCollection.roomsByFloor[floorNumber].Count);
+                Map map = roomMapCollection.roomsByFloor[floorNumber][roomNumber];
                 Coordinates coordinates = returnFunctions.GetRandomAvailableCoordinatesonMap(map, 1)[0];
                 mapOperations.PlaceItemOnMap(item, map, coordinates);
             }
