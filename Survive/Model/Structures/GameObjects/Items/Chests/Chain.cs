@@ -24,6 +24,5 @@ namespace Survive
         {
             return content.GetSymbol(map);
         }
-
     }
 }

@@ -17,7 +17,6 @@ namespace Survive
         MapOperations mapOperations;
         public void MoveCharacter(Character character, Direction movementDirection)
         {
-            Map map = character.mapWhereIsLocated;
             if (movementDirection == Direction.Up)
             {
                 MoveUp(character);

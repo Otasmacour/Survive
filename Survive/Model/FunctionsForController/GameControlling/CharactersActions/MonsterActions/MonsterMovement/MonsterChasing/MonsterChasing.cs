@@ -28,16 +28,11 @@ namespace Survive
         {
             if (monsterChasingInformations.playerPosition != null)
             {
-                //Console.WriteLine("It is about to Chase player");
-                //Thread.Sleep(1000);
                 ChasePlayerInTwoDArray(mapHelper, movement, monster, player);
                 monsterChasingInformations.playerPosition = null;
             }
             else if (monsterChasingInformations.whereThePlayerHasGone != null)
             {
-                //Console.Write("Where the player has gone: ");
-                //Console.WriteLine(mapHelper.parsing.CoordinatesToTupple(monsterChasingInformations.whereThePlayerHasGone));
-                //Thread.Sleep(1000);
                 bool lastTime = false;
                 if (mapHelper.boolFunctions.AreTheCoordinatesAdjacent(monster.mapWhereIsLocated.twoDArray, monster.coordinates, monsterChasingInformations.whereThePlayerHasGone))
                 {

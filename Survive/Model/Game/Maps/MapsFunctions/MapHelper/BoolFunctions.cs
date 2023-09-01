@@ -55,18 +55,6 @@ namespace Survive
             }
             return false;
         }
-        public bool PlayerCanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates) //At this moment, this method seems unnecessary, but in future there will be gameobjects, that monster cannot step on
-        {
-            List<GameObject> list = twoDArray[coordinates.y, coordinates.x];
-            foreach (GameObject obj in list)
-            {
-                if (obj is Wall)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
         public bool MonsterCanGoThere(List<GameObject>[,] twoDArray, Coordinates coordinates)
         {
             List<GameObject> list = twoDArray[coordinates.y, coordinates.x];

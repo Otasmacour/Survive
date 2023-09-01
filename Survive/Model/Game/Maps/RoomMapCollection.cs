@@ -11,9 +11,5 @@ namespace Survive
         public List<Map> list = new List<Map>();
         public Dictionary<int,List<Map>> roomsByFloor = new Dictionary<int, List<Map>>();
         public Map monsterRespawnMap;
-        public RoomMapCollection() 
-        {
-
-        }
     }
 }

@@ -10,12 +10,10 @@ namespace Survive
     {
         public bool searching;
         public bool firstRoomThenRooms;
-        //Searching rooms
         public bool searchingRooms;
         public int count;
         public Coordinates whereToSearch;
         public HashSet<Map> visitedRooms = new HashSet<Map>();
-        //Searching room
         public bool searchingRoom;
         public Queue<Coordinates> furnitureToSearch = new Queue<Coordinates>();
         public Coordinates CurrentFurnitureToSearch;

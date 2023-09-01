@@ -10,7 +10,7 @@ namespace Survive
     {
         public Player player;
         public Monster monster;
-        public List<Character> characters;
+        public int t;
         public CharactersFunctions charactersFunctions;
         public Characters(Informations info)
         {

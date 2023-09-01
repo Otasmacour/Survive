@@ -49,7 +49,7 @@ namespace Survive
                 else
                 {
 
-                    if (FiftyFifTychance(random)) { monsterSearchingInformation.searchingRooms = true; SearchRooms(); }
+                    if (FiftyFifTychance(random)) { monsterSearchingInformation.searchingRooms = true; SearchRooms(); }//There is 50% chance, that the monster will search the room, the player escaped to
                     else { monsterSearchingInformation.searchingRoom = true; monsterSearchingInformation.firstRoomThenRooms = true; monsterSearchingInformation.furnitureToSearch = new Queue<Coordinates>(monster.mapWhereIsLocated.mapInformations.mapLayout.furnitureCoordinates); SearchTheRoom(); }
                 }
             }

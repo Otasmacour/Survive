@@ -15,7 +15,7 @@ namespace Survive
             List<(Stopwatch stopwatch, string alert)> alertToRemove = new List<(Stopwatch stopwatch, string alert)> ();
             foreach (var item in alerts)
             {
-                if(item.stopwatch.ElapsedMilliseconds > 1000)
+                if(item.stopwatch.ElapsedMilliseconds > 2000)
                 {
                     alertToRemove.Add (item);
                 }

@@ -43,7 +43,7 @@ namespace Survive
             Stopwatch monsterActionStopwatch = new Stopwatch();
             while (model.game.info.run)
             {
-                //MonsterAction(monsterActionStopwatch);
+                MonsterAction(monsterActionStopwatch);
                 DisplayUpdate(displayStopwatch);
                 model.functionsForController.soundsController.PlaySounds();
                 PlayerAction(playerActionStopwatch);

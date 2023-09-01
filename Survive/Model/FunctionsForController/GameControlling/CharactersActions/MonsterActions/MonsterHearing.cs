@@ -38,7 +38,7 @@ namespace Survive
             Console.Clear();
             foreach(var item in sounds)
             {
-                if (mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) <= item.sound.noiceLevel) //That noise level is high enough for monster to hear it
+                if (mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) <= item.sound.noiceLevel) //That noise level is high enough for monster to hear it.
                 {
                     if(nearestAudibleMap == null)
                     {
@@ -46,7 +46,7 @@ namespace Survive
                     }
                     else
                     {
-                        if(mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) < mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, nearestAudibleMap))
+                        if(mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, item.map) < mapHelper.returnFunctions.GetDistanceOfTwoMaps(monster.mapWhereIsLocated, nearestAudibleMap)) //Selecting better options, if there are multiple sounds that can be heard, select the closest audible map.
                         {
                             nearestAudibleMap = item.map;
                         }
@@ -55,7 +55,7 @@ namespace Survive
             }
             if(nearestAudibleMap != null)
             {
-                if(nearestAudibleMap is Tunnel)
+                if(nearestAudibleMap is Tunnel)//Monster can't go into the tunnel, in this case it'S going into one of the normal adjacent rooms.
                 {
                     monsterMovement.monsterWalking.whereTheMonsterShouldGoForAWalk(nearestAudibleMap.mapInformations.mapLayout.secretDoors[0].destinationMap, true);
                 }

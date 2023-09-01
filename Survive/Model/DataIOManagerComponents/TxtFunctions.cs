@@ -28,23 +28,5 @@ namespace Survive
             }
             return lines;
         }
-        
-        public string[] NamesOfALLFilesOfThatTypeInFolder(string folderName, string type)
-        {
-            string folderPath = mainFolderPath + folderName + @"\";
-            string[] jsonFiles = Directory.GetFiles(folderPath, "*" + type);
-            string[] jsonFilesNames = new string[jsonFiles.Length];
-            for (int i = 0; i < jsonFiles.Length; i++)
-            {
-                string fileName = Path.GetFileName(jsonFiles[i]);
-                fileName = fileName.Replace(".json", string.Empty);
-                jsonFilesNames[i] = fileName;
-            }
-            return jsonFilesNames;
-        }
-        public string SuitableName(Character character)
-        {
-            return character.name.Replace(" ", string.Empty);
-        }
     }
 }
