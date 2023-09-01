@@ -42,14 +42,14 @@ namespace Survive
             Coordinates playerCoordinates = new Coordinates();
             playerCoordinates.y = 2;
             playerCoordinates.x = 2;
-            mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[0][3], playerCoordinates);
+            mapOperations.PlaceCharacterOnMap(characters.player, roomMapCollection.roomsByFloor[0][5], playerCoordinates);
         }
         void PlaceMonsterOnMap()
         {
             Coordinates monsterCoordinates = new Coordinates();
             monsterCoordinates.y = 4;
             monsterCoordinates.x = 3;
-            mapOperations.PlaceCharacterOnMap(characters.monster, roomMapCollection.roomsByFloor[0][4], monsterCoordinates);
+            mapOperations.PlaceCharacterOnMap(characters.monster, roomMapCollection.roomsByFloor[-1][1], monsterCoordinates);
         }
         void PlaceItemsOnMaps()
         {
