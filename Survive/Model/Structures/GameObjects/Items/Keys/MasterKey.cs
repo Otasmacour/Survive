@@ -37,10 +37,8 @@ namespace Survive
             {
                 if (mainDoor.padlock) { mainDoor.padlock = false; soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(useSoundFileName))); }
             }
-            else if (chest != null)
-            {
-                alerts.Add("Master key is not ment to unlock a regular chest");
-            }
+            else if (chest != null) { alerts.Add("Master key is not ment to unlock a regular chest"); }
+            else { alerts.Add("You have to find something to unlock before you unlock anything"); }
         }
         public override char GetSymbol(Map map)
         {

@@ -35,13 +35,16 @@ namespace Survive
         }
         public override void Use(Character character, MapHelper mapHelper, Alerts alerts)
         {
-            BuriedChest buriedChest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<BuriedChest>().FirstOrDefault();
-            if(buriedChest != null)
+            if (character.mapWhereIsLocated.mapInformations.mapType == MapType.Garden)
             {
-                buriedChest.visible = true;
-                soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(shovelHittingChestSoundFileName)));
+                BuriedChest buriedChest = character.mapWhereIsLocated.twoDArray[character.coordinates.y, character.coordinates.x].OfType<BuriedChest>().FirstOrDefault();
+                if (buriedChest != null)
+                {
+                    buriedChest.visible = true;
+                    soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(shovelHittingChestSoundFileName)));
+                }
+                else { soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(diggingSounds[random.Next(diggingSounds.Count)]))); }
             }
-            if(character.mapWhereIsLocated.mapInformations.mapType == MapType.Garden) { soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, GetSound(diggingSounds[random.Next(diggingSounds.Count)]))); }
             else { alerts.Add("Digging with a shovel outside the garden, like really ?");  }
         }
         public override char GetSymbol(Map map)
