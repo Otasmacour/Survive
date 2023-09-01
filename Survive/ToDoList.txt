@@ -1,3 +1,1 @@
-Add some basic items, so it can be played
-Make the main door and it's mechanism
 Make some single use items
