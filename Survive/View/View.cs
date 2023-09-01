@@ -59,7 +59,7 @@ namespace Survive
                 {
                     Console.Write(' ');
                 }
-                Console.Write(i);
+                //Console.Write(i);
                 if (i == mapWidth + 1)
                 {
                     Console.WriteLine("");
@@ -68,7 +68,7 @@ namespace Survive
             Console.WriteLine("");
             for (int y = 0; y < mapHeight; y++)
             {
-                Console.Write(y);
+                //Console.Write(y);
                 for (int x = 0; x < mapWidth; x++)
                 {
                     List<GameObject> objects = twoDArrayt[y, x];
