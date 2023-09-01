@@ -58,17 +58,6 @@ namespace Survive
             }
             throw new NotImplementedException(); //this can obviously never happen
         }
-        public Character GetCharacterThere(List<GameObject> list)
-        {
-            foreach (GameObject obj in list)
-            {
-                if (obj is Character)
-                {
-                    return (Character)obj;
-                }
-            }
-            return new NullCharacter(); //this can obviously never happen
-        }
         public List<Coordinates> GetRandomAvailableCoordinatesonMap(Map map, int numberOfRequestedCoordinates)
         {
             List<Coordinates> list = new List<Coordinates>();
@@ -107,50 +96,6 @@ namespace Survive
                 }
             }
             return mostPreferredObject;
-        }
-        public List<Character> SearchAdjacentCharacter(Character character)
-        {
-            List<Character> AdjacentCharacters = new List<Character>();
-            List<GameObject>[,] twoDArray = character.mapWhereIsLocated.twoDArray;
-            int y = character.coordinates.y;
-            int x = character.coordinates.x;
-            if (y - 1 >= 0)
-            {
-                List<GameObject> up = twoDArray[y - 1, x];
-                //Console.WriteLine("up: " + mostPreferredObjectInList(up));
-                if (boolFunctions.CharacterThere(up))
-                {
-                    AdjacentCharacters.Add(GetCharacterThere(up));
-                }
-            }
-            if (y + 1 < twoDArray.GetLength(0))
-            {
-                List<GameObject> down = twoDArray[y + 1, x];
-                // Console.WriteLine("down: " + mostPreferredObjectInList(down));
-                if (boolFunctions.CharacterThere(down))
-                {
-                    AdjacentCharacters.Add(GetCharacterThere(down));
-                }
-            }
-            if (x - 1 >= 0)
-            {
-                List<GameObject> left = twoDArray[y, x - 1];
-                // Console.WriteLine("left: " + mostPreferredObjectInList(left));
-                if (boolFunctions.CharacterThere(left))
-                {
-                    AdjacentCharacters.Add(GetCharacterThere(left));
-                }
-            }
-            if (x + 1 < twoDArray.GetLength(1))
-            {
-                List<GameObject> right = twoDArray[y, x + 1];
-                // Console.WriteLine("right: " + mostPreferredObjectInList(right));
-                if (boolFunctions.CharacterThere(right))
-                {
-                    AdjacentCharacters.Add(GetCharacterThere(right));
-                }
-            }
-            return AdjacentCharacters;
         }
         public List<Item> AdjacentItems(Map map, Coordinates coordinates)
         {
