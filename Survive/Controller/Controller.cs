@@ -13,18 +13,17 @@ namespace Survive
         Model model { get; set; }
         GameControlling gameControlling { get; set; }
         View view { get; set; }
-        public Controller() 
-        {
-            GameReset();
-        }
         public void Play()
         {
+            Stopwatch stopwatch = new Stopwatch(); stopwatch.Start(); //The stopwatch measures how fast the player managed to escape.
             bool run = true;
             while (run)
             {
-                GameReset();
+                GameReset(stopwatch);
                 bool result = Escape();
-                if (result) { Console.WriteLine("You escaped"); }
+                TimeSpan elapsed = stopwatch.Elapsed;
+                string formattedTime = $"{(int)elapsed.TotalMinutes}:{elapsed.Seconds:D2}.{elapsed.Milliseconds / 10:D2}";
+                if (result) { Console.WriteLine("You escaped, your time: " + formattedTime); }
                 else { Console.WriteLine("Game over, "+model.game.info.theWayThePlayerDied); }
                 Console.WriteLine("Do you want to play again? [Y/n]");
                 bool answered = false;
@@ -98,11 +97,12 @@ namespace Survive
                 }
             }
         }
-        void GameReset()
+        void GameReset(Stopwatch stopwatch)
         {
             model = new Model();
             gameControlling = model.functionsForController.gameControlling;
             view = new View(model.game.maps.mapsFunctions.mapHelper);
+            stopwatch.Restart();
         }
     }
 }
