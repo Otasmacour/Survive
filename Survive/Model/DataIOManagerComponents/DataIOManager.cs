@@ -11,13 +11,11 @@ namespace Survive
     {
         public string mainFolderPath;
         public TxtFunctions txtFunctions;
-        public JsonFunctions jsonFunctions;
         public EnumFunctions enumFunctions;
         public DataIOManager()
         {
             mainFolderPath = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName + @"\Source\";
             txtFunctions = new TxtFunctions(mainFolderPath);
-            jsonFunctions = new JsonFunctions(mainFolderPath, this, txtFunctions);
             enumFunctions = new EnumFunctions();
         }
     }

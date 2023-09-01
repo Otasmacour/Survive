@@ -80,7 +80,6 @@
     <Compile Include="Model\DataIOManagerComponents\DataIOManager.cs" />
     <Compile Include="Model\DataIOManagerComponents\EnumFunctions\EnumFunctions.cs" />
     <Compile Include="Model\DataIOManagerComponents\EnumFunctions\EnumsMappingManager.cs" />
-    <Compile Include="Model\DataIOManagerComponents\JsonFunctions.cs" />
     <Compile Include="Model\DataIOManagerComponents\TxtFunctions.cs" />
     <Compile Include="Model\FunctionsForController\FunctionsForController.cs" />
     <Compile Include="Model\FunctionsForController\GameControlling\CharactersActions\MonsterActions\MonsterActions.cs" />
@@ -120,10 +119,8 @@
     <Compile Include="Model\Game\Maps\RoomMapCollection.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Inventory.cs" />
-    <Compile Include="Model\Structures\GameObjects\Corpse.cs" />
     <Compile Include="Model\Structures\GameObjects\Door.cs" />
     <Compile Include="Model\Structures\GameObjects\Floor.cs" />
-    <Compile Include="Model\Structures\GameObjects\Furniture\Bed.cs" />
     <Compile Include="Model\Structures\GameObjects\Furniture\Closet.cs" />
     <Compile Include="Model\Structures\GameObjects\Furniture\Furniture.cs" />
     <Compile Include="Model\Structures\GameObjects\GameObject.cs" />
@@ -149,11 +146,10 @@
     <Compile Include="Model\Structures\GameObjects\Items\Item.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\Monster.cs" />
     <Compile Include="Model\Structures\GameObjects\Characters\NullCharacter.cs" />
-    <Compile Include="Model\Structures\GameObjects\Characters\Player\Player.cs" />
+    <Compile Include="Model\Structures\GameObjects\Characters\Player.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\Shovel.cs" />
     <Compile Include="Model\Structures\GameObjects\Items\MainDoor.cs" />
     <Compile Include="Model\Structures\GameObjects\SecretDoor.cs" />
-    <Compile Include="Model\Structures\GameObjects\SuspiciousObject.cs" />
     <Compile Include="Model\Structures\GameObjects\Wall.cs" />
     <Compile Include="Model\Structures\Maps\MapLayout.cs" />
     <Compile Include="Model\Structures\Maps\MapInformations.cs" />

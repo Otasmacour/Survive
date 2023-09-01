@@ -45,10 +45,6 @@ namespace Survive
                     case 'x':
                         element = new Wall();
                         break;
-                    case 'b':
-                        element = new Bed();
-                        mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
-                        break;
                     case 'c':
                         element = new Closet();
                         mapInformations.mapLayout.furnitureCoordinates.Add(coordinates);
