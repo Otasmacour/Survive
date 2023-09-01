@@ -60,7 +60,7 @@ namespace Survive
             if(mapHelper.boolFunctions.MainDoorThere(mapFromWhere.twoDArray, newCoordinates) && character is Player)
             {
                 MainDoor mainDoor = mapFromWhere.twoDArray[newCoordinates.y, newCoordinates.x].OfType<MainDoor>().FirstOrDefault();
-                if (mainDoor.possiblePassage) {character.info.win = true; character.info.run = false; }
+                if (mainDoor.possiblePassage) {character.info.win = true; character.info.run = false; mainDoor.soundsController.soundsToPLay.Enqueue((character.mapWhereIsLocated, mainDoor.GetSound(mainDoor.useSoundFileName))); }
                 return;
             }
             if (mapHelper.boolFunctions.DoorThere(mapFromWhere.twoDArray, newCoordinates))

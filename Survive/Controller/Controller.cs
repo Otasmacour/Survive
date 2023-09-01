@@ -45,8 +45,8 @@ namespace Survive
             {
                 MonsterAction(monsterActionStopwatch);
                 DisplayUpdate(displayStopwatch);
-                model.functionsForController.soundsController.PlaySounds();
                 PlayerAction(playerActionStopwatch);
+                model.functionsForController.soundsController.PlaySounds();
             }
             if (model.game.info.win)
             {
@@ -91,9 +91,9 @@ namespace Survive
                 {
                     c = Console.ReadKey(intercept: true).KeyChar;
                     UserIntent userIntent = gameControlling.playerActions.Action(c);
-                    if(userIntent == UserIntent.Move)//When the player moves, the monster moves too, this negates the player's normally high speed, so he cannot espace easily                
+                    if(userIntent == UserIntent.Move && model.game.characters.player.visible && model.game.characters.player.mapWhereIsLocated == model.game.characters.monster.mapWhereIsLocated)////When the player moves, the monster moves too, this negates the player's normally high speed, so he cannot espace easily.
                     {
-                        //gameControlling.monsterActions.Action();
+                        gameControlling.monsterActions.Action();
                     }
                 }
             }

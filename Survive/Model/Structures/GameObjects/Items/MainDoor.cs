@@ -24,9 +24,9 @@ namespace Survive
             return "Main door";
         }
         public override bool takesUpSpaceInTheInventory => throw new NotImplementedException();
-        public override int noiseLevel => throw new NotImplementedException();
+        public override int noiseLevel => 1;
         public override int floorNumberWhereItemSpawns => 0;
-        public override string useSoundFileName => throw new NotImplementedException();
+        public override string useSoundFileName => "EscapingThroughTheMainDoor";
         public override string dropSoundFileName => throw new NotImplementedException();
         public MainDoor(SoundsController soundsController) : base(soundsController)
         {
