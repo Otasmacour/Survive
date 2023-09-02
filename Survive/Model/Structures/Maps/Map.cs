@@ -9,7 +9,7 @@ namespace Survive
     class Map
     {
         public List<GameObject>[,] twoDArray;
-        public MapInformations mapInformations;
+        public MapInformation mapInformations;
         public string name;
         public Map(MapsInitialization mapsInitialization, string fileName, int floorNumber, string mapName, MapType mapType) //the mapName will be remove, after all rooms will have their names, it just temporary, bcs without names like "R1" (room 1), the mapLinking functions would be confusing 
         {

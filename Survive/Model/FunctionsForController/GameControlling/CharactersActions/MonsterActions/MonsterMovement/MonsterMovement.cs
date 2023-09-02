@@ -31,7 +31,7 @@ namespace Survive
         public void Movement() 
         {
             Update(monster, mapHelper, roomMapCollection);
-            if(monster.monsterChasingInformations.chasing)
+            if(monster.monsterChasingInformation.chasing)
             {
                 if (PlayerCoulBeKilled()) { return; }
                 monsterChasing.ChasingUpdate();
@@ -41,7 +41,7 @@ namespace Survive
             {
                 monsterSearching.Search();
             }
-            else if(monster.monsterWalkingInformations.onWay)
+            else if(monster.monsterWalkingInformation.onWay)
             {
                 monsterWalking.Walking(mapHelper, dataIOManager);
             }
@@ -52,13 +52,13 @@ namespace Survive
         }
         static void Update(Monster monster, MapHelper mapHelper, RoomMapCollection roomMapCollection)
         {
-            if(monster.monsterChasingInformations.chasing == false)
+            if(monster.monsterChasingInformation.chasing == false)
             {
                 if (mapHelper.boolFunctions.MonsterSeesThePlayer())//If monster spots player, it starts to chase him
                 {
-                    monster.monsterChasingInformations.chasing = true;
+                    monster.monsterChasingInformation.chasing = true;
                     monster.monsterSearchingInformation.EndingOfSearching();
-                    monster.monsterWalkingInformations.UponArrival();
+                    monster.monsterWalkingInformation.UponArrival();
                 }
             }
             monster.monsterMovementInformations.Update(roomMapCollection);//Updating unvisited maps, then the DecideWhereToGoForAWalk method can select the map where the monster did not pass.

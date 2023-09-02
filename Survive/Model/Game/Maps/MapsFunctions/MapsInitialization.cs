@@ -23,11 +23,11 @@ namespace Survive
             this.mapsLinking.LinkingMaps(roomMapCollection, this);
             this.mapsCleaning.RemovingOfUnusedDoors(roomMapCollection);
         }
-        public (List<GameObject>[,] twoDArray, MapInformations mapInformations) CreatingTwoDArrayPlusInformationsOfIt(string txtFileName)
+        public (List<GameObject>[,] twoDArray, MapInformation mapInformations) CreatingTwoDArrayPlusInformationsOfIt(string txtFileName)
         {
             List<string> lines = dataIOManager.txtFunctions.TxtLoad(folderName, txtFileName+".txt");
             List<GameObject>[,] twoDArray = new List<GameObject>[lines.Count, lines[0].Length];
-            MapInformations mapInformations = new MapInformations();
+            MapInformation mapInformations = new MapInformation();
             int mapHeight = lines.Count();
             int mapWidth = lines[0].Length;
             for (int i = 0; i < mapHeight * mapWidth; i++)

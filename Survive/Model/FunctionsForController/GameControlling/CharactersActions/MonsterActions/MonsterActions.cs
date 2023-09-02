@@ -21,7 +21,7 @@ namespace Survive
         public MonsterMovement monsterMovement;
         MonsterHearing monsterHearing;
         Stopwatch respawnStopwatch = new Stopwatch();
-        public MonsterActions(Characters characters, Movement movement, DataIOManager dataIOManager, RoomMapCollection roomMapCollection, MapsFunctions mapsFunctions, GameInformations gameInformations, SoundsController soundsController)
+        public MonsterActions(Characters characters, Movement movement, DataIOManager dataIOManager, RoomMapCollection roomMapCollection, MapsFunctions mapsFunctions, GameInformation gameInformation, SoundsController soundsController)
         {
             this.characters = characters;
             this.movement = movement;
@@ -30,8 +30,8 @@ namespace Survive
             this.mapHelper = mapsFunctions.mapHelper;
             this.mapOperations = mapsFunctions.mapOperations;
             this.monster = characters.monster;
-            this.monsterMovement = new MonsterMovement(monster, mapHelper, movement, dataIOManager, characters.player, roomMapCollection, gameInformations.alerts);
-            this.monsterHearing = new MonsterHearing(soundsController, gameInformations, monsterMovement, mapHelper, monster, characters.player);
+            this.monsterMovement = new MonsterMovement(monster, mapHelper, movement, dataIOManager, characters.player, roomMapCollection, gameInformation.alerts);
+            this.monsterHearing = new MonsterHearing(soundsController, gameInformation, monsterMovement, mapHelper, monster, characters.player);
         }
         public void Action()
         {

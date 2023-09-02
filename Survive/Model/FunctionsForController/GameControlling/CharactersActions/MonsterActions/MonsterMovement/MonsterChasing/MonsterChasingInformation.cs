@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class MonsterChasingInformations
+    class MonsterChasingInformation
     {
         public bool chasing;
         public Coordinates playerPosition;

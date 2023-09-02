@@ -11,16 +11,16 @@ namespace Survive
     class MonsterHearing
     {
         
-        GameInformations gameInformations;
+        GameInformation gameInformation;
         SoundsController soundsController;
         MonsterMovement monsterMovement;
         MapHelper mapHelper;
         Monster monster;
         Player player;
-        public MonsterHearing(SoundsController soundsController, GameInformations gameInformations, MonsterMovement monsterMovement, MapHelper mapHelper, Monster monster, Player player)
+        public MonsterHearing(SoundsController soundsController, GameInformation gameInformation, MonsterMovement monsterMovement, MapHelper mapHelper, Monster monster, Player player)
         {
             this.soundsController = soundsController;
-            this.gameInformations = gameInformations;
+            this.gameInformation = gameInformation;
             this.monsterMovement = monsterMovement;
             this.mapHelper = mapHelper;
             this.monster = monster;
@@ -30,7 +30,7 @@ namespace Survive
         {
             List<(Map map, Sound sound)> sounds = new List<(Map map, Sound sound)>(soundsController.unHeardByAMonster);
             foreach(var item in sounds) { soundsController.unHeardByAMonster.Remove(item); }
-            if (monster.monsterChasingInformations.chasing || sounds.Count == 0) //If monster can see player, it won't pay attention to dropped items
+            if (monster.monsterChasingInformation.chasing || sounds.Count == 0) //If monster can see player, it won't pay attention to dropped items
             {
                 return;
             }

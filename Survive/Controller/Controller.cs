@@ -55,7 +55,7 @@ namespace Survive
         void MonsterAction(Stopwatch monsterActionStopwatch)
         {
             int pauseBetweenMonsterAction = 1000;
-            if (model.game.characters.monster.monsterChasingInformations.chasing || model.game.characters.monster.monsterSearchingInformation.searching || model.game.characters.monster.monsterWalkingInformations.followingTheNoise) { pauseBetweenMonsterAction = 500; }
+            if (model.game.characters.monster.monsterChasingInformation.chasing || model.game.characters.monster.monsterSearchingInformation.searching || model.game.characters.monster.monsterWalkingInformation.followingTheNoise) { pauseBetweenMonsterAction = 500; }
             //When the monster is chasing or searching for the player, its speed is faster than when just walking.
             if (monsterActionStopwatch.ElapsedMilliseconds >= pauseBetweenMonsterAction)//PauseBetweenMonsterAction determines how often the monster performs the action.
             {
@@ -68,7 +68,7 @@ namespace Survive
             if (displayStopwatch.ElapsedMilliseconds >= 50)
             {
                 model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();//This method checks if the player is within range of the monster (and can be killed), if so it will end the game.
-                view.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformations.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformations.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformations.alerts.GetAlerts(), model.game.characters.monster);
+                view.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(), model.game.characters.monster);
                 //This Display method gets as arguments all required data and prints the game scene into the terminal
                 displayStopwatch.Restart();
             }

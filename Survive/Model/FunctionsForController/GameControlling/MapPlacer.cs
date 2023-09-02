@@ -10,7 +10,7 @@ namespace Survive
 {
     class MapPlacer
     {
-        GameInformations gameInformations;
+        GameInformation gameInformation;
         Maps maps;
         Characters characters;
         MapOperations mapOperations;
@@ -18,9 +18,9 @@ namespace Survive
         RoomMapCollection roomMapCollection;
         SoundsController soundsController;
         Random random = new Random();
-        public MapPlacer(Maps maps, Characters characters, GameInformations gameInformations, SoundsController soundsController)
+        public MapPlacer(Maps maps, Characters characters, GameInformation gameInformation, SoundsController soundsController)
         {
-            this.gameInformations = gameInformations;
+            this.gameInformation = gameInformation;
             this.maps = maps;
             this.characters = characters;
             this.mapOperations = maps.mapsFunctions.mapOperations;

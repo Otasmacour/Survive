@@ -11,14 +11,14 @@ namespace Survive
         Movement movement;
         Monster monster;
         MapHelper mapHelper;
-        MonsterWalkingInformations monsterWalkingInformations;
+        MonsterWalkingInformation monsterWalkingInformations;
         Random random = new Random();
         public MonsterWalking(Movement movement, Monster monster, MapHelper mapHelper)
         {
             this.movement = movement;
             this.monster = monster;
             this.mapHelper = mapHelper;
-            this.monsterWalkingInformations = monster.monsterWalkingInformations;
+            this.monsterWalkingInformations = monster.monsterWalkingInformation;
         }
         public void whereTheMonsterShouldGoForAWalk(Map map, bool followingTheNoise)
         {
@@ -98,7 +98,7 @@ namespace Survive
         }
         static void GeneratingPath(Monster monster, MapHelper mapHelper)
         {
-            monster.monsterWalkingInformations.path = PathBetweenMaps(monster, monster.monsterWalkingInformations.Destination, mapHelper).Item2;
+            monster.monsterWalkingInformation.path = PathBetweenMaps(monster, monster.monsterWalkingInformation.Destination, mapHelper).Item2;
         }
         static bool ISNextMapAccessible(Map nextMap, Monster monster, MapHelper mapHelper)
         {
@@ -126,7 +126,7 @@ namespace Survive
                 else
                 {
                     //the door cannot be reached
-                    monster.monsterWalkingInformations.unreachableDoors.Add(map.mapInformations.mapLayout.doors[item.Key]);
+                    monster.monsterWalkingInformation.unreachableDoors.Add(map.mapInformations.mapLayout.doors[item.Key]);
                 }
             }
             return doors;
@@ -148,7 +148,7 @@ namespace Survive
                 Map map = queue.Dequeue();
                 foreach (Door door in map.mapInformations.mapLayout.doors.Values)
                 {
-                    if (monster.monsterWalkingInformations.unreachableDoors.Contains(door) == false) //there could be a doors, that monster already found unreachable and it knows about them 
+                    if (monster.monsterWalkingInformation.unreachableDoors.Contains(door) == false) //there could be a doors, that monster already found unreachable and it knows about them 
                     {
                         Map adjacentMap = door.destinationMap;
                         if (visited.Contains(adjacentMap) == false)

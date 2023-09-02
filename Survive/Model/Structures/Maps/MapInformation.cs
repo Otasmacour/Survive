@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class MapInformations
+    class MapInformation
     {
         public MapLayout mapLayout = new MapLayout();
         public List<Character> charactersOnMap = new List<Character>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class MonsterWalkingInformations
+    class MonsterWalkingInformation
     {
         public bool followingTheNoise;
         public bool onWay;

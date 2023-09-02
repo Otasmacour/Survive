@@ -48,7 +48,7 @@ namespace Survive
             {
                 if (obj is Door && mapHelper.boolFunctions.MonsterSeesThePlayer())// In this case, the player goes through the door, but the monster is in the same room, so it starts chasing the player into the room where the door leads
                 {
-                    monster.monsterChasingInformations.whereThePlayerHasGone = coordinates;
+                    monster.monsterChasingInformation.whereThePlayerHasGone = coordinates;
                 }
                 if (obj is Wall)
                 {

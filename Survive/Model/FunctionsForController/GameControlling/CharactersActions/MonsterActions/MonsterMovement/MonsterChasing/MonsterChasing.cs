@@ -11,7 +11,7 @@ namespace Survive
     {
         Movement movement;
         Monster monster;
-        MonsterChasingInformations monsterChasingInformations;
+        MonsterChasingInformation monsterChasingInformations;
         MonsterSearchingInformation monsterSearchingInformation;
         Player player;
         MapHelper mapHelper;
@@ -19,7 +19,7 @@ namespace Survive
         {
             this.movement = movement;
             this.monster = monster;
-            this.monsterChasingInformations = monster.monsterChasingInformations;
+            this.monsterChasingInformations = monster.monsterChasingInformation;
             this.monsterSearchingInformation = monster.monsterSearchingInformation;
             this.player = player;
             this.mapHelper = mapHelper;   

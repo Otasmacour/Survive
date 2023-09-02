@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class GameInformations
+    class GameInformation
     {
         MapHelper mapHelper;
         Characters characters;
         public Alerts alerts = new Alerts();
-        public GameInformations(MapHelper mapHelper, Characters characters)
+        public GameInformation(MapHelper mapHelper, Characters characters)
         {
             this.mapHelper = mapHelper;
             this.characters = characters;
