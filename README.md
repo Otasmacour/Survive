@@ -1,6 +1,6 @@
 # About
 High-school seminary work - 2023/2024  
-Escape is a terminal-based game where the player's objective is to break free from a locked house. To succeed, they must collect all the necessary items and unlock the main door, all while avoiding encounters with the monster.   
+Survive is terminal-based game where the player's objective is to break free from a locked house. To succeed, they must collect all the necessary items and unlock the main door, all while avoiding encounters with the monster.   
 # Controls
   - **Movement:** `w`, `a`, `s`, `d`
   - **Switching between items in inventory:** `Spacebar`
