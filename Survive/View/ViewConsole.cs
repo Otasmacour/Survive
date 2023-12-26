@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Survive
 {
-    class View
+    class ViewConsole
     {
         MapHelper mapHelper;
-        public View(MapHelper mapHelper)
+        public ViewConsole(MapHelper mapHelper)
         {
             this.mapHelper = mapHelper;
         }

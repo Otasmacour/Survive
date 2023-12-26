@@ -13,7 +13,7 @@ namespace Survive
             return "Master key";
         }
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 2;
+        public override int noiseLevel => 7;
         public override string useSoundFileName => "UnlockingChest";
         public override string dropSoundFileName => "KeyDrop";
         public MasterKey(SoundsController soundsController) : base(soundsController)

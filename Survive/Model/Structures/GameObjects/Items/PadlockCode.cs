@@ -13,7 +13,7 @@ namespace Survive
             return "Padlock code";
         }
         public override bool takesUpSpaceInTheInventory => true;
-        public override int noiseLevel => 2;
+        public override int noiseLevel => 7;
         public override string useSoundFileName => "PadlockOpening";
         public override string dropSoundFileName => "PadlockCodeDrop";
         public PadlockCode(SoundsController soundsController) : base(soundsController)

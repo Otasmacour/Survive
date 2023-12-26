@@ -12,9 +12,14 @@ namespace Survive
 {
     public class Controller
     {
+        ViewConsole viewConsole { get; set; }
         Model model { get; set; }
         GameControlling gameControlling { get; set; }
-        View view { get; set; }
+        ViewForms viewForms { get; set; }
+        public Controller(ViewForms viewForms) 
+        {
+            this.viewForms = viewForms;
+        }
         public void Play()
         {
             Stopwatch stopwatch = new Stopwatch();//The stopwatch measures how fast the player managed to escape.
@@ -68,8 +73,9 @@ namespace Survive
             if (displayStopwatch.ElapsedMilliseconds >= 50)
             {
                 model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();//This method checks if the player is within range of the monster (and can be killed), if so it will end the game.
-                view.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(), model.game.characters.monster);
-                //This Display method gets as arguments all required data and prints the game scene into the terminal
+                if (Proxy.outputType == OutputType.Console) { viewConsole.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(), model.game.characters.monster); }
+                else { viewForms.Display(); }
+                //This Display method gets as arguments all required data and prints the game scene into the terminal/shows in forms
                 displayStopwatch.Restart();
             }
         }
@@ -79,9 +85,9 @@ namespace Survive
             char c;
             while (stopwatch.ElapsedMilliseconds < 50)//The player can only take an action once every 50 milliseconds.
             {
-                if (Console.KeyAvailable)
+                if (Proxy.KeyAvaible)
                 {
-                    c = Console.ReadKey(intercept: true).KeyChar;
+                    c = Proxy.ReadKey();
                     UserIntent userIntent = gameControlling.playerActions.Action(c);//This handles the player's action and returns a UserIntent enum that tells what kind of action the player took, such as: Move or item manipulation action - Drop, PickUp, Use, SwitchItem and it can also return UserIntent.Null if the player pressed a key on the keyboard that is not associated with any action.
                     if (userIntent == UserIntent.Move)//When the player moves, the monster moves too, this negates the player's normally high speed, so he cannot espace easily.
                     {
@@ -95,7 +101,7 @@ namespace Survive
             //This resets the game data so the game can start again from the beginning
             model = new Model();
             gameControlling = model.functionsForController.gameControlling;
-            view = new View(model.game.maps.mapsFunctions.mapHelper);
+            viewConsole = new ViewConsole(model.game.maps.mapsFunctions.mapHelper);
             stopwatch.Restart();
         }
     }

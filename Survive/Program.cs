@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Survive
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Controller controller = new Controller();
-            controller.Play();
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new ViewForms());
         }
     }
 }
