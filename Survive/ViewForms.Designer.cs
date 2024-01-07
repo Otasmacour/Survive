@@ -36,7 +36,7 @@ namespace Survive
         {
             foreach(Label label in labels)
             {
-                label.BackColor = Color.AliceBlue;
+                label.BackColor = Color.Red;
             }
         }
         private void ShowMap(List<GameObject>[,] twoDArray)
