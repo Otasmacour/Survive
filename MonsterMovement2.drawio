@@ -1,9 +1,138 @@
-<mxfile host="app.diagrams.net" modified="2024-01-12T06:43:35.593Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" version="22.1.18" etag="Ek2ikelY_9OYHdDfnat2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-12T08:35:38.154Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="Ely7rbt7IQJSmDQ--C3t" version="22.1.18" type="github">
   <diagram name="Page-1" id="aco_66j2ZG0mlYaB7ikd">
-    <mxGraphModel>
+    <mxGraphModel dx="1223" dy="1692" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-8" target="7e9iY6AlbjNnhk_rSygL-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-8" value="Monster switches to searching mode" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="364" y="664" width="115" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-11" target="7e9iY6AlbjNnhk_rSygL-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-11" value="Monster switches to walking mode &amp;amp;&amp;nbsp;goes to investigate where the noise came from." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360.25" y="420" width="117.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-14" target="7e9iY6AlbjNnhk_rSygL-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-14" value="Monster switches to chase mode and starts chasing the player." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="522" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-17" target="7e9iY6AlbjNnhk_rSygL-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-60" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-59">
+          <mxGeometry x="0.0482" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-17" target="7e9iY6AlbjNnhk_rSygL-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="510" y="285" />
+              <mxPoint x="510" y="527" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-76" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-75">
+          <mxGeometry x="-0.2961" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;Player makes a sound (audible by monster)&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="329" y="200" width="180" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-24" target="7e9iY6AlbjNnhk_rSygL-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-52" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-51">
+          <mxGeometry x="-0.0354" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-24" target="7e9iY6AlbjNnhk_rSygL-39">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="90" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="552" />
+              <mxPoint x="320" y="125" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-64" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-62">
+          <mxGeometry x="-0.1437" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-24" value="&lt;br&gt;Monster meets the player" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="502" width="130" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-29" target="7e9iY6AlbjNnhk_rSygL-38">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="381.33333333333326" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-28" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-27">
+          <mxGeometry x="-0.2532" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-29" target="7e9iY6AlbjNnhk_rSygL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-56" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-55">
+          <mxGeometry x="-0.1802" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-29" value="Player&lt;br&gt;&amp;nbsp;escapes the monster.&lt;br&gt;&amp;nbsp;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="555.63" y="632" width="138.75" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-32" target="7e9iY6AlbjNnhk_rSygL-39">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="241" y="97" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-71" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-70">
+          <mxGeometry x="-0.1287" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-32" target="7e9iY6AlbjNnhk_rSygL-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-73" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7e9iY6AlbjNnhk_rSygL-72">
+          <mxGeometry x="-0.1094" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-32" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;Monster has &lt;br&gt;searched 10 adjacent&lt;br&gt;&amp;nbsp;rooms from the room where it &lt;br&gt;last saw the player and has&lt;br&gt;&amp;nbsp;not found him.&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="609" width="202.5" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-34" target="7e9iY6AlbjNnhk_rSygL-39">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="431" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-34" value="Beginning of the game" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="376" y="-10" width="86" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-38" value="Player has been caught, so the game is over." style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="565.01" y="780" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="7e9iY6AlbjNnhk_rSygL-39" target="7e9iY6AlbjNnhk_rSygL-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7e9iY6AlbjNnhk_rSygL-39" value="Monster switches to walking mode.&amp;nbsp;One during which it does not aim directly at one specific location in order to find the player." style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="364" y="70" width="110" height="110" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
