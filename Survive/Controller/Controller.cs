@@ -15,10 +15,8 @@ namespace Survive
         ViewConsole viewConsole { get; set; }
         Model model { get; set; }
         GameControlling gameControlling { get; set; }
-        ViewForms viewForms { get; set; }
-        public Controller(ViewForms viewForms) 
+        public Controller() 
         {
-            this.viewForms = viewForms;
         }
         public void Play()
         {
@@ -74,7 +72,6 @@ namespace Survive
             {
                 model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();//This method checks if the player is within range of the monster (and can be killed), if so it will end the game.
                 if (Proxy.outputType == OutputType.Console) { viewConsole.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(), model.game.characters.monster); }
-                else { viewForms.Display(); }
                 //This Display method gets as arguments all required data and prints the game scene into the terminal/shows in forms
                 displayStopwatch.Restart();
             }

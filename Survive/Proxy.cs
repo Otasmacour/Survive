@@ -16,14 +16,6 @@ namespace Survive
         {
             Assembly assembly = Assembly.GetEntryAssembly();
             Type type = assembly.EntryPoint.DeclaringType;
-            if (type == typeof(System.Windows.Forms.Application))
-            {
-                outputType = OutputType.Forms;
-            }
-            else
-            {
-                outputType = OutputType.Console;
-            }
         }
         public static bool KeyAvaible {
             get
@@ -36,7 +28,6 @@ namespace Survive
                 {
                     return _keyAvaible;
                 }
-
             }
         }
         public static char ReadKey()

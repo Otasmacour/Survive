@@ -9,5 +9,5 @@ namespace Survive
     enum Direction { Left, Right, Up, Down, TopLeft, TopRight, BottomLeft, BottomRight, Null }
     enum UserIntent { Move, Drop, PickUp, Use, SwitchItem, Null}
     enum MapType { Stairs, Garden, Null, Abnormal }
-    enum OutputType { Console, Forms}
+    enum OutputType { Console}
 }

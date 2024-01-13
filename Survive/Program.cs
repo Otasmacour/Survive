@@ -11,9 +11,8 @@ namespace Survive
     {
         static void Main(string[] args)
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ViewForms());
+            Controller controller = new Controller();
+            controller.Play();
         }
     }
 }
