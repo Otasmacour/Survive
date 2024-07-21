@@ -10,6 +10,10 @@ Survive is terminal-based game where the player's objective is to break free fro
   
 ![mainDoor](https://github.com/Otasmacour/Survive/assets/111227700/969d8eb0-5726-409a-825c-db0bc8387a48)  
 This is what the game looks like from a player's perspective.  
+
+# Important
+ - as I already hinted when I mentioned the heartbeat, there are sounds in the game for almost all actions the player can perform, so turn on the sound on your computer!!
+
 # Monster's modes
 Monster has 3 modes:
 - Walking, the most common, simply walks through the house and moves around random rooms.  
@@ -61,5 +65,3 @@ Floor 0
 ![Floor1 drawio](https://github.com/user-attachments/assets/0b73c071-23ec-4cfc-9292-bc7310bf62ed)
 
 Floor 1
-# Important
- - as I already hinted when I mentioned the heartbeat, there are sounds in the game for almost all actions the player can perform, so turn on the sound on your computer!!
