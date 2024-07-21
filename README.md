@@ -34,7 +34,7 @@ For almost all items you'll see the names, but for some things where it doesn't 
   - **Closet:** `c`
   - **Floor:** `.`
 # Gameplay(skip if you don't want spoilers)
-Item usage:
+Items usage:
 - S **Hammer** se dá rozbít prkenná zábrana na hlavních dveřích, **WoodenChest** a **Chain**, který drží **Shovel** přidělanou ke zdi.
 - S **Shovel** se dá v zahradě vykopat **BuriedChest**.
 - **Bullets** se dají nabít do **Gun** a s tou se poté dá zastřelit monstrum.
