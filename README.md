@@ -12,6 +12,8 @@ Survive is terminal-based game where the player's objective is to break free fro
 This is what the game looks like from a player's perspective.  
 # Monster's modes
 Monster has 3 modes:
+![MonsterMovement2 drawio (1)](https://github.com/user-attachments/assets/11e8b9fe-7922-41e7-8a34-7386926d5211)
+
 - Walking, the most common, simply walks through the house and moves around random rooms.  
 - Chasing, this mode is triggered when the monster spots the player, and when it spots the player, the monster chases the player around the room.  
 - Searching, this last mode is triggered when the monster is in chase mode but the player escapes to another room, then the monster searches nearby rooms for a while until it gets tired of it, and there is a chance during this mode that it will search the closets in the room it is in.  
