@@ -17,6 +17,7 @@ Monster has 3 modes:
 - Searching, this last mode is triggered when the monster is in chase mode but the player escapes to another room, then the monster searches nearby rooms for a while until it gets tired of it, and there is a chance during this mode that it will search the closets in the room it is in.
 
 ![MonsterMovement2 drawio (1)](https://github.com/user-attachments/assets/11e8b9fe-7922-41e7-8a34-7386926d5211)
+
 # Hints
  - The volume and frequency of the heartbeat tells the player the distance of the monster.
  - The monster is 7 feet tall, so the secret tunnel is too low for it to enter.  
