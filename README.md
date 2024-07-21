@@ -40,17 +40,17 @@ For almost all items you'll see the names, but for some things where it doesn't 
   - **Floor:** `.`
 # Gameplay(skip if you don't want spoilers)
 Items usage:
-- S **Hammer** se dá rozbít prkenná zábrana na hlavních dveřích, **WoodenChest** a **Chain**, který drží **Shovel** přidělanou ke zdi.
-- S **Shovel** se dá v zahradě vykopat **BuriedChest**.
-- **Bullets** se dají nabít do **Gun** a s tou se poté dá zastřelit monstrum.
-- Při zvednutí **Backpack** ze země se hráči zvýší prostor v inventáři o dva.
-- Upuštěním **Plate** na zem se způsobí velmi hlasitý zvuk a na jeho místě zbyde **BrokenPlate**.
-- Použitím **PadlockCode** se dá z hlavních dveří sundat zámek na kód.
-- **MasterKey** je třetí předmět ze tří, který je třeba použít u hlavních dveří, aby hráč mohl utéci.
-- **WoodenKey** odemyká **WoodenChest**.
-- **IronKey** odemyká **IronChest**.
-- **MysteriousKey** odemyká **BuriedChest**.
-- **WeaponKey** odemyká **WeaponChest**.
+- With a **Hammer**, you can break the wooden barrier on the main door, the **WoodenChest**, and the **Chain** holding the **Shovel** on the wall.
+- With a **Shovel**, you can dig up the **BuriedChest** in the garden.
+- **Bullets** can be loaded into the **Gun**, which can then be used to shoot the monster.
+- Picking up the **Backpack** from the ground increases the player's inventory space by two.
+- Dropping the **Plate** on the ground causes a very loud noise and leaves behind a **BrokenPlate**.
+- Using the **PadlockCode** can remove the coded lock from the main door.
+- The **MasterKey** is the third item of three needed to use at the main door for the player to escape.
+- The **WoodenKey** unlocks the **WoodenChest**.
+- The **IronKey** unlocks the **IronChest**.
+- The **MysteriousKey** unlocks the **BuriedChest**.
+- The **WeaponKey** unlocks the **WeaponChest**.
 
 Map of house:
 
