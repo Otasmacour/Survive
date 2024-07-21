@@ -70,12 +70,30 @@ namespace Survive
         {
             if (displayStopwatch.ElapsedMilliseconds >= 50)
             {
-                model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();//This method checks if the player is within range of the monster (and can be killed), if so it will end the game.
-                if (Proxy.outputType == OutputType.Console) { viewConsole.Display(model.game.characters.player.mapWhereIsLocated, model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(), model.game.characters.player.inventory, model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(), model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(), model.game.characters.monster); }
-                //This Display method gets as arguments all required data and prints the game scene into the terminal/shows in forms
+                model.functionsForController.gameControlling.collisionController.MonsterAndPlayerCollision();
+
+                if (Proxy.outputType == OutputType.Console)
+                {
+                    var currentDisplay = viewConsole.GetDisplayString(model.game.characters.player.mapWhereIsLocated,
+                                                                      model.functionsForController.gameControlling.gameInformation.GetMonsterDistance(),
+                                                                      model.game.characters.player.inventory,
+                                                                      model.functionsForController.gameControlling.gameInformation.GetItemsWithinPlayersReach(),
+                                                                      model.functionsForController.gameControlling.gameInformation.alerts.GetAlerts(),
+                                                                      model.game.characters.monster);
+
+                    if (currentDisplay != viewConsole.LastDisplay)
+                    {
+                        Console.Clear();
+                        Console.Write(currentDisplay);
+                        viewConsole.LastDisplay = currentDisplay;
+                    }
+                }
+
                 displayStopwatch.Restart();
             }
         }
+
+
         void PlayerAction(Stopwatch stopwatch)
         {
             stopwatch.Restart();//Stopwatch starts measuring the time and as long as it is under 50 milliseconds, the loop waits for the player's reaction, when the time runs out, the program continues, thanks to this the monster can perform an action even if the player does nothing, because the program doesn't wait for the player's action forever.
