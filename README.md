@@ -46,7 +46,12 @@ Items usage:
 - **IronKey** odemyká **IronChest**.
 - **MysteriousKey** odemyká **BuriedChest**.
 - **WeaponKey** odemyká **WeaponChest**.
-
- 
+Map of house:
+ ![Floor-1 drawio](https://github.com/user-attachments/assets/cd8a9ca1-dbb9-4164-b1ca-76e99b245930)
+Floor -1 (basement)
+![Floor0 drawio](https://github.com/user-attachments/assets/508d723c-7709-49d8-80b8-64bbc14492d8)
+Floor 0
+![Floor1 drawio](https://github.com/user-attachments/assets/0b73c071-23ec-4cfc-9292-bc7310bf62ed)
+Floor 1
 # Important
  - as I already hinted when I mentioned the heartbeat, there are sounds in the game for almost all actions the player can perform, so turn on the sound on your computer!!
