@@ -28,7 +28,7 @@ Monster has 3 modes:
  - If the player makes a noise that the monster can hear from the distance where it is, the monster will come.
  - In addition to gradually unlocking the main door (in this case just stand in front of it), for all chests or other objects where an item is used, the player must stand right where the chest/whatever is located, just like when collecting items.
  - if you shoot the monster, you have one minute before the monster respawns in the basement
- - What specific items are used for is pretty intuitive in my opinion, especially with the alerts that pops up when a player uses an item the wrong way when it doesn't meet the right conditions for use - usually being used in the wrong place).
+ - What specific items are used for is pretty intuitive in my opinion, especially with the alerts that pops up when a player uses an item the wrong way (when it doesn't meet the right conditions for use - usually being used in the wrong place).
    
 For almost all items you'll see the names, but for some things where it doesn't make sense, it doesn't show, so to make sure you don't get lost, here's an explanation of items without name:  
   - **Monster:** `A`
